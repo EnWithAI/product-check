@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-QM/wD/oM+RY+1N4r3DyLm4BwBdlCbHm1haaRxTIUy+g='; img-src data:">
+<title>Product Check: Vibe Notes (synthetic demo)</title>
+<style>/* SPDX-FileCopyrightText: 2026 EnWithAI Technologies */
+/* Product Check dashboard styles. Inlined into each generated dashboard; no external requests. */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --raised: #ffffff;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #6f6d68;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --line: rgba(11, 11, 11, 0.12);
+  --focus: #2a78d6;
+  --s-customer: #2a78d6;
+  --s-technology: #eb6834;
+  --s-trust: #1baf7a;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --unknown: #898781;
+  --unknown-wash: #ecebe6;
+  --banner-demo: #fff4d6;
+  --banner-error: #fde6e6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --raised: #222220;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #a3a198;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --line: rgba(255, 255, 255, 0.12);
+    --focus: #3987e5;
+    --s-customer: #3987e5;
+    --s-technology: #d95926;
+    --s-trust: #199e70;
+    --unknown-wash: #2a2a28;
+    --banner-demo: #3a3010;
+    --banner-error: #3d1717;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --raised: #222220;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #a3a198;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --line: rgba(255, 255, 255, 0.12);
+  --focus: #3987e5;
+  --s-customer: #3987e5;
+  --s-technology: #d95926;
+  --s-trust: #199e70;
+  --unknown-wash: #2a2a28;
+  --banner-demo: #3a3010;
+  --banner-error: #3d1717;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font:
+    15px/1.5 system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+a {
+  color: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+header.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 20px 0 8px;
+}
+header.top h1 {
+  font-size: 1.35rem;
+  margin: 0;
+}
+header.top .meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.banner {
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  border: 1px solid var(--line);
+}
+.banner.demo {
+  background: var(--banner-demo);
+}
+.banner.error {
+  background: var(--banner-error);
+}
+nav.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--page);
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line);
+  margin: 8px 0 16px;
+  padding-top: 4px;
+}
+nav.tabs a {
+  white-space: nowrap;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--ink-2);
+  border-bottom: 2px solid transparent;
+}
+nav.tabs a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  font-weight: 600;
+}
+section.view {
+  margin-bottom: 32px;
+}
+section.view > h2 {
+  font-size: 1.15rem;
+  margin: 8px 0 12px;
+}
+h3 {
+  font-size: 1rem;
+  margin: 20px 0 8px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.grid {
+  display: grid;
+  gap: 12px;
+}
+.grid.three {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.grid.kpis {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+.hero .verdict {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.hero .alias {
+  color: var(--ink-2);
+}
+.reasons {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.bounded {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  white-space: nowrap;
+}
+.chip .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+}
+.chip.good .dot {
+  background: var(--good);
+}
+.chip.warning .dot {
+  background: var(--warning);
+}
+.chip.serious .dot {
+  background: var(--serious);
+}
+.chip.critical .dot {
+  background: var(--critical);
+}
+.chip.unknown .dot {
+  background: transparent;
+  border: 2px dashed var(--unknown);
+}
+.chip.neutral .dot {
+  background: var(--axis);
+}
+.kpi .label {
+  color: var(--ink-2);
+  font-size: 0.8rem;
+}
+.kpi .value {
+  font-size: 1.6rem;
+  font-weight: 650;
+}
+.dial {
+  text-align: center;
+}
+.dial svg {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.dial .name {
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.dial .swatch {
+  width: 12px;
+  height: 3px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.dial .sub {
+  color: var(--ink-2);
+  font-size: 0.85rem;
+}
+.meter {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--grid);
+  overflow: hidden;
+  margin: 6px 0 2px;
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  background: var(--ink-2);
+  border-radius: 4px;
+}
+.track {
+  fill: none;
+  stroke: var(--grid);
+}
+.track.unknown {
+  stroke: url(#hatch);
+}
+.fill {
+  fill: none;
+  stroke-linecap: round;
+}
+.tick {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.dial-value {
+  font-size: 30px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+.dial-caption {
+  font-size: 11px;
+  fill: var(--muted);
+}
+.hatch-line {
+  stroke: var(--unknown);
+  stroke-width: 2;
+}
+.scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88rem;
+}
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  color: var(--ink-2);
+  font-weight: 600;
+  background: var(--surface);
+}
+td.num,
+th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+pre {
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  overflow-x: auto;
+  font-size: 0.8rem;
+}
+details {
+  margin: 4px 0;
+}
+details > summary {
+  cursor: pointer;
+  color: var(--ink-2);
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+.filters label {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.filters select,
+.filters input {
+  font: inherit;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  min-width: 140px;
+}
+.stack {
+  display: flex;
+  height: 18px;
+  gap: 2px;
+  margin: 4px 0;
+}
+.stack > span {
+  display: block;
+  height: 100%;
+}
+.stack > span:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.stack > span:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.seg-PASS {
+  background: var(--good);
+}
+.seg-PARTIAL {
+  background: var(--warning);
+}
+.seg-FAIL {
+  background: var(--critical);
+}
+.seg-BLOCKED,
+.seg-NOT_TESTED {
+  background: repeating-linear-gradient(45deg, var(--unknown) 0 2px, var(--unknown-wash) 2px 6px);
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  margin: 6px 0;
+}
+.legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 0.82rem;
+}
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chart .gridline {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+.chart .axis-label {
+  fill: var(--muted);
+  font-size: 11px;
+}
+.chart .series {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.chart .end-label {
+  fill: var(--ink-2);
+  font-size: 11px;
+}
+.theme-toggle {
+  font: inherit;
+  font-size: 0.8rem;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+footer {
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 24px;
+}
+@media (forced-colors: active) {
+  .seg-PASS,
+  .seg-PARTIAL,
+  .seg-FAIL {
+    forced-color-adjust: none;
+  }
+}
+@media print {
+  nav.tabs,
+  .filters,
+  .theme-toggle {
+    display: none;
+  }
+  section.view[hidden] {
+    display: block !important;
+  }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="6"/></pattern></defs></svg>
+<div class="wrap">
+<header class="top"><div><h1>Product Check: Vibe Notes (synthetic demo)</h1><div class="meta">Run PCR-20261014T100000Z-DAFCB5 · 2026-10-14T10:00:00.000Z · COMPLETED</div></div><button class="theme-toggle" type="button" hidden>Theme: auto</button></header>
+<div class="banner demo" role="note"><strong>Demo data.</strong> This dashboard shows an assessment of a synthetic example application. The figures are real outputs of Product Check on that example, not of any real product.</div>
+<nav class="tabs" aria-label="Dashboard views"><a href="#readiness" aria-current="page">Executive readiness</a><a href="#scan">Scan explorer</a><a href="#workbench">Validation workbench</a><a href="#blueprint">Blueprint &amp; remediation</a><a href="#history">Assurance history</a></nav>
+<main>
+<section class="view" id="readiness" aria-labelledby="h-readiness"><h2 id="h-readiness">Executive readiness</h2>
+<div class="card"><div class="hero"><div><div class="verdict">NOT READY</div><div class="alias">CT-T2 Pre-Launch Assurance · "NOT READY"</div></div><span class="chip critical"><span class="dot" aria-hidden="true"></span>Blocking issues substantiated</span></div>
+<ul class="reasons"><li>Hard gate failed: G-SECRETS.</li><li>8 open P0 finding(s).</li><li>1 open P1 finding(s).</li></ul><div class="bounded">Applies only to repository &quot;Vibe Notes (synthetic demo)&quot; at revision d1d8f2bd3ac2 and application http://127.0.0.1:4785 as observed 2026-10-14T09:59:00.000Z, assessed 2026-10-14T10:00:00.000Z. 32 of 40 applicable controls were checked; 8 were blocked or not tested. A material change invalidates this verdict.</div></div>
+<h3>Customer × Technology × Trust</h3><p class="muted small">Three independent pillars, never averaged. The black tick marks the readiness threshold (70). A hatched dial means the pillar could not be scored; that is unknown, not passed.</p>
+<div class="grid three"><div class="card dial">
+<div class="name"><span class="swatch" style="background:var(--s-customer)" aria-hidden="true"></span>Customer</div>
+<div class="sub">Can intended users understand it, use it and get value?</div>
+<svg viewBox="0 0 220 128" role="img" aria-label="Customer score 40 of 100">
+<path class="track" d="M 24 108 A 86 86 0 0 1 196.00 108.00" stroke-width="14"/>
+<path class="fill" d="M 24 108 A 86 86 0 0 1 83.42 26.21" stroke="var(--s-customer)" stroke-width="14"/>
+<line class="tick" x1="151.45" y1="50.95" x2="160.55" y2="38.42"><title>Readiness threshold 70</title></line>
+<text class="dial-value" x="110" y="94" text-anchor="middle">40</text>
+<text class="dial-caption" x="110" y="120" text-anchor="middle">of 100</text>
+</svg>
+<div><span class="chip warning"><span class="dot" aria-hidden="true"></span>Below threshold</span></div>
+<div class="sub" style="margin-top:8px">Coverage 77% · Confidence MEDIUM</div>
+<div class="meter" role="img" aria-label="Coverage 77%"><span style="width:76.9%"></span></div>
+<div class="sub small">3 pass · 0 partial · 5 fail · 2 unchecked</div>
+</div><div class="card dial">
+<div class="name"><span class="swatch" style="background:var(--s-technology)" aria-hidden="true"></span>Technology</div>
+<div class="sub">Is it built, tested and operated soundly?</div>
+<svg viewBox="0 0 220 128" role="img" aria-label="Technology score 4 of 100">
+<path class="track" d="M 24 108 A 86 86 0 0 1 196.00 108.00" stroke-width="14"/>
+<path class="fill" d="M 24 108 A 86 86 0 0 1 24.68 97.22" stroke="var(--s-technology)" stroke-width="14"/>
+<line class="tick" x1="151.45" y1="50.95" x2="160.55" y2="38.42"><title>Readiness threshold 70</title></line>
+<text class="dial-value" x="110" y="94" text-anchor="middle">4</text>
+<text class="dial-caption" x="110" y="120" text-anchor="middle">of 100</text>
+</svg>
+<div><span class="chip warning"><span class="dot" aria-hidden="true"></span>Below threshold</span></div>
+<div class="sub" style="margin-top:8px">Coverage 80% · Confidence MEDIUM</div>
+<div class="meter" role="img" aria-label="Coverage 80%"><span style="width:80.0%"></span></div>
+<div class="sub small">0 pass · 1 partial · 8 fail · 1 unchecked</div>
+</div><div class="card dial">
+<div class="name"><span class="swatch" style="background:var(--s-trust)" aria-hidden="true"></span>Trust</div>
+<div class="sub">Can users and operators trust it with their data and actions?</div>
+<svg viewBox="0 0 220 128" role="img" aria-label="Trust score 2 of 100">
+<path class="track" d="M 24 108 A 86 86 0 0 1 196.00 108.00" stroke-width="14"/>
+<path class="fill" d="M 24 108 A 86 86 0 0 1 24.17 102.60" stroke="var(--s-trust)" stroke-width="14"/>
+<line class="tick" x1="151.45" y1="50.95" x2="160.55" y2="38.42"><title>Readiness threshold 70</title></line>
+<text class="dial-value" x="110" y="94" text-anchor="middle">2</text>
+<text class="dial-caption" x="110" y="120" text-anchor="middle">of 100</text>
+</svg>
+<div><span class="chip warning"><span class="dot" aria-hidden="true"></span>Below threshold</span></div>
+<div class="sub" style="margin-top:8px">Coverage 67% · Confidence MEDIUM</div>
+<div class="meter" role="img" aria-label="Coverage 67%"><span style="width:66.7%"></span></div>
+<div class="sub small">0 pass · 1 partial · 14 fail · 5 unchecked</div>
+</div></div>
+<h3>Key figures</h3><div class="grid kpis"><div class="card kpi"><div class="label">Open P0</div><div class="value">8</div></div><div class="card kpi"><div class="label">Open P1</div><div class="value">1</div></div><div class="card kpi"><div class="label">Open P2</div><div class="value">16</div></div><div class="card kpi"><div class="label">Open P3</div><div class="value">12</div></div><div class="card kpi"><div class="label">Accepted risks</div><div class="value">0</div></div><div class="card kpi"><div class="label">Overall coverage</div><div class="value">72%</div></div></div>
+<h3>Hard gates</h3><div class="scroll"><table><thead><tr><th>Gate</th><th>Status</th><th>Controls</th></tr></thead><tbody><tr><td>G-SECRETS: No exposed production secrets or client-side privileged keys</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span></td><td><code>PC-S-01, PC-S-02, PC-S-09, PC-AI-01</code></td></tr><tr><td>G-AUTHZ: No authentication or authorization bypass on privileged paths</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>UNVERIFIED</span></td><td><code>PC-S-13</code></td></tr><tr><td>G-ISOLATION: No cross-tenant or cross-user data exposure</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>UNVERIFIED</span></td><td><code>PC-S-14</code></td></tr></tbody></table></div>
+<h3>Top open findings</h3><div class="scroll"><table><thead><tr><th>Severity</th><th>Finding</th><th>Pillar</th><th>Location</th></tr></thead><tbody><tr><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Sensitive file publicly served: /.env<br><span class="muted small">fact, high confidence</span></td><td>Trust</td><td><code>http://127.0.0.1:4785/.env</code></td></tr><tr><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Stripe secret key in .env.local<br><span class="muted small">fact, high confidence</span></td><td>Trust</td><td><code>.env.local:4</code></td></tr><tr><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Service-role JWT (bypasses row-level security) in lib/supabase.ts<br><span class="muted small">fact, high confidence</span></td><td>Trust</td><td><code>lib/supabase.ts:4</code></td></tr><tr><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Privileged key NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY exposed to the browser<br><span class="muted small">inference, high confidence</span></td><td>Trust</td><td><code>lib/supabase.ts:4</code></td></tr><tr><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Privileged key NEXT_PUBLIC_OPENAI_API_KEY exposed to the browser<br><span class="muted small">inference, medium confidence</span></td><td>Trust</td><td><code>.env.local:3</code></td></tr><tr><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Credentials embedded in a connection URL in .env.local<br><span class="muted small">fact, high confidence</span></td><td>Trust</td><td><code>.env.local:5</code></td></tr><tr><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>AI provider called from the browser in app/page.tsx<br><span class="muted small">fact, high confidence</span></td><td>Trust</td><td><code>app/page.tsx:6</code></td></tr><tr><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Privileged key NEXT_PUBLIC_OPENAI_API_KEY exposed to the browser<br><span class="muted small">inference, medium confidence</span></td><td>Trust</td><td><code>app/page.tsx:6</code></td></tr></tbody></table></div>
+</section>
+<section class="view" id="scan" aria-labelledby="h-scan"><h2 id="h-scan">Scan explorer</h2>
+<div class="grid kpis"><div class="card kpi"><div class="label">PoPs available</div><div class="value">6</div></div><div class="card kpi"><div class="label">PoPs partial</div><div class="value">3</div></div><div class="card kpi"><div class="label">PoPs blocked</div><div class="value">1</div></div><div class="card kpi"><div class="label">PoPs not applicable</div><div class="value">3</div></div></div>
+<h3>Points of presence</h3><div class="scroll"><table><thead><tr><th>Point of presence</th><th>Status</th><th>Authorization</th><th>Scope</th><th>Observed</th><th>Limitations</th><th class="num">Evidence</th></tr></thead><tbody><tr><td>Source repository<br><span class="muted small">source-build</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-10-14T10:00:00.000Z</td><td class="small">—</td><td class="num">27</td></tr><tr><td>Dependency manifests<br><span class="muted small">source-build</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-10-14T10:00:00.000Z</td><td class="small">—</td><td class="num">5</td></tr><tr><td>Automated test sources<br><span class="muted small">source-build</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-10-14T10:00:00.000Z</td><td class="small">No test files found.</td><td class="num">1</td></tr><tr><td>Executed test results<br><span class="muted small">source-build</span></td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">No executed test results were imported (Product Check never runs repository code).</td><td class="num">0</td></tr><tr><td>CI/CD configuration<br><span class="muted small">source-build</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-10-14T10:00:00.000Z</td><td class="small">No CI configuration found.</td><td class="num">0</td></tr><tr><td>Hosting / infrastructure configuration<br><span class="muted small">operations</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="small">not-required · none</td><td class="small">local checkout (read-only)</td><td class="small">—</td><td class="small">No hosting or IaC files in the repository.</td><td class="num">0</td></tr><tr><td>Database schema and migrations<br><span class="muted small">data</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-10-14T10:00:00.000Z</td><td class="small">Schema files only; the live database was not accessed.<br>No migrations directory.</td><td class="num">0</td></tr><tr><td>Deployed web application<br><span class="muted small">experience</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">http://127.0.0.1:4785 (passive GET requests to fixed paths only)</td><td class="small">2026-10-14T09:59:00.000Z</td><td class="small">Observations were recorded earlier and replayed.<br>Unauthenticated pages only; no forms, logins or data-changing actions.</td><td class="num">20</td></tr><tr><td>API definition (OpenAPI/GraphQL)<br><span class="muted small">interfaces</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">No API definition files found.</td><td class="num">0</td></tr><tr><td>Production telemetry (logs, metrics, traces, alerts)<br><span class="muted small">operations</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">Not required before launch tiers (CT-T4+).</td><td class="num">0</td></tr><tr><td>AI integration (SDKs, prompts, evals)<br><span class="muted small">ai</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">openai</td><td class="small">2026-10-14T10:00:00.000Z</td><td class="small">Static inspection only; model behaviour was not exercised.</td><td class="num">0</td></tr><tr><td>Documentation and specifications<br><span class="muted small">governance</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-10-14T10:00:00.000Z</td><td class="small">—</td><td class="num">0</td></tr><tr><td>Privacy and security policies<br><span class="muted small">governance</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">—</td><td class="small">2026-10-14T10:00:00.000Z</td><td class="small">Presence only; policy content is not assessed (this is not a legal review).</td><td class="num">0</td></tr></tbody></table></div>
+<h3>Run</h3><div class="card small"><div>Run <code>PCR-20261014T100000Z-DAFCB5</code> · COMPLETED · 2026-10-14T10:00:00.000Z · 0 ms</div>
+<div>Mode HYBRID (requested HYBRID) · tier CT-T2 · tiers applied CT-T0, CT-T1, CT-T2</div>
+<div>Repository: Vibe Notes (synthetic demo) @ <code>d1d8f2bd3ac23321a077249a4dc9410ee8982ad5</code> · Application: http://127.0.0.1:4785 (status 200)</div>
+<div>Network: no requests made · Product Check 0.1.0-alpha.0 · rubric pc-rubric-0.1 · methodology CT3 (inspired)</div></div>
+<h3>Workflow phases</h3><div class="scroll"><table><thead><tr><th>Phase</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td>SCAN</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">11 files inventoried<br>9 application observation(s) (recorded)</td></tr><tr><td>TEST</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">passive application checks evaluated from observations<br>0 test results file(s) imported (0 cases); Product Check executes no repository code</td></tr><tr><td>VALIDATE</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">47 controls evaluated against CT-T2<br>37 open finding(s)</td></tr><tr><td>BLUEPRINT</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">29 remediation(s), 29 work packet(s)</td></tr><tr><td>DASHBOARD</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>SKIPPED</span></td><td class="small">Rendered on demand from this file (`product-check dashboard`).</td></tr><tr><td>REMEDIATE</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>ADVISORY</span></td><td class="small">Product Check proposes changes and work packets; it never modifies code.</td></tr><tr><td>RETEST</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>SKIPPED</span></td><td class="small">no baseline given</td></tr></tbody></table></div>
+
+</section>
+<section class="view" id="workbench" aria-labelledby="h-workbench"><h2 id="h-workbench">Validation workbench</h2>
+<div><strong>Customer</strong><div class="stack" role="img" aria-label="Customer: 3 PASS, 0 PARTIAL, 5 FAIL, 0 BLOCKED, 2 NOT_TESTED"><span class="seg-PASS" style="flex:3" title="Customer: 3 pass"></span><span class="seg-FAIL" style="flex:5" title="Customer: 5 fail"></span><span class="seg-NOT_TESTED" style="flex:2" title="Customer: 2 not tested"></span></div></div><div><strong>Technology</strong><div class="stack" role="img" aria-label="Technology: 0 PASS, 1 PARTIAL, 8 FAIL, 0 BLOCKED, 1 NOT_TESTED"><span class="seg-PARTIAL" style="flex:1" title="Technology: 1 partial"></span><span class="seg-FAIL" style="flex:8" title="Technology: 8 fail"></span><span class="seg-NOT_TESTED" style="flex:1" title="Technology: 1 not tested"></span></div></div><div><strong>Trust</strong><div class="stack" role="img" aria-label="Trust: 0 PASS, 1 PARTIAL, 14 FAIL, 0 BLOCKED, 5 NOT_TESTED"><span class="seg-PARTIAL" style="flex:1" title="Trust: 1 partial"></span><span class="seg-FAIL" style="flex:14" title="Trust: 14 fail"></span><span class="seg-NOT_TESTED" style="flex:5" title="Trust: 5 not tested"></span></div></div>
+<div class="legend"><span><i class="seg-PASS"></i>Pass</span><span><i class="seg-PARTIAL"></i>Partial</span><span><i class="seg-FAIL"></i>Fail</span><span><i class="seg-NOT_TESTED"></i>Blocked or not tested (unknown)</span></div>
+<div class="filters" data-filter-table="validations-table"><label>Pillar<select data-key="pillar"><option value="">All</option><option value="customer">Customer</option><option value="technology">Technology</option><option value="trust">Trust</option></select></label>
+<label>Status<select data-key="status"><option value="">All</option><option value="PASS">PASS</option><option value="PARTIAL">PARTIAL</option><option value="FAIL">FAIL</option><option value="BLOCKED">BLOCKED</option><option value="NOT_TESTED">NOT TESTED</option><option value="NOT_APPLICABLE">NOT APPLICABLE</option></select></label>
+<label>Search<input type="search" data-key="text" placeholder="control, text, path"></label><span class="small muted" data-count style="align-self:end"></span></div>
+<div class="scroll"><table id="validations-table"><thead><tr><th>Control</th><th>Requirement</th><th>Status</th><th>Expected / actual</th><th>Evidence</th></tr></thead><tbody><tr data-pillar="customer" data-status="PASS">
+<td><code>PC-C-01</code></td>
+<td>Application is reachable over HTTPS<br><span class="muted small">CT-T1 · Customer · weight 2</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> The declared URL answers with a 2xx page over HTTPS (after same-origin redirects).<br><strong>Actual:</strong> Entry page answered 200 (local development server; HTTPS not assessed).<br><strong>Reproduce:</strong> <code>curl -sSL -o /dev/null -w &#39;%{http_code}&#39; http://127.0.0.1:4785/</code></td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-82F664BD7682</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>landing request (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="FAIL">
+<td><code>PC-C-02</code></td>
+<td>Page language is declared<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> The root &lt;html&gt; element declares a lang attribute.<br><strong>Actual:</strong> The served page has no lang attribute. 1 of 1 template(s) lack lang.</td>
+<td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-6E255262AEBB</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>&lt;html lang&gt;: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li><li><code>EV-4781DDFDBECC</code> source-location · static · <code>app/layout.tsx:5</code><br>&lt;html&gt; without lang<br><code>&lt;html&gt;</code><br><span class="muted">sha256 d345994e85f41b51…</span></li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="PASS">
+<td><code>PC-C-03</code></td>
+<td>Page is configured for mobile viewports<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> A responsive viewport meta tag is present.<br><strong>Actual:</strong> Viewport meta tag present. Next.js App Router emits a default responsive viewport (framework default; inferred).</td>
+<td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-49DA8951F52A</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>viewport meta: present (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li><li><code>EV-1F14A512601B</code> file-presence · static · <code>app/layout.tsx</code><br>Next.js App Router root layout (framework default viewport)<br><span class="muted">sha256 d345994e85f41b51…</span></li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="FAIL">
+<td><code>PC-C-04</code></td>
+<td>Images have text alternatives<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> Every &lt;img&gt;/&lt;Image&gt; element has an alt attribute (empty alt for decorative images).<br><strong>Actual:</strong> 1 of 1 served image(s) lack alt (landing page only). 1 of 1 image element(s) lack alt.</td>
+<td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-A900965FEC4B</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>1 of 1 &lt;img&gt; without alt (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li><li><code>EV-F88727144FC0</code> source-location · static · <code>app/page.tsx:20</code><br>&lt;img&gt; without alt<br><code>&lt;img src=&quot;/hero.png&quot; /&gt;</code><br><span class="muted">sha256 ad9d58593574b251…</span></li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="FAIL">
+<td><code>PC-C-05</code></td>
+<td>Entry page has a meaningful title<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> The entry page has a non-empty &lt;title&gt; that is not a framework starter default.<br><strong>Actual:</strong> The title is a starter-template default (&quot;Create Next App&quot;).</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-EE1E19478D9F</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>&lt;title&gt;: Create Next App (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="FAIL">
+<td><code>PC-C-06</code></td>
+<td>Unknown URLs return a real 404 page<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> A request for a non-existent path returns HTTP 404 (not a 200 &quot;soft 404&quot;).<br><strong>Actual:</strong> Unknown path answered 200 instead of 404.<br><strong>Reproduce:</strong> <code>curl -s -o /dev/null -w &#39;%{http_code}&#39; http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2</code></td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-45307C11A4AE</code> http-response · runtime · <code>GET http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2</code><br>request for a path that does not exist (status 200, 25 ms, observed 2026-10-14T09:59:01.000Z)<br><span class="muted">sha256 1368fd8ca63d2db3…</span></li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="PASS">
+<td><code>PC-C-07</code></td>
+<td>Entry page responds quickly<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> The entry page&#39;s server response completes within 2,500 ms (single passive sample).<br><strong>Actual:</strong> 25 ms (single sample; network conditions of the scanning machine apply).</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-02D673294F61</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>entry page response time 25 ms (single sample) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="FAIL">
+<td><code>PC-C-08</code></td>
+<td>Critical journeys are covered by passing end-to-end tests<br><span class="muted small">CT-T1 · Customer · weight 2</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> End-to-end tests exist and their imported results pass.<br><strong>Actual:</strong> No end-to-end tests for critical journeys.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-4925E351D5B5</code> search-scope · static · <code>repository (11 files)</code><br>Searched for end-to-end test files and Playwright/Cypress configuration; none found.</li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="NOT_TESTED">
+<td><code>PC-C-09</code></td>
+<td>A new user can complete onboarding unaided<br><span class="muted small">CT-T1 · Customer · weight 2</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control (control_mappings) show the onboarding journey passing.<br><strong>Reason:</strong> Mapped tests for PC-C-09 were declared but no test results were imported.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="NOT_TESTED">
+<td><code>PC-C-10</code></td>
+<td>Requirements are specific and testable<br><span class="muted small">CT-T0 · Customer · weight 1</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> An imported Spec Check report shows no high-severity requirement findings.<br><strong>Reason:</strong> No Spec Check report was imported (optional; pass --spec-check &lt;report.json&gt;).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="NOT_APPLICABLE">
+<td><code>PC-C-11</code></td>
+<td>Real-user journey health is observed in production<br><span class="muted small">CT-T4 · Customer · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Production telemetry shows critical journeys succeeding for real users.<br><strong>Reason:</strong> Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T2.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-01</code></td>
+<td>Dependency manifest and lockfile are present<br><span class="muted small">CT-T0 · Technology · weight 2</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> A dependency manifest and a matching lockfile exist so builds are reproducible.<br><strong>Actual:</strong> Manifest package.json has no lockfile next to it.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-0D2CDB2052AC</code> file-presence · static · <code>package.json</code><br>dependency manifest (6 dependencies)<br><span class="muted">sha256 150336a43383dcec…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-02</code></td>
+<td>Automated tests exist<br><span class="muted small">CT-T0 · Technology · weight 2</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> The repository contains automated test files and a test command.<br><strong>Actual:</strong> No automated test files found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-D11387DBDCEC</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for test files (*.test.*, *.spec.*, tests/, __tests__/, test_*.py) (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="NOT_TESTED">
+<td><code>PC-T-03</code></td>
+<td>Automated tests pass<br><span class="muted small">CT-T0 · Technology · weight 3</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results (JUnit XML or Jest/Vitest JSON) show zero failures.<br><strong>Reason:</strong> No test results were imported (Product Check never runs repository code; pass --test-results &lt;junit.xml&gt;).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-04</code></td>
+<td>A CI pipeline is configured<br><span class="muted small">CT-T0 · Technology · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> A continuous-integration configuration exists (GitHub Actions, GitLab CI, CircleCI, …).<br><strong>Actual:</strong> No CI configuration found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-1F4CBA5F3815</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for no ci pipeline (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-05</code></td>
+<td>CI runs the tests<br><span class="muted small">CT-T1 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> The CI configuration invokes the test command.<br><strong>Reason:</strong> No CI configuration exists (see PC-T-04).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="PARTIAL">
+<td><code>PC-T-06</code></td>
+<td>Setup and run instructions are documented<br><span class="muted small">CT-T0 · Technology · weight 1</span></td>
+<td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> A README explains how to install and run the project.<br><strong>Actual:</strong> README.md lacks install and run instructions.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-6329C31A3F2B</code> file-presence · static · <code>README.md</code><br>README without install or run instructions<br><span class="muted">sha256 5a56c128a2968398…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-07</code></td>
+<td>Runtime version is declared<br><span class="muted small">CT-T0 · Technology · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> The runtime version is pinned (engines field, .nvmrc, .node-version, .tool-versions or .python-version).<br><strong>Actual:</strong> No runtime version declaration found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-7C71539B5FEE</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for runtime version is not declared (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-08</code></td>
+<td>Static type checking or linting is configured<br><span class="muted small">CT-T1 · Technology · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> A type checker in strict mode or a linter configuration exists.<br><strong>Actual:</strong> No strict type checking or linter configuration found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-83833F99D87B</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for no type checking or linting configured (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-09</code></td>
+<td>Dependency versions are bounded<br><span class="muted small">CT-T1 · Technology · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No dependency uses &quot;*&quot;, &quot;latest&quot;, an empty range or an unpinned git/URL source.<br><strong>Actual:</strong> 2 dependency version(s) are unbounded.</td>
+<td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-E7014085A22C</code> source-location · static · <code>package.json:9</code><br>unbounded version for @supabase/supabase-js: latest<br><code>&quot;@supabase/supabase-js&quot;: &quot;latest&quot;,</code><br><span class="muted">sha256 150336a43383dcec…</span></li><li><code>EV-A2E9F4A847E7</code> source-location · static · <code>package.json:10</code><br>unbounded version for openai: *<br><code>&quot;openai&quot;: &quot;*&quot;,</code><br><span class="muted">sha256 150336a43383dcec…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-10</code></td>
+<td>Error monitoring is instrumented<br><span class="muted small">CT-T2 · Technology · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> An error-tracking or telemetry SDK is a dependency (presence only; runtime operation is not verified).<br><strong>Actual:</strong> No error-tracking or telemetry dependency found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-5C041BFFFC57</code> search-scope · static · <code>repository (1 text files)</code><br>Searched 1 readable, non-ignored text files for error-tracking / telemetry dependencies (rubric pc-rubric-0.1).<br><span class="muted">sha256 05a38aceee09e3d3…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-11</code></td>
+<td>Database schema changes are versioned<br><span class="muted small">CT-T0 · Technology · weight 2</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> When a database or ORM is used, schema migrations are kept in the repository.<br><strong>Actual:</strong> Database dependencies (@supabase/supabase-js, prisma) but no migrations directory.</td>
+<td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-172504A92CE8</code> file-presence · static · <code>package.json</code><br>database dependency @supabase/supabase-js, prisma<br><span class="muted">sha256 150336a43383dcec…</span></li><li><code>EV-CEC3986784AA</code> file-presence · static · <code>prisma/schema.prisma</code><br>Prisma schema without migrations<br><span class="muted">sha256 e7ded3c4bbcdba16…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-12</code></td>
+<td>Change impact of the release candidate is reviewed<br><span class="muted small">CT-T3 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> An imported Impact Check report shows no unreviewed high-severity impact findings.<br><strong>Reason:</strong> Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T2.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-13</code></td>
+<td>Rollback path is verified<br><span class="muted small">CT-T3 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control show a successful rollback/restore rehearsal.<br><strong>Reason:</strong> Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T2.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-14</code></td>
+<td>Production monitoring and alerting are live<br><span class="muted small">CT-T4 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Production telemetry and alert configuration are available to the assessment.<br><strong>Reason:</strong> Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T2.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-15</code></td>
+<td>Delivery is stable after launch<br><span class="muted small">CT-T5 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> An imported Outcome Check report shows a CI first-pass rate of at least 80% and no reverted PRs.<br><strong>Reason:</strong> Belongs to CT-T5 (Stabilization), beyond the selected tier CT-T2.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-16</code></td>
+<td>No control regressed since the previous run<br><span class="muted small">CT-T6 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Compared with the baseline results, no control went from PASS to FAIL or PARTIAL.<br><strong>Reason:</strong> Belongs to CT-T6 (Continuous Assurance), beyond the selected tier CT-T2.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-01</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-SECRETS</span></td>
+<td>No credentials are committed in source<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.<br><strong>Actual:</strong> 3 credential-like string(s) found in 2 file(s).</td>
+<td class="small"><details><summary>3 evidence item(s)</summary><ul class="small"><li><code>EV-54E8659FCA14</code> source-location · static · <code>.env.local:4</code><br>Stripe secret key pattern (stripe-secret-key) in a file that is tracked in the git index (committed or staged)<br><code>STRIPE_SECRET_KEY=[REDACTED]</code><br><span class="muted">sha256 c1d81488e1b3846c…</span></li><li><code>EV-596E4495782B</code> source-location · static · <code>.env.local:5</code><br>credentials embedded in a connection URL pattern (url-credentials) in a file that is tracked in the git index (committed or staged)<br><code>DATABASE_URL=postgres://[REDACTED]@db.vibenotes-demo.example:5432/notes</code><br><span class="muted">sha256 c1d81488e1b3846c…</span></li><li><code>EV-A5095F98D5CC</code> source-location · static · <code>lib/supabase.ts:4</code><br>service-role JWT (bypasses row-level security) pattern (service-role-jwt) in a file that is tracked in the git index (committed or staged)<br><code>const key = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY ?? &quot;[REDACTED]&quot;;</code><br><span class="muted">sha256 cfa7cec1812c2b3c…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-02</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-SECRETS</span></td>
+<td>No server secrets are exposed through public environment prefixes<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).<br><strong>Actual:</strong> 3 secret-named variable(s) use a client-exposed prefix.</td>
+<td class="small"><details><summary>3 evidence item(s)</summary><ul class="small"><li><code>EV-7F5D190C7369</code> source-location · static · <code>.env.local:3</code><br>client-exposed variable name NEXT_PUBLIC_OPENAI_API_KEY<br><code>NEXT_PUBLIC_OPENAI_API_KEY=[REDACTED]</code><br><span class="muted">sha256 c1d81488e1b3846c…</span></li><li><code>EV-E29ECB3AFCC8</code> source-location · static · <code>app/page.tsx:6</code><br>client-exposed variable name NEXT_PUBLIC_OPENAI_API_KEY<br><code>const openai = new OpenAI({ apiKey: [REDACTED], dangerouslyAllowBrowser: true });</code><br><span class="muted">sha256 ad9d58593574b251…</span></li><li><code>EV-EDC24BAAED95</code> source-location · static · <code>lib/supabase.ts:4</code><br>client-exposed variable name NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY<br><code>const key = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY ?? &quot;[REDACTED]&quot;;</code><br><span class="muted">sha256 cfa7cec1812c2b3c…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-03</code></td>
+<td>Environment files are excluded from version control<br><span class="muted small">CT-T0 · Trust · weight 2</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> Local .env files are ignored by .gitignore and not tracked in the git index.<br><strong>Actual:</strong> 1 environment file(s) are or would be committed.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-9A72C9100D5D</code> file-presence · static · <code>.env.local</code><br>.env.local is tracked in the git index (committed or staged)<br><span class="muted">sha256 c1d81488e1b3846c…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="NOT_TESTED">
+<td><code>PC-S-04</code></td>
+<td>HTTPS is enforced<br><span class="muted small">CT-T2 · Trust · weight 2</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Plain-HTTP requests redirect to HTTPS and responses carry Strict-Transport-Security.<br><strong>Reason:</strong> Local development server: HTTPS and HSTS are set by the production edge and cannot be assessed on a loopback origin.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-05</code></td>
+<td>A Content Security Policy is set<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> Responses carry a Content-Security-Policy that does not allow &#39;unsafe-inline&#39; scripts without nonces/hashes.<br><strong>Actual:</strong> No Content-Security-Policy header or meta tag.<br><strong>Reproduce:</strong> <code>curl -sSI http://127.0.0.1:4785/ | grep -i content-security-policy</code></td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-F648BC0023F4</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>content-security-policy: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-06</code></td>
+<td>Clickjacking protection is set<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> CSP frame-ancestors or X-Frame-Options (DENY/SAMEORIGIN) is present.<br><strong>Actual:</strong> No X-Frame-Options and no CSP frame-ancestors.<br><strong>Reproduce:</strong> <code>curl -sSI http://127.0.0.1:4785/ | grep -i x-frame-options</code></td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-51E695460209</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>x-frame-options: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-07</code></td>
+<td>MIME-type sniffing is disabled<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> X-Content-Type-Options: nosniff is present.<br><strong>Actual:</strong> No X-Content-Type-Options header.<br><strong>Reproduce:</strong> <code>curl -sSI http://127.0.0.1:4785/ | grep -i x-content-type-options</code></td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-FF6546F44E70</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>x-content-type-options: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-08</code></td>
+<td>Cookies are set with Secure, HttpOnly and SameSite<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> Every cookie observed on passive requests has Secure and SameSite; session-like cookies also have HttpOnly.<br><strong>Actual:</strong> session missing SameSite, HttpOnly</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-7A9B31C936BD</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>set-cookie attributes (values redacted) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><code>session=[REDACTED]; Path=/</code><br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-09</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-SECRETS</span></td>
+<td>No sensitive files are publicly served<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> Well-known sensitive paths (/.env, /.env.local, /.git/HEAD, /.git/config) are not served with their content.<br><strong>Actual:</strong> 1 sensitive file(s) publicly served.</td>
+<td class="small"><details><summary>4 evidence item(s)</summary><ul class="small"><li><code>EV-29BFC1F47A93</code> http-response · runtime · <code>GET http://127.0.0.1:4785/.env</code><br>exposure probe /.env: SENSITIVE CONTENT (env-assignments) (status 200, 25 ms, observed 2026-10-14T09:59:05.000Z)<br><span class="muted">sha256 246fad2aea053f83…</span></li><li><code>EV-395109F28016</code> http-response · runtime · <code>GET http://127.0.0.1:4785/.env.local</code><br>exposure probe /.env.local: not exposed (status 404, 25 ms, observed 2026-10-14T09:59:06.000Z)<br><span class="muted">sha256 0a33ea08a3851482…</span></li><li><code>EV-7C05EA339339</code> http-response · runtime · <code>GET http://127.0.0.1:4785/.git/HEAD</code><br>exposure probe /.git/HEAD: not exposed (status 404, 25 ms, observed 2026-10-14T09:59:07.000Z)<br><span class="muted">sha256 0a33ea08a3851482…</span></li><li><code>EV-D06C9861BD7C</code> http-response · runtime · <code>GET http://127.0.0.1:4785/.git/config</code><br>exposure probe /.git/config: not exposed (status 404, 25 ms, observed 2026-10-14T09:59:08.000Z)<br><span class="muted">sha256 0a33ea08a3851482…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-10</code></td>
+<td>Server and framework versions are not disclosed<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> No X-Powered-By header and no version numbers in the Server header.<br><strong>Actual:</strong> X-Powered-By: Next.js</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-74CCC5E538AB</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>x-powered-by: Next.js; server: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-11</code></td>
+<td>A security contact is published<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> SECURITY.md in the repository or /.well-known/security.txt with a Contact field.<br><strong>Actual:</strong> No security contact: no SECURITY.md in the repository; /.well-known/security.txt answered 404.</td>
+<td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-753CEA136000</code> http-response · runtime · <code>GET http://127.0.0.1:4785/.well-known/security.txt</code><br>security.txt request (status 404)<br><span class="muted">sha256 0a33ea08a3851482…</span></li><li><code>EV-C39927AEAB12</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for SECURITY.md or .well-known/security.txt (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-12</code></td>
+<td>A privacy notice is available<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">runtime</span></td>
+<td class="small"><strong>Expected:</strong> The entry page links to a privacy notice, /privacy answers 2xx, or a privacy page exists in source.<br><strong>Actual:</strong> No privacy link on the entry page and no privacy page found.</td>
+<td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-C4CA53746CB8</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>privacy link on entry page: (none) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li><li><code>EV-D72CA28DECBA</code> http-response · runtime · <code>GET http://127.0.0.1:4785/privacy</code><br>privacy page request (status 404, 25 ms, observed 2026-10-14T09:59:04.000Z)<br><span class="muted">sha256 0a33ea08a3851482…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="NOT_TESTED">
+<td><code>PC-S-13</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-AUTHZ</span></td>
+<td>Authorization is enforced on privileged paths<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control show unauthenticated and under-privileged requests to privileged routes being denied.<br><strong>Reason:</strong> Mapped tests for PC-S-13 were declared but no test results were imported.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_TESTED">
+<td><code>PC-S-14</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-ISOLATION</span></td>
+<td>Tenant and user data are isolated<br><span class="muted small">CT-T2 · Trust · weight 3</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control show one tenant/user cannot read or change another&#39;s data.<br><strong>Reason:</strong> Mapped tests for PC-S-14 were declared but no test results were imported.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_TESTED">
+<td><code>PC-S-15</code></td>
+<td>No critical or high known vulnerabilities in dependencies<br><span class="muted small">CT-T2 · Trust · weight 2</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> An imported `npm audit --json` report shows zero critical and zero high vulnerabilities.<br><strong>Reason:</strong> No dependency audit was imported (pass --npm-audit &lt;npm audit --json output&gt;).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="PARTIAL">
+<td><code>PC-S-16</code></td>
+<td>No high-risk code patterns<br><span class="muted small">CT-T1 · Trust · weight 1</span></td>
+<td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No dynamic code evaluation, raw HTML injection of non-literal values, or SQL built by string interpolation.<br><strong>Actual:</strong> 2 location(s) need review for injection risk.</td>
+<td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-935FDA624942</code> source-location · static · <code>app/page.tsx:23</code><br>raw HTML injection of a non-literal value (dangerously-set-inner-html)<br><code>&lt;div key={n.id} dangerouslySetInnerHTML={{ __html: n.html }} /&gt;</code><br><span class="muted">sha256 ad9d58593574b251…</span></li><li><code>EV-F3A7C5E3B6AF</code> source-location · static · <code>lib/db.ts:5</code><br>SQL built with string interpolation (sql-interpolation)<br><code>return pool.query(`SELECT * FROM notes WHERE owner = &#39;${userId}&#39;`);</code><br><span class="muted">sha256 d1679fc6e3ff895d…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-S-17</code></td>
+<td>No credentialed wildcard CORS<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No CORS configuration allows any origin (&quot;*&quot;) or reflects origins while allowing credentials.<br><strong>Actual:</strong> 1 wildcard CORS configuration(s).</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-4455F569DFD9</code> source-location · static · <code>app/api/notes/route.ts:2</code><br>wildcard/reflected CORS origin with credentials<br><code>export const corsOptions = { origin: &quot;*&quot;, credentials: true };</code><br><span class="muted">sha256 655bd8e9955b4bc7…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-AI-01</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-SECRETS</span></td>
+<td>AI provider calls run server-side only<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> AI provider SDKs are not imported in client-side code and browser use is not enabled.<br><strong>Actual:</strong> 1 client-side AI SDK use(s).</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-191D17CEB58D</code> source-location · static · <code>app/page.tsx:6</code><br>AI SDK used client-side: enables dangerouslyAllowBrowser<br><code>const openai = new OpenAI({ apiKey: [REDACTED], dangerouslyAllowBrowser: true });</code><br><span class="muted">sha256 ad9d58593574b251…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="FAIL">
+<td><code>PC-AI-02</code></td>
+<td>An AI evaluation suite exists<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> AI behaviour has an evaluation suite (promptfoo config, evals directory or *.eval.* files).<br><strong>Actual:</strong> AI is used but no evaluation suite was found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-C2D6EC68B549</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for AI evaluation suites (promptfoo, evals/, *.eval.*) (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="NOT_TESTED">
+<td><code>PC-AI-03</code></td>
+<td>Prompt-injection and guardrail behaviour is tested<br><span class="muted small">CT-T2 · Trust · weight 2</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control show adversarial AI cases passing.<br><strong>Reason:</strong> Adversarial AI behaviour needs executed evaluations. No adapter in this release can verify it directly; map executed tests to PC-AI-03 with contract.control_mappings.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr></tbody></table></div>
+<h3>Findings</h3>
+<div class="filters" data-filter-table="findings-table"><label>Severity<select data-key="severity"><option value="">All</option><option>P0</option><option>P1</option><option>P2</option><option>P3</option></select></label>
+<label>Status<select data-key="fstatus"><option value="">All</option><option>OPEN</option><option>UNVERIFIED</option><option>ACCEPTED_RISK</option><option>RESOLVED</option></select></label><span class="small muted" data-count style="align-self:end"></span></div>
+<div class="scroll"><table id="findings-table"><thead><tr><th>ID</th><th>Severity</th><th>Finding</th><th>Status</th><th>Reproduction</th><th>Evidence</th></tr></thead><tbody><tr data-severity="P0" data-fstatus="OPEN"><td><code>PCF-222F650216</code><br><span class="small muted">PC-S-09</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Sensitive file publicly served: /.env<br><span class="small">/.env is publicly served and looks like env-assignments. Content was not stored.</span><br><span class="small muted">fact · high confidence · root cause (inference): The deployment publishes the project root (including dotfiles) as static content.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -s -o /dev/null -w &#39;%{http_code}&#39; http://127.0.0.1:4785/.env</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-29BFC1F47A93</code> http-response · runtime · <code>GET http://127.0.0.1:4785/.env</code><br>exposure probe /.env: SENSITIVE CONTENT (env-assignments) (status 200, 25 ms, observed 2026-10-14T09:59:05.000Z)<br><span class="muted">sha256 246fad2aea053f83…</span></li></ul></details></td></tr><tr data-severity="P0" data-fstatus="OPEN"><td><code>PCF-484BD31627</code><br><span class="small muted">PC-S-01</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Stripe secret key in .env.local<br><span class="small">A Stripe secret key appears at .env.local:4; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).</span><br><span class="small muted">fact · high confidence · root cause (inference): Credentials were pasted into code or committed configuration instead of the runtime secret store.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>Open .env.local at line 4 (value redacted in this report).</code><br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-54E8659FCA14</code> source-location · static · <code>.env.local:4</code><br>Stripe secret key pattern (stripe-secret-key) in a file that is tracked in the git index (committed or staged)<br><code>STRIPE_SECRET_KEY=[REDACTED]</code><br><span class="muted">sha256 c1d81488e1b3846c…</span></li></ul></details></td></tr><tr data-severity="P0" data-fstatus="OPEN"><td><code>PCF-4DF8A34CE8</code><br><span class="small muted">PC-S-01</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Service-role JWT (bypasses row-level security) in lib/supabase.ts<br><span class="small">A service-role JWT (bypasses row-level security) appears at lib/supabase.ts:4; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).</span><br><span class="small muted">fact · high confidence · root cause (inference): Credentials were pasted into code or committed configuration instead of the runtime secret store.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>Open lib/supabase.ts at line 4 (value redacted in this report).</code><br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-A5095F98D5CC</code> source-location · static · <code>lib/supabase.ts:4</code><br>service-role JWT (bypasses row-level security) pattern (service-role-jwt) in a file that is tracked in the git index (committed or staged)<br><code>const key = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY ?? &quot;[REDACTED]&quot;;</code><br><span class="muted">sha256 cfa7cec1812c2b3c…</span></li></ul></details></td></tr><tr data-severity="P0" data-fstatus="OPEN"><td><code>PCF-63B9B21478</code><br><span class="small muted">PC-S-02</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Privileged key NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY exposed to the browser<br><span class="small">NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY uses the client-exposed prefix NEXT_PUBLIC_; bundlers inline such variables into JavaScript served to every visitor.</span><br><span class="small muted">inference · high confidence · root cause (hypothesis): A privileged key was given a client-exposed prefix so client code could call a privileged API directly.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>Search the built client bundle for the value of NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY.</code><br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-EDC24BAAED95</code> source-location · static · <code>lib/supabase.ts:4</code><br>client-exposed variable name NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY<br><code>const key = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY ?? &quot;[REDACTED]&quot;;</code><br><span class="muted">sha256 cfa7cec1812c2b3c…</span></li></ul></details></td></tr><tr data-severity="P0" data-fstatus="OPEN"><td><code>PCF-6AE991A057</code><br><span class="small muted">PC-S-02</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Privileged key NEXT_PUBLIC_OPENAI_API_KEY exposed to the browser<br><span class="small">NEXT_PUBLIC_OPENAI_API_KEY uses the client-exposed prefix NEXT_PUBLIC_; bundlers inline such variables into JavaScript served to every visitor.</span><br><span class="small muted">inference · medium confidence · root cause (hypothesis): A privileged key was given a client-exposed prefix so client code could call a privileged API directly.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>Search the built client bundle for the value of NEXT_PUBLIC_OPENAI_API_KEY.</code><br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-7F5D190C7369</code> source-location · static · <code>.env.local:3</code><br>client-exposed variable name NEXT_PUBLIC_OPENAI_API_KEY<br><code>NEXT_PUBLIC_OPENAI_API_KEY=[REDACTED]</code><br><span class="muted">sha256 c1d81488e1b3846c…</span></li></ul></details></td></tr><tr data-severity="P0" data-fstatus="OPEN"><td><code>PCF-6F76AC0627</code><br><span class="small muted">PC-S-01</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Credentials embedded in a connection URL in .env.local<br><span class="small">A credentials embedded in a connection URL appears at .env.local:5; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).</span><br><span class="small muted">fact · high confidence · root cause (inference): Credentials were pasted into code or committed configuration instead of the runtime secret store.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>Open .env.local at line 5 (value redacted in this report).</code><br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-596E4495782B</code> source-location · static · <code>.env.local:5</code><br>credentials embedded in a connection URL pattern (url-credentials) in a file that is tracked in the git index (committed or staged)<br><code>DATABASE_URL=postgres://[REDACTED]@db.vibenotes-demo.example:5432/notes</code><br><span class="muted">sha256 c1d81488e1b3846c…</span></li></ul></details></td></tr><tr data-severity="P0" data-fstatus="OPEN"><td><code>PCF-E2CE361289</code><br><span class="small muted">PC-AI-01</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>AI provider called from the browser in app/page.tsx<br><span class="small">app/page.tsx enables dangerouslyAllowBrowser; the provider key must then be available in the browser.</span><br><span class="small muted">fact · high confidence · root cause (inference): The AI SDK is called directly from client components to avoid writing a server route.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-191D17CEB58D</code> source-location · static · <code>app/page.tsx:6</code><br>AI SDK used client-side: enables dangerouslyAllowBrowser<br><code>const openai = new OpenAI({ apiKey: [REDACTED], dangerouslyAllowBrowser: true });</code><br><span class="muted">sha256 ad9d58593574b251…</span></li></ul></details></td></tr><tr data-severity="P0" data-fstatus="OPEN"><td><code>PCF-E8ACA75BD3</code><br><span class="small muted">PC-S-02</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Privileged key NEXT_PUBLIC_OPENAI_API_KEY exposed to the browser<br><span class="small">NEXT_PUBLIC_OPENAI_API_KEY uses the client-exposed prefix NEXT_PUBLIC_; bundlers inline such variables into JavaScript served to every visitor.</span><br><span class="small muted">inference · medium confidence · root cause (hypothesis): A privileged key was given a client-exposed prefix so client code could call a privileged API directly.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>Search the built client bundle for the value of NEXT_PUBLIC_OPENAI_API_KEY.</code><br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-E29ECB3AFCC8</code> source-location · static · <code>app/page.tsx:6</code><br>client-exposed variable name NEXT_PUBLIC_OPENAI_API_KEY<br><code>const openai = new OpenAI({ apiKey: [REDACTED], dangerouslyAllowBrowser: true });</code><br><span class="muted">sha256 ad9d58593574b251…</span></li></ul></details></td></tr><tr data-severity="P1" data-fstatus="OPEN"><td><code>PCF-AC6E17E07C</code><br><span class="small muted">PC-S-03</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>P1</span></td><td>Environment file .env.local is committed<br><span class="small">.env.local is tracked in the git index (committed or staged).</span><br><span class="small muted">fact · high confidence · root cause (inference): .gitignore does not cover environment files, or one was committed before it did.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-9A72C9100D5D</code> file-presence · static · <code>.env.local</code><br>.env.local is tracked in the git index (committed or staged)<br><span class="muted">sha256 c1d81488e1b3846c…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-0BD32ABB20</code><br><span class="small muted">PC-T-02</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No automated tests<br><span class="small">No automated test files found.</span><br><span class="small muted">fact · high confidence · root cause (inference): No test harness has been set up.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-D11387DBDCEC</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for test files (*.test.*, *.spec.*, tests/, __tests__/, test_*.py) (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-1E72F2F7B0</code><br><span class="small muted">PC-S-08</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Cookies lack security attributes<br><span class="small">session missing SameSite, HttpOnly</span><br><span class="small muted">fact · high confidence · root cause (inference): Cookie attributes are left at framework defaults.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-7A9B31C936BD</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>set-cookie attributes (values redacted) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><code>session=[REDACTED]; Path=/</code><br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-2E884D06D5</code><br><span class="small muted">PC-T-11</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Database schema changes are not versioned<br><span class="small">Schema changes are not versioned as migrations.</span><br><span class="small muted">inference · medium confidence · root cause (hypothesis): The schema is changed directly (dashboard or push) rather than through versioned migrations.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-172504A92CE8</code> file-presence · static · <code>package.json</code><br>database dependency @supabase/supabase-js, prisma<br><span class="muted">sha256 150336a43383dcec…</span></li><li><code>EV-CEC3986784AA</code> file-presence · static · <code>prisma/schema.prisma</code><br>Prisma schema without migrations<br><span class="muted">sha256 e7ded3c4bbcdba16…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-3E3C906C89</code><br><span class="small muted">PC-T-04</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No CI pipeline<br><span class="small">No CI configuration found.</span><br><span class="small muted">fact · high confidence · root cause (inference): No automated pipeline was set up.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-1F4CBA5F3815</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for no ci pipeline (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-3F928FCAF1</code><br><span class="small muted">PC-T-10</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No error monitoring<br><span class="small">No error-tracking or telemetry SDK in dependencies.</span><br><span class="small muted">fact · medium confidence · root cause (inference): No error tracking or telemetry was added.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-5C041BFFFC57</code> search-scope · static · <code>repository (1 text files)</code><br>Searched 1 readable, non-ignored text files for error-tracking / telemetry dependencies (rubric pc-rubric-0.1).<br><span class="muted">sha256 05a38aceee09e3d3…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-4537D66695</code><br><span class="small muted">PC-C-08</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Critical journeys have no end-to-end tests<br><span class="small">No end-to-end tests found.</span><br><span class="small muted">fact · high confidence · root cause (inference): Critical user journeys have no executable end-to-end check, or the checks fail.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-4925E351D5B5</code> search-scope · static · <code>repository (11 files)</code><br>Searched for end-to-end test files and Playwright/Cypress configuration; none found.</li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-5C358D43AB</code><br><span class="small muted">PC-C-04</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span><br><span class="small muted">UX2</span></td><td>Served images lack text alternatives<br><span class="small">1 image(s) without alt.</span><br><span class="small muted">fact · high confidence · root cause (inference): Image elements are rendered without alt attributes.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-A900965FEC4B</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>1 of 1 &lt;img&gt; without alt (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-70B846CB03</code><br><span class="small muted">PC-S-16</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Possible injection sink: raw HTML injection of a non-literal value in app/page.tsx<br><span class="small">raw HTML injection of a non-literal value at app/page.tsx:23. Whether untrusted data reaches it was not determined.</span><br><span class="small muted">hypothesis · medium confidence · root cause (hypothesis): Untrusted data may reach an interpreter (JavaScript, HTML or SQL) without parameterisation or sanitisation.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>not-reproduced</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-935FDA624942</code> source-location · static · <code>app/page.tsx:23</code><br>raw HTML injection of a non-literal value (dangerously-set-inner-html)<br><code>&lt;div key={n.id} dangerouslySetInnerHTML={{ __html: n.html }} /&gt;</code><br><span class="muted">sha256 ad9d58593574b251…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-9901AF5D1D</code><br><span class="small muted">PC-S-12</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No privacy notice reachable<br><span class="small">No reachable privacy notice.</span><br><span class="small muted">fact · high confidence · root cause (inference): No privacy notice was published.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-C4CA53746CB8</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>privacy link on entry page: (none) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li><li><code>EV-D72CA28DECBA</code> http-response · runtime · <code>GET http://127.0.0.1:4785/privacy</code><br>privacy page request (status 404, 25 ms, observed 2026-10-14T09:59:04.000Z)<br><span class="muted">sha256 0a33ea08a3851482…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-A79BB3B752</code><br><span class="small muted">PC-T-01</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No lockfile: builds are not reproducible<br><span class="small">No lockfile next to the root manifest.</span><br><span class="small muted">fact · high confidence · root cause (inference): The lockfile was never generated or is not kept with the code.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-0D2CDB2052AC</code> file-presence · static · <code>package.json</code><br>dependency manifest (6 dependencies)<br><span class="muted">sha256 150336a43383dcec…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-B565960DEE</code><br><span class="small muted">PC-AI-02</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>AI features have no evaluation suite<br><span class="small">No promptfoo config, evals/ directory or *.eval.* files.</span><br><span class="small muted">fact · medium confidence · root cause (inference): AI features were added without an evaluation harness.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-C2D6EC68B549</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for AI evaluation suites (promptfoo, evals/, *.eval.*) (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-C7E301195D</code><br><span class="small muted">PC-S-16</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Possible injection sink: SQL built with string interpolation in lib/db.ts<br><span class="small">SQL built with string interpolation at lib/db.ts:5. Whether untrusted data reaches it was not determined.</span><br><span class="small muted">hypothesis · medium confidence · root cause (hypothesis): Untrusted data may reach an interpreter (JavaScript, HTML or SQL) without parameterisation or sanitisation.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>not-reproduced</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-F3A7C5E3B6AF</code> source-location · static · <code>lib/db.ts:5</code><br>SQL built with string interpolation (sql-interpolation)<br><code>return pool.query(`SELECT * FROM notes WHERE owner = &#39;${userId}&#39;`);</code><br><span class="muted">sha256 d1679fc6e3ff895d…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-CDCE917FE3</code><br><span class="small muted">PC-S-17</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Credentialed wildcard CORS in app/api/notes/route.ts<br><span class="small">CORS allows any (or reflected) origin and credentials in the same file.</span><br><span class="small muted">hypothesis · medium confidence · root cause (hypothesis): CORS was opened to everything to make local development work.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>not-reproduced</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-4455F569DFD9</code> source-location · static · <code>app/api/notes/route.ts:2</code><br>wildcard/reflected CORS origin with credentials<br><code>export const corsOptions = { origin: &quot;*&quot;, credentials: true };</code><br><span class="muted">sha256 655bd8e9955b4bc7…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-CEED9100D9</code><br><span class="small muted">PC-S-06</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Pages can be framed by other sites (clickjacking)<br><span class="small">No X-Frame-Options and no CSP frame-ancestors.</span><br><span class="small muted">fact · high confidence · root cause (inference): No framing policy is configured.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-51E695460209</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>x-frame-options: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-CF1364323D</code><br><span class="small muted">PC-S-05</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No Content Security Policy<br><span class="small">No Content-Security-Policy header or meta tag.</span><br><span class="small muted">fact · high confidence · root cause (inference): No security headers are configured in the framework or hosting configuration.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-F648BC0023F4</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>content-security-policy: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-E0A3F8E153</code><br><span class="small muted">PC-C-04</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span><br><span class="small muted">UX2</span></td><td>Image without alt text in app/page.tsx<br><span class="small">&lt;img&gt; without alt.</span><br><span class="small muted">fact · high confidence · root cause (inference): Image elements are rendered without alt attributes.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-F88727144FC0</code> source-location · static · <code>app/page.tsx:20</code><br>&lt;img&gt; without alt<br><code>&lt;img src=&quot;/hero.png&quot; /&gt;</code><br><span class="muted">sha256 ad9d58593574b251…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-026FD4A0D8</code><br><span class="small muted">PC-S-07</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>MIME sniffing not disabled<br><span class="small">No X-Content-Type-Options header.</span><br><span class="small muted">fact · high confidence · root cause (inference): Security headers are not configured.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-FF6546F44E70</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>x-content-type-options: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-14B347C463</code><br><span class="small muted">PC-T-09</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>Unbounded dependency version: @supabase/supabase-js<br><span class="small">@supabase/supabase-js is declared as &quot;latest&quot;.</span><br><span class="small muted">fact · high confidence · root cause (inference): Dependencies were added with open-ended ranges.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-E7014085A22C</code> source-location · static · <code>package.json:9</code><br>unbounded version for @supabase/supabase-js: latest<br><code>&quot;@supabase/supabase-js&quot;: &quot;latest&quot;,</code><br><span class="muted">sha256 150336a43383dcec…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-2BBFB74CD4</code><br><span class="small muted">PC-T-07</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>Runtime version is not declared<br><span class="small">No runtime version declaration found.</span><br><span class="small muted">fact · high confidence · root cause (inference): The runtime version is implicit.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-7C71539B5FEE</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for runtime version is not declared (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-2D30FA9048</code><br><span class="small muted">PC-C-02</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span><br><span class="small muted">UX3</span></td><td>No page language in app/layout.tsx<br><span class="small">&lt;html&gt; has no lang attribute.</span><br><span class="small muted">fact · high confidence · root cause (inference): The document template omits the lang attribute.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-4781DDFDBECC</code> source-location · static · <code>app/layout.tsx:5</code><br>&lt;html&gt; without lang<br><code>&lt;html&gt;</code><br><span class="muted">sha256 d345994e85f41b51…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-2EFAD2152B</code><br><span class="small muted">PC-S-11</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>No security contact published<br><span class="small">No published security contact.</span><br><span class="small muted">fact · high confidence · root cause (inference): No disclosure policy was written.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-753CEA136000</code> http-response · runtime · <code>GET http://127.0.0.1:4785/.well-known/security.txt</code><br>security.txt request (status 404)<br><span class="muted">sha256 0a33ea08a3851482…</span></li><li><code>EV-C39927AEAB12</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for SECURITY.md or .well-known/security.txt (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-2FD01AC810</code><br><span class="small muted">PC-S-10</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>Server advertises its stack<br><span class="small">X-Powered-By: Next.js</span><br><span class="small muted">fact · high confidence · root cause (inference): Framework defaults advertise the stack.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-74CCC5E538AB</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>x-powered-by: Next.js; server: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-3D0D04F8EA</code><br><span class="small muted">PC-C-06</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span><br><span class="small muted">UX3</span></td><td>Unknown URLs answer 200 (soft 404)<br><span class="small">Unknown path answered 200.</span><br><span class="small muted">fact · high confidence · root cause (inference): A catch-all route answers every path with 200.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-45307C11A4AE</code> http-response · runtime · <code>GET http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2</code><br>request for a path that does not exist (status 200, 25 ms, observed 2026-10-14T09:59:01.000Z)<br><span class="muted">sha256 1368fd8ca63d2db3…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-5B93B2ED59</code><br><span class="small muted">PC-C-05</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span><br><span class="small muted">UX3</span></td><td>Entry page still has the starter-template title<br><span class="small">Starter-template title &quot;Create Next App&quot;.</span><br><span class="small muted">fact · high confidence · root cause (inference): The starter template&#39;s metadata was never replaced.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-EE1E19478D9F</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>&lt;title&gt;: Create Next App (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-83CA52EEEB</code><br><span class="small muted">PC-T-06</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>README lacks setup/run instructions<br><span class="small">README does not explain how to install and run.</span><br><span class="small muted">fact · medium confidence · root cause (inference): Documentation was not written alongside the code.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-6329C31A3F2B</code> file-presence · static · <code>README.md</code><br>README without install or run instructions<br><span class="muted">sha256 5a56c128a2968398…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-9C547F7002</code><br><span class="small muted">PC-T-08</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>No type checking or linting configured<br><span class="small">No strict type checking or linter configuration found.</span><br><span class="small muted">fact · high confidence · root cause (inference): No static analysis is configured.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-83833F99D87B</code> search-scope · static · <code>repository (11 text files)</code><br>Searched 11 readable, non-ignored text files for no type checking or linting configured (rubric pc-rubric-0.1).<br><span class="muted">sha256 8891ff22dae9abe8…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-A355BF9FA1</code><br><span class="small muted">PC-C-02</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span><br><span class="small muted">UX3</span></td><td>Served page does not declare its language<br><span class="small">Served &lt;html&gt; has no lang attribute.</span><br><span class="small muted">fact · high confidence · root cause (inference): The document template omits the lang attribute.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small"><code>curl -sSI http://127.0.0.1:4785/</code><br>single-observation</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-6E255262AEBB</code> http-response · runtime · <code>GET http://127.0.0.1:4785/</code><br>&lt;html lang&gt;: (absent) (status 200, 25 ms, observed 2026-10-14T09:59:00.000Z)<br><span class="muted">sha256 4b930901d1f08e07…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-C205AFB621</code><br><span class="small muted">PC-T-09</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>Unbounded dependency version: openai<br><span class="small">openai is declared as &quot;*&quot;.</span><br><span class="small muted">fact · high confidence · root cause (inference): Dependencies were added with open-ended ranges.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">NEW</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-A2E9F4A847E7</code> source-location · static · <code>package.json:10</code><br>unbounded version for openai: *<br><code>&quot;openai&quot;: &quot;*&quot;,</code><br><span class="muted">sha256 150336a43383dcec…</span></li></ul></details></td></tr></tbody></table></div>
+</section>
+<section class="view" id="blueprint" aria-labelledby="h-blueprint"><h2 id="h-blueprint">Blueprint &amp; remediation</h2>
+<p class="muted small">Advisory: Product Check never changes code. A work packet is VERIFIED only when a retest observes the control passing.</p>
+<div class="scroll"><table><thead><tr><th>#</th><th>Remediation</th><th>Priority</th><th>Horizon</th><th>Effort</th><th>Depends on</th><th>Verification</th></tr></thead><tbody><tr><td class="num">1</td><td><code>REM-PC-S-01</code> No credentials are committed in source<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>NOW</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">2</td><td><code>REM-PC-S-02</code> No server secrets are exposed through public environment prefixes<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>NOW</td><td>M</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">3</td><td><code>REM-PC-S-09</code> No sensitive files are publicly served<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>NOW</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">4</td><td><code>REM-PC-AI-01</code> AI provider calls run server-side only<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>NOW</td><td>M</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">5</td><td><code>REM-PC-S-03</code> Environment files are excluded from version control<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>P1</span></td><td>NOW</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">6</td><td><code>REM-PC-C-04</code> Images have text alternatives</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">7</td><td><code>REM-PC-C-08</code> Critical journeys are covered by passing end-to-end tests</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>M</td><td class="small">REM-PC-T-02</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">8</td><td><code>REM-PC-T-01</code> Dependency manifest and lockfile are present</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">9</td><td><code>REM-PC-T-02</code> Automated tests exist</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>M</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">10</td><td><code>REM-PC-T-04</code> A CI pipeline is configured</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">11</td><td><code>REM-PC-T-10</code> Error monitoring is instrumented</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">12</td><td><code>REM-PC-T-11</code> Database schema changes are versioned<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>M</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">13</td><td><code>REM-PC-S-05</code> A Content Security Policy is set</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>M</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">14</td><td><code>REM-PC-S-06</code> Clickjacking protection is set</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">REM-PC-S-05</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">15</td><td><code>REM-PC-S-08</code> Cookies are set with Secure, HttpOnly and SameSite</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">16</td><td><code>REM-PC-S-12</code> A privacy notice is available<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">17</td><td><code>REM-PC-S-16</code> No high-risk code patterns<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>M</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">18</td><td><code>REM-PC-S-17</code> No credentialed wildcard CORS</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">19</td><td><code>REM-PC-AI-02</code> An AI evaluation suite exists</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>M</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">20</td><td><code>REM-PC-C-02</code> Page language is declared</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">21</td><td><code>REM-PC-C-05</code> Entry page has a meaningful title</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">22</td><td><code>REM-PC-C-06</code> Unknown URLs return a real 404 page</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">23</td><td><code>REM-PC-T-06</code> Setup and run instructions are documented</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">24</td><td><code>REM-PC-T-07</code> Runtime version is declared</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">25</td><td><code>REM-PC-T-08</code> Static type checking or linting is configured</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">26</td><td><code>REM-PC-T-09</code> Dependency versions are bounded</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">REM-PC-T-01</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">27</td><td><code>REM-PC-S-07</code> MIME-type sniffing is disabled</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">28</td><td><code>REM-PC-S-10</code> Server and framework versions are not disclosed</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr><tr><td class="num">29</td><td><code>REM-PC-S-11</code> A security contact is published</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></td></tr></tbody></table></div>
+<h3>Work packets</h3><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-01</code> Fix PC-S-01: No credentials are committed in source <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Rotate (revoke and reissue) every exposed credential first, then move it to environment variables / the hosting secret store and remove it from the code. Treat the history as compromised.</p><p><strong>Findings:</strong> <code>PCF-484BD31627, PCF-4DF8A34CE8, PCF-6F76AC0627</code></p>
+<p><strong>Where:</strong> <code>.env.local:4</code>, <code>lib/supabase.ts:4</code>, <code>.env.local:5</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Each listed credential has been rotated at its provider (human confirmation).</li><li>No secret pattern matches in repository files.</li><li>Control PC-S-01 evaluates PASS on retest.</li><li>Finding PCF-484BD31627 (.env.local:4) is no longer observed on retest.</li><li>Finding PCF-4DF8A34CE8 (lib/supabase.ts:4) is no longer observed on retest.</li><li>Finding PCF-6F76AC0627 (.env.local:5) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression test candidate</strong> (yaml (GitHub Actions step))</p><pre># Add to your CI workflow: fails the build when credentials or public-prefixed secrets are committed.
+- name: Secret guard
+  run: |
+    ! git grep -nE &#39;(sk_live_|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|(NEXT_PUBLIC_|VITE_|REACT_APP_|EXPO_PUBLIC_)[A-Z0-9_]*(SECRET|SERVICE_ROLE|PRIVATE))&#39; -- . &#39;:!*.lock&#39; &#39;:!package-lock.json&#39;
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-02</code> Fix PC-S-02: No server secrets are exposed through public environment prefixes <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Rename the variable without the public prefix, move the privileged call into a server route/function, rotate the key, and give the client only publishable keys.</p><p><strong>Findings:</strong> <code>PCF-63B9B21478, PCF-6AE991A057, PCF-E8ACA75BD3</code></p>
+<p><strong>Where:</strong> <code>lib/supabase.ts:4</code>, <code>.env.local:3</code>, <code>app/page.tsx:6</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>No secret-named variable with a public prefix in source or env files.</li><li>Rotated key confirmed by a human.</li><li>Control PC-S-02 evaluates PASS on retest.</li><li>Finding PCF-63B9B21478 (lib/supabase.ts:4) is no longer observed on retest.</li><li>Finding PCF-6AE991A057 (.env.local:3) is no longer observed on retest.</li><li>Finding PCF-E8ACA75BD3 (app/page.tsx:6) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression test candidate</strong> (yaml (GitHub Actions step))</p><pre># Add to your CI workflow: fails the build when credentials or public-prefixed secrets are committed.
+- name: Secret guard
+  run: |
+    ! git grep -nE &#39;(sk_live_|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|(NEXT_PUBLIC_|VITE_|REACT_APP_|EXPO_PUBLIC_)[A-Z0-9_]*(SECRET|SERVICE_ROLE|PRIVATE))&#39; -- . &#39;:!*.lock&#39; &#39;:!package-lock.json&#39;
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-09</code> Fix PC-S-09: No sensitive files are publicly served <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Stop serving the project root: publish only the build output directory, block dotfiles at the edge, and rotate any exposed secrets.</p><p><strong>Findings:</strong> <code>PCF-222F650216</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/.env</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Each probed path returns 404/403 or non-matching content.</li><li>Control PC-S-09 evaluates PASS on retest.</li><li>Finding PCF-222F650216 (http://127.0.0.1:4785/.env) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression test candidate</strong> (javascript (node --test))</p><pre>// Save as test/no-exposed-files.test.mjs and run: BASE_URL=http://127.0.0.1:4785 node --test
+import test from &quot;node:test&quot;;
+import assert from &quot;node:assert/strict&quot;;
+const BASE_URL = process.env.BASE_URL ?? &quot;http://127.0.0.1:4785&quot;;
+for (const path of [&quot;/.env&quot;, &quot;/.env.local&quot;, &quot;/.git/HEAD&quot;, &quot;/.git/config&quot;]) {
+  test(`${path} is not served`, async () =&gt; {
+    const res = await fetch(new URL(path, BASE_URL), { redirect: &quot;manual&quot; });
+    const body = res.ok ? await res.text() : &quot;&quot;;
+    assert.ok(!res.ok || !/^([A-Z_][A-Z0-9_]*=|ref: refs\/|\[core\])/m.test(body), `${path} exposed`);
+  });
+}
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-AI-01</code> Fix PC-AI-01: AI provider calls run server-side only <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Move AI calls into a server route with authentication, rate limiting and input validation; rotate the key.</p><p><strong>Findings:</strong> <code>PCF-E2CE361289</code></p>
+<p><strong>Where:</strong> <code>app/page.tsx:6</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>No AI SDK import in client-side files; no dangerouslyAllowBrowser.</li><li>Control PC-AI-01 evaluates PASS on retest.</li><li>Finding PCF-E2CE361289 (app/page.tsx:6) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression protection.</strong> Lint rule forbidding AI SDK imports in client code.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-03</code> Fix PC-S-03: Environment files are excluded from version control <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Add `.env*` (with `!.env.example`) to .gitignore and `git rm --cached` any tracked env file; rotate values that were committed.</p><p><strong>Findings:</strong> <code>PCF-AC6E17E07C</code></p>
+<p><strong>Where:</strong> <code>.env.local</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>.gitignore ignores .env files.</li><li>No .env file (other than examples) is tracked.</li><li>Control PC-S-03 evaluates PASS on retest.</li><li>Finding PCF-AC6E17E07C (.env.local) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression protection.</strong> Secret-scanning pre-commit hook.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-C-04</code> Fix PC-C-04: Images have text alternatives <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Add meaningful alt text to informative images and alt=&quot;&quot; to decorative ones.</p><p><strong>Findings:</strong> <code>PCF-5C358D43AB, PCF-E0A3F8E153</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/</code>, <code>app/page.tsx:20</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>No &lt;img&gt;/&lt;Image&gt; element without an alt attribute in the listed locations.</li><li>Control PC-C-04 evaluates PASS on retest.</li><li>Finding PCF-5C358D43AB (http://127.0.0.1:4785/) is no longer observed on retest.</li><li>Finding PCF-E0A3F8E153 (app/page.tsx:20) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Enable jsx-a11y/alt-text (or an equivalent) in lint and CI.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-C-08</code> Fix PC-C-08: Critical journeys are covered by passing end-to-end tests <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Write end-to-end tests (for example Playwright) for the declared critical journeys, run them in CI and import their JUnit results.</p><p><strong>Findings:</strong> <code>PCF-4537D66695</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>At least one end-to-end suite runs and all its cases pass in imported results.</li><li>Control PC-C-08 evaluates PASS on retest.</li><li>Finding PCF-4537D66695 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> The end-to-end suite itself, run on every pull request and deployment.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-01</code> Fix PC-T-01: Dependency manifest and lockfile are present <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Generate and commit the package manager&#39;s lockfile; use the frozen install command (npm ci / pnpm install --frozen-lockfile) in CI.</p><p><strong>Findings:</strong> <code>PCF-A79BB3B752</code></p>
+<p><strong>Where:</strong> <code>package.json</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A lockfile exists next to each manifest.</li><li>Control PC-T-01 evaluates PASS on retest.</li><li>Finding PCF-A79BB3B752 (package.json) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> CI fails when the lockfile is out of date (frozen install).</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-02</code> Fix PC-T-02: Automated tests exist <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Add a test runner (for example Vitest or Jest) with a `test` script and start with tests for the riskiest logic.</p><p><strong>Findings:</strong> <code>PCF-0BD32ABB20</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Test files exist and `npm test` (or equivalent) is defined.</li><li>Control PC-T-02 evaluates PASS on retest.</li><li>Finding PCF-0BD32ABB20 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> The test suite itself, required in CI.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-04</code> Fix PC-T-04: A CI pipeline is configured <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Add a CI workflow that installs with a frozen lockfile, builds, lints and runs tests on every pull request.</p><p><strong>Findings:</strong> <code>PCF-3E3C906C89</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A CI configuration file exists.</li><li>Control PC-T-04 evaluates PASS on retest.</li><li>Finding PCF-3E3C906C89 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Branch protection requiring CI.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-10</code> Fix PC-T-10: Error monitoring is instrumented <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Add an error-tracking or OpenTelemetry SDK, initialise it on server and client, and configure alerting.</p><p><strong>Findings:</strong> <code>PCF-3F928FCAF1</code></p>
+<p><strong>Where:</strong> <code>package.json</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A monitoring SDK is installed and initialised.</li><li>Control PC-T-10 evaluates PASS on retest.</li><li>Finding PCF-3F928FCAF1 (package.json) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> A deliberate test error in staging appears in the monitoring tool.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-11</code> Fix PC-T-11: Database schema changes are versioned <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Generate migrations with the ORM/database tool (prisma migrate, drizzle-kit, supabase migration) and commit them.</p><p><strong>Findings:</strong> <code>PCF-2E884D06D5</code></p>
+<p><strong>Where:</strong> <code>prisma/schema.prisma</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A migrations directory exists with at least one migration.</li><li>Control PC-T-11 evaluates PASS on retest.</li><li>Finding PCF-2E884D06D5 (prisma/schema.prisma) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression protection.</strong> CI applies migrations to a fresh database.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-05</code> Fix PC-S-05: A Content Security Policy is set <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Define a Content-Security-Policy (start with Content-Security-Policy-Report-Only, then enforce) in the framework or hosting header configuration.</p><p><strong>Findings:</strong> <code>PCF-CF1364323D</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Content-Security-Policy present on HTML responses.</li><li>Control PC-S-05 evaluates PASS on retest.</li><li>Finding PCF-CF1364323D (http://127.0.0.1:4785/) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression test candidate</strong> (javascript (node --test))</p><pre>// Save as test/content-security-policy.test.mjs and run: BASE_URL=http://127.0.0.1:4785 node --test
+import test from &quot;node:test&quot;;
+import assert from &quot;node:assert/strict&quot;;
+const BASE_URL = process.env.BASE_URL ?? &quot;http://127.0.0.1:4785&quot;;
+test(&quot;content-security-policy&quot;, async () =&gt; {
+  const res = await fetch(BASE_URL, { redirect: &quot;manual&quot; });
+  assert.ok(res.headers.get(&quot;content-security-policy&quot;), &quot;CSP header missing&quot;);
+});
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-06</code> Fix PC-S-06: Clickjacking protection is set <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Send `Content-Security-Policy: frame-ancestors &#39;self&#39;` (or X-Frame-Options: DENY).</p><p><strong>Findings:</strong> <code>PCF-CEED9100D9</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>frame-ancestors or X-Frame-Options present.</li><li>Control PC-S-06 evaluates PASS on retest.</li><li>Finding PCF-CEED9100D9 (http://127.0.0.1:4785/) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression test candidate</strong> (javascript (node --test))</p><pre>// Save as test/framing-policy.test.mjs and run: BASE_URL=http://127.0.0.1:4785 node --test
+import test from &quot;node:test&quot;;
+import assert from &quot;node:assert/strict&quot;;
+const BASE_URL = process.env.BASE_URL ?? &quot;http://127.0.0.1:4785&quot;;
+test(&quot;framing-policy&quot;, async () =&gt; {
+  const res = await fetch(BASE_URL, { redirect: &quot;manual&quot; });
+  const csp = res.headers.get(&quot;content-security-policy&quot;) ?? &quot;&quot;;
+  assert.ok(/frame-ancestors/.test(csp) || /^(deny|sameorigin)$/i.test(res.headers.get(&quot;x-frame-options&quot;) ?? &quot;&quot;));
+});
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-08</code> Fix PC-S-08: Cookies are set with Secure, HttpOnly and SameSite <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Set Secure, HttpOnly (for session cookies) and SameSite=Lax/Strict on all cookies.</p><p><strong>Findings:</strong> <code>PCF-1E72F2F7B0</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>All observed cookies carry the expected attributes.</li><li>Control PC-S-08 evaluates PASS on retest.</li><li>Finding PCF-1E72F2F7B0 (http://127.0.0.1:4785/) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Header assertion test on Set-Cookie.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-12</code> Fix PC-S-12: A privacy notice is available <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Publish a privacy notice describing data collected, purposes, processors and retention; link it from the footer.</p><p><strong>Findings:</strong> <code>PCF-9901AF5D1D</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A privacy page is reachable from the entry page.</li><li>Control PC-S-12 evaluates PASS on retest.</li><li>Finding PCF-9901AF5D1D (http://127.0.0.1:4785/) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression protection.</strong> End-to-end link check.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-16</code> Fix PC-S-16: No high-risk code patterns <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Replace eval/new Function; sanitise HTML (DOMPurify) or render text; use parameterised queries / the ORM&#39;s safe API.</p><p><strong>Findings:</strong> <code>PCF-70B846CB03, PCF-C7E301195D</code></p>
+<p><strong>Where:</strong> <code>app/page.tsx:23</code>, <code>lib/db.ts:5</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Each listed location is fixed or documented as handling only trusted constants.</li><li>Control PC-S-16 evaluates PASS on retest.</li><li>Finding PCF-70B846CB03 (app/page.tsx:23) is no longer observed on retest.</li><li>Finding PCF-C7E301195D (lib/db.ts:5) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression protection.</strong> Lint rules (no-eval, react/no-danger) and a test with a malicious payload for each fixed path.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-17</code> Fix PC-S-17: No credentialed wildcard CORS <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Allow-list the product&#39;s own origins; never combine wildcard/reflected origins with credentials.</p><p><strong>Findings:</strong> <code>PCF-CDCE917FE3</code></p>
+<p><strong>Where:</strong> <code>app/api/notes/route.ts:2</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>CORS configuration lists explicit origins.</li><li>Control PC-S-17 evaluates PASS on retest.</li><li>Finding PCF-CDCE917FE3 (app/api/notes/route.ts:2) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Integration test sending a foreign Origin header.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-AI-02</code> Fix PC-AI-02: An AI evaluation suite exists <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Add an evaluation suite with representative and adversarial cases; run it when prompts or models change.</p><p><strong>Findings:</strong> <code>PCF-B565960DEE</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Eval suite present and runnable.</li><li>Control PC-AI-02 evaluates PASS on retest.</li><li>Finding PCF-B565960DEE (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Eval suite in CI on prompt changes.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-C-02</code> Fix PC-C-02: Page language is declared <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Add a lang attribute (for example lang=&quot;en&quot;) to the root &lt;html&gt; element of every document template.</p><p><strong>Findings:</strong> <code>PCF-2D30FA9048, PCF-A355BF9FA1</code></p>
+<p><strong>Where:</strong> <code>app/layout.tsx:5</code>, <code>http://127.0.0.1:4785/</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Every &lt;html&gt; element in templates and the served page has a non-empty lang attribute.</li><li>Control PC-C-02 evaluates PASS on retest.</li><li>Finding PCF-2D30FA9048 (app/layout.tsx:5) is no longer observed on retest.</li><li>Finding PCF-A355BF9FA1 (http://127.0.0.1:4785/) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> An accessibility lint rule (for example jsx-a11y/html-has-lang) or an end-to-end assertion on document.documentElement.lang.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-C-05</code> Fix PC-C-05: Entry page has a meaningful title <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Set a product-specific title (and description) in the root metadata.</p><p><strong>Findings:</strong> <code>PCF-5B93B2ED59</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>The entry page &lt;title&gt; is non-empty and not a known starter default.</li><li>Control PC-C-05 evaluates PASS on retest.</li><li>Finding PCF-5B93B2ED59 (http://127.0.0.1:4785/) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> End-to-end assertion on the page title.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-C-06</code> Fix PC-C-06: Unknown URLs return a real 404 page <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Return status 404 with a helpful not-found page for unknown routes (for SPAs, configure the host&#39;s fallback to send 404 for unknown non-app paths or render a not-found view).</p><p><strong>Findings:</strong> <code>PCF-3D0D04F8EA</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>GET &lt;origin&gt;/&lt;random path&gt; returns 404.</li><li>Control PC-C-06 evaluates PASS on retest.</li><li>Finding PCF-3D0D04F8EA (http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression test candidate</strong> (javascript (node --test))</p><pre>// Save as test/not-found.test.mjs and run: BASE_URL=http://127.0.0.1:4785 node --test
+import test from &quot;node:test&quot;;
+import assert from &quot;node:assert/strict&quot;;
+const BASE_URL = process.env.BASE_URL ?? &quot;http://127.0.0.1:4785&quot;;
+test(&quot;unknown paths return 404&quot;, async () =&gt; {
+  const res = await fetch(new URL(&quot;/this-page-does-not-exist-&quot; + Date.now(), BASE_URL));
+  assert.equal(res.status, 404);
+});
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-06</code> Fix PC-T-06: Setup and run instructions are documented <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Add a README section with prerequisites, install, environment variables (names only) and run/test commands.</p><p><strong>Findings:</strong> <code>PCF-83CA52EEEB</code></p>
+<p><strong>Where:</strong> <code>README.md</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>README contains install and run instructions.</li><li>Control PC-T-06 evaluates PASS on retest.</li><li>Finding PCF-83CA52EEEB (README.md) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Review checklist item for setup changes.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-07</code> Fix PC-T-07: Runtime version is declared <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Declare the runtime version (for example &quot;engines&quot;: {&quot;node&quot;: &quot;&gt;=22&quot;} and an .nvmrc).</p><p><strong>Findings:</strong> <code>PCF-2BBFB74CD4</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A runtime version declaration exists.</li><li>Control PC-T-07 evaluates PASS on retest.</li><li>Finding PCF-2BBFB74CD4 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> CI uses the declared version file.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-08</code> Fix PC-T-08: Static type checking or linting is configured <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Enable TypeScript strict mode and/or a linter (ESLint, Biome, Ruff) and run it in CI.</p><p><strong>Findings:</strong> <code>PCF-9C547F7002</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>tsconfig has strict: true or a linter configuration exists.</li><li>Control PC-T-08 evaluates PASS on retest.</li><li>Finding PCF-9C547F7002 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Lint/typecheck CI step.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-09</code> Fix PC-T-09: Dependency versions are bounded <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Replace open-ended ranges with explicit versions (and keep the lockfile).</p><p><strong>Findings:</strong> <code>PCF-14B347C463, PCF-C205AFB621</code></p>
+<p><strong>Where:</strong> <code>package.json:9</code>, <code>package.json:10</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>No &quot;*&quot;, &quot;latest&quot;, empty or unpinned URL versions in manifests.</li><li>Control PC-T-09 evaluates PASS on retest.</li><li>Finding PCF-14B347C463 (package.json:9) is no longer observed on retest.</li><li>Finding PCF-C205AFB621 (package.json:10) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Automated dependency-update tool opening reviewed pull requests.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-07</code> Fix PC-S-07: MIME-type sniffing is disabled <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Send `X-Content-Type-Options: nosniff` on all responses.</p><p><strong>Findings:</strong> <code>PCF-026FD4A0D8</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Header present with value nosniff.</li><li>Control PC-S-07 evaluates PASS on retest.</li><li>Finding PCF-026FD4A0D8 (http://127.0.0.1:4785/) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression test candidate</strong> (javascript (node --test))</p><pre>// Save as test/nosniff.test.mjs and run: BASE_URL=http://127.0.0.1:4785 node --test
+import test from &quot;node:test&quot;;
+import assert from &quot;node:assert/strict&quot;;
+const BASE_URL = process.env.BASE_URL ?? &quot;http://127.0.0.1:4785&quot;;
+test(&quot;nosniff&quot;, async () =&gt; {
+  const res = await fetch(BASE_URL, { redirect: &quot;manual&quot; });
+  assert.equal(res.headers.get(&quot;x-content-type-options&quot;), &quot;nosniff&quot;);
+});
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-10</code> Fix PC-S-10: Server and framework versions are not disclosed <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Disable X-Powered-By (Next.js: `poweredByHeader: false`; Express: `app.disable(&#39;x-powered-by&#39;)`) and strip versions from Server.</p><p><strong>Findings:</strong> <code>PCF-2FD01AC810</code></p>
+<p><strong>Where:</strong> <code>http://127.0.0.1:4785/</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>No X-Powered-By header; Server header without version numbers.</li><li>Control PC-S-10 evaluates PASS on retest.</li><li>Finding PCF-2FD01AC810 (http://127.0.0.1:4785/) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression test candidate</strong> (javascript (node --test))</p><pre>// Save as test/no-stack-disclosure.test.mjs and run: BASE_URL=http://127.0.0.1:4785 node --test
+import test from &quot;node:test&quot;;
+import assert from &quot;node:assert/strict&quot;;
+const BASE_URL = process.env.BASE_URL ?? &quot;http://127.0.0.1:4785&quot;;
+test(&quot;no-stack-disclosure&quot;, async () =&gt; {
+  const res = await fetch(BASE_URL, { redirect: &quot;manual&quot; });
+  assert.equal(res.headers.get(&quot;x-powered-by&quot;), null);
+});
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-11</code> Fix PC-S-11: A security contact is published <span class="chip neutral"><span class="dot" aria-hidden="true"></span>PROPOSED</span></summary>
+<p><strong>Objective.</strong> Publish /.well-known/security.txt (RFC 9116) and/or SECURITY.md with a contact address.</p><p><strong>Findings:</strong> <code>PCF-2EFAD2152B</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>security.txt with Contact or SECURITY.md exists.</li><li>Control PC-S-11 evaluates PASS on retest.</li><li>Finding PCF-2EFAD2152B (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Release checklist item.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details>
+<h3>To-be architecture</h3><ul><li><strong>All document templates declare the content language.</strong> <span class="muted small">Assistive technology uses it to choose pronunciation and translation tools use it to detect language.</span></li><li><strong>Image components require alt text by type or lint rule.</strong> <span class="muted small">Text alternatives are a baseline accessibility requirement (WCAG 1.1.1).</span></li><li><strong>Root metadata carries the product name and purpose.</strong> <span class="muted small">The title is the first product copy users and search engines see.</span></li><li><strong>Router has an explicit not-found route that sets status 404.</strong> <span class="muted small">Correct status codes let users, crawlers and monitors distinguish missing content from working pages.</span></li><li><strong>Each critical journey has an end-to-end test that gates deployment.</strong> <span class="muted small">Only executed journeys provide runtime evidence that the product works for users.</span></li><li><strong>Lockfile committed; CI installs with a frozen lockfile.</strong> <span class="muted small">Reproducible builds are a precondition for meaningful testing and rollback.</span></li><li><strong>Unit and integration tests run with one command locally and in CI.</strong> <span class="muted small">Tests turn &#39;it seemed to work&#39; into repeatable evidence.</span></li><li><strong>Every pull request runs build, lint and tests automatically.</strong> <span class="muted small">CI is where tests become a gate rather than a suggestion.</span></li><li><strong>README documents setup, environment and test commands.</strong> <span class="muted small">Reproducible setup is a precondition for testing and handover.</span></li><li><strong>Runtime version declared once and used by CI and hosting.</strong> <span class="muted small">Runtime drift causes works-on-my-machine failures.</span></li><li><strong>Type check and lint run in CI.</strong> <span class="muted small">Cheap automated checks catch common defects introduced by fast iteration.</span></li><li><strong>All dependencies declared with bounded ranges; updates via reviewed pull requests.</strong> <span class="muted small">Bounded versions make dependency changes reviewable events.</span></li><li><strong>Errors and traces flow to a monitored backend with alerts.</strong> <span class="muted small">You cannot fix what you cannot see; this is a precondition for launch watch.</span></li><li><strong>Every schema change is a reviewed migration applied by the deployment pipeline.</strong> <span class="muted small">Versioned migrations make data changes reviewable, repeatable and reversible.</span></li><li><strong>Secrets live only in the hosting provider&#39;s secret store and are read server-side at runtime.</strong> <span class="muted small">A committed secret must be assumed leaked; deleting it from the latest commit does not revoke it. Alternatives: Use a secret manager (cloud KMS / Vault / Doppler) instead of plain environment variables.</span></li><li><strong>Client calls the product&#39;s own server API; privileged keys stay server-side.</strong> <span class="muted small">Bundlers inline public-prefixed variables into JavaScript that every visitor downloads. Alternatives: Use row-level security with the publishable/anon key for direct database access from the client.</span></li><li><strong>Only a placeholder .env.example is tracked.</strong> <span class="muted small">Environment files are where real secrets live during development.</span></li><li><strong>Security headers defined once in framework/edge configuration and tested.</strong> <span class="muted small">CSP is the main mitigation that limits the damage of cross-site scripting.</span></li><li><strong>Framing denied by default via security headers.</strong> <span class="muted small">Prevents UI-redress attacks against signed-in users.</span></li><li><strong>Baseline security headers on every response.</strong> <span class="muted small">Cheap defence against content-type confusion.</span></li><li><strong>Cookie policy defined centrally.</strong> <span class="muted small">Cookie flags are the cheapest defence for session integrity.</span></li><li><strong>Only build artefacts are deployed; dotfiles are never served.</strong> <span class="muted small">Exposed .env or .git content hands attackers credentials and source.</span></li><li><strong>Responses do not advertise stack or versions.</strong> <span class="muted small">Reduces information given to automated scanners.</span></li><li><strong>Security contact published and monitored.</strong> <span class="muted small">Responsible disclosure needs a known channel.</span></li><li><strong>Privacy notice linked from every page footer and kept with the code.</strong> <span class="muted small">Transparency is a baseline expectation wherever personal data is processed.</span></li><li><strong>Data never concatenated into code, markup or queries.</strong> <span class="muted small">Injection remains a top cause of breaches.</span></li><li><strong>CORS allow-list per environment.</strong> <span class="muted small">Overly broad CORS lets hostile sites act with a user&#39;s session.</span></li><li><strong>Client → product API → AI provider, with server-side guardrails.</strong> <span class="muted small">Any key used in the browser can be extracted and abused.</span></li><li><strong>Prompt/model changes gated by an eval suite.</strong> <span class="muted small">AI behaviour changes with prompts, models and data; evals are its regression tests.</span></li></ul>
+<h3>As-is architecture</h3><div class="scroll"><table><thead><tr><th>Component</th><th>Category</th><th>Certainty</th></tr></thead><tbody><tr><td><code>openai</code></td><td>ai</td><td>observed</td></tr><tr><td><code>prisma</code></td><td>data</td><td>observed</td></tr><tr><td><code>@supabase/supabase-js</code></td><td>data</td><td>observed</td></tr><tr><td><code>http://127.0.0.1:4785</code></td><td>deployment</td><td>observed</td></tr><tr><td><code>Next.js</code></td><td>framework</td><td>observed</td></tr><tr><td><code>React</code></td><td>framework</td><td>observed</td></tr></tbody></table></div>
+<h3>Uncertainties</h3><ul class="small"><li>No executed test results were imported: whether tests pass is unknown.</li><li>No authentication library detected; whether the product has user accounts or custom auth was not determined.</li><li>A database is used but its schema is not versioned in the repository; the live schema was not inspected.</li><li>Authenticated, multi-step and data-changing journeys were not exercised (no browser automation or credentialed access in this release).</li></ul>
+<h3>Target test architecture</h3><div class="scroll"><table><thead><tr><th>Layer</th><th>Current</th><th>Target</th></tr></thead><tbody><tr><td>unit and integration</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>absent</span></td><td class="small">Fast tests for business logic, data access and authorization rules, run on every pull request.</td></tr><tr><td>end-to-end journeys</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>absent</span></td><td class="small">One end-to-end test per critical journey (sign-up to first value first), gating deployment; import results with --test-results.</td></tr><tr><td>security regression</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>absent</span></td><td class="small">Secret scanning, dependency audit and negative authorization tests in CI; Product Check retest on each release.</td></tr><tr><td>accessibility</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>absent</span></td><td class="small">Lint rules plus automated axe checks on key pages.</td></tr><tr><td>AI evaluation</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>absent</span></td><td class="small">Representative and adversarial eval suites run when prompts, models or retrieval data change.</td></tr></tbody></table></div>
+</section>
+<section class="view" id="history" aria-labelledby="h-history"><h2 id="h-history">Assurance history</h2>
+<p class="muted">One run so far. Run <code>product-check retest --baseline &lt;results&gt;</code> after changes to see trends.</p>
+<h3>Runs</h3><div class="scroll"><table><thead><tr><th class="num">#</th><th>Run</th><th>Finished</th><th>Revision</th><th>Verdict</th><th class="num">Customer (coverage)</th><th class="num">Technology (coverage)</th><th class="num">Trust (coverage)</th><th class="num">Open findings</th></tr></thead><tbody><tr><td class="num">1</td><td><code>PCR-20261014T100000Z-DAFCB5</code></td><td>2026-10-14T10:00:00.000Z</td><td><code>d1d8f2bd3ac2</code></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>NOT READY</span></td><td class="num">40 <span class="muted small">(77%)</span></td><td class="num">4 <span class="muted small">(80%)</span></td><td class="num">2 <span class="muted small">(67%)</span></td><td class="num">37</td></tr></tbody></table></div>
+<p class="muted">No baseline comparison in this run.</p>
+</section>
+</main>
+<footer>Generated from <code>product-check-results.json</code> (schema 0.1.0); every figure is derived from that file and its scorecard and verdict recompute from the validations. Evidence-bounded readiness, not a penetration test, certification or guarantee. Product Check is an EnWithAI Engineering Commons tool.</footer>
+</div>
+<script>// SPDX-FileCopyrightText: 2026 EnWithAI Technologies
+// Progressive enhancement for the Product Check dashboard: tab switching, table filters and a theme toggle.
+// Every figure is server-rendered from the results JSON; without JavaScript all views are shown in sequence.
+(function () {
+  var views = Array.prototype.slice.call(document.querySelectorAll("section.view"));
+  var links = Array.prototype.slice.call(document.querySelectorAll("nav.tabs a"));
+  function show(id) {
+    if (
+      !views.some(function (v) {
+        return v.id === id;
+      })
+    )
+      id = views[0] && views[0].id;
+    views.forEach(function (v) {
+      v.hidden = v.id !== id;
+    });
+    links.forEach(function (a) {
+      if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+  }
+  links.forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      var id = a.getAttribute("href").slice(1);
+      show(id);
+      try {
+        window.history.replaceState(null, "", "#" + id);
+      } catch {
+        /* file:// may refuse */
+      }
+    });
+  });
+  show((window.location.hash || "").slice(1));
+
+  Array.prototype.slice.call(document.querySelectorAll("[data-filter-table]")).forEach(function (box) {
+    var table = document.getElementById(box.getAttribute("data-filter-table"));
+    if (!table) return;
+    var controls = Array.prototype.slice.call(box.querySelectorAll("select, input"));
+    var count = box.querySelector("[data-count]");
+    function apply() {
+      var shown = 0;
+      Array.prototype.slice.call(table.tBodies[0].rows).forEach(function (row) {
+        var ok = controls.every(function (c) {
+          var v = (c.value || "").toLowerCase();
+          if (!v) return true;
+          var key = c.getAttribute("data-key");
+          if (key === "text") return row.textContent.toLowerCase().indexOf(v) !== -1;
+          return (row.getAttribute("data-" + key) || "").toLowerCase() === v;
+        });
+        row.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (count) count.textContent = shown + " shown";
+    }
+    controls.forEach(function (c) {
+      c.addEventListener("input", apply);
+    });
+    apply();
+  });
+
+  var toggle = document.querySelector(".theme-toggle");
+  var root = document.documentElement;
+  function setTheme(t) {
+    if (t === "auto") root.removeAttribute("data-theme");
+    else root.setAttribute("data-theme", t);
+    if (toggle) toggle.textContent = "Theme: " + t;
+  }
+  var saved;
+  try {
+    saved = window.localStorage.getItem("product-check-theme") || "auto";
+  } catch {
+    saved = "auto";
+  }
+  setTheme(saved);
+  if (toggle) {
+    toggle.hidden = false;
+    toggle.addEventListener("click", function () {
+      var order = ["auto", "light", "dark"];
+      var next = order[(order.indexOf(root.getAttribute("data-theme") || "auto") + 1) % 3];
+      setTheme(next);
+      try {
+        window.localStorage.setItem("product-check-theme", next);
+      } catch {
+        /* storage unavailable */
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

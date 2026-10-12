@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "scan-contract",
+  "contract_id": "vibe-notes-demo",
+  "labels": { "demo": true },
+  "target": {
+    "name": "Vibe Notes (synthetic demo)",
+    "purpose": "Let people keep private notes and get AI summaries of them.",
+    "repository": { "path": "app" },
+    "application": { "url": "http://127.0.0.1:4785" }
+  },
+  "mode": "HYBRID",
+  "lifecycle_stage": "BETA_PILOT",
+  "product": { "has_user_accounts": true, "multi_tenant": true, "handles_personal_data": true, "uses_ai": true, "payments": false },
+  "personas": ["first-time visitor", "returning note taker"],
+  "critical_journeys": ["Sign up and create a first note", "Summarize a note with AI"],
+  "authorization": {
+    "authorized_actions": ["read-local-source", "import-artifacts", "passive-http", "exposure-probe"],
+    "scope": { "origins": ["http://127.0.0.1:4785"] },
+    "attestation": {
+      "statement": "Synthetic demo server started on this machine by the Product Check demo script; no third-party system is contacted.",
+      "authorized_by": "Product Check demo",
+      "date": "2026-10-12"
+    }
+  },
+  "control_mappings": [
+    { "control_id": "PC-C-09", "test_name_pattern": "^onboarding:" },
+    { "control_id": "PC-S-13", "test_name_pattern": "^authz:" },
+    { "control_id": "PC-S-14", "test_name_pattern": "^isolation:" }
+  ]
+}

@@ -1,0 +1,1489 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "product-check-results",
+  "run": {
+    "run_id": "PCR-20261014T100000Z-64A316",
+    "status": "ABORTED",
+    "started_at": "2026-10-14T10:00:00.000Z",
+    "finished_at": "2026-10-14T10:00:00.000Z",
+    "duration_ms": 0,
+    "tool": "product-check",
+    "tool_version": "0.1.0-alpha.0",
+    "node_version": "normalized",
+    "methodology": {
+      "name": "CT3",
+      "label": "Customer × Technology × Trust",
+      "relationship": "inspired",
+      "reference_version": "CLEAR CT v3.1 (unpublished; principles only)"
+    },
+    "mode_requested": "APPLICATION",
+    "mode_effective": null,
+    "tier": "CT-T1",
+    "tiers_applied": [
+      "CT-T0",
+      "CT-T1"
+    ],
+    "target_revision": {
+      "repository": null,
+      "application": {
+        "origin": "https://vibenotes-demo.example",
+        "observed_at": null,
+        "final_status": null
+      }
+    },
+    "phases": [
+      {
+        "phase": "SCAN",
+        "status": "FAILED",
+        "notes": [
+          "no source inspected",
+          "no application observed"
+        ]
+      },
+      {
+        "phase": "TEST",
+        "status": "SKIPPED",
+        "notes": [
+          "no application checks",
+          "0 test results file(s) imported (0 cases); Product Check executes no repository code"
+        ]
+      },
+      {
+        "phase": "VALIDATE",
+        "status": "SKIPPED",
+        "notes": [
+          "47 controls evaluated against CT-T1",
+          "0 open finding(s)"
+        ]
+      },
+      {
+        "phase": "BLUEPRINT",
+        "status": "SKIPPED",
+        "notes": [
+          "0 remediation(s), 0 work packet(s)"
+        ]
+      },
+      {
+        "phase": "DASHBOARD",
+        "status": "SKIPPED",
+        "notes": [
+          "Rendered on demand from this file (`product-check dashboard`)."
+        ]
+      },
+      {
+        "phase": "REMEDIATE",
+        "status": "SKIPPED",
+        "notes": [
+          "Product Check proposes changes and work packets; it never modifies code."
+        ]
+      },
+      {
+        "phase": "RETEST",
+        "status": "SKIPPED",
+        "notes": [
+          "no baseline given"
+        ]
+      }
+    ],
+    "errors": [
+      "Aborted before inspection: APPLICATION mode needs authorization to request https://vibenotes-demo.example."
+    ],
+    "network": {
+      "used": false,
+      "requests": 0,
+      "origins": []
+    },
+    "baseline": null,
+    "demo": false
+  },
+  "contract": {
+    "schema_version": "0.1.0",
+    "kind": "scan-contract",
+    "contract_id": "local-scan",
+    "labels": {
+      "demo": false
+    },
+    "target": {
+      "name": "vibenotes-demo.example",
+      "purpose": null,
+      "repository": null,
+      "application": {
+        "url": "https://vibenotes-demo.example"
+      }
+    },
+    "mode": "APPLICATION",
+    "lifecycle_stage": "ALPHA",
+    "tiers": null,
+    "product": {
+      "has_user_accounts": null,
+      "multi_tenant": null,
+      "handles_personal_data": null,
+      "uses_ai": null,
+      "payments": null
+    },
+    "personas": [],
+    "critical_journeys": [],
+    "authorization": {
+      "authorized_actions": [
+        "read-local-source",
+        "import-artifacts"
+      ],
+      "prohibited_actions": [
+        "production-write",
+        "destructive-test",
+        "real-outreach",
+        "payment-flow",
+        "active-security-scan",
+        "credentialed-access",
+        "personal-data-extraction",
+        "execute-repository-code",
+        "paid-external-call"
+      ],
+      "scope": {
+        "origins": [
+          "https://vibenotes-demo.example"
+        ]
+      },
+      "attestation": null
+    },
+    "constraints": {
+      "max_requests": 12,
+      "request_timeout_ms": 10000,
+      "max_files": 5000
+    },
+    "imports": {
+      "test_results": [],
+      "npm_audit": null,
+      "har": null,
+      "observations": null,
+      "spec_check": null,
+      "impact_check": null,
+      "outcome_check": null
+    },
+    "control_mappings": [],
+    "risk_acceptances": [],
+    "scoring": {
+      "min_coverage": 0.5,
+      "pillar_threshold": 70
+    },
+    "release": {
+      "approver": null
+    }
+  },
+  "pop_coverage": {
+    "schema_version": "0.1.0",
+    "kind": "pop-coverage",
+    "pops": [
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "repository",
+        "category": "source-build",
+        "name": "Source repository",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No repository was provided (--repo)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "dependency-manifests",
+        "category": "source-build",
+        "name": "Dependency manifests",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No repository was provided (--repo)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "automated-tests",
+        "category": "source-build",
+        "name": "Automated test sources",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No repository was provided (--repo)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "test-results",
+        "category": "source-build",
+        "name": "Executed test results",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No executed test results were imported (Product Check never runs repository code)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "ci-cd",
+        "category": "source-build",
+        "name": "CI/CD configuration",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No repository was provided (--repo)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "iac",
+        "category": "operations",
+        "name": "Hosting / infrastructure configuration",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No repository was provided (--repo)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "database-schema",
+        "category": "data",
+        "name": "Database schema and migrations",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No repository was provided (--repo)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-authorized",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "deployed-web",
+        "category": "experience",
+        "name": "Deployed web application",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": "https://vibenotes-demo.example",
+        "provenance": "none",
+        "limitations": [
+          "Run aborted: APPLICATION mode needs authorization to request https://vibenotes-demo.example."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "api-definition",
+        "category": "interfaces",
+        "name": "API definition (OpenAPI/GraphQL)",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No repository was provided (--repo)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "observability",
+        "category": "operations",
+        "name": "Production telemetry (logs, metrics, traces, alerts)",
+        "status": "NOT_APPLICABLE",
+        "relevant": false,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "Not required before launch tiers (CT-T4+)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "ai-integration",
+        "category": "ai",
+        "name": "AI integration (SDKs, prompts, evals)",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "AI use unknown without source; declare product.uses_ai."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "documentation",
+        "category": "governance",
+        "name": "Documentation and specifications",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No repository was provided (--repo)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "governance",
+        "category": "governance",
+        "name": "Privacy and security policies",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "Neither source nor application was available."
+        ]
+      }
+    ],
+    "summary": {
+      "available": 0,
+      "partial": 0,
+      "blocked": 12,
+      "not_applicable": 1,
+      "relevant": 12
+    }
+  },
+  "evidence": [],
+  "validations": [
+    {
+      "id": "VAL-PC-C-01",
+      "control_id": "PC-C-01",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Application is reachable over HTTPS",
+      "expected": "The declared URL answers with a 2xx page over HTTPS (after same-origin redirects).",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-02",
+      "control_id": "PC-C-02",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Page language is declared",
+      "expected": "The root <html> element declares a lang attribute.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-03",
+      "control_id": "PC-C-03",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Page is configured for mobile viewports",
+      "expected": "A responsive viewport meta tag is present.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-04",
+      "control_id": "PC-C-04",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Images have text alternatives",
+      "expected": "Every <img>/<Image> element has an alt attribute (empty alt for decorative images).",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-05",
+      "control_id": "PC-C-05",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Entry page has a meaningful title",
+      "expected": "The entry page has a non-empty <title> that is not a framework starter default.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-06",
+      "control_id": "PC-C-06",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Unknown URLs return a real 404 page",
+      "expected": "A request for a non-existent path returns HTTP 404 (not a 200 \"soft 404\").",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-07",
+      "control_id": "PC-C-07",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Entry page responds quickly",
+      "expected": "The entry page's server response completes within 2,500 ms (single passive sample).",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-08",
+      "control_id": "PC-C-08",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Critical journeys are covered by passing end-to-end tests",
+      "expected": "End-to-end tests exist and their imported results pass.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-09",
+      "control_id": "PC-C-09",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "A new user can complete onboarding unaided",
+      "expected": "Imported test results mapped to this control (control_mappings) show the onboarding journey passing.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-10",
+      "control_id": "PC-C-10",
+      "pillar": "customer",
+      "tier": "CT-T0",
+      "title": "Requirements are specific and testable",
+      "expected": "An imported Spec Check report shows no high-severity requirement findings.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-11",
+      "control_id": "PC-C-11",
+      "pillar": "customer",
+      "tier": "CT-T4",
+      "title": "Real-user journey health is observed in production",
+      "expected": "Production telemetry shows critical journeys succeeding for real users.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-01",
+      "control_id": "PC-T-01",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Dependency manifest and lockfile are present",
+      "expected": "A dependency manifest and a matching lockfile exist so builds are reproducible.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-02",
+      "control_id": "PC-T-02",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Automated tests exist",
+      "expected": "The repository contains automated test files and a test command.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-03",
+      "control_id": "PC-T-03",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Automated tests pass",
+      "expected": "Imported test results (JUnit XML or Jest/Vitest JSON) show zero failures.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-04",
+      "control_id": "PC-T-04",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "A CI pipeline is configured",
+      "expected": "A continuous-integration configuration exists (GitHub Actions, GitLab CI, CircleCI, …).",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-05",
+      "control_id": "PC-T-05",
+      "pillar": "technology",
+      "tier": "CT-T1",
+      "title": "CI runs the tests",
+      "expected": "The CI configuration invokes the test command.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-06",
+      "control_id": "PC-T-06",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Setup and run instructions are documented",
+      "expected": "A README explains how to install and run the project.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-07",
+      "control_id": "PC-T-07",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Runtime version is declared",
+      "expected": "The runtime version is pinned (engines field, .nvmrc, .node-version, .tool-versions or .python-version).",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-08",
+      "control_id": "PC-T-08",
+      "pillar": "technology",
+      "tier": "CT-T1",
+      "title": "Static type checking or linting is configured",
+      "expected": "A type checker in strict mode or a linter configuration exists.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-09",
+      "control_id": "PC-T-09",
+      "pillar": "technology",
+      "tier": "CT-T1",
+      "title": "Dependency versions are bounded",
+      "expected": "No dependency uses \"*\", \"latest\", an empty range or an unpinned git/URL source.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-10",
+      "control_id": "PC-T-10",
+      "pillar": "technology",
+      "tier": "CT-T2",
+      "title": "Error monitoring is instrumented",
+      "expected": "An error-tracking or telemetry SDK is a dependency (presence only; runtime operation is not verified).",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-11",
+      "control_id": "PC-T-11",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Database schema changes are versioned",
+      "expected": "When a database or ORM is used, schema migrations are kept in the repository.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-12",
+      "control_id": "PC-T-12",
+      "pillar": "technology",
+      "tier": "CT-T3",
+      "title": "Change impact of the release candidate is reviewed",
+      "expected": "An imported Impact Check report shows no unreviewed high-severity impact findings.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-13",
+      "control_id": "PC-T-13",
+      "pillar": "technology",
+      "tier": "CT-T3",
+      "title": "Rollback path is verified",
+      "expected": "Imported test results mapped to this control show a successful rollback/restore rehearsal.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-14",
+      "control_id": "PC-T-14",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Production monitoring and alerting are live",
+      "expected": "Production telemetry and alert configuration are available to the assessment.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-15",
+      "control_id": "PC-T-15",
+      "pillar": "technology",
+      "tier": "CT-T5",
+      "title": "Delivery is stable after launch",
+      "expected": "An imported Outcome Check report shows a CI first-pass rate of at least 80% and no reverted PRs.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T5 (Stabilization), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-16",
+      "control_id": "PC-T-16",
+      "pillar": "technology",
+      "tier": "CT-T6",
+      "title": "No control regressed since the previous run",
+      "expected": "Compared with the baseline results, no control went from PASS to FAIL or PARTIAL.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T6 (Continuous Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-01",
+      "control_id": "PC-S-01",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "No credentials are committed in source",
+      "expected": "No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-SECRETS",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-02",
+      "control_id": "PC-S-02",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "No server secrets are exposed through public environment prefixes",
+      "expected": "No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-SECRETS",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-03",
+      "control_id": "PC-S-03",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "Environment files are excluded from version control",
+      "expected": "Local .env files are ignored by .gitignore and not tracked in the git index.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-04",
+      "control_id": "PC-S-04",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "HTTPS is enforced",
+      "expected": "Plain-HTTP requests redirect to HTTPS and responses carry Strict-Transport-Security.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-05",
+      "control_id": "PC-S-05",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "A Content Security Policy is set",
+      "expected": "Responses carry a Content-Security-Policy that does not allow 'unsafe-inline' scripts without nonces/hashes.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-06",
+      "control_id": "PC-S-06",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Clickjacking protection is set",
+      "expected": "CSP frame-ancestors or X-Frame-Options (DENY/SAMEORIGIN) is present.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-07",
+      "control_id": "PC-S-07",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "MIME-type sniffing is disabled",
+      "expected": "X-Content-Type-Options: nosniff is present.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-08",
+      "control_id": "PC-S-08",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Cookies are set with Secure, HttpOnly and SameSite",
+      "expected": "Every cookie observed on passive requests has Secure and SameSite; session-like cookies also have HttpOnly.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-09",
+      "control_id": "PC-S-09",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "No sensitive files are publicly served",
+      "expected": "Well-known sensitive paths (/.env, /.env.local, /.git/HEAD, /.git/config) are not served with their content.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-SECRETS",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-10",
+      "control_id": "PC-S-10",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Server and framework versions are not disclosed",
+      "expected": "No X-Powered-By header and no version numbers in the Server header.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-11",
+      "control_id": "PC-S-11",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "A security contact is published",
+      "expected": "SECURITY.md in the repository or /.well-known/security.txt with a Contact field.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-12",
+      "control_id": "PC-S-12",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "A privacy notice is available",
+      "expected": "The entry page links to a privacy notice, /privacy answers 2xx, or a privacy page exists in source.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-13",
+      "control_id": "PC-S-13",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "Authorization is enforced on privileged paths",
+      "expected": "Imported test results mapped to this control show unauthenticated and under-privileged requests to privileged routes being denied.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-AUTHZ",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-14",
+      "control_id": "PC-S-14",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Tenant and user data are isolated",
+      "expected": "Imported test results mapped to this control show one tenant/user cannot read or change another's data.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-ISOLATION",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-15",
+      "control_id": "PC-S-15",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "No critical or high known vulnerabilities in dependencies",
+      "expected": "An imported `npm audit --json` report shows zero critical and zero high vulnerabilities.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-16",
+      "control_id": "PC-S-16",
+      "pillar": "trust",
+      "tier": "CT-T1",
+      "title": "No high-risk code patterns",
+      "expected": "No dynamic code evaluation, raw HTML injection of non-literal values, or SQL built by string interpolation.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-17",
+      "control_id": "PC-S-17",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "No credentialed wildcard CORS",
+      "expected": "No CORS configuration allows any origin (\"*\") or reflects origins while allowing credentials.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-AI-01",
+      "control_id": "PC-AI-01",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "AI provider calls run server-side only",
+      "expected": "AI provider SDKs are not imported in client-side code and browser use is not enabled.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-SECRETS",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-AI-02",
+      "control_id": "PC-AI-02",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "An AI evaluation suite exists",
+      "expected": "AI behaviour has an evaluation suite (promptfoo config, evals directory or *.eval.* files).",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-AI-03",
+      "control_id": "PC-AI-03",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Prompt-injection and guardrail behaviour is tested",
+      "expected": "Imported test results mapped to this control show adversarial AI cases passing.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    }
+  ],
+  "findings": [],
+  "scorecard": {
+    "schema_version": "0.1.0",
+    "kind": "scorecard",
+    "rubric_version": "pc-rubric-0.1",
+    "pillars": {
+      "customer": {
+        "score": null,
+        "state": "INSUFFICIENT_EVIDENCE",
+        "coverage": 0,
+        "confidence": "NONE",
+        "cap": {
+          "applied": false,
+          "limit": null,
+          "reason": null
+        },
+        "trend": null,
+        "counts": {
+          "PASS": 0,
+          "PARTIAL": 0,
+          "FAIL": 0,
+          "BLOCKED": 10,
+          "NOT_TESTED": 0,
+          "NOT_APPLICABLE": 1
+        },
+        "applicable_weight": 13,
+        "checked_weight": 0
+      },
+      "technology": {
+        "score": null,
+        "state": "INSUFFICIENT_EVIDENCE",
+        "coverage": 0,
+        "confidence": "NONE",
+        "cap": {
+          "applied": false,
+          "limit": null,
+          "reason": null
+        },
+        "trend": null,
+        "counts": {
+          "PASS": 0,
+          "PARTIAL": 0,
+          "FAIL": 0,
+          "BLOCKED": 10,
+          "NOT_TESTED": 0,
+          "NOT_APPLICABLE": 6
+        },
+        "applicable_weight": 16,
+        "checked_weight": 0
+      },
+      "trust": {
+        "score": null,
+        "state": "INSUFFICIENT_EVIDENCE",
+        "coverage": 0,
+        "confidence": "NONE",
+        "cap": {
+          "applied": false,
+          "limit": null,
+          "reason": null
+        },
+        "trend": null,
+        "counts": {
+          "PASS": 0,
+          "PARTIAL": 0,
+          "FAIL": 0,
+          "BLOCKED": 7,
+          "NOT_TESTED": 0,
+          "NOT_APPLICABLE": 13
+        },
+        "applicable_weight": 18,
+        "checked_weight": 0
+      }
+    },
+    "overall_coverage": 0,
+    "gates": [
+      {
+        "gate_id": "G-SECRETS",
+        "title": "No exposed production secrets or client-side privileged keys",
+        "status": "UNVERIFIED",
+        "control_ids": [
+          "PC-S-01",
+          "PC-S-02",
+          "PC-S-09",
+          "PC-AI-01"
+        ]
+      },
+      {
+        "gate_id": "G-AUTHZ",
+        "title": "No authentication or authorization bypass on privileged paths",
+        "status": "UNVERIFIED",
+        "control_ids": [
+          "PC-S-13"
+        ]
+      },
+      {
+        "gate_id": "G-ISOLATION",
+        "title": "No cross-tenant or cross-user data exposure",
+        "status": "NOT_APPLICABLE",
+        "control_ids": [
+          "PC-S-14"
+        ]
+      }
+    ],
+    "open_findings": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 0
+    },
+    "accepted_risks": 0,
+    "blocked_controls": [
+      "PC-C-01",
+      "PC-C-02",
+      "PC-C-03",
+      "PC-C-04",
+      "PC-C-05",
+      "PC-C-06",
+      "PC-C-07",
+      "PC-C-08",
+      "PC-C-09",
+      "PC-C-10",
+      "PC-T-01",
+      "PC-T-02",
+      "PC-T-03",
+      "PC-T-04",
+      "PC-T-05",
+      "PC-T-06",
+      "PC-T-07",
+      "PC-T-08",
+      "PC-T-09",
+      "PC-T-11",
+      "PC-S-01",
+      "PC-S-02",
+      "PC-S-03",
+      "PC-S-09",
+      "PC-S-13",
+      "PC-S-16",
+      "PC-AI-01"
+    ],
+    "not_tested_controls": [],
+    "parameters": {
+      "min_coverage": 0.5,
+      "pillar_threshold": 70
+    }
+  },
+  "blueprint": {
+    "schema_version": "0.1.0",
+    "kind": "blueprint",
+    "as_is": {
+      "components": [],
+      "uncertainties": [
+        "Source code was not inspected: implementation, data model and dependencies are unknown.",
+        "No deployed application was observed: runtime behaviour, headers and real user experience are unknown.",
+        "No executed test results were imported: whether tests pass is unknown.",
+        "Tenancy model not declared (product.multi_tenant): isolation requirements are unknown.",
+        "AI use not declared and not detectable without source.",
+        "Authenticated, multi-step and data-changing journeys were not exercised (no browser automation or credentialed access in this release)."
+      ]
+    },
+    "to_be": {
+      "changes": []
+    },
+    "remediations": [],
+    "work_packets": [],
+    "test_architecture": {
+      "layers": [
+        {
+          "layer": "unit and integration",
+          "current": "unknown",
+          "evidence_ids": [],
+          "target": "Fast tests for business logic, data access and authorization rules, run on every pull request."
+        },
+        {
+          "layer": "end-to-end journeys",
+          "current": "unknown",
+          "evidence_ids": [],
+          "target": "One end-to-end test per critical journey (sign-up to first value first), gating deployment; import results with --test-results."
+        },
+        {
+          "layer": "security regression",
+          "current": "unknown",
+          "evidence_ids": [],
+          "target": "Secret scanning, dependency audit and negative authorization tests in CI; Product Check retest on each release."
+        },
+        {
+          "layer": "accessibility",
+          "current": "unknown",
+          "evidence_ids": [],
+          "target": "Lint rules plus automated axe checks on key pages."
+        }
+      ]
+    },
+    "traceability": [],
+    "human_review": []
+  },
+  "verdict": {
+    "schema_version": "0.1.0",
+    "kind": "release-verdict",
+    "verdict": "INCONCLUSIVE",
+    "tier": "CT-T1",
+    "tier_alias": "INSUFFICIENT EVIDENCE",
+    "reasons": [
+      "Run aborted by the safety gate: APPLICATION mode needs authorization to request https://vibenotes-demo.example.",
+      "Hard-gate controls not verified: PC-S-01, PC-S-02, PC-S-09, PC-S-13, PC-AI-01.",
+      "Insufficient evidence to score: customer, technology, trust."
+    ],
+    "blocking_gates": [],
+    "blocking_findings": [],
+    "not_verified": [
+      "PC-S-01",
+      "PC-S-02",
+      "PC-S-09",
+      "PC-S-13",
+      "PC-AI-01"
+    ],
+    "accepted_risks": [],
+    "rejected_acceptances": [],
+    "bounded_by": "Applies only to no repository and application https://vibenotes-demo.example as observed (no successful observation), assessed 2026-10-14T10:00:00.000Z. 0 of 27 applicable controls were checked; 27 were blocked or not tested. A material change invalidates this verdict.",
+    "approval": {
+      "required": false,
+      "approver": null,
+      "status": "UNAPPROVED"
+    },
+    "rationale": "Evidence is insufficient for a readiness decision; see reasons and the not-verified list for the next evidence to collect."
+  },
+  "comparison": null,
+  "history": [
+    {
+      "run_id": "PCR-20261014T100000Z-64A316",
+      "finished_at": "2026-10-14T10:00:00.000Z",
+      "revision": null,
+      "verdict": "INCONCLUSIVE",
+      "scores": {
+        "customer": null,
+        "technology": null,
+        "trust": null
+      },
+      "coverage": {
+        "customer": 0,
+        "technology": 0,
+        "trust": 0
+      },
+      "open_findings": 0
+    }
+  ],
+  "limitations": []
+}

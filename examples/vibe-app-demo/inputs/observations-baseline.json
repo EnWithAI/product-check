@@ -1,0 +1,233 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "observations",
+  "origin": "http://127.0.0.1:4785",
+  "source": "recorded",
+  "observations": [
+    {
+      "url": "http://127.0.0.1:4785/",
+      "method": "GET",
+      "purpose": "landing",
+      "requested_at": "2026-10-14T09:59:00.000Z",
+      "status": 200,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "set-cookie": "session=[REDACTED]; Path=/",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "4b930901d1f08e073df83299b9b2769014d1c4476926073f92720af26b30cd6d",
+      "body_bytes": 227,
+      "truncated": false,
+      "html": {
+        "title": "Create Next App",
+        "lang": null,
+        "has_viewport": true,
+        "meta_csp": null,
+        "img_total": 1,
+        "img_missing_alt": 1,
+        "privacy_link": null
+      },
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2",
+      "method": "GET",
+      "purpose": "not-found",
+      "requested_at": "2026-10-14T09:59:01.000Z",
+      "status": 200,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "1368fd8ca63d2db3aac13f3bdfc84e4b9f2d8cfb2414342c2bdc649abaea36b9",
+      "body_bytes": 187,
+      "truncated": false,
+      "html": {
+        "title": "Create Next App",
+        "lang": null,
+        "has_viewport": true,
+        "meta_csp": null,
+        "img_total": 0,
+        "img_missing_alt": 0,
+        "privacy_link": null
+      },
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/robots.txt",
+      "method": "GET",
+      "purpose": "robots",
+      "requested_at": "2026-10-14T09:59:02.000Z",
+      "status": 200,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/robots.txt",
+      "headers": {
+        "content-type": "text/plain",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95",
+      "body_bytes": 23,
+      "truncated": false,
+      "html": null,
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.well-known/security.txt",
+      "method": "GET",
+      "purpose": "security-txt",
+      "requested_at": "2026-10-14T09:59:03.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.well-known/security.txt",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "0a33ea08a3851482a0097d674024a56b73e247ff43bb3b1c3228af96f068739f",
+      "body_bytes": 171,
+      "truncated": false,
+      "html": {
+        "title": "404",
+        "lang": null,
+        "has_viewport": true,
+        "meta_csp": null,
+        "img_total": 0,
+        "img_missing_alt": 0,
+        "privacy_link": null
+      },
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/privacy",
+      "method": "GET",
+      "purpose": "privacy",
+      "requested_at": "2026-10-14T09:59:04.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/privacy",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "0a33ea08a3851482a0097d674024a56b73e247ff43bb3b1c3228af96f068739f",
+      "body_bytes": 171,
+      "truncated": false,
+      "html": {
+        "title": "404",
+        "lang": null,
+        "has_viewport": true,
+        "meta_csp": null,
+        "img_total": 0,
+        "img_missing_alt": 0,
+        "privacy_link": null
+      },
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.env",
+      "method": "GET",
+      "purpose": "exposure:/.env",
+      "requested_at": "2026-10-14T09:59:05.000Z",
+      "status": 200,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.env",
+      "headers": {
+        "content-type": "text/plain",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "246fad2aea053f83476ffaccc85c01a7a13f04d7182f8900672b40358decf064",
+      "body_bytes": 94,
+      "truncated": false,
+      "html": null,
+      "exposure": {
+        "looks_sensitive": true,
+        "signature": "env-assignments"
+      },
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.env.local",
+      "method": "GET",
+      "purpose": "exposure:/.env.local",
+      "requested_at": "2026-10-14T09:59:06.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.env.local",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "0a33ea08a3851482a0097d674024a56b73e247ff43bb3b1c3228af96f068739f",
+      "body_bytes": 171,
+      "truncated": false,
+      "html": null,
+      "exposure": {
+        "looks_sensitive": false,
+        "signature": null
+      },
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.git/HEAD",
+      "method": "GET",
+      "purpose": "exposure:/.git/HEAD",
+      "requested_at": "2026-10-14T09:59:07.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.git/HEAD",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "0a33ea08a3851482a0097d674024a56b73e247ff43bb3b1c3228af96f068739f",
+      "body_bytes": 171,
+      "truncated": false,
+      "html": null,
+      "exposure": {
+        "looks_sensitive": false,
+        "signature": null
+      },
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.git/config",
+      "method": "GET",
+      "purpose": "exposure:/.git/config",
+      "requested_at": "2026-10-14T09:59:08.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.git/config",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "x-powered-by": "Next.js"
+      },
+      "timing_ms": 25,
+      "body_sha256": "0a33ea08a3851482a0097d674024a56b73e247ff43bb3b1c3228af96f068739f",
+      "body_bytes": 171,
+      "truncated": false,
+      "html": null,
+      "exposure": {
+        "looks_sensitive": false,
+        "signature": null
+      },
+      "error": null
+    }
+  ]
+}

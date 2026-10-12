@@ -1,0 +1,252 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "observations",
+  "origin": "http://127.0.0.1:4785",
+  "source": "recorded",
+  "observations": [
+    {
+      "url": "http://127.0.0.1:4785/",
+      "method": "GET",
+      "purpose": "landing",
+      "requested_at": "2026-10-15T09:59:00.000Z",
+      "status": 200,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "set-cookie": "session=[REDACTED]; Path=/; HttpOnly; SameSite=Lax",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "7f8f1195f4f8d68c67fa6d52c9994e50a46a36351d2d1528a33fbb50cd6cd437",
+      "body_bytes": 352,
+      "truncated": false,
+      "html": {
+        "title": "Vibe Notes: private notes with AI summaries",
+        "lang": "en",
+        "has_viewport": true,
+        "meta_csp": null,
+        "img_total": 1,
+        "img_missing_alt": 0,
+        "privacy_link": "/privacy"
+      },
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2",
+      "method": "GET",
+      "purpose": "not-found",
+      "requested_at": "2026-10-15T09:59:01.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/product-check-not-found-7b6863e0c6c2",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "181a3e6d1ce68bfbdc5295db76ed3297620fb6382a0bb0cccb8c6fc8a4ccdf4c",
+      "body_bytes": 218,
+      "truncated": false,
+      "html": {
+        "title": "Page not found | Vibe Notes",
+        "lang": "en",
+        "has_viewport": true,
+        "meta_csp": null,
+        "img_total": 0,
+        "img_missing_alt": 0,
+        "privacy_link": null
+      },
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/robots.txt",
+      "method": "GET",
+      "purpose": "robots",
+      "requested_at": "2026-10-15T09:59:02.000Z",
+      "status": 200,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/robots.txt",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/plain",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95",
+      "body_bytes": 23,
+      "truncated": false,
+      "html": null,
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.well-known/security.txt",
+      "method": "GET",
+      "purpose": "security-txt",
+      "requested_at": "2026-10-15T09:59:03.000Z",
+      "status": 200,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.well-known/security.txt",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/plain",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "8ca8028bc2271e1095a57c00ef91ccc5dc69e75f4667887056c78ddde9a57779",
+      "body_bytes": 48,
+      "truncated": false,
+      "html": null,
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/privacy",
+      "method": "GET",
+      "purpose": "privacy",
+      "requested_at": "2026-10-15T09:59:04.000Z",
+      "status": 200,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/privacy",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "048573bc7357e306c1a7b6285787cc0211accfe4b5da4a82c969b10345afdf57",
+      "body_bytes": 221,
+      "truncated": false,
+      "html": {
+        "title": "Privacy | Vibe Notes",
+        "lang": "en",
+        "has_viewport": true,
+        "meta_csp": null,
+        "img_total": 0,
+        "img_missing_alt": 0,
+        "privacy_link": null
+      },
+      "exposure": null,
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.env",
+      "method": "GET",
+      "purpose": "exposure:/.env",
+      "requested_at": "2026-10-15T09:59:05.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.env",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "1b0d9a68103caa8c793964075687292e9144f1b31d0f9bdd379670ae4c6dcb36",
+      "body_bytes": 181,
+      "truncated": false,
+      "html": null,
+      "exposure": {
+        "looks_sensitive": false,
+        "signature": null
+      },
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.env.local",
+      "method": "GET",
+      "purpose": "exposure:/.env.local",
+      "requested_at": "2026-10-15T09:59:06.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.env.local",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "1b0d9a68103caa8c793964075687292e9144f1b31d0f9bdd379670ae4c6dcb36",
+      "body_bytes": 181,
+      "truncated": false,
+      "html": null,
+      "exposure": {
+        "looks_sensitive": false,
+        "signature": null
+      },
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.git/HEAD",
+      "method": "GET",
+      "purpose": "exposure:/.git/HEAD",
+      "requested_at": "2026-10-15T09:59:07.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.git/HEAD",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "1b0d9a68103caa8c793964075687292e9144f1b31d0f9bdd379670ae4c6dcb36",
+      "body_bytes": 181,
+      "truncated": false,
+      "html": null,
+      "exposure": {
+        "looks_sensitive": false,
+        "signature": null
+      },
+      "error": null
+    },
+    {
+      "url": "http://127.0.0.1:4785/.git/config",
+      "method": "GET",
+      "purpose": "exposure:/.git/config",
+      "requested_at": "2026-10-15T09:59:08.000Z",
+      "status": 404,
+      "redirect_location": null,
+      "final_url": "http://127.0.0.1:4785/.git/config",
+      "headers": {
+        "content-security-policy": "default-src 'self'; frame-ancestors 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "strict-transport-security": "max-age=31536000; includeSubDomains",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY"
+      },
+      "timing_ms": 25,
+      "body_sha256": "1b0d9a68103caa8c793964075687292e9144f1b31d0f9bdd379670ae4c6dcb36",
+      "body_bytes": 181,
+      "truncated": false,
+      "html": null,
+      "exposure": {
+        "looks_sensitive": false,
+        "signature": null
+      },
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "scan-contract",
+  "contract_id": "vibe-notes-repo-only",
+  "labels": { "demo": true },
+  "target": { "name": "Vibe Notes (synthetic demo, source only)", "purpose": null, "repository": { "path": "../vibe-app-demo/app" }, "application": null },
+  "mode": "SOURCE",
+  "lifecycle_stage": "BETA_PILOT",
+  "product": { "has_user_accounts": true, "multi_tenant": true, "handles_personal_data": true, "uses_ai": true, "payments": false }
+}
