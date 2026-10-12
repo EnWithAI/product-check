@@ -2,9 +2,9 @@
 
 _Product Check 0.1.0-alpha.0 · results schema 0.1.0 · rubric pc-rubric-0.1 · 2026-10-12_
 
-**State: alpha candidate, local only.** Nothing has been pushed, published or released. The repository has no remote.
+**State: alpha.** Release of 0.1.0-alpha.0 approved 2026-10-12 (repository, GitHub pre-release, npm).
 License: **MIT** (decided by the product sponsor on 2026-10-12, same as the other Commons tools); `LICENSE`, `package.json`
-and SPDX headers updated accordingly. Publishing still requires explicit approval.
+and SPDX headers updated accordingly. Release decisions recorded in §5.
 
 ## 1. Design brief (as built)
 
@@ -120,18 +120,18 @@ source files (caught by the Trojan-Source test).
 
 - [x] **License:** MIT (2026-10-12). `LICENSE` added, package.json `license: MIT`, `private` removed, SPDX identifiers on
       all first-party source files.
-- [ ] **CLEAR attribution wording** approved by NetworkGain Consulting (relationship `inspired`; owner and publication
-      rights of CLEAR CT, HR-4). Confirm that naming the CT-T0…T6 tier labels and the verdict aliases publicly is acceptable.
+- [x] **CLEAR attribution wording** approved for publication by the product sponsor (2026-10-12), relationship
+      `inspired`, including public use of the CT-T0…T6 tier labels and verdict aliases.
 - [ ] TRACE relationship stays `not-assessed` until a specification exists (HR-5).
-- [ ] Copyright holder and chain of title confirmed for this repository (HR-2/HR-3 were decided for the first three).
-- [ ] Maintainer and security contact confirmed; GitHub private vulnerability reporting enabled after creation.
-- [ ] Name clearance for "Product Check" and npm availability of `@enwithai/product-check` checked.
-- [ ] Repository creation (`EnWithAI/product-check`), visibility, first push; CI green on Node 22/24/26.
-- [ ] Human review of the control catalog wording, severities and gate membership.
-- [ ] Human audit of the committed demo outputs for evidence accuracy.
-- [ ] npm publication (`--tag alpha` and move `latest` deliberately; see the Outcome Check lesson in `progress/STATUS.md`).
-- [ ] GitHub push protection: no secret-like literals are committed (fakes are generated at run time), but re-check
-      on first push.
+- [x] Copyright holder EnWithAI Technologies; maintainer and security contact Koushik Ramani, as for the other tools.
+- [x] `@enwithai/product-check` free on npm and `EnWithAI/product-check` free on GitHub (checked 2026-10-12). No formal
+      trademark search was done (as for the other tools; names are descriptive and not claimed as marks).
+- [ ] Repository creation (`EnWithAI/product-check`, public), first push with commits under the GitHub noreply
+      address; CI green on Node 22/24/26; private vulnerability reporting enabled; topics.
+- [ ] Release tag `v0.1.0-alpha.0` with built `dist/` and a GitHub pre-release.
+- [ ] npm publication (`--tag alpha`, then `latest` moved deliberately), verified by a clean registry install.
+- [ ] Not separately performed: an independent human review of control wording/severities and of the demo outputs.
+      The release was approved on the basis of this status report.
 
 ## 6. Reproduce this report
 

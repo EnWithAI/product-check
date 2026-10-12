@@ -10,9 +10,9 @@ license:
   spdx: MIT # decided 2026-10-12 by the product sponsor, same as the other Commons tools
   file: LICENSE
   copyright_holder: "EnWithAI Technologies"
-  copyright_holder_confirmed: false # confirm for this repository (HR-2/HR-3 were decided for the first three tools)
+  copyright_holder_confirmed: true # 2026-10-12: EnWithAI, as for the other Commons tools
 maintainers:
-  - { name: Koushik Ramani, github: aiwithrk, role: proposed maintainer and security contact (to confirm) }
+  - { name: Koushik Ramani, github: aiwithrk, role: maintainer and security contact }
 contact: hello@enwithai.com
 attribution:
   file: ATTRIBUTION.md
@@ -32,7 +32,7 @@ frameworks:
     owner: NetworkGain Consulting
     relationship: inspired
     spec_version: "CLEAR CT v3.1 (internal, unpublished)"
-    evidence: "Assessment-model design (separate Customer/Technology/Trust pillars, CT-T0..T6 lifecycle tiers, points of presence, evidence statuses, non-averaging, hard gates overriding scores) was inspired by CLEAR CT. No text, catalog or prompt is reproduced. Wording needs the owner's approval."
+    evidence: "Assessment-model design (separate Customer/Technology/Trust pillars, CT-T0..T6 lifecycle tiers, points of presence, evidence statuses, non-averaging, hard gates overriding scores) was inspired by CLEAR CT. No text, catalog or prompt is reproduced. Wording approved for publication 2026-10-12."
   trace:
     owner: EnWithAI Technologies
     relationship: not-assessed
@@ -40,4 +40,4 @@ frameworks:
     evidence: "Findings carry an intent-to-retest traceability chain; alignment with TRACE cannot be stated until its specification is available."
 upstream: []
 references: REFERENCES.md
-review_items: [HR-2, HR-3, HR-4, HR-5, PC-CLEAR-WORDING, PC-NAME]
+review_items: [HR-5]

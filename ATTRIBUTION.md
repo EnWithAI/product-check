@@ -2,13 +2,13 @@
 
 ## Publisher
 
-- **Project:** Product Check (`@enwithai/product-check`, proposed package name; not published).
+- **Project:** Product Check (`@enwithai/product-check`).
 - **Commons:** EnWithAI Engineering Commons. Question: _does this software work, can it be trusted, and what needs to
   improve?_
-- **Copyright holder:** EnWithAI Technologies (to be confirmed for this repository).
+- **Copyright holder:** EnWithAI Technologies (as stated in [LICENSE](LICENSE)).
 - **License:** MIT (decided 2026-10-12, same as the other Commons tools). It applies to all code, documentation, schemas
   and examples in this repository.
-- **Proposed maintainer:** Koushik Ramani ([@aiwithrk](https://github.com/aiwithrk)), EnWithAI Technologies (to confirm).
+- **Maintainer:** Koushik Ramani ([@aiwithrk](https://github.com/aiwithrk)), EnWithAI Technologies.
 - **Contact:** [hello@enwithai.com](mailto:hello@enwithai.com)
 - **Security issues:** see [SECURITY.md](SECURITY.md).
 
@@ -33,10 +33,10 @@ references are in [REFERENCES.md](REFERENCES.md). Listing a project does not mea
 
 ## Frameworks
 
-| Framework        | Owner                  | Relationship   | Note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ---------------- | ---------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CLEAR (CLEAR CT) | NetworkGain Consulting | `inspired`     | The design of the assessment model — separate Customer, Technology and Trust pillars, CT-T0…T6 lifecycle tiers, points of presence, evidence statuses, the rule that strong pillars never hide weak ones, and hard gates overriding scores — was inspired by NetworkGain's CLEAR CT method (v3.1, internal and unpublished). No text, catalog, prompt or scoring table from it is reproduced, and there is no structural relationship. **This wording awaits the framework owner's approval.** |
-| TRACE            | EnWithAI Technologies  | `not-assessed` | Each finding carries an intent → evidence → remediation → retest chain, which may match TRACE's intent; alignment cannot be stated until the TRACE specification is available.                                                                                                                                                                                                                                                                                                                 |
+| Framework        | Owner                  | Relationship   | Note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------------- | ---------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CLEAR (CLEAR CT) | NetworkGain Consulting | `inspired`     | The design of the assessment model — separate Customer, Technology and Trust pillars, CT-T0…T6 lifecycle tiers, points of presence, evidence statuses, the rule that strong pillars never hide weak ones, and hard gates overriding scores — was inspired by NetworkGain's CLEAR CT method (v3.1, internal and unpublished). No text, catalog, prompt or scoring table from it is reproduced, and there is no structural relationship. Wording approved for publication on 2026-10-12. |
+| TRACE            | EnWithAI Technologies  | `not-assessed` | Each finding carries an intent → evidence → remediation → retest chain, which may match TRACE's intent; alignment cannot be stated until the TRACE specification is available.                                                                                                                                                                                                                                                                                                         |
 
 ## Ecosystem
 

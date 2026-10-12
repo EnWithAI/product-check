@@ -3,7 +3,8 @@
 Product Check is the fourth EnWithAI Engineering Commons tool, after Impact Check, Spec Check and Outcome Check, and
 follows the Commons charter and attribution standard v1.0.
 
-- **Maintainers:** proposed — Koushik Ramani (@aiwithrk), EnWithAI Technologies. To be confirmed before release.
+- **Maintainer and security contact:** Koushik Ramani (@aiwithrk), EnWithAI Technologies (as for the other Commons
+  tools).
 - **Decisions:** maintainers decide by consensus in issues and pull requests. Changes to the control catalog's gates,
   the scoring/verdict rules or the safety model need a written rationale in the PR and a CHANGELOG entry, because they
   change what results mean.
