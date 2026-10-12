@@ -131,7 +131,8 @@ source files (caught by the Trojan-Source test).
 - [x] Release tag `v0.1.0-alpha.0` with built `dist/` and a GitHub pre-release.
 - [x] npm publication 2026-10-12 (`alpha` and `latest` → 0.1.0-alpha.0), tarball shasum
       `90669a43bb94ed82b4a8d32507de279501839231` identical to the tag build, verified by a clean registry install.
-- [ ] Deprecate the `0.0.0-stage` placeholder left by npm staged publishing (needs 2FA), as for the siblings.
+- [x] `0.0.0-stage` placeholder left by npm staged publishing deprecated by the user (2FA, 2026-10-12), as for the
+      siblings.
 - [ ] Not separately performed: an independent human review of control wording/severities and of the demo outputs.
       The release was approved on the basis of this status report.
 
