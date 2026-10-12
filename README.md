@@ -16,8 +16,8 @@ Customer, Technology and Trust controls, and gives you:
 
 Everything is written to one versioned JSON file. The report, blueprint and dashboard are renderings of it.
 
-> Status: **alpha** (`0.1.0-alpha.0`, results schema `0.1.0`). Install with
-> `npm install --global @enwithai/product-check@alpha`, or build from source as in the demo below.
+> Status: **early release** (`0.1.0`, pre-1.0, results schema `0.1.0`). Install with
+> `npm install --global @enwithai/product-check`, or build from source as in the demo below.
 
 ## What it will not pretend
 

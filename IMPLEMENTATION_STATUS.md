@@ -1,8 +1,8 @@
 # Implementation status
 
-_Product Check 0.1.0-alpha.0 · results schema 0.1.0 · rubric pc-rubric-0.1 · 2026-10-12_
+_Product Check 0.1.0 · results schema 0.1.0 · rubric pc-rubric-0.1 · 2026-10-12_
 
-**State: released alpha.** 0.1.0-alpha.0 published 2026-10-12: GitHub `EnWithAI/product-check` (CI green on Node
+**State: released 0.1.0 (2026-10-12)**, the first version without a pre-release suffix (no functional change from 0.1.0-alpha.0). Earlier: released alpha. 0.1.0-alpha.0 published 2026-10-12: GitHub `EnWithAI/product-check` (CI green on Node
 22/24/26), pre-release `v0.1.0-alpha.0`, npm `@enwithai/product-check` (`alpha` and `latest`).
 License: **MIT** (decided by the product sponsor on 2026-10-12, same as the other Commons tools); `LICENSE`, `package.json`
 and SPDX headers updated accordingly. Release decisions recorded in §5.

@@ -112,7 +112,7 @@ Baseline PCR-20261014T100000Z-DAFCB5.
 
 ## Run
 
-Run PCR-20261015T100000Z-96021F · COMPLETED · mode HYBRID (requested HYBRID) · tiers CT-T0, CT-T1, CT-T2 · Product Check 0.1.0-alpha.0 · methodology CT3 (Customer × Technology × Trust, inspired) · rubric pc-rubric-0.1 · network requests 0
+Run PCR-20261015T100000Z-96021F · COMPLETED · mode HYBRID (requested HYBRID) · tiers CT-T0, CT-T1, CT-T2 · Product Check 0.1.0 · methodology CT3 (Customer × Technology × Trust, inspired) · rubric pc-rubric-0.1 · network requests 0
 
 Product Check reports evidence-bounded readiness. It is not a penetration test, a legal or compliance certification, or a guarantee of production readiness.
 

@@ -1,6 +1,6 @@
 {
   "name": "@enwithai/product-check",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0",
   "description": "Evidence-led product assurance and software blueprinting: scan a repository and/or an authorized deployed app, validate Customer, Technology and Trust controls with evidence, and get findings, a remediation blueprint, a readiness verdict and a local dashboard. Local-first; JSON is the source of truth.",
   "license": "MIT",
   "author": "EnWithAI Technologies",
@@ -72,7 +72,6 @@
     "vitest": "5.0.3"
   },
   "publishConfig": {
-    "access": "public",
-    "tag": "alpha"
+    "access": "public"
   }
 }

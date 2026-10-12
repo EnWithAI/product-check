@@ -8,7 +8,7 @@
     "finished_at": "2026-10-15T10:00:00.000Z",
     "duration_ms": 0,
     "tool": "product-check",
-    "tool_version": "0.1.0-alpha.0",
+    "tool_version": "0.1.0",
     "node_version": "normalized",
     "methodology": {
       "name": "CT3",
@@ -99,7 +99,7 @@
     },
     "baseline": {
       "run_id": "PCR-20261014T100000Z-DAFCB5",
-      "sha256": "a57c5623890af603bc8fe08ed306d23bdbb1cf5aa15377346f8c6156de2deacf"
+      "sha256": "eb4ac85e7f99c303f9e61aebf5b30a5386128bcb787b41b48bd45beca332b2bf"
     },
     "demo": true
   },
@@ -9083,7 +9083,7 @@
   },
   "comparison": {
     "baseline_run_id": "PCR-20261014T100000Z-DAFCB5",
-    "baseline_sha256": "a57c5623890af603bc8fe08ed306d23bdbb1cf5aa15377346f8c6156de2deacf",
+    "baseline_sha256": "eb4ac85e7f99c303f9e61aebf5b30a5386128bcb787b41b48bd45beca332b2bf",
     "score_delta": {
       "customer": 60,
       "technology": 90,

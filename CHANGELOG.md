@@ -6,6 +6,12 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
+## 0.1.0 — 2026-10-12
+
+First release without a pre-release suffix, so `npm install @enwithai/product-check` and `npx @enwithai/product-check` work without a
+tag. No functional changes from 0.1.0-alpha.0. Still pre-1.0: the report schema and command options may change in minor
+versions.
+
 ## 0.1.0-alpha.0 — 2026-10-12 (published to npm)
 
 First alpha. MIT licensed.
