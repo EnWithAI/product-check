@@ -84,7 +84,7 @@ function importReport<T>(
 }
 
 /** Run ID: UTC timestamp plus a short hash of the contract and start time. */
-function makeRunId(started: Date, contract: ScanContract): string {
+export function makeRunId(started: Date, contract: ScanContract): string {
   const stamp = started
     .toISOString()
     .replace(/[-:]/g, "")

@@ -10,6 +10,7 @@
  * 4. Apply the remediation commit, restart the deployment in its fixed form, run the app's real tests with the
  *    JUnit reporter, and record the observations again.
  * 5. Retest offline against the baseline → output/retest.
+ * 6. Reverse-engineer the as-built spec of the remediated app → output/as-built.
  *
  * Normalized for byte-reproducibility (and nothing else): observation timestamps and timings, JUnit times and
  * absolute file paths, and run.node_version. The clock is fixed with SOURCE_DATE_EPOCH.
@@ -196,7 +197,9 @@ try {
     RETEST_EPOCH
   );
   normalizeNode(join(demo, "output/retest/product-check-results.json"));
-  console.log("Wrote examples/vibe-app-demo/inputs/* and output/{baseline,retest}/*");
+  // 6: as-built spec of the remediated app (source only; no requests)
+  cli(["spec", "--contract", "scan-contract.json", "--out-dir", "output/as-built", "--quiet"], RETEST_EPOCH);
+  console.log("Wrote examples/vibe-app-demo/inputs/* and output/{baseline,retest,as-built}/*");
 } finally {
   rmSync(tmp, { recursive: true, force: true });
 }

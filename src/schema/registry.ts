@@ -18,6 +18,7 @@ export const KIND_SCHEMA: Record<string, string> = {
   blueprint: "blueprint.schema.json",
   "release-verdict": "release-verdict.schema.json",
   observations: "observations.schema.json",
+  "as-built-spec": "as-built-spec.schema.json",
 };
 
 let cached: SchemaRegistry | null = null;

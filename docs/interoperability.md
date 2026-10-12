@@ -27,6 +27,10 @@ standalone sub-documents (`scan-contract`, `pop-coverage`, `scorecard`, `bluepri
 on their own, and work packets are plain JSON objects (also rendered as Markdown) that any coding agent can consume.
 Stable IDs (`PCF-…` findings, `WP-PC-…` packets, `PC-…` controls) let another system track items across runs.
 
+`product-check spec` writes `as-built-spec.json` (schema `as-built-spec.schema.json`; stable `SRF-…` surface IDs)
+and a Spec Kit `specs/000-as-built/spec.md`. Spec Check reads the Markdown, and its report comes back in through
+`--spec-check`, which closes the loop from code to spec to PC-C-10.
+
 ## CrewPE (optional)
 
 CrewPE is EnWithAI's commercial engineering-lifecycle product. It could orchestrate Product Check runs and consume the

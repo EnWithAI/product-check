@@ -513,6 +513,16 @@ describe("A10 the documented demo works locally from a fresh clone", () => {
           );
         }
         expect(existsSync(join(work, "output/retest/dashboard.html"))).toBe(true);
+        const spec = await cli(
+          ["spec", "--contract", "scan-contract.json", "--out-dir", "output/as-built", "--quiet"],
+          work,
+          new Date(1792058400 * 1000)
+        );
+        expect(spec.code, spec.stderr).toBe(0);
+        for (const file of ["as-built-spec.json", "specs/000-as-built/spec.md"])
+          expect(readFileSync(join(work, `output/as-built/${file}`), "utf8")).toBe(
+            readFileSync(join(DEMO, `output/as-built/${file}`), "utf8")
+          );
       } finally {
         rmSync(work, { recursive: true, force: true });
       }

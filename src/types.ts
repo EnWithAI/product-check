@@ -474,3 +474,62 @@ export interface Results {
   history: RunSummary[];
   limitations: Limitation[];
 }
+
+// ---------------------------------------------------------------------------------------------------------------
+// As-built specification (reverse-engineered from a repository)
+
+/** Certainty of a statement in an as-built specification. */
+export type SpecCertainty = "observed" | "inferred" | "hypothesis";
+
+/** One element of the discovered product surface, with its evidence. */
+export interface SurfaceEntry {
+  id: string;
+  kind: "page" | "endpoint" | "entity" | "config" | "integration" | "auth-boundary" | "test";
+  name: string;
+  method: string | null;
+  area: string;
+  detail: string;
+  location: { path: string; line: number | null };
+  certainty: "observed" | "inferred";
+  auth_hint: boolean;
+  evidence_ids: string[];
+}
+
+/** A requirement statement derived from the surface. */
+export interface SpecRequirement {
+  id: string;
+  statement: string;
+  certainty: SpecCertainty;
+  surface_ids: string[];
+  evidence_ids: string[];
+}
+
+/** A user story grouping one area of the surface. */
+export interface SpecStory {
+  id: string;
+  area: string;
+  title: string;
+  critical_journey: string | null;
+  surface_ids: string[];
+  requirement_ids: string[];
+  test_behaviours: string[];
+}
+
+/** The as-built specification document. */
+export interface AsBuiltSpec {
+  schema_version: typeof SCHEMA_VERSION;
+  kind: "as-built-spec";
+  generated_at: string;
+  tool: { name: "product-check"; version: string };
+  target: { name: string; repository: string; commit: string | null; ref: string | null };
+  surface: SurfaceEntry[];
+  stories: SpecStory[];
+  requirements: SpecRequirement[];
+  non_functional: SpecRequirement[];
+  success_criteria: SpecRequirement[];
+  edge_cases: SpecRequirement[];
+  clarifications: string[];
+  uncertainties: string[];
+  evidence: Evidence[];
+  limitations: Limitation[];
+}

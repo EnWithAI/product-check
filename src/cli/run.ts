@@ -12,11 +12,15 @@ import { decidePermissions } from "../contract/safety.js";
 import { buildPops, popCoverage } from "../discovery/pops.js";
 import { snapshotRepo } from "../discovery/repo.js";
 import { renderDashboard } from "../dashboard/render.js";
+import { EvidenceCollector } from "../evidence/collector.js";
 import { ExitCode, ProductCheckError, inputError, usageError } from "../errors.js";
 import { deriveFacts } from "../inspectors/source/facts.js";
+import { deriveSurface } from "../inspectors/source/surface.js";
 import { renderBlueprint, renderPacket, renderReport } from "../reporting/markdown.js";
-import { runAssessment } from "../run.js";
+import { renderAsBuiltSpec } from "../reporting/spec-markdown.js";
+import { makeRunId, runAssessment } from "../run.js";
 import { formatErrors, KIND_SCHEMA, schemaFiles, schemaText, validateAgainst } from "../schema/registry.js";
+import { buildAsBuiltSpec } from "../spec/build.js";
 import type { Results, ScanContract, Verdict } from "../types.js";
 import { sha256 } from "../util/hash.js";
 import { relativize } from "../util/paths.js";
@@ -47,6 +51,9 @@ Usage:
                                        Discovery only: what could be inspected (no requests, no checks)
   product-check init [--repo <dir>] [--url <url>] [--stage <stage>] [--output <file>]
                                        Write a scan contract to edit (default product-check.contract.json)
+  product-check spec --repo <dir> [--contract <file>] [--out-dir <dir>] [--format md|json|both]
+                                       Reverse-engineer an as-built spec (Spec Kit spec.md + JSON) from the
+                                       repository's structure; nothing is executed
   product-check validate <file>...     Validate artifacts against the schemas (+ integrity for results)
   product-check report <results.json>  Markdown report        product-check blueprint <results.json>
   product-check dashboard <results.json> [--output dashboard.html]
@@ -364,6 +371,62 @@ function commandScan(values: Values, io: CliIO): number {
   return ExitCode.Ok;
 }
 
+/** spec: reverse-engineer an as-built specification from the repository (source only, no requests). */
+function commandSpec(values: Values, io: CliIO): number {
+  const { contract } = buildContract(values, io);
+  if (!contract.target.repository)
+    throw usageError("spec reads a repository: pass --repo <dir>.", "Example: product-check spec --repo .");
+  const format = values.format ?? "both";
+  if (!["md", "json", "both"].includes(format)) throw usageError("--format must be md, json or both.");
+  const repoPath = contract.target.repository.path;
+  const facts = deriveFacts(snapshotRepo(repoPath, contract.constraints.max_files, contract.target.name));
+  const started = io.now?.() ?? new Date();
+  const now = started.toISOString();
+  const ev = new EvidenceCollector(makeRunId(started, relativize(contract, io.cwd)), now);
+  const spec = buildAsBuiltSpec({
+    contract,
+    facts,
+    surface: deriveSurface(facts),
+    ev,
+    repository: display(io.cwd, repoPath),
+    generatedAt: now,
+  });
+  if (values.json) {
+    io.stdout(`${JSON.stringify(spec, null, 2)}\n`);
+    return ExitCode.Ok;
+  }
+  const outDir = isAbsolute(values["out-dir"] ?? "")
+    ? (values["out-dir"] as string)
+    : resolve(io.cwd, values["out-dir"] ?? ".product-check");
+  const written: string[] = [];
+  if (format !== "md") {
+    writeFile(join(outDir, "as-built-spec.json"), `${JSON.stringify(spec, null, 2)}\n`);
+    written.push("as-built-spec.json");
+  }
+  if (format !== "json") {
+    writeFile(join(outDir, "specs", "000-as-built", "spec.md"), renderAsBuiltSpec(spec));
+    written.push("specs/000-as-built/spec.md");
+  }
+  if (!values.quiet) {
+    const count = (k: string): number => spec.surface.filter((s) => s.kind === k).length;
+    io.stdout(
+      [
+        `As-built spec for ${contract.target.name} (source only; nothing executed, no requests sent)`,
+        `  ${count("page")} page(s), ${count("endpoint")} endpoint(s), ${count("entity")} entit(y/ies), ${count("integration")} integration(s), ${count("config")} config name(s), ${count("test")} test title(s)`,
+        `  ${spec.requirements.length} functional requirement(s), ${spec.non_functional.length} non-functional, ${spec.clarifications.length} clarification(s) for a person to answer`,
+        `Wrote ${display(io.cwd, outDir)}/: ${written.join(", ")}`,
+        format !== "json"
+          ? `Next: answer the NEEDS CLARIFICATION markers, then lint it: spec-check check ${display(io.cwd, join(outDir, "specs", "000-as-built", "spec.md"))}`
+          : "",
+        "",
+      ]
+        .filter((l, i, a) => l !== "" || i === a.length - 1)
+        .join("\n")
+    );
+  }
+  return ExitCode.Ok;
+}
+
 /** init: write a contract. */
 function commandInit(values: Values, io: CliIO): number {
   const out = isAbsolute(values.output ?? "")
@@ -468,6 +531,9 @@ async function main(argv: string[], io: CliIO): Promise<number> {
     case "scan":
       if (rest.length > 0) throw usageError(`Unexpected argument: ${rest[0] as string}`);
       return commandScan(values, io);
+    case "spec":
+      if (rest.length > 0) throw usageError(`Unexpected argument: ${rest[0] as string}`);
+      return commandSpec(values, io);
     case "init":
       return commandInit(values, io);
     case "validate":
@@ -545,7 +611,7 @@ async function main(argv: string[], io: CliIO): Promise<number> {
     default:
       throw usageError(
         `Unknown command: ${command}`,
-        "Commands: run, retest, scan, init, validate, report, blueprint, dashboard, controls, schema."
+        "Commands: run, retest, scan, spec, init, validate, report, blueprint, dashboard, controls, schema."
       );
   }
 }

@@ -6,6 +6,12 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
+- `product-check spec`: reverse-engineers an as-built specification from a repository (pages, endpoints, data
+  entities, integrations, configuration names, auth boundaries, test titles) with evidence for every item. It writes
+  `as-built-spec.json` (new schema `as-built-spec.schema.json`) and a Spec Kit `specs/000-as-built/spec.md` that Spec
+  Check can lint. Intent that code cannot show is left as `[NEEDS CLARIFICATION]`. Source only; nothing executed.
+- Demo: `examples/vibe-app-demo/output/as-built/` (checked against a fresh run in the acceptance tests).
+
 ## 0.1.0 — 2026-10-12
 
 First release without a pre-release suffix, so `npm install @enwithai/product-check` and `npx @enwithai/product-check` work without a

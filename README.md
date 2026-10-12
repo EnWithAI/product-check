@@ -112,6 +112,7 @@ authorization or tenant-isolation tests) to the controls Product Check cannot te
 | `run`                              | Scan → Test → Validate → Blueprint; writes results and renderings                                 |
 | `retest --baseline <file>`         | `run` plus comparison: verified fixes, reopened and new findings, regressions, trends             |
 | `scan`                             | Discovery only: which points of presence exist and what could be checked (no requests, no checks) |
+| `spec`                             | Reverse-engineers an as-built spec (Spec Kit `spec.md` + JSON) from the repository's structure    |
 | `init`                             | Writes an editable scan contract                                                                  |
 | `validate <file>…`                 | Schema validation; for results also referential integrity and recomputation of scores and verdict |
 | `report`, `blueprint`, `dashboard` | Re-render from a results file                                                                     |

@@ -4,6 +4,7 @@
 product-check run      [inputs] [output options]
 product-check retest   --baseline <results.json> [inputs] [output options]
 product-check scan     [--repo <dir>] [--url <url>] [--json]
+product-check spec     --repo <dir> | --contract <file> [--out-dir <dir>] [--format md|json|both] [--json] [--quiet]
 product-check init     [--repo <dir>] [--url <url>] [--stage <stage>] [--name <name>] [--authorize …] [--output <file>] [--force]
 product-check validate <file>...
 product-check report    <results.json> [--format markdown|json] [--output <file>] [--no-branding]
@@ -43,6 +44,32 @@ product-check schema    [name]
 | `--no-dashboard`, `--no-branding`, `--quiet` |                                             |
 
 `SOURCE_DATE_EPOCH` (seconds) fixes the clock for reproducible output.
+
+## As-built spec (`spec`)
+
+`spec` reverse-engineers a specification from the repository's structure. It reads the same snapshot as `run`
+(read-only; git-ignored files are never read; nothing is executed; no requests are sent) and writes to `--out-dir`
+(default `.product-check/`):
+
+- `as-built-spec.json`: the discovered surface (pages, endpoints, data entities, integrations, configuration
+  variable **names**, authentication boundaries, test titles) with evidence, plus derived `FR-`/`NFR-`/`SC-`/`EC-`
+  items, each marked `observed`, `inferred` or `hypothesis`. It validates with `product-check validate`.
+- `specs/000-as-built/spec.md`: the same content in GitHub Spec Kit layout, so Spec Check reads it without flags.
+
+Code shows what exists, not why. Purpose, users, priorities and measurable targets are therefore written as
+`[NEEDS CLARIFICATION: …]` markers, and Spec Check will block the spec until a person answers them. That is
+intended. The loop is:
+
+```bash
+product-check spec --repo .                                   # 1. derive
+# 2. answer the clarifications and correct statements in .product-check/specs/000-as-built/spec.md
+spec-check check .product-check/specs --format json > spec-check.json   # 3. lint
+product-check run --repo . --spec-check spec-check.json       # 4. PC-C-10 now evaluates instead of NOT_TESTED
+```
+
+Recognised: Next.js (app and pages routers), SvelteKit, Astro, React Router, Express/Fastify/Hono/Koa/NestJS,
+FastAPI/Flask, Prisma, Drizzle, Mongoose, SQL `CREATE TABLE`, SQLAlchemy/Django models. Other stacks yield an honest,
+mostly empty surface with a stated uncertainty.
 
 ## Exit codes
 
