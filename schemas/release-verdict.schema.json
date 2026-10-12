@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/release-verdict.schema.json",
+  "title": "Product Check release verdict",
+  "description": "Readiness for the declared lifecycle objective, bounded by the evidence collected. Hard-gate failures and open P0/P1 findings cannot be averaged away.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "verdict",
+    "tier",
+    "tier_alias",
+    "reasons",
+    "blocking_gates",
+    "blocking_findings",
+    "not_verified",
+    "accepted_risks",
+    "rejected_acceptances",
+    "bounded_by",
+    "approval",
+    "rationale"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "release-verdict"
+    },
+    "verdict": {
+      "$ref": "common.schema.json#/$defs/verdict"
+    },
+    "tier": {
+      "$ref": "common.schema.json#/$defs/tier"
+    },
+    "tier_alias": {
+      "type": "string"
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "blocking_gates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^G-[A-Z-]+$"
+      }
+    },
+    "blocking_findings": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/finding_id"
+      }
+    },
+    "not_verified": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_id"
+      }
+    },
+    "accepted_risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["acceptance_id", "finding_ids", "owner", "expires"],
+        "properties": {
+          "acceptance_id": {
+            "type": "string"
+          },
+          "finding_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/finding_id"
+            }
+          },
+          "owner": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "rejected_acceptances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["acceptance_id", "reason"],
+        "properties": {
+          "acceptance_id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "bounded_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "approver", "status"],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "approver": {
+          "type": ["string", "null"]
+        },
+        "status": {
+          "const": "UNAPPROVED"
+        }
+      }
+    },
+    "rationale": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "READY is impossible with blocking gates or findings.",
+      "if": {
+        "properties": {
+          "verdict": {
+            "const": "READY"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "blocking_gates": {
+            "type": "array",
+            "maxItems": 0
+          },
+          "blocking_findings": {
+            "type": "array",
+            "maxItems": 0
+          },
+          "not_verified": {
+            "type": "array",
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

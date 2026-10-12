@@ -1,0 +1,74 @@
+{
+  "name": "@enwithai/product-check",
+  "version": "0.1.0-alpha.0",
+  "private": true,
+  "description": "Evidence-led product assurance and software blueprinting: scan a repository and/or an authorized deployed app, validate Customer, Technology and Trust controls with evidence, and get findings, a remediation blueprint, a readiness verdict and a local dashboard. Local-first; JSON is the source of truth.",
+  "license": "UNLICENSED",
+  "author": "EnWithAI Technologies",
+  "homepage": "https://github.com/enwithai/product-check#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enwithai/product-check.git"
+  },
+  "bugs": {
+    "url": "https://github.com/enwithai/product-check/issues"
+  },
+  "type": "module",
+  "bin": {
+    "product-check": "dist/cli/main.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./schemas/*": "./schemas/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/",
+    "schemas/",
+    "dashboard/",
+    "README.md",
+    "SECURITY.md",
+    "CHANGELOG.md",
+    "NOTICE.md",
+    "ATTRIBUTION.md",
+    "TRADEMARKS.md"
+  ],
+  "engines": {
+    "node": "^22 || ^24 || >=26"
+  },
+  "keywords": [
+    "product-assurance",
+    "release-readiness",
+    "security-headers",
+    "secrets",
+    "vibe-coding",
+    "ai-engineering",
+    "developer-tools"
+  ],
+  "scripts": {
+    "build": "node scripts/clean.mjs && tsc -p tsconfig.build.json && node scripts/postbuild.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "demo": "node scripts/generate-demo-output.mjs",
+    "check:all": "npm run typecheck && npm run lint && npm run format:check && npm run build && npm run test:coverage"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.1",
+    "@vitest/coverage-v8": "5.0.3",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "eslint": "10.12.0",
+    "prettier": "3.9.9",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.1",
+    "vitest": "5.0.3"
+  }
+}

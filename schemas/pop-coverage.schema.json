@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/pop-coverage.schema.json",
+  "title": "Product Check point-of-presence coverage",
+  "description": "Every place the assessment could observe the product, whether it was accessible, under which authorization, and what evidence came from it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "pops", "summary"],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "pop-coverage"
+    },
+    "pops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "category",
+          "name",
+          "status",
+          "relevant",
+          "access",
+          "authorization",
+          "scope",
+          "observed_at",
+          "provenance",
+          "limitations",
+          "evidence_ids"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "category": {
+            "enum": ["experience", "interfaces", "source-build", "data", "operations", "ai", "governance"]
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/pop_status"
+          },
+          "relevant": {
+            "type": "boolean"
+          },
+          "access": {
+            "enum": ["read-only", "none"]
+          },
+          "authorization": {
+            "enum": ["authorized", "not-authorized", "not-required"]
+          },
+          "scope": {
+            "type": ["string", "null"]
+          },
+          "observed_at": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "common.schema.json#/$defs/timestamp"
+              }
+            ]
+          },
+          "provenance": {
+            "enum": ["observed", "imported", "declared", "inferred", "none"]
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/evidence_id"
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["available", "partial", "blocked", "not_applicable", "relevant"],
+      "properties": {
+        "available": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "partial": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "not_applicable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "relevant": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/evidence.schema.json",
+  "title": "Product Check evidence item",
+  "description": "One piece of evidence: where it came from, when, how strong it is, a checksum and a short redacted excerpt (never full file or response contents).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "run_id",
+    "kind",
+    "pop",
+    "collected_at",
+    "strength",
+    "provenance",
+    "source",
+    "summary",
+    "excerpt",
+    "checksum",
+    "redaction",
+    "validation_ids"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/evidence_id"
+    },
+    "run_id": {
+      "$ref": "common.schema.json#/$defs/run_id"
+    },
+    "kind": {
+      "enum": [
+        "source-location",
+        "file-presence",
+        "manifest-field",
+        "search-scope",
+        "http-response",
+        "test-result",
+        "imported-report",
+        "baseline-comparison",
+        "declaration"
+      ]
+    },
+    "pop": {
+      "type": "string"
+    },
+    "collected_at": {
+      "$ref": "common.schema.json#/$defs/timestamp"
+    },
+    "strength": {
+      "$ref": "common.schema.json#/$defs/strength"
+    },
+    "provenance": {
+      "enum": ["observed", "imported", "declared", "inferred"]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locator", "line_start", "line_end", "revision"],
+      "properties": {
+        "locator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "line_start": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "line_end": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "revision": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "excerpt": {
+      "type": ["string", "null"],
+      "maxLength": 400
+    },
+    "checksum": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "value"],
+          "properties": {
+            "algorithm": {
+              "const": "sha256"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      ]
+    },
+    "redaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["applied", "rules"],
+      "properties": {
+        "applied": {
+          "type": "boolean"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "validation_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/validation_id"
+      }
+    }
+  }
+}

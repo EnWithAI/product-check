@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/finding.schema.json",
+  "title": "Product Check finding",
+  "description": "A substantiated weakness tied to one control, with severity, epistemic status, confidence, evidence, root cause and lifecycle across retests.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "control_id",
+    "title",
+    "category",
+    "pillar",
+    "severity",
+    "ux_severity",
+    "status",
+    "lifecycle",
+    "epistemic",
+    "confidence",
+    "reproducibility",
+    "reproduction",
+    "pop",
+    "location",
+    "expected",
+    "actual",
+    "impact",
+    "root_cause",
+    "evidence_ids",
+    "validation_id",
+    "work_packet_id",
+    "first_seen_run",
+    "history"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/finding_id"
+    },
+    "control_id": {
+      "$ref": "common.schema.json#/$defs/control_id"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string"
+    },
+    "pillar": {
+      "$ref": "common.schema.json#/$defs/pillar"
+    },
+    "severity": {
+      "$ref": "common.schema.json#/$defs/severity"
+    },
+    "ux_severity": {
+      "$ref": "common.schema.json#/$defs/ux_severity"
+    },
+    "status": {
+      "enum": ["OPEN", "ACCEPTED_RISK", "RESOLVED", "UNVERIFIED"]
+    },
+    "lifecycle": {
+      "enum": ["NEW", "PERSISTING", "REOPENED", "RESOLVED", "CARRIED_UNVERIFIED"]
+    },
+    "epistemic": {
+      "$ref": "common.schema.json#/$defs/epistemic"
+    },
+    "confidence": {
+      "$ref": "common.schema.json#/$defs/confidence"
+    },
+    "reproducibility": {
+      "enum": ["deterministic", "single-observation", "not-reproduced"]
+    },
+    "reproduction": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pop": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "expected": {
+      "type": "string"
+    },
+    "actual": {
+      "type": "string"
+    },
+    "impact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["customer", "technology", "trust"],
+      "properties": {
+        "customer": {
+          "type": ["string", "null"]
+        },
+        "technology": {
+          "type": ["string", "null"]
+        },
+        "trust": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "root_cause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "certainty"],
+      "properties": {
+        "statement": {
+          "type": "string"
+        },
+        "certainty": {
+          "$ref": "common.schema.json#/$defs/epistemic"
+        }
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/evidence_id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "validation_id": {
+      "$ref": "common.schema.json#/$defs/validation_id"
+    },
+    "work_packet_id": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/work_packet_id"
+        }
+      ]
+    },
+    "first_seen_run": {
+      "$ref": "common.schema.json#/$defs/run_id"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["run_id", "status", "evidence_ids"],
+        "properties": {
+          "run_id": {
+            "$ref": "common.schema.json#/$defs/run_id"
+          },
+          "status": {
+            "enum": ["OPEN", "ACCEPTED_RISK", "RESOLVED", "UNVERIFIED"]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/evidence_id"
+            }
+          }
+        }
+      }
+    }
+  }
+}

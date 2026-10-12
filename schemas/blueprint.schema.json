@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/blueprint.schema.json",
+  "title": "Product Check blueprint",
+  "description": "As-is and to-be architecture, prioritized remediations, agent-ready work packets, target test architecture and the finding-to-retest traceability chain. Remediations are advisory: nothing is applied to code.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "as_is",
+    "to_be",
+    "remediations",
+    "work_packets",
+    "test_architecture",
+    "traceability",
+    "human_review"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "blueprint"
+    },
+    "as_is": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["components", "uncertainties"],
+      "properties": {
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "category", "name", "certainty", "evidence_ids"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^CMP-"
+              },
+              "category": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "certainty": {
+                "enum": ["observed", "inferred"]
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/evidence_id"
+                }
+              }
+            }
+          }
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "to_be": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["changes"],
+      "properties": {
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "statement", "rationale", "alternatives", "finding_ids"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^TB-"
+              },
+              "statement": {
+                "type": "string"
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "alternatives": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "finding_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/finding_id"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "remediations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "control_id",
+          "finding_ids",
+          "problem",
+          "why_it_matters",
+          "recommended_change",
+          "benefits",
+          "horizon",
+          "priority",
+          "effort",
+          "owner",
+          "depends_on",
+          "human_review_required",
+          "acceptance_criteria",
+          "regression_test",
+          "verification"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/remediation_id"
+          },
+          "control_id": {
+            "$ref": "common.schema.json#/$defs/control_id"
+          },
+          "finding_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/finding_id"
+            },
+            "minItems": 1
+          },
+          "problem": {
+            "type": "string"
+          },
+          "why_it_matters": {
+            "type": "string"
+          },
+          "recommended_change": {
+            "type": "string"
+          },
+          "benefits": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["customer", "technology", "trust"],
+            "properties": {
+              "customer": {
+                "type": ["string", "null"]
+              },
+              "technology": {
+                "type": ["string", "null"]
+              },
+              "trust": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "horizon": {
+            "$ref": "common.schema.json#/$defs/horizon"
+          },
+          "priority": {
+            "$ref": "common.schema.json#/$defs/severity"
+          },
+          "effort": {
+            "enum": ["S", "M", "L", null]
+          },
+          "owner": {
+            "type": ["string", "null"]
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/remediation_id"
+            }
+          },
+          "human_review_required": {
+            "type": "boolean"
+          },
+          "acceptance_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 5
+            },
+            "minItems": 1
+          },
+          "regression_test": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["description", "candidate"],
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "candidate": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["language", "code"],
+                    "properties": {
+                      "language": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "verification": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["status", "method", "verified_in_run", "evidence_ids"],
+            "properties": {
+              "status": {
+                "enum": ["PROPOSED", "VERIFIED", "FAILED_VERIFICATION", "UNVERIFIED"]
+              },
+              "method": {
+                "type": "string"
+              },
+              "verified_in_run": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "common.schema.json#/$defs/run_id"
+                  }
+                ]
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/evidence_id"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "work_packets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "remediation_id",
+          "title",
+          "objective",
+          "finding_ids",
+          "context",
+          "constraints",
+          "suggested_steps",
+          "acceptance_criteria",
+          "verification_command",
+          "human_approval_required",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/work_packet_id"
+          },
+          "remediation_id": {
+            "$ref": "common.schema.json#/$defs/remediation_id"
+          },
+          "title": {
+            "type": "string"
+          },
+          "objective": {
+            "type": "string"
+          },
+          "finding_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/finding_id"
+            },
+            "minItems": 1
+          },
+          "context": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["locations", "evidence_ids"],
+            "properties": {
+              "locations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/evidence_id"
+                }
+              }
+            }
+          },
+          "constraints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suggested_steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptance_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 5
+            },
+            "minItems": 1
+          },
+          "verification_command": {
+            "type": "string",
+            "minLength": 1
+          },
+          "human_approval_required": {
+            "type": "boolean"
+          },
+          "status": {
+            "enum": ["PROPOSED", "VERIFIED", "FAILED_VERIFICATION", "UNVERIFIED"]
+          }
+        }
+      }
+    },
+    "test_architecture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["layers"],
+      "properties": {
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["layer", "current", "evidence_ids", "target"],
+            "properties": {
+              "layer": {
+                "type": "string"
+              },
+              "current": {
+                "enum": ["present", "absent", "unknown"]
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/evidence_id"
+                }
+              },
+              "target": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "traceability": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "finding_id",
+          "intent",
+          "journey_or_requirement",
+          "observed_behavior",
+          "component",
+          "evidence_ids",
+          "root_cause",
+          "remediation_id",
+          "acceptance_criterion",
+          "regression_test",
+          "retest_outcome"
+        ],
+        "properties": {
+          "finding_id": {
+            "$ref": "common.schema.json#/$defs/finding_id"
+          },
+          "intent": {
+            "type": ["string", "null"]
+          },
+          "journey_or_requirement": {
+            "type": "string"
+          },
+          "observed_behavior": {
+            "type": "string"
+          },
+          "component": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/evidence_id"
+            },
+            "minItems": 1
+          },
+          "root_cause": {
+            "type": "string"
+          },
+          "remediation_id": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "common.schema.json#/$defs/remediation_id"
+              }
+            ]
+          },
+          "acceptance_criterion": {
+            "type": ["string", "null"]
+          },
+          "regression_test": {
+            "type": ["string", "null"]
+          },
+          "retest_outcome": {
+            "enum": ["NOT_RETESTED", "VERIFIED", "STILL_FAILING", "UNVERIFIED"]
+          }
+        }
+      }
+    },
+    "human_review": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

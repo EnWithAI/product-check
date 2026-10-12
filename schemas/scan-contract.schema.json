@@ -1,0 +1,401 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/scan-contract.schema.json",
+  "title": "Product Check scan contract",
+  "description": "What is assessed, how, at which lifecycle tier, and which actions are authorized. Network actions require an attestation and an origin scope.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "contract_id",
+    "labels",
+    "target",
+    "mode",
+    "lifecycle_stage",
+    "tiers",
+    "product",
+    "personas",
+    "critical_journeys",
+    "authorization",
+    "constraints",
+    "imports",
+    "control_mappings",
+    "risk_acceptances",
+    "scoring",
+    "release"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "scan-contract"
+    },
+    "contract_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["demo"],
+      "properties": {
+        "demo": {
+          "type": "boolean"
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "purpose", "repository", "application"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "purpose": {
+          "type": ["string", "null"],
+          "maxLength": 2000
+        },
+        "repository": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["path"],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        },
+        "application": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["url"],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "pattern": "^https?://"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "mode": {
+      "$ref": "common.schema.json#/$defs/mode"
+    },
+    "lifecycle_stage": {
+      "$ref": "common.schema.json#/$defs/stage"
+    },
+    "tiers": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/tier"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      ]
+    },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["has_user_accounts", "multi_tenant", "handles_personal_data", "uses_ai", "payments"],
+      "properties": {
+        "has_user_accounts": {
+          "type": ["boolean", "null"]
+        },
+        "multi_tenant": {
+          "type": ["boolean", "null"]
+        },
+        "handles_personal_data": {
+          "type": ["boolean", "null"]
+        },
+        "uses_ai": {
+          "type": ["boolean", "null"]
+        },
+        "payments": {
+          "type": ["boolean", "null"]
+        }
+      }
+    },
+    "personas": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "maxItems": 50
+    },
+    "critical_journeys": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 500
+      },
+      "maxItems": 100
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized_actions", "prohibited_actions", "scope", "attestation"],
+      "properties": {
+        "authorized_actions": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/action"
+          },
+          "uniqueItems": true
+        },
+        "prohibited_actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["origins"],
+          "properties": {
+            "origins": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^https?://[^/]+$"
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        "attestation": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["statement", "authorized_by", "date"],
+              "properties": {
+                "statement": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1000
+                },
+                "authorized_by": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_requests", "request_timeout_ms", "max_files"],
+      "properties": {
+        "max_requests": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "request_timeout_ms": {
+          "type": "integer",
+          "minimum": 500,
+          "maximum": 30000
+        },
+        "max_files": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        }
+      }
+    },
+    "imports": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "test_results",
+        "npm_audit",
+        "har",
+        "observations",
+        "spec_check",
+        "impact_check",
+        "outcome_check"
+      ],
+      "properties": {
+        "test_results": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "maxItems": 50
+        },
+        "npm_audit": {
+          "type": ["string", "null"]
+        },
+        "har": {
+          "type": ["string", "null"]
+        },
+        "observations": {
+          "type": ["string", "null"]
+        },
+        "spec_check": {
+          "type": ["string", "null"]
+        },
+        "impact_check": {
+          "type": ["string", "null"]
+        },
+        "outcome_check": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "control_mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["control_id", "test_name_pattern"],
+        "properties": {
+          "control_id": {
+            "$ref": "common.schema.json#/$defs/control_id"
+          },
+          "test_name_pattern": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        }
+      },
+      "maxItems": 200
+    },
+    "risk_acceptances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "control_id",
+          "finding_id",
+          "rationale",
+          "owner",
+          "compensating_control",
+          "expires",
+          "closure_condition"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "control_id": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "common.schema.json#/$defs/control_id"
+              }
+            ]
+          },
+          "finding_id": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "common.schema.json#/$defs/finding_id"
+              }
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 10
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "compensating_control": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expires": {
+            "type": "string",
+            "format": "date"
+          },
+          "closure_condition": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "maxItems": 200
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_coverage", "pillar_threshold"],
+      "properties": {
+        "min_coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "pillar_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approver"],
+      "properties": {
+        "approver": {
+          "type": ["string", "null"],
+          "maxLength": 200
+        }
+      }
+    }
+  }
+}

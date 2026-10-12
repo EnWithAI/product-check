@@ -1,0 +1,459 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/scorecard.schema.json",
+  "title": "Product Check scorecard",
+  "description": "Customer, Technology and Trust scored separately, each with coverage and confidence. A score is null when evidence is insufficient. There is deliberately no composite score.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "rubric_version",
+    "pillars",
+    "overall_coverage",
+    "gates",
+    "open_findings",
+    "accepted_risks",
+    "blocked_controls",
+    "not_tested_controls",
+    "parameters"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "scorecard"
+    },
+    "rubric_version": {
+      "const": "pc-rubric-0.1"
+    },
+    "pillars": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["customer", "technology", "trust"],
+      "properties": {
+        "customer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "score",
+            "state",
+            "coverage",
+            "confidence",
+            "cap",
+            "trend",
+            "counts",
+            "applicable_weight",
+            "checked_weight"
+          ],
+          "properties": {
+            "score": {
+              "type": ["number", "null"],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "state": {
+              "enum": ["SCORED", "INSUFFICIENT_EVIDENCE"]
+            },
+            "coverage": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "confidence": {
+              "enum": ["HIGH", "MEDIUM", "LOW", "NONE"]
+            },
+            "cap": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["applied", "limit", "reason"],
+              "properties": {
+                "applied": {
+                  "type": "boolean"
+                },
+                "limit": {
+                  "type": ["number", "null"]
+                },
+                "reason": {
+                  "type": ["string", "null"]
+                }
+              }
+            },
+            "trend": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["previous_score", "delta", "previous_run_id"],
+                  "properties": {
+                    "previous_score": {
+                      "type": ["number", "null"]
+                    },
+                    "delta": {
+                      "type": ["number", "null"]
+                    },
+                    "previous_run_id": {
+                      "$ref": "common.schema.json#/$defs/run_id"
+                    }
+                  }
+                }
+              ]
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["PASS", "PARTIAL", "FAIL", "BLOCKED", "NOT_TESTED", "NOT_APPLICABLE"],
+              "properties": {
+                "PASS": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "PARTIAL": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "FAIL": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "BLOCKED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NOT_TESTED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NOT_APPLICABLE": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "applicable_weight": {
+              "type": "number",
+              "minimum": 0
+            },
+            "checked_weight": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "technology": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "score",
+            "state",
+            "coverage",
+            "confidence",
+            "cap",
+            "trend",
+            "counts",
+            "applicable_weight",
+            "checked_weight"
+          ],
+          "properties": {
+            "score": {
+              "type": ["number", "null"],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "state": {
+              "enum": ["SCORED", "INSUFFICIENT_EVIDENCE"]
+            },
+            "coverage": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "confidence": {
+              "enum": ["HIGH", "MEDIUM", "LOW", "NONE"]
+            },
+            "cap": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["applied", "limit", "reason"],
+              "properties": {
+                "applied": {
+                  "type": "boolean"
+                },
+                "limit": {
+                  "type": ["number", "null"]
+                },
+                "reason": {
+                  "type": ["string", "null"]
+                }
+              }
+            },
+            "trend": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["previous_score", "delta", "previous_run_id"],
+                  "properties": {
+                    "previous_score": {
+                      "type": ["number", "null"]
+                    },
+                    "delta": {
+                      "type": ["number", "null"]
+                    },
+                    "previous_run_id": {
+                      "$ref": "common.schema.json#/$defs/run_id"
+                    }
+                  }
+                }
+              ]
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["PASS", "PARTIAL", "FAIL", "BLOCKED", "NOT_TESTED", "NOT_APPLICABLE"],
+              "properties": {
+                "PASS": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "PARTIAL": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "FAIL": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "BLOCKED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NOT_TESTED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NOT_APPLICABLE": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "applicable_weight": {
+              "type": "number",
+              "minimum": 0
+            },
+            "checked_weight": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "trust": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "score",
+            "state",
+            "coverage",
+            "confidence",
+            "cap",
+            "trend",
+            "counts",
+            "applicable_weight",
+            "checked_weight"
+          ],
+          "properties": {
+            "score": {
+              "type": ["number", "null"],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "state": {
+              "enum": ["SCORED", "INSUFFICIENT_EVIDENCE"]
+            },
+            "coverage": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "confidence": {
+              "enum": ["HIGH", "MEDIUM", "LOW", "NONE"]
+            },
+            "cap": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["applied", "limit", "reason"],
+              "properties": {
+                "applied": {
+                  "type": "boolean"
+                },
+                "limit": {
+                  "type": ["number", "null"]
+                },
+                "reason": {
+                  "type": ["string", "null"]
+                }
+              }
+            },
+            "trend": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["previous_score", "delta", "previous_run_id"],
+                  "properties": {
+                    "previous_score": {
+                      "type": ["number", "null"]
+                    },
+                    "delta": {
+                      "type": ["number", "null"]
+                    },
+                    "previous_run_id": {
+                      "$ref": "common.schema.json#/$defs/run_id"
+                    }
+                  }
+                }
+              ]
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["PASS", "PARTIAL", "FAIL", "BLOCKED", "NOT_TESTED", "NOT_APPLICABLE"],
+              "properties": {
+                "PASS": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "PARTIAL": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "FAIL": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "BLOCKED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NOT_TESTED": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "NOT_APPLICABLE": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "applicable_weight": {
+              "type": "number",
+              "minimum": 0
+            },
+            "checked_weight": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "overall_coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate_id", "title", "status", "control_ids"],
+        "properties": {
+          "gate_id": {
+            "type": "string",
+            "pattern": "^G-[A-Z-]+$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "enum": ["PASS", "FAIL", "UNVERIFIED", "NOT_APPLICABLE"]
+          },
+          "control_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/control_id"
+            }
+          }
+        }
+      }
+    },
+    "open_findings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["P0", "P1", "P2", "P3"],
+      "properties": {
+        "P0": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "P1": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "P2": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "P3": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "accepted_risks": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "blocked_controls": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_id"
+      }
+    },
+    "not_tested_controls": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/control_id"
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_coverage", "pillar_threshold"],
+      "properties": {
+        "min_coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "pillar_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    }
+  }
+}

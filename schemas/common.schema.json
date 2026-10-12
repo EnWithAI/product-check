@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/common.schema.json",
+  "title": "Product Check shared definitions",
+  "description": "Enumerations and small shapes shared by every Product Check artifact.",
+  "$defs": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "pillar": {
+      "enum": ["customer", "technology", "trust"]
+    },
+    "tier": {
+      "enum": ["CT-T0", "CT-T1", "CT-T2", "CT-T3", "CT-T4", "CT-T5", "CT-T6"]
+    },
+    "stage": {
+      "enum": [
+        "DISCOVERY_BUILD",
+        "ALPHA",
+        "BETA_PILOT",
+        "PRE_LAUNCH",
+        "LAUNCH_GATE",
+        "JUST_LAUNCHED",
+        "POST_LAUNCH",
+        "PRODUCTION_SCALE",
+        "MAJOR_CHANGE"
+      ]
+    },
+    "mode": {
+      "enum": ["SOURCE", "APPLICATION", "HYBRID", "AUTO"]
+    },
+    "action": {
+      "enum": ["read-local-source", "import-artifacts", "passive-http", "exposure-probe"]
+    },
+    "validation_status": {
+      "enum": ["PASS", "PARTIAL", "FAIL", "BLOCKED", "NOT_TESTED", "NOT_APPLICABLE"]
+    },
+    "pop_status": {
+      "enum": ["AVAILABLE", "PARTIAL", "BLOCKED", "NOT_APPLICABLE"]
+    },
+    "severity": {
+      "enum": ["P0", "P1", "P2", "P3"]
+    },
+    "ux_severity": {
+      "enum": ["UX0", "UX1", "UX2", "UX3", null]
+    },
+    "confidence": {
+      "enum": ["HIGH", "MEDIUM", "LOW"]
+    },
+    "epistemic": {
+      "enum": ["fact", "inference", "hypothesis"]
+    },
+    "verdict": {
+      "enum": ["READY", "READY_WITH_CONDITIONS", "NOT_READY", "INCONCLUSIVE"]
+    },
+    "strength": {
+      "enum": ["runtime", "executed-test", "static", "imported-report", "declared", "inferred"]
+    },
+    "horizon": {
+      "enum": ["NOW", "NEXT", "BEFORE_SCALE", "NEXT_CYCLE", "LATER"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^EV-[0-9A-F]{12}$"
+    },
+    "finding_id": {
+      "type": "string",
+      "pattern": "^PCF-[0-9A-F]{10}$"
+    },
+    "control_id": {
+      "type": "string",
+      "pattern": "^PC-(C|T|S|AI)-[0-9]{2}$"
+    },
+    "validation_id": {
+      "type": "string",
+      "pattern": "^VAL-PC-(C|T|S|AI)-[0-9]{2}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^PCR-[0-9]{8}T[0-9]{6}Z-[0-9A-F]{6}$"
+    },
+    "work_packet_id": {
+      "type": "string",
+      "pattern": "^WP-PC-(C|T|S|AI)-[0-9]{2}$"
+    },
+    "remediation_id": {
+      "type": "string",
+      "pattern": "^REM-PC-(C|T|S|AI)-[0-9]{2}$"
+    },
+    "pillar_map_nullable_number": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["customer", "technology", "trust"],
+      "properties": {
+        "customer": {
+          "type": ["number", "null"]
+        },
+        "technology": {
+          "type": ["number", "null"]
+        },
+        "trust": {
+          "type": ["number", "null"]
+        }
+      }
+    },
+    "pillar_map_number": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["customer", "technology", "trust"],
+      "properties": {
+        "customer": {
+          "type": "number"
+        },
+        "technology": {
+          "type": "number"
+        },
+        "trust": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

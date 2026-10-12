@@ -1,0 +1,427 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/product-check-results.schema.json",
+  "title": "Product Check results",
+  "description": "The authoritative, versioned aggregate of one assessment run. Markdown, HTML and the dashboard are renderings of this document. Supports partial, failed and aborted runs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "run",
+    "contract",
+    "pop_coverage",
+    "evidence",
+    "validations",
+    "findings",
+    "scorecard",
+    "blueprint",
+    "verdict",
+    "comparison",
+    "history",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "product-check-results"
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "status",
+        "started_at",
+        "finished_at",
+        "duration_ms",
+        "tool",
+        "tool_version",
+        "node_version",
+        "methodology",
+        "mode_requested",
+        "mode_effective",
+        "tier",
+        "tiers_applied",
+        "target_revision",
+        "phases",
+        "errors",
+        "network",
+        "baseline",
+        "demo"
+      ],
+      "properties": {
+        "run_id": {
+          "$ref": "common.schema.json#/$defs/run_id"
+        },
+        "status": {
+          "enum": ["COMPLETED", "PARTIAL", "FAILED", "ABORTED"]
+        },
+        "started_at": {
+          "$ref": "common.schema.json#/$defs/timestamp"
+        },
+        "finished_at": {
+          "$ref": "common.schema.json#/$defs/timestamp"
+        },
+        "duration_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tool": {
+          "const": "product-check"
+        },
+        "tool_version": {
+          "type": "string"
+        },
+        "node_version": {
+          "type": "string"
+        },
+        "methodology": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "label", "relationship", "reference_version"],
+          "properties": {
+            "name": {
+              "const": "CT3"
+            },
+            "label": {
+              "type": "string"
+            },
+            "relationship": {
+              "const": "inspired"
+            },
+            "reference_version": {
+              "type": "string"
+            }
+          }
+        },
+        "mode_requested": {
+          "$ref": "common.schema.json#/$defs/mode"
+        },
+        "mode_effective": {
+          "enum": ["SOURCE", "APPLICATION", "HYBRID", null]
+        },
+        "tier": {
+          "$ref": "common.schema.json#/$defs/tier"
+        },
+        "tiers_applied": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/tier"
+          },
+          "minItems": 1
+        },
+        "target_revision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "application"],
+          "properties": {
+            "repository": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["label", "commit", "ref", "source"],
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "commit": {
+                      "type": ["string", "null"],
+                      "pattern": "^[0-9a-f]{40,64}$"
+                    },
+                    "ref": {
+                      "type": ["string", "null"]
+                    },
+                    "source": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ]
+            },
+            "application": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["origin", "observed_at", "final_status"],
+                  "properties": {
+                    "origin": {
+                      "type": "string"
+                    },
+                    "observed_at": {
+                      "oneOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "common.schema.json#/$defs/timestamp"
+                        }
+                      ]
+                    },
+                    "final_status": {
+                      "type": ["integer", "null"]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "phases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["phase", "status", "notes"],
+            "properties": {
+              "phase": {
+                "enum": ["SCAN", "TEST", "VALIDATE", "BLUEPRINT", "DASHBOARD", "REMEDIATE", "RETEST"]
+              },
+              "status": {
+                "enum": ["COMPLETED", "PARTIAL", "SKIPPED", "FAILED", "ADVISORY"]
+              },
+              "notes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "network": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["used", "requests", "origins"],
+          "properties": {
+            "used": {
+              "type": "boolean"
+            },
+            "requests": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "origins": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "baseline": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["run_id", "sha256"],
+              "properties": {
+                "run_id": {
+                  "$ref": "common.schema.json#/$defs/run_id"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          ]
+        },
+        "demo": {
+          "type": "boolean"
+        }
+      }
+    },
+    "contract": {
+      "$ref": "scan-contract.schema.json"
+    },
+    "pop_coverage": {
+      "$ref": "pop-coverage.schema.json"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence.schema.json"
+      }
+    },
+    "validations": {
+      "type": "array",
+      "items": {
+        "$ref": "validation.schema.json"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "finding.schema.json"
+      }
+    },
+    "scorecard": {
+      "$ref": "scorecard.schema.json"
+    },
+    "blueprint": {
+      "$ref": "blueprint.schema.json"
+    },
+    "verdict": {
+      "$ref": "release-verdict.schema.json"
+    },
+    "comparison": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "baseline_run_id",
+            "baseline_sha256",
+            "score_delta",
+            "coverage_delta",
+            "regressed_controls",
+            "improved_controls",
+            "findings_new",
+            "findings_resolved",
+            "findings_reopened",
+            "findings_persisting",
+            "findings_unverified"
+          ],
+          "properties": {
+            "baseline_run_id": {
+              "$ref": "common.schema.json#/$defs/run_id"
+            },
+            "baseline_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "score_delta": {
+              "$ref": "common.schema.json#/$defs/pillar_map_nullable_number"
+            },
+            "coverage_delta": {
+              "$ref": "common.schema.json#/$defs/pillar_map_number"
+            },
+            "regressed_controls": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/control_id"
+              }
+            },
+            "improved_controls": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/control_id"
+              }
+            },
+            "findings_new": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/finding_id"
+              }
+            },
+            "findings_resolved": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/finding_id"
+              }
+            },
+            "findings_reopened": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/finding_id"
+              }
+            },
+            "findings_persisting": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/finding_id"
+              }
+            },
+            "findings_unverified": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/finding_id"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["run_id", "finished_at", "revision", "verdict", "scores", "coverage", "open_findings"],
+        "properties": {
+          "run_id": {
+            "$ref": "common.schema.json#/$defs/run_id"
+          },
+          "finished_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "revision": {
+            "type": ["string", "null"]
+          },
+          "verdict": {
+            "$ref": "common.schema.json#/$defs/verdict"
+          },
+          "scores": {
+            "$ref": "common.schema.json#/$defs/pillar_map_nullable_number"
+          },
+          "coverage": {
+            "$ref": "common.schema.json#/$defs/pillar_map_number"
+          },
+          "open_findings": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "message", "count", "paths"],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

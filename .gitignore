@@ -1,0 +1,8 @@
+# Build output, coverage, dependencies and locally generated results are never committed.
+node_modules/
+dist/
+coverage/
+*.tgz
+.DS_Store
+/.product-check/
+examples/vibe-app-demo/app/

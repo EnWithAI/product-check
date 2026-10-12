@@ -1,0 +1,15 @@
+# Generated or byte-compared files are excluded from formatting (fixtures and golden outputs must stay exact).
+dist/
+coverage/
+node_modules/
+package-lock.json
+test/fixtures/
+examples/**/output/
+examples/**/app/
+examples/**/app-remediated/
+examples/**/inputs/
+examples/**/*.json
+examples/repo-only/*.md
+examples/repo-only/*.html
+examples/repo-only/work-packets/
+examples/aborted-run/

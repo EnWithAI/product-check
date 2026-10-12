@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/observations.schema.json",
+  "title": "Product Check recorded application observations",
+  "description": "Passive HTTP observations (live, recorded with --record-observations, or converted from a HAR file). Only security-relevant response headers and derived page facts are kept, never bodies or request headers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "origin", "source", "observations"],
+  "properties": {
+    "schema_version": {
+      "$ref": "common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "observations"
+    },
+    "origin": {
+      "type": "string",
+      "pattern": "^https?://[^/]+$"
+    },
+    "source": {
+      "enum": ["live", "har", "recorded"]
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "method",
+          "purpose",
+          "requested_at",
+          "status",
+          "redirect_location",
+          "final_url",
+          "headers",
+          "timing_ms",
+          "body_sha256",
+          "body_bytes",
+          "truncated",
+          "html",
+          "exposure",
+          "error"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "pattern": "^https?://"
+          },
+          "method": {
+            "enum": ["GET", "HEAD"]
+          },
+          "purpose": {
+            "type": "string",
+            "pattern": "^(landing|http-redirect|not-found|robots|security-txt|privacy|exposure:/[A-Za-z0-9._/-]+)$"
+          },
+          "requested_at": {
+            "$ref": "common.schema.json#/$defs/timestamp"
+          },
+          "status": {
+            "type": ["integer", "null"]
+          },
+          "redirect_location": {
+            "type": ["string", "null"]
+          },
+          "final_url": {
+            "type": ["string", "null"]
+          },
+          "headers": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "timing_ms": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "body_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "body_bytes": {
+            "type": ["integer", "null"],
+            "minimum": 0
+          },
+          "truncated": {
+            "type": "boolean"
+          },
+          "html": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "title",
+                  "lang",
+                  "has_viewport",
+                  "meta_csp",
+                  "img_total",
+                  "img_missing_alt",
+                  "privacy_link"
+                ],
+                "properties": {
+                  "title": {
+                    "type": ["string", "null"],
+                    "maxLength": 300
+                  },
+                  "lang": {
+                    "type": ["string", "null"],
+                    "maxLength": 50
+                  },
+                  "has_viewport": {
+                    "type": "boolean"
+                  },
+                  "meta_csp": {
+                    "type": ["string", "null"],
+                    "maxLength": 2000
+                  },
+                  "img_total": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "img_missing_alt": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "privacy_link": {
+                    "type": ["string", "null"],
+                    "maxLength": 500
+                  }
+                }
+              }
+            ]
+          },
+          "exposure": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["looks_sensitive", "signature"],
+                "properties": {
+                  "looks_sensitive": {
+                    "type": "boolean"
+                  },
+                  "signature": {
+                    "type": ["string", "null"]
+                  }
+                }
+              }
+            ]
+          },
+          "error": {
+            "type": ["string", "null"]
+          }
+        }
+      },
+      "maxItems": 200
+    }
+  }
+}

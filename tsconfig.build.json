@@ -1,0 +1,6 @@
+// Build settings: compiles only src/ into dist/ (no source maps, no tests).
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "rootDir": "src", "outDir": "dist", "sourceMap": false },
+  "include": ["src/**/*.ts"]
+}

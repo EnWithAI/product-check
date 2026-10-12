@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/validation.schema.json",
+  "title": "Product Check control validation",
+  "description": "The evaluation of one control: expected vs actual, status and evidence links. PASS, PARTIAL and FAIL require evidence; BLOCKED, NOT_TESTED and NOT_APPLICABLE require a reason.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "control_id",
+    "pillar",
+    "tier",
+    "title",
+    "expected",
+    "actual",
+    "status",
+    "method",
+    "strength",
+    "reason",
+    "evidence_ids",
+    "reproduction",
+    "hard_gate",
+    "weight",
+    "finding_ids"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/validation_id"
+    },
+    "control_id": {
+      "$ref": "common.schema.json#/$defs/control_id"
+    },
+    "pillar": {
+      "$ref": "common.schema.json#/$defs/pillar"
+    },
+    "tier": {
+      "$ref": "common.schema.json#/$defs/tier"
+    },
+    "title": {
+      "type": "string"
+    },
+    "expected": {
+      "type": "string"
+    },
+    "actual": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "common.schema.json#/$defs/validation_status"
+    },
+    "method": {
+      "enum": [
+        "static-analysis",
+        "passive-http",
+        "exposure-probe",
+        "imported-test-results",
+        "imported-report",
+        "baseline-comparison",
+        "none"
+      ]
+    },
+    "strength": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/strength"
+        }
+      ]
+    },
+    "reason": {
+      "type": ["string", "null"]
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/evidence_id"
+      },
+      "uniqueItems": true
+    },
+    "reproduction": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hard_gate": {
+      "type": ["string", "null"],
+      "pattern": "^G-[A-Z-]+$"
+    },
+    "weight": {
+      "enum": [1, 2, 3]
+    },
+    "finding_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/finding_id"
+      },
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "Never PASS/PARTIAL/FAIL without evidence.",
+      "if": {
+        "properties": {
+          "status": {
+            "enum": ["PASS", "PARTIAL", "FAIL"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "evidence_ids": {
+            "type": "array",
+            "minItems": 1
+          },
+          "strength": {
+            "$ref": "common.schema.json#/$defs/strength"
+          }
+        }
+      }
+    },
+    {
+      "$comment": "Unchecked controls must say why.",
+      "if": {
+        "properties": {
+          "status": {
+            "enum": ["BLOCKED", "NOT_TESTED", "NOT_APPLICABLE"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}
