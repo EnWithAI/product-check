@@ -67,250 +67,37 @@
     "surface": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "kind",
-          "name",
-          "method",
-          "area",
-          "detail",
-          "location",
-          "certainty",
-          "auth_hint",
-          "evidence_ids"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^SRF-[0-9A-F]{10}$"
-          },
-          "kind": {
-            "enum": ["page", "endpoint", "entity", "config", "integration", "auth-boundary", "test"]
-          },
-          "name": {
-            "type": "string"
-          },
-          "method": {
-            "type": ["string", "null"]
-          },
-          "area": {
-            "type": "string"
-          },
-          "detail": {
-            "type": "string"
-          },
-          "location": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["path", "line"],
-            "properties": {
-              "path": {
-                "type": "string"
-              },
-              "line": {
-                "type": ["integer", "null"],
-                "minimum": 1
-              }
-            }
-          },
-          "certainty": {
-            "enum": ["observed", "inferred"]
-          },
-          "auth_hint": {
-            "type": "boolean"
-          },
-          "evidence_ids": {
-            "type": "array",
-            "items": {
-              "$ref": "common.schema.json#/$defs/evidence_id"
-            }
-          }
-        }
+        "$ref": "#/$defs/surface_entry"
       }
     },
     "stories": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "area",
-          "title",
-          "critical_journey",
-          "surface_ids",
-          "requirement_ids",
-          "test_behaviours"
-        ],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^US-[0-9]+$"
-          },
-          "area": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "critical_journey": {
-            "type": ["string", "null"]
-          },
-          "surface_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^SRF-[0-9A-F]{10}$"
-            }
-          },
-          "requirement_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^FR-[0-9]{3,}$"
-            }
-          },
-          "test_behaviours": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
+        "$ref": "#/$defs/story"
       }
     },
     "requirements": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["id", "statement", "certainty", "surface_ids", "evidence_ids"],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^(FR|NFR|SC|EC)-[0-9]{3,}$"
-          },
-          "statement": {
-            "type": "string"
-          },
-          "certainty": {
-            "enum": ["observed", "inferred", "hypothesis"]
-          },
-          "surface_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^SRF-[0-9A-F]{10}$"
-            }
-          },
-          "evidence_ids": {
-            "type": "array",
-            "items": {
-              "$ref": "common.schema.json#/$defs/evidence_id"
-            }
-          }
-        }
+        "$ref": "#/$defs/requirement"
       }
     },
     "non_functional": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["id", "statement", "certainty", "surface_ids", "evidence_ids"],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^(FR|NFR|SC|EC)-[0-9]{3,}$"
-          },
-          "statement": {
-            "type": "string"
-          },
-          "certainty": {
-            "enum": ["observed", "inferred", "hypothesis"]
-          },
-          "surface_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^SRF-[0-9A-F]{10}$"
-            }
-          },
-          "evidence_ids": {
-            "type": "array",
-            "items": {
-              "$ref": "common.schema.json#/$defs/evidence_id"
-            }
-          }
-        }
+        "$ref": "#/$defs/requirement"
       }
     },
     "success_criteria": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["id", "statement", "certainty", "surface_ids", "evidence_ids"],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^(FR|NFR|SC|EC)-[0-9]{3,}$"
-          },
-          "statement": {
-            "type": "string"
-          },
-          "certainty": {
-            "enum": ["observed", "inferred", "hypothesis"]
-          },
-          "surface_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^SRF-[0-9A-F]{10}$"
-            }
-          },
-          "evidence_ids": {
-            "type": "array",
-            "items": {
-              "$ref": "common.schema.json#/$defs/evidence_id"
-            }
-          }
-        }
+        "$ref": "#/$defs/requirement"
       }
     },
     "edge_cases": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["id", "statement", "certainty", "surface_ids", "evidence_ids"],
-        "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^(FR|NFR|SC|EC)-[0-9]{3,}$"
-          },
-          "statement": {
-            "type": "string"
-          },
-          "certainty": {
-            "enum": ["observed", "inferred", "hypothesis"]
-          },
-          "surface_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^SRF-[0-9A-F]{10}$"
-            }
-          },
-          "evidence_ids": {
-            "type": "array",
-            "items": {
-              "$ref": "common.schema.json#/$defs/evidence_id"
-            }
-          }
-        }
+        "$ref": "#/$defs/requirement"
       }
     },
     "clarifications": {
@@ -353,6 +140,214 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "surface_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "name",
+        "method",
+        "area",
+        "detail",
+        "location",
+        "certainty",
+        "auth_hint",
+        "evidence_ids"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^SRF-[0-9A-F]{10}$"
+        },
+        "kind": {
+          "enum": ["page", "endpoint", "entity", "config", "integration", "auth-boundary", "test"]
+        },
+        "name": {
+          "type": "string"
+        },
+        "method": {
+          "type": ["string", "null"]
+        },
+        "area": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "location": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "line"],
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "line": {
+              "type": ["integer", "null"],
+              "minimum": 1
+            }
+          }
+        },
+        "certainty": {
+          "enum": ["observed", "inferred"]
+        },
+        "auth_hint": {
+          "type": "boolean"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/evidence_id"
+          }
+        }
+      }
+    },
+    "story": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "area",
+        "title",
+        "critical_journey",
+        "surface_ids",
+        "requirement_ids",
+        "test_behaviours"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^US-[0-9]+$"
+        },
+        "area": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "critical_journey": {
+          "type": ["string", "null"]
+        },
+        "surface_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^SRF-[0-9A-F]{10}$"
+          }
+        },
+        "requirement_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^FR-[0-9]{3,}$"
+          }
+        },
+        "test_behaviours": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "statement", "certainty", "surface_ids", "evidence_ids"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(FR|NFR|SC|EC)-[0-9]{3,}$"
+        },
+        "statement": {
+          "type": "string"
+        },
+        "certainty": {
+          "enum": ["observed", "inferred", "hypothesis"]
+        },
+        "surface_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^SRF-[0-9A-F]{10}$"
+          }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/evidence_id"
+          }
+        }
+      }
+    },
+    "body": {
+      "description": "The derived content of an as-built spec, as embedded in a blueprint (`as_is.as_built`).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface",
+        "stories",
+        "requirements",
+        "non_functional",
+        "success_criteria",
+        "edge_cases",
+        "clarifications",
+        "uncertainties"
+      ],
+      "properties": {
+        "surface": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/surface_entry"
+          }
+        },
+        "stories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/story"
+          }
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/requirement"
+          }
+        },
+        "non_functional": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/requirement"
+          }
+        },
+        "success_criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/requirement"
+          }
+        },
+        "edge_cases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/requirement"
+          }
+        },
+        "clarifications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
       }

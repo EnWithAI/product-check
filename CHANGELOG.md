@@ -10,7 +10,15 @@ versions may break the results schema, which carries its own `schema_version`, a
   entities, integrations, configuration names, auth boundaries, test titles) with evidence for every item. It writes
   `as-built-spec.json` (new schema `as-built-spec.schema.json`) and a Spec Kit `specs/000-as-built/spec.md` that Spec
   Check can lint. Intent that code cannot show is left as `[NEEDS CLARIFICATION]`. Source only; nothing executed.
-- Demo: `examples/vibe-app-demo/output/as-built/` (checked against a fresh run in the acceptance tests).
+- `run`/`retest` derive the as-built spec from the same snapshot. The blueprint embeds it as the new optional field
+  `as_is.as_built`, and `as-built-spec.json` plus `specs/000-as-built/spec.md` are written next to the report
+  (`blueprint --out-dir` re-renders them). Traceability now names the as-built requirement a finding touches
+  (`As-built FR-002; requirement PC-…`): pages, endpoints and entities match by file, integrations and configuration
+  only by exact line, and application URLs by path. Scores, verdicts and findings are unchanged.
+- Schema: additive, still `0.1.0`. Existing contracts, observations and baselines remain valid. Results that carry
+  `as_is.as_built` do not validate with the schemas bundled in 0.1.0 and earlier.
+- Demo: the baseline, retest and repository-only examples include the as-built spec, and
+  `examples/vibe-app-demo/output/as-built/` holds the standalone `spec` output. Both are checked against a fresh run.
 
 ## 0.1.0 — 2026-10-12
 

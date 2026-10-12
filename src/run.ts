@@ -18,7 +18,9 @@ import { parseTestResults, type TestRun } from "./importers/tests.js";
 import { probe } from "./inspectors/http/fetch.js";
 import type { ObservationSet } from "./inspectors/http/observe.js";
 import { deriveFacts, type RepoFacts } from "./inspectors/source/facts.js";
+import { deriveSurface } from "./inspectors/source/surface.js";
 import { buildBlueprint } from "./blueprint/build.js";
+import { buildAsBuiltSpec } from "./spec/build.js";
 import { formatErrors, validateAgainst } from "./schema/registry.js";
 import { computeScorecard, isOpen } from "./scoring/score.js";
 import { computeVerdict } from "./scoring/verdict.js";
@@ -341,6 +343,19 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
       (a.id < b.id ? -1 : 1)
   );
 
+  // ------------------------------------------------------------------ AS-BUILT SPEC (same snapshot, same evidence)
+  const asBuilt =
+    repo && contract.target.repository
+      ? buildAsBuiltSpec({
+          contract,
+          facts: repo,
+          surface: deriveSurface(repo),
+          ev,
+          repository: label(contract.target.repository.path),
+          generatedAt: startedIso,
+        })
+      : null;
+
   // ------------------------------------------------------------------ BLUEPRINT
   const blueprint = buildBlueprint({
     contract,
@@ -354,6 +369,7 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
     hasBaseline: options.baseline !== null,
     testsImported: tests.length > 0,
     aiInScope,
+    asBuilt,
   });
 
   const previous: RunSummary | null = options.baseline?.results.history.at(-1) ?? null;

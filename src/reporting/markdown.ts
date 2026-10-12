@@ -170,6 +170,26 @@ export function renderBlueprint(r: Results, options: RenderOptions): string {
   if (b.as_is.components.length === 0) lines.push("| (none discovered) | — | — |");
   lines.push("", "### Stated uncertainties", "");
   for (const u of b.as_is.uncertainties) lines.push(`- ${md(u)}`);
+  const built = b.as_is.as_built;
+  if (built) {
+    const count = (k: string): number => built.surface.filter((s) => s.kind === k).length;
+    lines.push(
+      "",
+      "## As-built specification (reverse-engineered)",
+      "",
+      `Derived from the repository's structure without running it: ${count("page")} page(s), ${count("endpoint")} endpoint(s), ${count("entity")} data entit(y/ies), ${count("integration")} integration(s), ${count("config")} configuration name(s). The full spec is in \`specs/000-as-built/spec.md\` (Spec Kit layout) and \`as-built-spec.json\`; traceability links findings to these requirement IDs.`,
+      ""
+    );
+    if (built.requirements.length === 0) lines.push("No functional requirements could be derived.");
+    // Statements are escaped where they are built (src/spec/build.ts).
+    for (const req of built.requirements.slice(0, 60))
+      lines.push(`- **${req.id}** ${req.statement} _(${req.certainty})_`);
+    if (built.requirements.length > 60) lines.push(`- … and ${built.requirements.length - 60} more`);
+    if (built.clarifications.length > 0) {
+      lines.push("", `**${built.clarifications.length} question(s) only a person can answer:**`, "");
+      for (const c of built.clarifications) lines.push(`- ${md(c)}`);
+    }
+  }
   lines.push("", "## To-be architecture (target changes)", "");
   if (b.to_be.changes.length === 0) lines.push("No target changes: no open findings.");
   for (const c of b.to_be.changes) {

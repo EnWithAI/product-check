@@ -13,8 +13,11 @@ import type { EvidenceCollector } from "../evidence/collector.js";
 import type { RepoFacts } from "../inspectors/source/facts.js";
 import type { ProductSurface, SurfaceItem } from "../inspectors/source/surface.js";
 import type {
+  AsBuiltBody,
   AsBuiltSpec,
+  Evidence,
   Limitation,
+  Results,
   ScanContract,
   SpecRequirement,
   SpecStory,
@@ -317,7 +320,61 @@ export function buildAsBuiltSpec(input: SpecInput): AsBuiltSpec {
     edge_cases: edges,
     clarifications,
     uncertainties,
-    evidence: ev.all(),
+    evidence: referencedEvidence(ev.all(), {
+      surface: entries,
+      requirements,
+      non_functional: nfr,
+      success_criteria: success,
+      edge_cases: edges,
+    }),
     limitations,
+  };
+}
+
+/** The evidence items a spec references (a shared collector may hold others, for example during `run`). */
+function referencedEvidence(
+  all: Evidence[],
+  parts: Pick<AsBuiltBody, "surface" | "requirements" | "non_functional" | "success_criteria" | "edge_cases">
+): Evidence[] {
+  const ids = new Set(
+    [
+      parts.surface,
+      parts.requirements,
+      parts.non_functional,
+      parts.success_criteria,
+      parts.edge_cases,
+    ].flatMap((list) => list.flatMap((x) => x.evidence_ids))
+  );
+  return all.filter((e) => ids.has(e.id));
+}
+
+/** The part of a spec that is embedded in the blueprint. */
+export function asBuiltBody(spec: AsBuiltSpec): AsBuiltBody {
+  return {
+    surface: spec.surface,
+    stories: spec.stories,
+    requirements: spec.requirements,
+    non_functional: spec.non_functional,
+    success_criteria: spec.success_criteria,
+    edge_cases: spec.edge_cases,
+    clarifications: spec.clarifications,
+    uncertainties: spec.uncertainties,
+  };
+}
+
+/** Rebuilds the standalone as-built spec from a results document (null when source was not inspected). */
+export function specFromResults(r: Results): AsBuiltSpec | null {
+  const body = r.blueprint.as_is.as_built;
+  const repo = r.run.target_revision.repository;
+  if (!body || !repo) return null;
+  return {
+    schema_version: SCHEMA_VERSION,
+    kind: "as-built-spec",
+    generated_at: r.run.started_at,
+    tool: { name: "product-check", version: r.run.tool_version },
+    target: { name: r.contract.target.name, repository: repo.label, commit: repo.commit, ref: repo.ref },
+    ...body,
+    evidence: referencedEvidence(r.evidence, body),
+    limitations: r.limitations,
   };
 }

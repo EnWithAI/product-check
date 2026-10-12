@@ -11,8 +11,8 @@ import { snapshotRepo } from "../src/discovery/repo.js";
 import { deriveFacts } from "../src/inspectors/source/facts.js";
 import { areaOf, deriveSurface } from "../src/inspectors/source/surface.js";
 import { validateAgainst } from "../src/schema/registry.js";
-import type { AsBuiltSpec } from "../src/types.js";
-import { cli, tempFiles } from "./helpers.js";
+import type { AsBuiltSpec, Results, SurfaceEntry } from "../src/types.js";
+import { cli, ROOT, tempFiles } from "./helpers.js";
 
 // Assembled at run time so no secret-like string is committed.
 const SECRET_VALUE = ["sk", "live", "x".repeat(8), "synthetic"].join("_");
@@ -207,5 +207,39 @@ describe("product-check spec", () => {
     const spec = JSON.parse(r.stdout) as AsBuiltSpec;
     expect(spec.requirements).toEqual([]);
     expect(spec.uncertainties.join(" ")).toContain("No pages or API endpoints were recognised");
+  });
+});
+
+describe("as-built spec in run results", () => {
+  const results = JSON.parse(
+    readFileSync(join(ROOT, "examples/vibe-app-demo/output/baseline/product-check-results.json"), "utf8")
+  ) as Results;
+  const built = results.blueprint.as_is.as_built;
+  const linked = (location: string): string[] =>
+    results.blueprint.traceability
+      .filter((t) => t.component === location)
+      .map((t) => /^As-built ([^;]+);/.exec(t.journey_or_requirement)?.[1] ?? "");
+  const fr = (pred: (s: SurfaceEntry) => boolean): string[] => {
+    const ids = new Set(built?.surface.filter(pred).map((s) => s.id));
+    return (built?.requirements ?? [])
+      .filter((r) => r.surface_ids.some((id) => ids.has(id)))
+      .map((r) => r.id);
+  };
+
+  it("embeds the spec in the blueprint with evidence that resolves in the results", () => {
+    expect(built?.requirements.length).toBeGreaterThan(0);
+    const ev = new Set(results.evidence.map((e) => e.id));
+    for (const s of built?.surface ?? []) for (const id of s.evidence_ids) expect(ev.has(id)).toBe(true);
+  });
+
+  it("links application URLs to the page with that path and manifest lines only to that dependency", () => {
+    const home = fr((s) => s.kind === "page" && s.name === "/");
+    expect(linked("http://127.0.0.1:4785/").every((l) => l === home.join(", "))).toBe(true);
+    for (const loc of ["package.json:9", "package.json:10"]) {
+      const line = Number(loc.split(":")[1]);
+      const exact = fr((s) => s.kind === "integration" && s.location.line === line);
+      expect(exact).toHaveLength(1);
+      expect(linked(loc)).toEqual([exact[0]]);
+    }
   });
 });

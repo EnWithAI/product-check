@@ -121,12 +121,25 @@ describe("run outputs and renderings", () => {
     expect(r.code, r.stderr).toBe(0);
     expect(r.stdout).toMatch(/Verdict: /);
     expect(readdirSync(join(dir, "out")).sort()).toEqual([
+      "as-built-spec.json",
       "blueprint.md",
       "dashboard.html",
       "product-check-results.json",
       "report.md",
+      "specs",
       "work-packets",
     ]);
+    // The as-built spec is embedded in the blueprint, and findings in a page link to its requirement.
+    const results = JSON.parse(readFileSync(join(dir, "out/product-check-results.json"), "utf8")) as Results;
+    const built = results.blueprint.as_is.as_built;
+    expect(built?.requirements[0]?.statement).toContain("`/`");
+    const altFinding = results.findings.find((f) => f.control_id === "PC-C-04");
+    expect(
+      results.blueprint.traceability.find((t) => t.finding_id === altFinding?.id)?.journey_or_requirement
+    ).toMatch(/^As-built FR-001; requirement PC-C-04/);
+    expect(readFileSync(join(dir, "out/blueprint.md"), "utf8")).toContain(
+      "## As-built specification (reverse-engineered)"
+    );
     expect(readdirSync(join(dir, "out/work-packets"))).toContain("WP-PC-C-04.md");
     const report = await cli(["report", "out/product-check-results.json"], dir);
     expect(report.stdout).toBe(readFileSync(join(dir, "out/report.md"), "utf8"));
@@ -138,6 +151,9 @@ describe("run outputs and renderings", () => {
     ).toContain('"kind": "blueprint"');
     expect((await cli(["blueprint", "out/product-check-results.json", "--out-dir", "bp"], dir)).code).toBe(0);
     expect(existsSync(join(dir, "bp/blueprint.json"))).toBe(true);
+    expect(readFileSync(join(dir, "bp/specs/000-as-built/spec.md"), "utf8")).toBe(
+      readFileSync(join(dir, "out/specs/000-as-built/spec.md"), "utf8")
+    );
     expect((await cli(["blueprint", "out/product-check-results.json"], dir)).stdout).toMatch(
       /# Engineering blueprint/
     );
