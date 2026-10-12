@@ -1,0 +1,42 @@
+# Machine-readable Commons provenance. Standard: EnWithAI Engineering Commons attribution standard v1.0.
+schema_version: "0.1"
+commons:
+  program: engineering-commons
+  publisher: "EnWithAI Technologies"
+  project: product-check
+  former_names: [] # see docs/migration-note.md
+license:
+  spdx: null # NOT DECIDED — the brief forbids assigning a license automatically (see IMPLEMENTATION_STATUS.md)
+  file: null
+  copyright_holder: "EnWithAI Technologies"
+  copyright_holder_confirmed: false # confirm for this repository (HR-2/HR-3 were decided for the first three tools)
+maintainers:
+  - { name: Koushik Ramani, github: aiwithrk, role: proposed maintainer and security contact (to confirm) }
+contact: hello@enwithai.com
+attribution:
+  file: ATTRIBUTION.md
+  notice: NOTICE.md
+  trademarks: TRADEMARKS.md
+  references: REFERENCES.md
+development:
+  vendored_third_party_code: false
+  ai_assisted: true
+  synthetic_fixtures_only: true
+ecosystem:
+  related_product: CrewPE
+  dependency: none
+  integration: none
+frameworks:
+  clear:
+    owner: NetworkGain Consulting
+    relationship: inspired
+    spec_version: "CLEAR CT v3.1 (internal, unpublished)"
+    evidence: "Assessment-model design (separate Customer/Technology/Trust pillars, CT-T0..T6 lifecycle tiers, points of presence, evidence statuses, non-averaging, hard gates overriding scores) was inspired by CLEAR CT. No text, catalog or prompt is reproduced. Wording needs the owner's approval."
+  trace:
+    owner: EnWithAI Technologies
+    relationship: not-assessed
+    spec_version: null
+    evidence: "Findings carry an intent-to-retest traceability chain; alignment with TRACE cannot be stated until its specification is available."
+upstream: []
+references: REFERENCES.md
+review_items: [HR-2, HR-3, HR-4, HR-5, HR-10, PC-LICENSE, PC-CLEAR-WORDING, PC-NAME]
