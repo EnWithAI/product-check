@@ -2,7 +2,8 @@
 
 _Product Check 0.1.0-alpha.0 · results schema 0.1.0 · rubric pc-rubric-0.1 · 2026-10-12_
 
-**State: alpha.** Release of 0.1.0-alpha.0 approved 2026-10-12 (repository, GitHub pre-release, npm).
+**State: released alpha.** 0.1.0-alpha.0 published 2026-10-12: GitHub `EnWithAI/product-check` (CI green on Node
+22/24/26), pre-release `v0.1.0-alpha.0`, npm `@enwithai/product-check` (`alpha` and `latest`).
 License: **MIT** (decided by the product sponsor on 2026-10-12, same as the other Commons tools); `LICENSE`, `package.json`
 and SPDX headers updated accordingly. Release decisions recorded in §5.
 
@@ -51,8 +52,7 @@ repository code executed; ignored files never read; refusals produce an ABORTED 
 
 ## 3. Commands run and results (2026-10-12, macOS, Node v25.9.0, npm 11.12.1)
 
-Node 25 is outside the declared `engines` range (22/24/≥26); CI is configured for 22/24/26 but **has never run**
-(no remote).
+Node 25 is outside the declared `engines` range (22/24/≥26). CI on GitHub passed on Node 22, 24 and 26.
 
 | Command                                                                                                                                  | Result                                                                                                                                                                          |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -126,10 +126,12 @@ source files (caught by the Trojan-Source test).
 - [x] Copyright holder EnWithAI Technologies; maintainer and security contact Koushik Ramani, as for the other tools.
 - [x] `@enwithai/product-check` free on npm and `EnWithAI/product-check` free on GitHub (checked 2026-10-12). No formal
       trademark search was done (as for the other tools; names are descriptive and not claimed as marks).
-- [ ] Repository creation (`EnWithAI/product-check`, public), first push with commits under the GitHub noreply
+- [x] Repository creation (`EnWithAI/product-check`, public), first push with commits under the GitHub noreply
       address; CI green on Node 22/24/26; private vulnerability reporting enabled; topics.
-- [ ] Release tag `v0.1.0-alpha.0` with built `dist/` and a GitHub pre-release.
-- [ ] npm publication (`--tag alpha`, then `latest` moved deliberately), verified by a clean registry install.
+- [x] Release tag `v0.1.0-alpha.0` with built `dist/` and a GitHub pre-release.
+- [x] npm publication 2026-10-12 (`alpha` and `latest` → 0.1.0-alpha.0), tarball shasum
+      `90669a43bb94ed82b4a8d32507de279501839231` identical to the tag build, verified by a clean registry install.
+- [ ] Deprecate the `0.0.0-stage` placeholder left by npm staged publishing (needs 2FA), as for the siblings.
 - [ ] Not separately performed: an independent human review of control wording/severities and of the demo outputs.
       The release was approved on the basis of this status report.
 

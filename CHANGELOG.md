@@ -6,11 +6,9 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
-- License: MIT (same as the other Engineering Commons tools).
+## 0.1.0-alpha.0 — 2026-10-12 (published to npm)
 
-## 0.1.0-alpha.0 — not released
-
-First alpha candidate.
+First alpha. MIT licensed.
 
 - `product-check run|retest|scan|init|validate|report|blueprint|dashboard|controls|schema`.
 - Scan → Test → Validate → Blueprint → Dashboard → (advisory) Remediate → Retest, recorded per run.
