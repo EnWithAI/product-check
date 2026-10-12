@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * The control catalog (rubric pc-rubric-0.1). Each control states what is expected, which pillar and lifecycle

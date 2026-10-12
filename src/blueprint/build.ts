@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Builds the engineering blueprint from validated findings: discovered (as-is) architecture with stated

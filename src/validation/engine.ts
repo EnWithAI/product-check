@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Runs every catalog control through the source, application and import evaluators and merges the outcomes:

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * A local stand-in "deployment" of the SYNTHETIC Vibe Notes demo app, listening on 127.0.0.1 only. It reproduces

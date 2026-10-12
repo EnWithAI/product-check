@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 // Progressive enhancement for the Product Check dashboard: tab switching, table filters and a theme toggle.
 // Every figure is server-rendered from the results JSON; without JavaScript all views are shown in sequence.

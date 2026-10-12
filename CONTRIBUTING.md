@@ -29,14 +29,14 @@ npm run build && npm run demo         # regenerate examples (needs git)
 
 - Keep PRs focused; include tests that assert behaviour.
 - Describe user-visible changes in `CHANGELOG.md` under "Unreleased".
-- Contributions will be accepted under the repository license once it is decided (inbound = outbound).
+- By contributing you agree your contribution is licensed under the MIT License (inbound = outbound).
 
 ## Licensing of contributions and attribution
 
 - Do not paste code, text or diagrams from other projects or publications (including the CLEAR CT method text). If
   third-party material is genuinely needed, open an issue first.
-- New source files start with `// SPDX-FileCopyrightText: 2026 EnWithAI Technologies` (an SPDX license identifier
-  will be added to every file once the license is decided).
+- New source files start with `// SPDX-License-Identifier: MIT` and
+  `// SPDX-FileCopyrightText: 2026 EnWithAI Technologies` (`#` for YAML and shell).
 - Do not add framework (CLEAR/TRACE) or product (CrewPE) claims unless
   [commons-provenance.yaml](commons-provenance.yaml) records an evidenced relationship.
 - AI-assisted contributions are welcome. You are responsible for reviewing them; mention significant AI assistance in

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Repository snapshot: walks a local checkout (never following symlinks), records tracked/ignored state, and

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * The safety gate. Decides what a run may do and refuses (exit 4) anything unsafe or unauthorized:

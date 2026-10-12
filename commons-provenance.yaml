@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 # Machine-readable Commons provenance. Standard: EnWithAI Engineering Commons attribution standard v1.0.
 schema_version: "0.1"
 commons:
@@ -6,8 +7,8 @@ commons:
   project: product-check
   former_names: [] # see docs/migration-note.md
 license:
-  spdx: null # NOT DECIDED — the brief forbids assigning a license automatically (see IMPLEMENTATION_STATUS.md)
-  file: null
+  spdx: MIT # decided 2026-10-12 by the product sponsor, same as the other Commons tools
+  file: LICENSE
   copyright_holder: "EnWithAI Technologies"
   copyright_holder_confirmed: false # confirm for this repository (HR-2/HR-3 were decided for the first three tools)
 maintainers:
@@ -39,4 +40,4 @@ frameworks:
     evidence: "Findings carry an intent-to-retest traceability chain; alignment with TRACE cannot be stated until its specification is available."
 upstream: []
 references: REFERENCES.md
-review_items: [HR-2, HR-3, HR-4, HR-5, HR-10, PC-LICENSE, PC-CLEAR-WORDING, PC-NAME]
+review_items: [HR-2, HR-3, HR-4, HR-5, PC-CLEAR-WORDING, PC-NAME]

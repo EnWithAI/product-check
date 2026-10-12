@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Masks secret-like strings in any text before it is stored as evidence or rendered. Product Check stores short

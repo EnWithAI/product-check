@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Command-line interface: argument parsing (node:util parseArgs), commands, output writing and the mapping of

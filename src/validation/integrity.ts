@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Integrity checks for a results document: JSON Schema validity, referential integrity (every evidence, finding,

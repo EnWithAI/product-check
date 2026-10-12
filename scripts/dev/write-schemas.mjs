@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 // One-off authoring helper kept for transparency: writes schemas/*.schema.json from the definitions below.
 // The committed schemas are the source of truth; re-run only when deliberately changing the contract.

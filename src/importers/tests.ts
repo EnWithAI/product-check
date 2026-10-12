@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Imports test results the user already produced: JUnit XML (Jest/Vitest/Playwright/pytest/Go reporters) and

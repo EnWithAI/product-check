@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Optional importers for artifacts produced by other tools: `npm audit --json`, and the JSON reports of the

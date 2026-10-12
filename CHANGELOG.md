@@ -6,6 +6,8 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
+- License: MIT (same as the other Engineering Commons tools).
+
 ## 0.1.0-alpha.0 — not released
 
 First alpha candidate.

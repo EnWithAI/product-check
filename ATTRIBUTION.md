@@ -6,7 +6,8 @@
 - **Commons:** EnWithAI Engineering Commons. Question: _does this software work, can it be trusted, and what needs to
   improve?_
 - **Copyright holder:** EnWithAI Technologies (to be confirmed for this repository).
-- **License:** not yet decided. Until it is, no license is granted beyond what the law allows.
+- **License:** MIT (decided 2026-10-12, same as the other Commons tools). It applies to all code, documentation, schemas
+  and examples in this repository.
 - **Proposed maintainer:** Koushik Ramani ([@aiwithrk](https://github.com/aiwithrk)), EnWithAI Technologies (to confirm).
 - **Contact:** [hello@enwithai.com](mailto:hello@enwithai.com)
 - **Security issues:** see [SECURITY.md](SECURITY.md).

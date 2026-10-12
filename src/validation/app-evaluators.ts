@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Application evaluators: black-box checks over passive HTTP observations (live, recorded or HAR). They return

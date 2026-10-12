@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * ESLint flat config: recommended + strict typescript-eslint rules, plus project invariants. Network access is

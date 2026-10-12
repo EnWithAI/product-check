@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Library entry point: the assessment pipeline, contract helpers, renderers, integrity checks and the catalog.

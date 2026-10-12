@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Escaping for untrusted strings (paths, page titles, header values, test names) in Markdown and HTML output.

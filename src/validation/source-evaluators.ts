@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Source evaluators: static, read-only checks over the repository snapshot. Each returns null when no repository

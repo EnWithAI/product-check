@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Unit tests: redaction, .gitignore matching, git index parsing, HTML facts, exposure signatures, test-result and

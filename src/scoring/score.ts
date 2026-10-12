@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Scorecard computation (rubric pc-rubric-0.1). Pure and deterministic, so `product-check validate` can recompute

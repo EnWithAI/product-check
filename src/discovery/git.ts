@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Reads git metadata directly from the .git directory (HEAD, loose refs, packed-refs and the index) so Product

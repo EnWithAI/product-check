@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Error types and documented process exit codes. Every expected failure is a ProductCheckError carrying an exit

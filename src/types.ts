@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Result contract types (schema 0.1.0). Mirrors schemas/*.schema.json; tests validate real results against the

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * The assessment pipeline: Scan (discover PoPs, snapshot source, observe the application) → Test (import executed

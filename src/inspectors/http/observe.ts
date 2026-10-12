@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Pure helpers that turn an HTTP response (live, recorded or from a HAR file) into an observation: an allowlist

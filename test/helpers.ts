@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Test helpers: run the CLI in-process with a fixed clock, build synthetic repositories (optionally as real git

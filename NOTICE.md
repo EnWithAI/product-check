@@ -3,8 +3,8 @@
 Product Check
 Copyright (c) 2026 EnWithAI Technologies
 
-The license for this repository has not been decided yet (see [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md)).
-This NOTICE adds no conditions to any future license.
+Product Check is licensed under the MIT License (see [LICENSE](LICENSE)). This NOTICE adds no conditions to that
+license.
 
 ## Third-party material
 

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Derives structured facts from a repository snapshot: manifests and dependencies, lockfiles, tests, CI,

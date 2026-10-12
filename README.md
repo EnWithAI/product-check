@@ -16,8 +16,7 @@ Customer, Technology and Trust controls, and gives you:
 
 Everything is written to one versioned JSON file. The report, blueprint and dashboard are renderings of it.
 
-> Status: **alpha, not released** (`0.1.0-alpha.0`, results schema `0.1.0`). Not published to npm. The license is
-> **not yet decided** (see [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md)), so the package is marked private.
+> Status: **alpha, not released** (`0.1.0-alpha.0`, results schema `0.1.0`). Not published to npm.
 
 ## What it will not pretend
 
@@ -151,7 +150,7 @@ a single file with a hash-pinned script and a `default-src 'none'` Content-Secur
 
 ## License
 
-Not yet decided; see [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md). Not affiliated with or endorsed by any
+MIT © EnWithAI Technologies. Not affiliated with or endorsed by any
 platform or framework vendor named in this repository.
 
 ---

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * A pragmatic .gitignore matcher (root .gitignore plus nested .gitignore files) covering the common syntax:

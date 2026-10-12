@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * The bundled schema registry (schemas/ ships with the package) and helpers to validate artifacts by kind.

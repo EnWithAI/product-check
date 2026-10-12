@@ -3,8 +3,8 @@
 _Product Check 0.1.0-alpha.0 · results schema 0.1.0 · rubric pc-rubric-0.1 · 2026-10-12_
 
 **State: alpha candidate, local only.** Nothing has been pushed, published or released. The repository has no remote.
-The package is `"private": true` with `"license": "UNLICENSED"` until a license is chosen, so it cannot be published
-by accident.
+License: **MIT** (decided by the product sponsor on 2026-10-12, same as the other Commons tools); `LICENSE`, `package.json`
+and SPDX headers updated accordingly. Publishing still requires explicit approval.
 
 ## 1. Design brief (as built)
 
@@ -115,12 +115,11 @@ source files (caught by the Trojan-Source test).
 | GitHub Action, SARIF output, plugin loading      | Not implemented. Extension is by adding evaluators/importers in code.                                                                                                                  |
 | Built-in schema validator                        | Supports the keyword subset the bundled schemas use; unsupported keywords are rejected at load. Ajv cross-checks in tests.                                                             |
 | CI                                               | Workflow written, never executed (no remote).                                                                                                                                          |
-| SPDX headers                                     | `SPDX-FileCopyrightText` only; `SPDX-License-Identifier` to be added once the license is decided (`commons-governance/tools/spdx-headers.mjs --apply`).                                |
 
 ## 5. Release checklist (stop: every item needs a human decision)
 
-- [ ] **License decision** (the brief forbids assigning one automatically; the other Commons tools use MIT). Then add
-      `LICENSE`, set `license` in package.json, remove `"private": true`, add SPDX identifiers.
+- [x] **License:** MIT (2026-10-12). `LICENSE` added, package.json `license: MIT`, `private` removed, SPDX identifiers on
+      all first-party source files.
 - [ ] **CLEAR attribution wording** approved by NetworkGain Consulting (relationship `inspired`; owner and publication
       rights of CLEAR CT, HR-4). Confirm that naming the CT-T0…T6 tier labels and the verdict aliases publicly is acceptable.
 - [ ] TRACE relationship stays `not-assessed` until a specification exists (HR-5).

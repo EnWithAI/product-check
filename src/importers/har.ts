@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Converts a HAR file (browser DevTools "Save all as HAR") into observations for one origin. Only entries for the

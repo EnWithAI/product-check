@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Security invariants: no process/eval primitives in src/; network only in the probe module; no Trojan Source;

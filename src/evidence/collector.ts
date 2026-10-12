@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Evidence collection. Every evidence item gets a deterministic ID (so identical evidence keeps its ID across

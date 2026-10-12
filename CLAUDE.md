@@ -23,5 +23,5 @@ user's explicit instructions.
 
 ## Permission gates
 
-Local commits are fine. **Pushing, creating remotes/repos, publishing to npm, choosing a license, or contacting any
+Local commits are fine. **Pushing, creating remotes/repos, publishing to npm, changing the license, or contacting any
 external system requires explicit user approval for that specific action.**

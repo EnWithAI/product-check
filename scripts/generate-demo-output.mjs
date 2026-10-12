@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Regenerates the committed Vibe Notes demo (examples/vibe-app-demo): inputs/ (recorded observations and executed

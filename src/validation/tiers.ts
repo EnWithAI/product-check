@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Lifecycle assurance tiers CT-T0…CT-T6, the mapping from declared lifecycle stage to tier, and tier-specific

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * The passive HTTP probe against a local server: GET only, fixed paths, request budget, same-origin redirects,

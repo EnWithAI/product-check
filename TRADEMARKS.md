@@ -1,6 +1,6 @@
 # Trademarks and names
 
-Whatever license this repository eventually uses for its code and documentation, **it will not grant rights to use
+The MIT License covers this repository's code and documentation. **It does not grant rights to use
 the names below**, except as allowed by law (for example, to truthfully say that you use or modify Product Check).
 
 None of these names is a registered trademark. EnWithAI Technologies uses its names together with the EnWithAI name

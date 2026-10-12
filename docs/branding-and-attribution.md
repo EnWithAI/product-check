@@ -6,8 +6,7 @@ as Impact Check, Spec Check and Outcome Check.
 - **Publisher and copyright holder:** EnWithAI Technologies (the holder name used across the Commons).
 - **Names:** used without ™ or ® (governance decision HR-6: none of the names is registered). Product names are
   descriptive and used as "EnWithAI Product Check" where context needs it.
-- **License:** not yet decided for this repository (see [IMPLEMENTATION_STATUS.md](../IMPLEMENTATION_STATUS.md)).
-  The other Commons tools use MIT.
+- **License:** MIT (decided 2026-10-12), as for the other Commons tools.
 - **README footer:** one footer, at the end, in the shared structure.
 - **Tool output:** a one-line generation note in Markdown and dashboard output that `--no-branding` removes. The
   license would not require it.

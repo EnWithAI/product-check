@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * A small JSON Schema 2020-12 validator for the keyword subset Product Check's schemas use, so the CLI can

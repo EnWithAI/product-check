@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Rewrites absolute paths under a base directory to relative ones in every string of a JSON value, so results

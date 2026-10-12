@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Scan contracts: defaults, loading (with schema validation and path resolution), and construction from CLI

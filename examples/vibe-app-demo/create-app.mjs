@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Generates "Vibe Notes", a SYNTHETIC vibe-coded Next.js-style app used by the Product Check demo, as its own git
