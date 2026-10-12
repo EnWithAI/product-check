@@ -12,12 +12,14 @@ import type { ObservationSet } from "../inspectors/http/observe.js";
 import type { RepoFacts } from "../inspectors/source/facts.js";
 import type {
   ArchitectureComponent,
+  AsBuiltSpec,
   Blueprint,
   Finding,
   Horizon,
   Remediation,
   ScanContract,
   Severity,
+  SurfaceEntry,
   TargetChange,
   TraceLink,
   Validation,
@@ -25,6 +27,7 @@ import type {
 } from "../types.js";
 import { SCHEMA_VERSION } from "../types.js";
 import { control, CONTROLS, VERIFY_INSTRUCTION } from "../validation/catalog.js";
+import { asBuiltBody } from "../spec/build.js";
 import { regressionCandidate } from "./candidates.js";
 
 const SEVERITY_ORDER: Severity[] = ["P0", "P1", "P2", "P3"];
@@ -43,6 +46,8 @@ export interface BlueprintInput {
   hasBaseline: boolean;
   testsImported: boolean;
   aiInScope: boolean;
+  /** The as-built spec derived from the same snapshot (null when source was not inspected). */
+  asBuilt: AsBuiltSpec | null;
 }
 
 const STANDARD_CONSTRAINTS = [
@@ -52,8 +57,8 @@ const STANDARD_CONSTRAINTS = [
   "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.",
 ];
 
-/** As-is architecture components with evidence. */
-function asIs(input: BlueprintInput): { components: ArchitectureComponent[]; uncertainties: string[] } {
+/** As-is architecture components with evidence, plus the as-built spec when source was inspected. */
+function asIs(input: BlueprintInput): Blueprint["as_is"] {
   const components: ArchitectureComponent[] = [];
   const { repo, app, ev } = input;
   const add = (
@@ -196,7 +201,42 @@ function asIs(input: BlueprintInput): { components: ArchitectureComponent[]; unc
   uncertainties.push(
     "Authenticated, multi-step and data-changing journeys were not exercised (no browser automation or credentialed access in this release)."
   );
-  return { components: components.sort((a, b) => (a.id < b.id ? -1 : 1)), uncertainties };
+  return {
+    components: components.sort((a, b) => (a.id < b.id ? -1 : 1)),
+    uncertainties,
+    ...(input.asBuilt ? { as_built: asBuiltBody(input.asBuilt) } : {}),
+  };
+}
+
+/**
+ * Maps a finding location to the as-built requirements it touches: a repository path (`file:line`) matches the
+ * surface items defined in that file; an application URL matches the page or endpoint with that path.
+ */
+function requirementsAt(spec: AsBuiltSpec | null, location: string): string[] {
+  if (!spec) return [];
+  let urlPath: string | null = null;
+  try {
+    urlPath = /^https?:\/\//.test(location) ? new URL(location).pathname : null;
+  } catch {
+    urlPath = null;
+  }
+  const line = /:(\d+)$/.exec(location)?.[1];
+  const file = location.replace(/:\d+$/, "");
+  // Pages, endpoints, entities and boundaries match by file; integrations and configuration names (which share
+  // manifests and helper files with unrelated code) only on the exact line.
+  const byFile = new Set<SurfaceEntry["kind"]>(["page", "endpoint", "entity", "auth-boundary"]);
+  const surface = new Set(
+    spec.surface
+      .filter((s) =>
+        urlPath !== null
+          ? (s.kind === "page" || s.kind === "endpoint") && s.name === urlPath
+          : s.location.path === file &&
+            (byFile.has(s.kind) || (line !== undefined && s.location.line === Number(line)))
+      )
+      .filter((s) => s.kind !== "test")
+      .map((s) => s.id)
+  );
+  return spec.requirements.filter((r) => r.surface_ids.some((id) => surface.has(id))).map((r) => r.id);
 }
 
 /** Remediation verification state for a control's findings. */
@@ -405,13 +445,16 @@ export function buildBlueprint(input: BlueprintInput): Blueprint {
   const journeys = input.contract.critical_journeys;
   const traceability: TraceLink[] = input.findings.map((f) => {
     const rem = remediations.find((r) => r.finding_ids.includes(f.id));
+    const asBuilt = requirementsAt(input.asBuilt, f.location);
     return {
       finding_id: f.id,
       intent: input.contract.target.purpose,
       journey_or_requirement:
-        f.pillar === "customer" && journeys.length > 0
-          ? `Journey: ${journeys[0] ?? ""}`
-          : `Requirement ${f.control_id}: ${f.expected}`,
+        asBuilt.length > 0
+          ? `As-built ${asBuilt.join(", ")}; requirement ${f.control_id}: ${f.expected}`
+          : f.pillar === "customer" && journeys.length > 0
+            ? `Journey: ${journeys[0] ?? ""}`
+            : `Requirement ${f.control_id}: ${f.expected}`,
       observed_behavior: f.actual,
       component: f.location,
       evidence_ids: f.evidence_ids,

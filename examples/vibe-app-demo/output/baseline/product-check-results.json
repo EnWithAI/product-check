@@ -215,11 +215,16 @@
           "EV-191D17CEB58D",
           "EV-1F14A512601B",
           "EV-1F4CBA5F3815",
+          "EV-1FBE61E84F69",
+          "EV-3C91DCB02FB6",
           "EV-4455F569DFD9",
           "EV-4781DDFDBECC",
           "EV-54E8659FCA14",
           "EV-596E4495782B",
+          "EV-5B468F324EDA",
+          "EV-5BEF25ECE52F",
           "EV-5C041BFFFC57",
+          "EV-611B5C06FE78",
           "EV-6329C31A3F2B",
           "EV-7C71539B5FEE",
           "EV-7F5D190C7369",
@@ -228,10 +233,12 @@
           "EV-9A72C9100D5D",
           "EV-A2E9F4A847E7",
           "EV-A5095F98D5CC",
+          "EV-B91D560FD629",
           "EV-C2D6EC68B549",
           "EV-C39927AEAB12",
           "EV-CEC3986784AA",
           "EV-D11387DBDCEC",
+          "EV-D24CD56A807C",
           "EV-E29ECB3AFCC8",
           "EV-E7014085A22C",
           "EV-EDC24BAAED95",
@@ -253,9 +260,12 @@
         "observed_at": "2026-10-14T10:00:00.000Z",
         "evidence_ids": [
           "EV-1CFEDA07419B",
+          "EV-1D895C14EE45",
+          "EV-457B39784D6A",
           "EV-46488A40A621",
           "EV-9D9E623182ED",
           "EV-AA2F59D9DEBF",
+          "EV-AEE63A911559",
           "EV-F4BD66FD50FA"
         ],
         "id": "dependency-manifests",
@@ -617,6 +627,32 @@
       "validation_ids": []
     },
     {
+      "id": "EV-1D895C14EE45",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "manifest-field",
+      "pop": "dependency-manifests",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": 10,
+        "line_end": 10,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "integration openai: ai",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "150336a43383dcecc3ed5858afc499da3d8315e600b71cce52193f4ce180700a"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-1F14A512601B",
       "run_id": "PCR-20261014T100000Z-DAFCB5",
       "kind": "file-presence",
@@ -671,6 +707,32 @@
       "validation_ids": [
         "VAL-PC-T-04"
       ]
+    },
+    {
+      "id": "EV-1FBE61E84F69",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "prisma/schema.prisma",
+        "line_start": 5,
+        "line_end": 5,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "entity Note: fields: id, owner, html",
+      "excerpt": "model Note {",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "e7ded3c4bbcdba16bd7f33b99f63cd999bed3742d8dfa6447a5dce3d32991449"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-29BFC1F47A93",
@@ -729,6 +791,32 @@
       ]
     },
     {
+      "id": "EV-3C91DCB02FB6",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/api/notes/route.ts",
+        "line_start": 3,
+        "line_end": 3,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "endpoint GET /api/notes: Next.js route handler",
+      "excerpt": "export async function GET() {",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "655bd8e9955b4bc7d8a4d773996440b042fdbb8cdb017e0cbc0ca52fe1ea88e0"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-4455F569DFD9",
       "run_id": "PCR-20261014T100000Z-DAFCB5",
       "kind": "source-location",
@@ -783,6 +871,32 @@
       "validation_ids": [
         "VAL-PC-C-06"
       ]
+    },
+    {
+      "id": "EV-457B39784D6A",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "manifest-field",
+      "pop": "dependency-manifests",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": 11,
+        "line_end": 11,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "integration prisma: data",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "150336a43383dcecc3ed5858afc499da3d8315e600b71cce52193f4ce180700a"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-46488A40A621",
@@ -981,6 +1095,60 @@
       ]
     },
     {
+      "id": "EV-5B468F324EDA",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/page.tsx",
+        "line_start": 6,
+        "line_end": 6,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "config NEXT_PUBLIC_OPENAI_API_KEY: [REDACTED] to the browser bundle; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "ad9d58593574b2511e0dc8bc8a568be47c8b29bc95188d63ceaa79bedd399048"
+      },
+      "redaction": {
+        "applied": true,
+        "rules": [
+          "assignment-value"
+        ]
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-5BEF25ECE52F",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/page.tsx",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "page /: Next.js app router page",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "ad9d58593574b2511e0dc8bc8a568be47c8b29bc95188d63ceaa79bedd399048"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-5C041BFFFC57",
       "run_id": "PCR-20261014T100000Z-DAFCB5",
       "kind": "search-scope",
@@ -1007,6 +1175,32 @@
       "validation_ids": [
         "VAL-PC-T-10"
       ]
+    },
+    {
+      "id": "EV-611B5C06FE78",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "lib/supabase.ts",
+        "line_start": 5,
+        "line_end": 5,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "config NEXT_PUBLIC_SUPABASE_URL: exposed to the browser bundle; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "cfa7cec1812c2b3cfdf1a802c29e7c42497e98185a5adb50748f14e71c0121d3"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-6329C31A3F2B",
@@ -1485,6 +1679,60 @@
       "validation_ids": []
     },
     {
+      "id": "EV-AEE63A911559",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "manifest-field",
+      "pop": "dependency-manifests",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": 9,
+        "line_end": 9,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "integration @supabase/supabase-js: data",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "150336a43383dcecc3ed5858afc499da3d8315e600b71cce52193f4ce180700a"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-B91D560FD629",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "lib/supabase.ts",
+        "line_start": 4,
+        "line_end": 4,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "config NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY: [REDACTED] to the browser bundle; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "cfa7cec1812c2b3cfdf1a802c29e7c42497e98185a5adb50748f14e71c0121d3"
+      },
+      "redaction": {
+        "applied": true,
+        "rules": [
+          "assignment-value"
+        ]
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-BE9027E2E29A",
       "run_id": "PCR-20261014T100000Z-DAFCB5",
       "kind": "http-response",
@@ -1677,6 +1925,32 @@
       "validation_ids": [
         "VAL-PC-T-02"
       ]
+    },
+    {
+      "id": "EV-D24CD56A807C",
+      "run_id": "PCR-20261014T100000Z-DAFCB5",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "lib/db.ts",
+        "line_start": 2,
+        "line_end": 2,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "config DATABASE_URL: server-side; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "d1679fc6e3ff895d74013c40971f2e6b25b07544efb217470327aa4f99d0d333"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-D72CA28DECBA",
@@ -4488,7 +4762,337 @@
         "No authentication library detected; whether the product has user accounts or custom auth was not determined.",
         "A database is used but its schema is not versioned in the repository; the live schema was not inspected.",
         "Authenticated, multi-step and data-changing journeys were not exercised (no browser automation or credentialed access in this release)."
-      ]
+      ],
+      "as_built": {
+        "surface": [
+          {
+            "id": "SRF-FF548D40E5",
+            "kind": "page",
+            "name": "/",
+            "method": null,
+            "area": "home",
+            "detail": "Next.js app router page",
+            "location": {
+              "path": "app/page.tsx",
+              "line": 1
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-5BEF25ECE52F"
+            ]
+          },
+          {
+            "id": "SRF-828B758920",
+            "kind": "endpoint",
+            "name": "/api/notes",
+            "method": "GET",
+            "area": "notes",
+            "detail": "Next.js route handler",
+            "location": {
+              "path": "app/api/notes/route.ts",
+              "line": 3
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-3C91DCB02FB6"
+            ]
+          },
+          {
+            "id": "SRF-E9D314193A",
+            "kind": "entity",
+            "name": "Note",
+            "method": null,
+            "area": "data",
+            "detail": "fields: id, owner, html",
+            "location": {
+              "path": "prisma/schema.prisma",
+              "line": 5
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-1FBE61E84F69"
+            ]
+          },
+          {
+            "id": "SRF-BCBF6383D2",
+            "kind": "config",
+            "name": "DATABASE_URL",
+            "method": null,
+            "area": "configuration",
+            "detail": "server-side; 1 reference(s)",
+            "location": {
+              "path": "lib/db.ts",
+              "line": 2
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-D24CD56A807C"
+            ]
+          },
+          {
+            "id": "SRF-36C875B876",
+            "kind": "config",
+            "name": "NEXT_PUBLIC_OPENAI_API_KEY",
+            "method": null,
+            "area": "configuration",
+            "detail": "exposed to the browser bundle; 1 reference(s)",
+            "location": {
+              "path": "app/page.tsx",
+              "line": 6
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-5B468F324EDA"
+            ]
+          },
+          {
+            "id": "SRF-D69585EBE4",
+            "kind": "config",
+            "name": "NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY",
+            "method": null,
+            "area": "configuration",
+            "detail": "exposed to the browser bundle; 1 reference(s)",
+            "location": {
+              "path": "lib/supabase.ts",
+              "line": 4
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-B91D560FD629"
+            ]
+          },
+          {
+            "id": "SRF-29E33CBCEF",
+            "kind": "config",
+            "name": "NEXT_PUBLIC_SUPABASE_URL",
+            "method": null,
+            "area": "configuration",
+            "detail": "exposed to the browser bundle; 1 reference(s)",
+            "location": {
+              "path": "lib/supabase.ts",
+              "line": 5
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-611B5C06FE78"
+            ]
+          },
+          {
+            "id": "SRF-9DAA994B65",
+            "kind": "integration",
+            "name": "@supabase/supabase-js",
+            "method": null,
+            "area": "data",
+            "detail": "data",
+            "location": {
+              "path": "package.json",
+              "line": 9
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-AEE63A911559"
+            ]
+          },
+          {
+            "id": "SRF-693E60FD29",
+            "kind": "integration",
+            "name": "openai",
+            "method": null,
+            "area": "ai",
+            "detail": "ai",
+            "location": {
+              "path": "package.json",
+              "line": 10
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-1D895C14EE45"
+            ]
+          },
+          {
+            "id": "SRF-0155DC3160",
+            "kind": "integration",
+            "name": "prisma",
+            "method": null,
+            "area": "data",
+            "detail": "data",
+            "location": {
+              "path": "package.json",
+              "line": 11
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-457B39784D6A"
+            ]
+          }
+        ],
+        "stories": [
+          {
+            "id": "US-1",
+            "area": "home",
+            "title": "Home and top-level pages",
+            "critical_journey": null,
+            "surface_ids": [
+              "SRF-FF548D40E5"
+            ],
+            "requirement_ids": [
+              "FR-001"
+            ],
+            "test_behaviours": []
+          },
+          {
+            "id": "US-2",
+            "area": "notes",
+            "title": "Notes",
+            "critical_journey": "Sign up and create a first note",
+            "surface_ids": [
+              "SRF-828B758920"
+            ],
+            "requirement_ids": [
+              "FR-002"
+            ],
+            "test_behaviours": []
+          }
+        ],
+        "requirements": [
+          {
+            "id": "FR-001",
+            "statement": "The system MUST serve the page `/`.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-FF548D40E5"
+            ],
+            "evidence_ids": [
+              "EV-5BEF25ECE52F"
+            ]
+          },
+          {
+            "id": "FR-002",
+            "statement": "The system MUST handle `GET` requests to `/api/notes`.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-828B758920"
+            ],
+            "evidence_ids": [
+              "EV-3C91DCB02FB6"
+            ]
+          },
+          {
+            "id": "FR-003",
+            "statement": "The system MUST persist `Note` records (fields: id, owner, html).",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-E9D314193A"
+            ],
+            "evidence_ids": [
+              "EV-1FBE61E84F69"
+            ]
+          },
+          {
+            "id": "FR-004",
+            "statement": "The system MUST integrate with `@supabase/supabase-js` (data).",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-9DAA994B65"
+            ],
+            "evidence_ids": [
+              "EV-AEE63A911559"
+            ]
+          },
+          {
+            "id": "FR-005",
+            "statement": "The system MUST integrate with `openai` (ai).",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-693E60FD29"
+            ],
+            "evidence_ids": [
+              "EV-1D895C14EE45"
+            ]
+          },
+          {
+            "id": "FR-006",
+            "statement": "The system MUST integrate with `prisma` (data).",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-0155DC3160"
+            ],
+            "evidence_ids": [
+              "EV-457B39784D6A"
+            ]
+          },
+          {
+            "id": "FR-007",
+            "statement": "The system MUST be configured through 4 environment variable(s): `DATABASE_URL`, `NEXT_PUBLIC_OPENAI_API_KEY`, `NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_URL`. `NEXT_PUBLIC_OPENAI_API_KEY`, `NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_URL` are exposed to the browser bundle and MUST NOT hold secrets.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-BCBF6383D2",
+              "SRF-36C875B876",
+              "SRF-D69585EBE4",
+              "SRF-29E33CBCEF"
+            ],
+            "evidence_ids": [
+              "EV-5B468F324EDA",
+              "EV-611B5C06FE78",
+              "EV-B91D560FD629",
+              "EV-D24CD56A807C"
+            ]
+          }
+        ],
+        "non_functional": [
+          {
+            "id": "NFR-001",
+            "statement": "[NEEDS CLARIFICATION: response-time and throughput targets for the main pages and endpoints]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          },
+          {
+            "id": "NFR-002",
+            "statement": "[NEEDS CLARIFICATION: availability target and acceptable downtime]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          },
+          {
+            "id": "NFR-003",
+            "statement": "[NEEDS CLARIFICATION: how long personal and business data is kept, and how it is deleted]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          }
+        ],
+        "success_criteria": [
+          {
+            "id": "SC-001",
+            "statement": "[NEEDS CLARIFICATION: measurable outcomes cannot be derived from source code; state the targets this product must meet]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          }
+        ],
+        "edge_cases": [],
+        "clarifications": [
+          "Purpose of the Home and top-level pages area: who uses it, and what outcome it must deliver.",
+          "Purpose of the Notes area: who uses it, and what outcome it must deliver.",
+          "Critical journey \"Summarize a note with AI\" is declared in the scan contract but no discovered route matches it."
+        ],
+        "uncertainties": [
+          "Purpose, users, priorities and business rules are not derivable from code; every story carries a clarification for them.",
+          "Nothing was executed: requirements describe what the code declares, not verified behaviour.",
+          "Configuration is listed by variable name only; values were never read."
+        ]
+      }
     },
     "to_be": {
       "changes": [
@@ -7024,7 +7628,7 @@
       {
         "finding_id": "PCF-4DF8A34CE8",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-01: No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.",
+        "journey_or_requirement": "As-built FR-007; requirement PC-S-01: No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.",
         "observed_behavior": "A service-role JWT (bypasses row-level security) appears at lib/supabase.ts:4; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).",
         "component": "lib/supabase.ts:4",
         "evidence_ids": [
@@ -7039,7 +7643,7 @@
       {
         "finding_id": "PCF-63B9B21478",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-02: No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).",
+        "journey_or_requirement": "As-built FR-007; requirement PC-S-02: No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).",
         "observed_behavior": "NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY uses the client-exposed prefix NEXT_PUBLIC_; bundlers inline such variables into JavaScript served to every visitor.",
         "component": "lib/supabase.ts:4",
         "evidence_ids": [
@@ -7084,7 +7688,7 @@
       {
         "finding_id": "PCF-E2CE361289",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-AI-01: AI provider SDKs are not imported in client-side code and browser use is not enabled.",
+        "journey_or_requirement": "As-built FR-001, FR-007; requirement PC-AI-01: AI provider SDKs are not imported in client-side code and browser use is not enabled.",
         "observed_behavior": "app/page.tsx enables dangerouslyAllowBrowser; the provider key must then be available in the browser.",
         "component": "app/page.tsx:6",
         "evidence_ids": [
@@ -7099,7 +7703,7 @@
       {
         "finding_id": "PCF-E8ACA75BD3",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-02: No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).",
+        "journey_or_requirement": "As-built FR-001, FR-007; requirement PC-S-02: No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).",
         "observed_behavior": "NEXT_PUBLIC_OPENAI_API_KEY uses the client-exposed prefix NEXT_PUBLIC_; bundlers inline such variables into JavaScript served to every visitor.",
         "component": "app/page.tsx:6",
         "evidence_ids": [
@@ -7144,7 +7748,7 @@
       {
         "finding_id": "PCF-1E72F2F7B0",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-08: Every cookie observed on passive requests has Secure and SameSite; session-like cookies also have HttpOnly.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-08: Every cookie observed on passive requests has Secure and SameSite; session-like cookies also have HttpOnly.",
         "observed_behavior": "session missing SameSite, HttpOnly",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7159,7 +7763,7 @@
       {
         "finding_id": "PCF-2E884D06D5",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-T-11: When a database or ORM is used, schema migrations are kept in the repository.",
+        "journey_or_requirement": "As-built FR-003; requirement PC-T-11: When a database or ORM is used, schema migrations are kept in the repository.",
         "observed_behavior": "Schema changes are not versioned as migrations.",
         "component": "prisma/schema.prisma",
         "evidence_ids": [
@@ -7220,7 +7824,7 @@
       {
         "finding_id": "PCF-5C358D43AB",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Journey: Sign up and create a first note",
+        "journey_or_requirement": "As-built FR-001; requirement PC-C-04: Every <img>/<Image> element has an alt attribute (empty alt for decorative images).",
         "observed_behavior": "1 image(s) without alt.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7235,7 +7839,7 @@
       {
         "finding_id": "PCF-70B846CB03",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-16: No dynamic code evaluation, raw HTML injection of non-literal values, or SQL built by string interpolation.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-16: No dynamic code evaluation, raw HTML injection of non-literal values, or SQL built by string interpolation.",
         "observed_behavior": "raw HTML injection of a non-literal value at app/page.tsx:23. Whether untrusted data reaches it was not determined.",
         "component": "app/page.tsx:23",
         "evidence_ids": [
@@ -7250,7 +7854,7 @@
       {
         "finding_id": "PCF-9901AF5D1D",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-12: The entry page links to a privacy notice, /privacy answers 2xx, or a privacy page exists in source.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-12: The entry page links to a privacy notice, /privacy answers 2xx, or a privacy page exists in source.",
         "observed_behavior": "No reachable privacy notice.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7311,7 +7915,7 @@
       {
         "finding_id": "PCF-CDCE917FE3",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-17: No CORS configuration allows any origin (\"*\") or reflects origins while allowing credentials.",
+        "journey_or_requirement": "As-built FR-002; requirement PC-S-17: No CORS configuration allows any origin (\"*\") or reflects origins while allowing credentials.",
         "observed_behavior": "CORS allows any (or reflected) origin and credentials in the same file.",
         "component": "app/api/notes/route.ts:2",
         "evidence_ids": [
@@ -7326,7 +7930,7 @@
       {
         "finding_id": "PCF-CEED9100D9",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-06: CSP frame-ancestors or X-Frame-Options (DENY/SAMEORIGIN) is present.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-06: CSP frame-ancestors or X-Frame-Options (DENY/SAMEORIGIN) is present.",
         "observed_behavior": "No X-Frame-Options and no CSP frame-ancestors.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7341,7 +7945,7 @@
       {
         "finding_id": "PCF-CF1364323D",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-05: Responses carry a Content-Security-Policy that does not allow 'unsafe-inline' scripts without nonces/hashes.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-05: Responses carry a Content-Security-Policy that does not allow 'unsafe-inline' scripts without nonces/hashes.",
         "observed_behavior": "No Content-Security-Policy header or meta tag.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7356,7 +7960,7 @@
       {
         "finding_id": "PCF-E0A3F8E153",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Journey: Sign up and create a first note",
+        "journey_or_requirement": "As-built FR-001; requirement PC-C-04: Every <img>/<Image> element has an alt attribute (empty alt for decorative images).",
         "observed_behavior": "<img> without alt.",
         "component": "app/page.tsx:20",
         "evidence_ids": [
@@ -7371,7 +7975,7 @@
       {
         "finding_id": "PCF-026FD4A0D8",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-07: X-Content-Type-Options: nosniff is present.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-07: X-Content-Type-Options: nosniff is present.",
         "observed_behavior": "No X-Content-Type-Options header.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7386,7 +7990,7 @@
       {
         "finding_id": "PCF-14B347C463",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-T-09: No dependency uses \"*\", \"latest\", an empty range or an unpinned git/URL source.",
+        "journey_or_requirement": "As-built FR-004; requirement PC-T-09: No dependency uses \"*\", \"latest\", an empty range or an unpinned git/URL source.",
         "observed_behavior": "@supabase/supabase-js is declared as \"latest\".",
         "component": "package.json:9",
         "evidence_ids": [
@@ -7447,7 +8051,7 @@
       {
         "finding_id": "PCF-2FD01AC810",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-10: No X-Powered-By header and no version numbers in the Server header.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-10: No X-Powered-By header and no version numbers in the Server header.",
         "observed_behavior": "X-Powered-By: Next.js",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7477,7 +8081,7 @@
       {
         "finding_id": "PCF-5B93B2ED59",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Journey: Sign up and create a first note",
+        "journey_or_requirement": "As-built FR-001; requirement PC-C-05: The entry page has a non-empty <title> that is not a framework starter default.",
         "observed_behavior": "Starter-template title \"Create Next App\".",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7522,7 +8126,7 @@
       {
         "finding_id": "PCF-A355BF9FA1",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Journey: Sign up and create a first note",
+        "journey_or_requirement": "As-built FR-001; requirement PC-C-02: The root <html> element declares a lang attribute.",
         "observed_behavior": "Served <html> has no lang attribute.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -7537,7 +8141,7 @@
       {
         "finding_id": "PCF-C205AFB621",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-T-09: No dependency uses \"*\", \"latest\", an empty range or an unpinned git/URL source.",
+        "journey_or_requirement": "As-built FR-005; requirement PC-T-09: No dependency uses \"*\", \"latest\", an empty range or an unpinned git/URL source.",
         "observed_behavior": "openai is declared as \"*\".",
         "component": "package.json:10",
         "evidence_ids": [

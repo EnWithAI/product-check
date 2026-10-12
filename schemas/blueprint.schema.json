@@ -62,6 +62,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "as_built": {
+          "$ref": "as-built-spec.schema.json#/$defs/body"
         }
       }
     },

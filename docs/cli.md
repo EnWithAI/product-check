@@ -43,6 +43,9 @@ product-check schema    [name]
 | `--fail-on <verdicts>`                       | exit 6 if the verdict is listed             |
 | `--no-dashboard`, `--no-branding`, `--quiet` |                                             |
 
+When the repository was inspected, `run` and `retest` also write `as-built-spec.json` and
+`specs/000-as-built/spec.md` (see [As-built spec](#as-built-spec-spec)).
+
 `SOURCE_DATE_EPOCH` (seconds) fixes the clock for reproducible output.
 
 ## As-built spec (`spec`)

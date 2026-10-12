@@ -25,9 +25,12 @@ CLI (src/cli)                       parse flags → contract → safety gate →
  │            scoring/score.ts       pillar scores, coverage, confidence, caps, gates (pure)
  │            scoring/verdict.ts     release verdict rules (pure)
  │  RETEST    validation/retest.ts   lifecycle across runs, baseline evidence preserved, PC-T-16 regressions
- │  BLUEPRINT blueprint/build.ts     as-is/to-be, remediations, work packets, test architecture, traceability
+ │  SPEC      inspectors/source/surface.ts + spec/build.ts   as-built surface and requirements (same snapshot)
+ │  BLUEPRINT blueprint/build.ts     as-is/to-be (+ as-built spec), remediations, work packets, test architecture,
+ │                                   traceability (findings → as-built FR IDs)
  │
  ├─ reporting/markdown.ts            report.md, blueprint.md, work-packets/*.md
+ ├─ reporting/spec-markdown.ts       specs/000-as-built/spec.md (Spec Kit layout)
  ├─ dashboard/render.ts (+ /dashboard assets)   self-contained dashboard.html
  ├─ validation/integrity.ts          schema + references + recomputation (used by validate and the dashboard)
  └─ schema/validator.ts              built-in JSON Schema 2020-12 subset validator (cross-checked with Ajv in tests)

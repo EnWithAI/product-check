@@ -20,7 +20,7 @@ import { renderBlueprint, renderPacket, renderReport } from "../reporting/markdo
 import { renderAsBuiltSpec } from "../reporting/spec-markdown.js";
 import { makeRunId, runAssessment } from "../run.js";
 import { formatErrors, KIND_SCHEMA, schemaFiles, schemaText, validateAgainst } from "../schema/registry.js";
-import { buildAsBuiltSpec } from "../spec/build.js";
+import { buildAsBuiltSpec, specFromResults } from "../spec/build.js";
 import type { Results, ScanContract, Verdict } from "../types.js";
 import { sha256 } from "../util/hash.js";
 import { relativize } from "../util/paths.js";
@@ -219,6 +219,15 @@ function buildContract(values: Values, io: CliIO): { contract: ScanContract; fro
   return { contract, fromFile };
 }
 
+/** Writes the as-built spec (JSON + Spec Kit Markdown) carried by a results document, if any. */
+function writeSpec(results: Results, dir: string): string[] {
+  const spec = specFromResults(results);
+  if (!spec) return [];
+  writeFile(join(dir, "as-built-spec.json"), `${JSON.stringify(spec, null, 2)}\n`);
+  writeFile(join(dir, "specs", "000-as-built", "spec.md"), renderAsBuiltSpec(spec));
+  return ["as-built-spec.json", "specs/000-as-built/spec.md"];
+}
+
 /** Writes all renderings of a results document into a directory. */
 function writeOutputs(results: Results, dir: string, branding: boolean, dashboard: boolean): string[] {
   const written: string[] = [];
@@ -230,6 +239,7 @@ function writeOutputs(results: Results, dir: string, branding: boolean, dashboar
   put("report.md", renderReport(results, { branding }));
   put("blueprint.md", renderBlueprint(results, { branding }));
   for (const p of results.blueprint.work_packets) put(`work-packets/${p.id}.md`, renderPacket(results, p));
+  written.push(...writeSpec(results, dir));
   if (dashboard) put("dashboard.html", renderDashboard(results, { branding }));
   return written;
 }
@@ -556,8 +566,9 @@ async function main(argv: string[], io: CliIO): Promise<number> {
         writeFile(join(dir, "blueprint.md"), renderBlueprint(results, { branding }));
         for (const p of results.blueprint.work_packets)
           writeFile(join(dir, "work-packets", `${p.id}.md`), renderPacket(results, p));
+        const spec = writeSpec(results, dir);
         io.stdout(
-          `Wrote blueprint.json, blueprint.md and ${results.blueprint.work_packets.length} work packet(s) to ${display(io.cwd, dir)}\n`
+          `Wrote blueprint.json, blueprint.md${spec.length ? ", the as-built spec" : ""} and ${results.blueprint.work_packets.length} work packet(s) to ${display(io.cwd, dir)}\n`
         );
       } else
         io.stdout(

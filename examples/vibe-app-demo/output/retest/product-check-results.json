@@ -99,7 +99,7 @@
     },
     "baseline": {
       "run_id": "PCR-20261014T100000Z-DAFCB5",
-      "sha256": "eb4ac85e7f99c303f9e61aebf5b30a5386128bcb787b41b48bd45beca332b2bf"
+      "sha256": "98bced600cae81c857c88baeb4a4dcdef9530bd503257418c942c957a9c7a7e2"
     },
     "demo": true
   },
@@ -216,15 +216,25 @@
         "observed_at": "2026-10-15T10:00:00.000Z",
         "evidence_ids": [
           "EV-0FC863D2A487",
+          "EV-144544F6067B",
+          "EV-18C86403D062",
+          "EV-1D15C006C286",
           "EV-1E4B8B25DD80",
+          "EV-1FBE61E84F69",
           "EV-21CE4D7ED4B3",
           "EV-224BCB044C14",
+          "EV-291D4005C074",
           "EV-3A4C1E104489",
+          "EV-3E91936747FD",
           "EV-412D4CE7AFDD",
           "EV-4766C5A5B288",
           "EV-50ABE1653422",
           "EV-5F3BB42D05D6",
+          "EV-65B1DCB2C813",
+          "EV-68298607ED35",
           "EV-6C0251A926C5",
+          "EV-73871D143FA4",
+          "EV-73D36908E083",
           "EV-7A4E8B96280C",
           "EV-7E950C2EC193",
           "EV-881CC846E9A3",
@@ -236,8 +246,11 @@
           "EV-C3EA49B4DA82",
           "EV-C43CF587B598",
           "EV-CC7A8FB57C13",
+          "EV-CE87AC89A4BB",
+          "EV-DF85655B0058",
           "EV-E3FBD9BC1E4F",
           "EV-E41FC2432AAB",
+          "EV-E568CBDC3327",
           "EV-E8D9A45C59A9",
           "EV-EB723C28C0B5",
           "EV-F5CAB5FC15F6",
@@ -258,10 +271,13 @@
         "authorization": "not-required",
         "observed_at": "2026-10-15T10:00:00.000Z",
         "evidence_ids": [
+          "EV-313843BF192C",
+          "EV-637D6B1FAFEE",
           "EV-8075327FB136",
           "EV-B3C2A7857EEF",
           "EV-B9ED1DACDCB4",
           "EV-C3A1B74A2991",
+          "EV-EAB7FB65417F",
           "EV-FCB7E33D1FEB"
         ],
         "id": "dependency-manifests",
@@ -280,8 +296,12 @@
         "evidence_ids": [
           "EV-191573559CBC",
           "EV-32A35C5A66C7",
+          "EV-4C0325B2E116",
+          "EV-B8953F455111",
           "EV-BB789B0B979C",
-          "EV-D3916BC90F80"
+          "EV-C133E23FCFE5",
+          "EV-D3916BC90F80",
+          "EV-E344694CEDB8"
         ],
         "id": "automated-tests",
         "category": "source-build",
@@ -542,6 +562,32 @@
       ]
     },
     {
+      "id": "EV-144544F6067B",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/not-found.tsx",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "not-found page",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "a49a7724f43d5abb57b6ba031f1a647368299a7a326ba8eae8a70fa4b3689831"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-172504A92CE8",
       "run_id": "PCR-20261014T100000Z-DAFCB5",
       "kind": "file-presence",
@@ -560,6 +606,32 @@
       "checksum": {
         "algorithm": "sha256",
         "value": "150336a43383dcecc3ed5858afc499da3d8315e600b71cce52193f4ce180700a"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-18C86403D062",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/page.tsx",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "page /: Next.js app router page",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "86c61a80f1a8777d521649bf146b7836def8ad96fb3dcd1323899bc1d65ad781"
       },
       "redaction": {
         "applied": false,
@@ -622,6 +694,32 @@
       "validation_ids": []
     },
     {
+      "id": "EV-1D15C006C286",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "lib/db.ts",
+        "line_start": 2,
+        "line_end": 2,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "config DATABASE_URL: server-side; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "378278c189808c770569a018d7dd8700fc0cd917429d27eaa5d99fb73a55d7b8"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-1E4B8B25DD80",
       "run_id": "PCR-20261015T100000Z-96021F",
       "kind": "file-presence",
@@ -668,6 +766,32 @@
       "checksum": {
         "algorithm": "sha256",
         "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-1FBE61E84F69",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "prisma/schema.prisma",
+        "line_start": 5,
+        "line_end": 5,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "entity Note: fields: id, owner, html",
+      "excerpt": "model Note {",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "e7ded3c4bbcdba16bd7f33b99f63cd999bed3742d8dfa6447a5dce3d32991449"
       },
       "redaction": {
         "applied": false,
@@ -760,6 +884,32 @@
       ]
     },
     {
+      "id": "EV-291D4005C074",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "next.config.mjs",
+        "line_start": 9,
+        "line_end": 9,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "header configuration: Next.js headers() configuration",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "f44ea783cbeada9d911fc6ceebb2e26e39f682e6943152da74bd86fb6351f4a5"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-29BFC1F47A93",
       "run_id": "PCR-20261014T100000Z-DAFCB5",
       "kind": "http-response",
@@ -778,6 +928,32 @@
       "checksum": {
         "algorithm": "sha256",
         "value": "246fad2aea053f83476ffaccc85c01a7a13f04d7182f8900672b40358decf064"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-313843BF192C",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "manifest-field",
+      "pop": "dependency-manifests",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": 11,
+        "line_end": 11,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "integration openai: ai",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b9d5466ba66ddc54166abdfdee6df5c236a1360f6a3781ebb8b971aa4c2fe0ac"
       },
       "redaction": {
         "applied": false,
@@ -894,6 +1070,32 @@
       "validation_ids": [
         "VAL-PC-T-07"
       ]
+    },
+    {
+      "id": "EV-3E91936747FD",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/api/notes/route.ts",
+        "line_start": 2,
+        "line_end": 2,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "endpoint GET /api/notes: Next.js route handler",
+      "excerpt": "export async function GET() {",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8fb107b44fb119aac4c4feb2c5d1676a2730dda346e1f0997091db01165d662e"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-412D4CE7AFDD",
@@ -1079,6 +1281,32 @@
       "validation_ids": [
         "VAL-PC-S-12"
       ]
+    },
+    {
+      "id": "EV-4C0325B2E116",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "automated-tests",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "inferred",
+      "provenance": "inferred",
+      "source": {
+        "locator": "tests/e2e/onboarding.test.mjs",
+        "line_start": 15,
+        "line_end": 15,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "test onboarding: a new user can sign up and create a first note: test title",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "1fa00db0b488a2b88017b202ece693a79eaee503a61b4ebfeac1aee7bdd642e3"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-4CF96BA278E3",
@@ -1412,6 +1640,58 @@
       "validation_ids": []
     },
     {
+      "id": "EV-637D6B1FAFEE",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "manifest-field",
+      "pop": "dependency-manifests",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": 12,
+        "line_end": 12,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "integration prisma: data",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b9d5466ba66ddc54166abdfdee6df5c236a1360f6a3781ebb8b971aa4c2fe0ac"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-65B1DCB2C813",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "lib/supabase-server.ts",
+        "line_start": 3,
+        "line_end": 3,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "config NEXT_PUBLIC_SUPABASE_URL: exposed to the browser bundle; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b490b035aadfcce92263c9054ae1b6c3ab76eabf4d1db4c3707fb349be607122"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-6612E40B9FF6",
       "run_id": "PCR-20261015T100000Z-96021F",
       "kind": "http-response",
@@ -1468,6 +1748,32 @@
       ]
     },
     {
+      "id": "EV-68298607ED35",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "prisma/migrations/0001_init/migration.sql",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "entity Note: SQL table",
+      "excerpt": "CREATE TABLE \"Note\" (\"id\" TEXT PRIMARY KEY, \"owner\" TEXT NOT NULL, \"html\" TEXT NOT NULL);",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8003b7f121cab2e5977d4787c3d2252c53ee9507431e2d178adfc6e278af1b4f"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-6C0251A926C5",
       "run_id": "PCR-20261015T100000Z-96021F",
       "kind": "file-presence",
@@ -1518,6 +1824,62 @@
       "redaction": {
         "applied": false,
         "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-73871D143FA4",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "lib/supabase-server.ts",
+        "line_start": 3,
+        "line_end": 3,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "config SUPABASE_SERVICE_ROLE_KEY: [REDACTED]; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b490b035aadfcce92263c9054ae1b6c3ab76eabf4d1db4c3707fb349be607122"
+      },
+      "redaction": {
+        "applied": true,
+        "rules": [
+          "assignment-value"
+        ]
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-73D36908E083",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/api/summarize/route.ts",
+        "line_start": 2,
+        "line_end": 2,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "config OPENAI_API_KEY: [REDACTED]; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "045705b90e1f119b0e476ef332bde46612bce89e1a8e1c3b80740018a7f9fd27"
+      },
+      "redaction": {
+        "applied": true,
+        "rules": [
+          "assignment-value"
+        ]
       },
       "validation_ids": []
     },
@@ -2225,6 +2587,32 @@
       "validation_ids": []
     },
     {
+      "id": "EV-B8953F455111",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "automated-tests",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "tests/e2e/onboarding.test.mjs",
+        "line_start": null,
+        "line_end": null,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "end-to-end test file",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "1fa00db0b488a2b88017b202ece693a79eaee503a61b4ebfeac1aee7bdd642e3"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-B8C6CEF7B544",
       "run_id": "PCR-20261015T100000Z-96021F",
       "kind": "file-presence",
@@ -2329,6 +2717,32 @@
       "validation_ids": [
         "VAL-PC-S-06"
       ]
+    },
+    {
+      "id": "EV-C133E23FCFE5",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "automated-tests",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "inferred",
+      "provenance": "inferred",
+      "source": {
+        "locator": "tests/unit/summarize.test.mjs",
+        "line_start": 4,
+        "line_end": 4,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "test unit: summary input is clipped to 4000 characters: test title",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "77dcc8cecd61e56dfb3905b455f3a2f0c26c59f39df4e3095e7c9d3387724092"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-C2D6EC68B549",
@@ -2603,6 +3017,32 @@
       ]
     },
     {
+      "id": "EV-CE87AC89A4BB",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": 4,
+        "line_end": 4,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "runtime declaration: engines.node = >=22",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b9d5466ba66ddc54166abdfdee6df5c236a1360f6a3781ebb8b971aa4c2fe0ac"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-CEC3986784AA",
       "run_id": "PCR-20261014T100000Z-DAFCB5",
       "kind": "file-presence",
@@ -2735,6 +3175,32 @@
       ]
     },
     {
+      "id": "EV-DF85655B0058",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/api/summarize/route.ts",
+        "line_start": 3,
+        "line_end": 3,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "endpoint POST /api/summarize: Next.js route handler",
+      "excerpt": "export async function POST(req: Request) {",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "045705b90e1f119b0e476ef332bde46612bce89e1a8e1c3b80740018a7f9fd27"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
       "id": "EV-E29ECB3AFCC8",
       "run_id": "PCR-20261014T100000Z-DAFCB5",
       "kind": "source-location",
@@ -2759,6 +3225,32 @@
         "rules": [
           "assignment-value"
         ]
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-E344694CEDB8",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "automated-tests",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "inferred",
+      "provenance": "inferred",
+      "source": {
+        "locator": "tests/security/authz.test.mjs",
+        "line_start": 15,
+        "line_end": 15,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "test authz: anonymous requests to /api/notes are rejected: test title",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "4e808d877e60e780ecb32eb79194642f9f6144bfbf16622d9aab188833791946"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
       },
       "validation_ids": []
     },
@@ -2817,6 +3309,32 @@
       "validation_ids": [
         "VAL-PC-AI-01"
       ]
+    },
+    {
+      "id": "EV-E568CBDC3327",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/privacy/page.tsx",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "page /privacy: Next.js app router page",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "ed256a61dfff2ac10d648e508668a73619e1ff031c4cd00496e8c713366b3ebc"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-E7014085A22C",
@@ -2899,6 +3417,32 @@
       "validation_ids": [
         "VAL-PC-T-02"
       ]
+    },
+    {
+      "id": "EV-EAB7FB65417F",
+      "run_id": "PCR-20261015T100000Z-96021F",
+      "kind": "manifest-field",
+      "pop": "dependency-manifests",
+      "collected_at": "2026-10-15T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": 10,
+        "line_end": 10,
+        "revision": "56b23fac439176b4ea0666b96854350a82606ec6"
+      },
+      "summary": "integration @supabase/supabase-js: data",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b9d5466ba66ddc54166abdfdee6df5c236a1360f6a3781ebb8b971aa4c2fe0ac"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
     },
     {
       "id": "EV-EB723C28C0B5",
@@ -6089,7 +6633,546 @@
       "uncertainties": [
         "No authentication library detected; whether the product has user accounts or custom auth was not determined.",
         "Authenticated, multi-step and data-changing journeys were not exercised (no browser automation or credentialed access in this release)."
-      ]
+      ],
+      "as_built": {
+        "surface": [
+          {
+            "id": "SRF-FF548D40E5",
+            "kind": "page",
+            "name": "/",
+            "method": null,
+            "area": "home",
+            "detail": "Next.js app router page",
+            "location": {
+              "path": "app/page.tsx",
+              "line": 1
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-18C86403D062"
+            ]
+          },
+          {
+            "id": "SRF-60C87FBF12",
+            "kind": "page",
+            "name": "/privacy",
+            "method": null,
+            "area": "privacy",
+            "detail": "Next.js app router page",
+            "location": {
+              "path": "app/privacy/page.tsx",
+              "line": 1
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-E568CBDC3327"
+            ]
+          },
+          {
+            "id": "SRF-828B758920",
+            "kind": "endpoint",
+            "name": "/api/notes",
+            "method": "GET",
+            "area": "notes",
+            "detail": "Next.js route handler",
+            "location": {
+              "path": "app/api/notes/route.ts",
+              "line": 2
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-3E91936747FD"
+            ]
+          },
+          {
+            "id": "SRF-5AFD64FD47",
+            "kind": "endpoint",
+            "name": "/api/summarize",
+            "method": "POST",
+            "area": "summarize",
+            "detail": "Next.js route handler",
+            "location": {
+              "path": "app/api/summarize/route.ts",
+              "line": 3
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-DF85655B0058"
+            ]
+          },
+          {
+            "id": "SRF-3C538D65B0",
+            "kind": "entity",
+            "name": "Note",
+            "method": null,
+            "area": "data",
+            "detail": "SQL table",
+            "location": {
+              "path": "prisma/migrations/0001_init/migration.sql",
+              "line": 1
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-68298607ED35"
+            ]
+          },
+          {
+            "id": "SRF-E9D314193A",
+            "kind": "entity",
+            "name": "Note",
+            "method": null,
+            "area": "data",
+            "detail": "fields: id, owner, html",
+            "location": {
+              "path": "prisma/schema.prisma",
+              "line": 5
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-1FBE61E84F69"
+            ]
+          },
+          {
+            "id": "SRF-BCBF6383D2",
+            "kind": "config",
+            "name": "DATABASE_URL",
+            "method": null,
+            "area": "configuration",
+            "detail": "server-side; 1 reference(s)",
+            "location": {
+              "path": "lib/db.ts",
+              "line": 2
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-1D15C006C286"
+            ]
+          },
+          {
+            "id": "SRF-49D7263530",
+            "kind": "config",
+            "name": "NEXT_PUBLIC_SUPABASE_URL",
+            "method": null,
+            "area": "configuration",
+            "detail": "exposed to the browser bundle; 1 reference(s)",
+            "location": {
+              "path": "lib/supabase-server.ts",
+              "line": 3
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-65B1DCB2C813"
+            ]
+          },
+          {
+            "id": "SRF-F95F56750B",
+            "kind": "config",
+            "name": "OPENAI_API_KEY",
+            "method": null,
+            "area": "configuration",
+            "detail": "server-side; 1 reference(s)",
+            "location": {
+              "path": "app/api/summarize/route.ts",
+              "line": 2
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-73D36908E083"
+            ]
+          },
+          {
+            "id": "SRF-1DEE72DA0B",
+            "kind": "config",
+            "name": "SUPABASE_SERVICE_ROLE_KEY",
+            "method": null,
+            "area": "configuration",
+            "detail": "server-side; 1 reference(s)",
+            "location": {
+              "path": "lib/supabase-server.ts",
+              "line": 3
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-73871D143FA4"
+            ]
+          },
+          {
+            "id": "SRF-9DAA994B65",
+            "kind": "integration",
+            "name": "@supabase/supabase-js",
+            "method": null,
+            "area": "data",
+            "detail": "data",
+            "location": {
+              "path": "package.json",
+              "line": 10
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-EAB7FB65417F"
+            ]
+          },
+          {
+            "id": "SRF-693E60FD29",
+            "kind": "integration",
+            "name": "openai",
+            "method": null,
+            "area": "ai",
+            "detail": "ai",
+            "location": {
+              "path": "package.json",
+              "line": 11
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-313843BF192C"
+            ]
+          },
+          {
+            "id": "SRF-0155DC3160",
+            "kind": "integration",
+            "name": "prisma",
+            "method": null,
+            "area": "data",
+            "detail": "data",
+            "location": {
+              "path": "package.json",
+              "line": 12
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-637D6B1FAFEE"
+            ]
+          },
+          {
+            "id": "SRF-21C4B40109",
+            "kind": "test",
+            "name": "authz: anonymous requests to /api/notes are rejected",
+            "method": null,
+            "area": "tests/security",
+            "detail": "test title",
+            "location": {
+              "path": "tests/security/authz.test.mjs",
+              "line": 15
+            },
+            "certainty": "inferred",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-E344694CEDB8"
+            ]
+          },
+          {
+            "id": "SRF-6895711B9E",
+            "kind": "test",
+            "name": "onboarding: a new user can sign up and create a first note",
+            "method": null,
+            "area": "tests/e2e",
+            "detail": "test title",
+            "location": {
+              "path": "tests/e2e/onboarding.test.mjs",
+              "line": 15
+            },
+            "certainty": "inferred",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-4C0325B2E116"
+            ]
+          },
+          {
+            "id": "SRF-F6E62EC5F2",
+            "kind": "test",
+            "name": "unit: summary input is clipped to 4000 characters",
+            "method": null,
+            "area": "tests/unit",
+            "detail": "test title",
+            "location": {
+              "path": "tests/unit/summarize.test.mjs",
+              "line": 4
+            },
+            "certainty": "inferred",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-C133E23FCFE5"
+            ]
+          }
+        ],
+        "stories": [
+          {
+            "id": "US-1",
+            "area": "home",
+            "title": "Home and top-level pages",
+            "critical_journey": null,
+            "surface_ids": [
+              "SRF-FF548D40E5"
+            ],
+            "requirement_ids": [
+              "FR-001"
+            ],
+            "test_behaviours": []
+          },
+          {
+            "id": "US-2",
+            "area": "notes",
+            "title": "Notes",
+            "critical_journey": "Sign up and create a first note",
+            "surface_ids": [
+              "SRF-828B758920",
+              "SRF-21C4B40109",
+              "SRF-6895711B9E"
+            ],
+            "requirement_ids": [
+              "FR-002"
+            ],
+            "test_behaviours": [
+              "authz: anonymous requests to /api/notes are rejected",
+              "onboarding: a new user can sign up and create a first note"
+            ]
+          },
+          {
+            "id": "US-3",
+            "area": "privacy",
+            "title": "Privacy",
+            "critical_journey": null,
+            "surface_ids": [
+              "SRF-60C87FBF12"
+            ],
+            "requirement_ids": [
+              "FR-003"
+            ],
+            "test_behaviours": []
+          },
+          {
+            "id": "US-4",
+            "area": "summarize",
+            "title": "Summarize",
+            "critical_journey": "Summarize a note with AI",
+            "surface_ids": [
+              "SRF-5AFD64FD47",
+              "SRF-F6E62EC5F2"
+            ],
+            "requirement_ids": [
+              "FR-004"
+            ],
+            "test_behaviours": [
+              "unit: summary input is clipped to 4000 characters"
+            ]
+          }
+        ],
+        "requirements": [
+          {
+            "id": "FR-001",
+            "statement": "The system MUST serve the page `/`.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-FF548D40E5"
+            ],
+            "evidence_ids": [
+              "EV-18C86403D062"
+            ]
+          },
+          {
+            "id": "FR-002",
+            "statement": "The system MUST handle `GET` requests to `/api/notes`.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-828B758920"
+            ],
+            "evidence_ids": [
+              "EV-3E91936747FD"
+            ]
+          },
+          {
+            "id": "FR-003",
+            "statement": "The system MUST serve the page `/privacy`.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-60C87FBF12"
+            ],
+            "evidence_ids": [
+              "EV-E568CBDC3327"
+            ]
+          },
+          {
+            "id": "FR-004",
+            "statement": "The system MUST handle `POST` requests to `/api/summarize`.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-5AFD64FD47"
+            ],
+            "evidence_ids": [
+              "EV-DF85655B0058"
+            ]
+          },
+          {
+            "id": "FR-005",
+            "statement": "The system MUST persist `Note` records (fields: id, owner, html; defined in 2 places).",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-3C538D65B0",
+              "SRF-E9D314193A"
+            ],
+            "evidence_ids": [
+              "EV-1FBE61E84F69",
+              "EV-68298607ED35"
+            ]
+          },
+          {
+            "id": "FR-006",
+            "statement": "The system MUST integrate with `@supabase/supabase-js` (data).",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-9DAA994B65"
+            ],
+            "evidence_ids": [
+              "EV-EAB7FB65417F"
+            ]
+          },
+          {
+            "id": "FR-007",
+            "statement": "The system MUST integrate with `openai` (ai).",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-693E60FD29"
+            ],
+            "evidence_ids": [
+              "EV-313843BF192C"
+            ]
+          },
+          {
+            "id": "FR-008",
+            "statement": "The system MUST integrate with `prisma` (data).",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-0155DC3160"
+            ],
+            "evidence_ids": [
+              "EV-637D6B1FAFEE"
+            ]
+          },
+          {
+            "id": "FR-009",
+            "statement": "The system MUST be configured through 4 environment variable(s): `DATABASE_URL`, `NEXT_PUBLIC_SUPABASE_URL`, `OPENAI_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`. `NEXT_PUBLIC_SUPABASE_URL` is exposed to the browser bundle and MUST NOT hold secrets.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-BCBF6383D2",
+              "SRF-49D7263530",
+              "SRF-F95F56750B",
+              "SRF-1DEE72DA0B"
+            ],
+            "evidence_ids": [
+              "EV-1D15C006C286",
+              "EV-65B1DCB2C813",
+              "EV-73871D143FA4",
+              "EV-73D36908E083"
+            ]
+          }
+        ],
+        "non_functional": [
+          {
+            "id": "NFR-001",
+            "statement": "The system MUST run on the declared runtime (`engines.node = >=22`).",
+            "certainty": "observed",
+            "surface_ids": [],
+            "evidence_ids": [
+              "EV-CE87AC89A4BB"
+            ]
+          },
+          {
+            "id": "NFR-002",
+            "statement": "Responses MUST carry the HTTP headers configured in `next.config.mjs` (Next.js headers() configuration).",
+            "certainty": "observed",
+            "surface_ids": [],
+            "evidence_ids": [
+              "EV-291D4005C074"
+            ]
+          },
+          {
+            "id": "NFR-003",
+            "statement": "[NEEDS CLARIFICATION: response-time and throughput targets for the main pages and endpoints]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          },
+          {
+            "id": "NFR-004",
+            "statement": "[NEEDS CLARIFICATION: availability target and acceptable downtime]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          },
+          {
+            "id": "NFR-005",
+            "statement": "[NEEDS CLARIFICATION: how long personal and business data is kept, and how it is deleted]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          }
+        ],
+        "success_criteria": [
+          {
+            "id": "SC-001",
+            "statement": "[NEEDS CLARIFICATION: measurable outcomes cannot be derived from source code; state the targets this product must meet]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          },
+          {
+            "id": "SC-002",
+            "statement": "The 1 end-to-end test file(s) pass on every release candidate (for example `tests/e2e/onboarding.test.mjs`).",
+            "certainty": "inferred",
+            "surface_ids": [],
+            "evidence_ids": [
+              "EV-B8953F455111"
+            ]
+          }
+        ],
+        "edge_cases": [
+          {
+            "id": "EC-001",
+            "statement": "Requests for unknown routes show a dedicated not-found page.",
+            "certainty": "observed",
+            "surface_ids": [],
+            "evidence_ids": [
+              "EV-144544F6067B"
+            ]
+          },
+          {
+            "id": "EC-002",
+            "statement": "A test describes this case: authz: anonymous requests to /api/notes are rejected (`tests/security/authz.test.mjs:15`).",
+            "certainty": "inferred",
+            "surface_ids": [
+              "SRF-21C4B40109"
+            ],
+            "evidence_ids": [
+              "EV-E344694CEDB8"
+            ]
+          }
+        ],
+        "clarifications": [
+          "Purpose of the Home and top-level pages area: who uses it, and what outcome it must deliver.",
+          "Purpose of the Notes area: who uses it, and what outcome it must deliver.",
+          "Purpose of the Privacy area: who uses it, and what outcome it must deliver.",
+          "Purpose of the Summarize area: who uses it, and what outcome it must deliver."
+        ],
+        "uncertainties": [
+          "Purpose, users, priorities and business rules are not derivable from code; every story carries a clarification for them.",
+          "Nothing was executed: requirements describe what the code declares, not verified behaviour.",
+          "Configuration is listed by variable name only; values were never read."
+        ]
+      }
     },
     "to_be": {
       "changes": [
@@ -8550,7 +9633,7 @@
       {
         "finding_id": "PCF-E2CE361289",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-AI-01: AI provider SDKs are not imported in client-side code and browser use is not enabled.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-AI-01: AI provider SDKs are not imported in client-side code and browser use is not enabled.",
         "observed_behavior": "app/page.tsx enables dangerouslyAllowBrowser; the provider key must then be available in the browser.",
         "component": "app/page.tsx:6",
         "evidence_ids": [
@@ -8566,7 +9649,7 @@
       {
         "finding_id": "PCF-E8ACA75BD3",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-02: No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-02: No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).",
         "observed_behavior": "NEXT_PUBLIC_OPENAI_API_KEY uses the client-exposed prefix NEXT_PUBLIC_; bundlers inline such variables into JavaScript served to every visitor.",
         "component": "app/page.tsx:6",
         "evidence_ids": [
@@ -8618,7 +9701,7 @@
       {
         "finding_id": "PCF-1E72F2F7B0",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-08: Every cookie observed on passive requests has Secure and SameSite; session-like cookies also have HttpOnly.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-08: Every cookie observed on passive requests has Secure and SameSite; session-like cookies also have HttpOnly.",
         "observed_behavior": "session missing SameSite, HttpOnly",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -8634,7 +9717,7 @@
       {
         "finding_id": "PCF-2E884D06D5",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-T-11: When a database or ORM is used, schema migrations are kept in the repository.",
+        "journey_or_requirement": "As-built FR-005; requirement PC-T-11: When a database or ORM is used, schema migrations are kept in the repository.",
         "observed_behavior": "Schema changes are not versioned as migrations.",
         "component": "prisma/schema.prisma",
         "evidence_ids": [
@@ -8698,7 +9781,7 @@
       {
         "finding_id": "PCF-5C358D43AB",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Journey: Sign up and create a first note",
+        "journey_or_requirement": "As-built FR-001; requirement PC-C-04: Every <img>/<Image> element has an alt attribute (empty alt for decorative images).",
         "observed_behavior": "1 image(s) without alt.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -8715,7 +9798,7 @@
       {
         "finding_id": "PCF-70B846CB03",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-16: No dynamic code evaluation, raw HTML injection of non-literal values, or SQL built by string interpolation.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-16: No dynamic code evaluation, raw HTML injection of non-literal values, or SQL built by string interpolation.",
         "observed_behavior": "raw HTML injection of a non-literal value at app/page.tsx:23. Whether untrusted data reaches it was not determined.",
         "component": "app/page.tsx:23",
         "evidence_ids": [
@@ -8731,7 +9814,7 @@
       {
         "finding_id": "PCF-9901AF5D1D",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-12: The entry page links to a privacy notice, /privacy answers 2xx, or a privacy page exists in source.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-12: The entry page links to a privacy notice, /privacy answers 2xx, or a privacy page exists in source.",
         "observed_behavior": "No reachable privacy notice.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -8798,7 +9881,7 @@
       {
         "finding_id": "PCF-CDCE917FE3",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-17: No CORS configuration allows any origin (\"*\") or reflects origins while allowing credentials.",
+        "journey_or_requirement": "As-built FR-002; requirement PC-S-17: No CORS configuration allows any origin (\"*\") or reflects origins while allowing credentials.",
         "observed_behavior": "CORS allows any (or reflected) origin and credentials in the same file.",
         "component": "app/api/notes/route.ts:2",
         "evidence_ids": [
@@ -8814,7 +9897,7 @@
       {
         "finding_id": "PCF-CEED9100D9",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-06: CSP frame-ancestors or X-Frame-Options (DENY/SAMEORIGIN) is present.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-06: CSP frame-ancestors or X-Frame-Options (DENY/SAMEORIGIN) is present.",
         "observed_behavior": "No X-Frame-Options and no CSP frame-ancestors.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -8830,7 +9913,7 @@
       {
         "finding_id": "PCF-CF1364323D",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-05: Responses carry a Content-Security-Policy that does not allow 'unsafe-inline' scripts without nonces/hashes.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-05: Responses carry a Content-Security-Policy that does not allow 'unsafe-inline' scripts without nonces/hashes.",
         "observed_behavior": "No Content-Security-Policy header or meta tag.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -8846,7 +9929,7 @@
       {
         "finding_id": "PCF-E0A3F8E153",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Journey: Sign up and create a first note",
+        "journey_or_requirement": "As-built FR-001; requirement PC-C-04: Every <img>/<Image> element has an alt attribute (empty alt for decorative images).",
         "observed_behavior": "<img> without alt.",
         "component": "app/page.tsx:20",
         "evidence_ids": [
@@ -8863,7 +9946,7 @@
       {
         "finding_id": "PCF-026FD4A0D8",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-07: X-Content-Type-Options: nosniff is present.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-07: X-Content-Type-Options: nosniff is present.",
         "observed_behavior": "No X-Content-Type-Options header.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -8945,7 +10028,7 @@
       {
         "finding_id": "PCF-2FD01AC810",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-S-10: No X-Powered-By header and no version numbers in the Server header.",
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-10: No X-Powered-By header and no version numbers in the Server header.",
         "observed_behavior": "X-Powered-By: Next.js",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -8978,7 +10061,7 @@
       {
         "finding_id": "PCF-5B93B2ED59",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Journey: Sign up and create a first note",
+        "journey_or_requirement": "As-built FR-001; requirement PC-C-05: The entry page has a non-empty <title> that is not a framework starter default.",
         "observed_behavior": "Starter-template title \"Create Next App\".",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -9026,7 +10109,7 @@
       {
         "finding_id": "PCF-A355BF9FA1",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Journey: Sign up and create a first note",
+        "journey_or_requirement": "As-built FR-001; requirement PC-C-02: The root <html> element declares a lang attribute.",
         "observed_behavior": "Served <html> has no lang attribute.",
         "component": "http://127.0.0.1:4785/",
         "evidence_ids": [
@@ -9043,7 +10126,7 @@
       {
         "finding_id": "PCF-C205AFB621",
         "intent": "Let people keep private notes and get AI summaries of them.",
-        "journey_or_requirement": "Requirement PC-T-09: No dependency uses \"*\", \"latest\", an empty range or an unpinned git/URL source.",
+        "journey_or_requirement": "As-built FR-006; requirement PC-T-09: No dependency uses \"*\", \"latest\", an empty range or an unpinned git/URL source.",
         "observed_behavior": "openai is declared as \"*\".",
         "component": "package.json:10",
         "evidence_ids": [
@@ -9083,7 +10166,7 @@
   },
   "comparison": {
     "baseline_run_id": "PCR-20261014T100000Z-DAFCB5",
-    "baseline_sha256": "eb4ac85e7f99c303f9e61aebf5b30a5386128bcb787b41b48bd45beca332b2bf",
+    "baseline_sha256": "98bced600cae81c857c88baeb4a4dcdef9530bd503257418c942c957a9c7a7e2",
     "score_delta": {
       "customer": 60,
       "technology": 90,

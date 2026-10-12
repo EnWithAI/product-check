@@ -359,7 +359,12 @@ export interface TraceLink {
 export interface Blueprint {
   schema_version: typeof SCHEMA_VERSION;
   kind: "blueprint";
-  as_is: { components: ArchitectureComponent[]; uncertainties: string[] };
+  as_is: {
+    components: ArchitectureComponent[];
+    uncertainties: string[];
+    /** The as-built spec derived from the repository (absent when source was not inspected). */
+    as_built?: AsBuiltBody;
+  };
   to_be: { changes: TargetChange[] };
   remediations: Remediation[];
   work_packets: WorkPacket[];
@@ -533,3 +538,16 @@ export interface AsBuiltSpec {
   evidence: Evidence[];
   limitations: Limitation[];
 }
+
+/** The derived content of an as-built spec, as embedded in a blueprint. */
+export type AsBuiltBody = Pick<
+  AsBuiltSpec,
+  | "surface"
+  | "stories"
+  | "requirements"
+  | "non_functional"
+  | "success_criteria"
+  | "edge_cases"
+  | "clarifications"
+  | "uncertainties"
+>;

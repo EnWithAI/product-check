@@ -94,8 +94,9 @@ npm audit --json > npm-audit.json
 product-check run --repo . --test-results junit.xml --npm-audit npm-audit.json --stage PRE_LAUNCH
 ```
 
-Results go to `.product-check/`: `product-check-results.json`, `report.md`, `blueprint.md`, `work-packets/*.md` and
-`dashboard.html` (open it directly; no server). After changing things, run
+Results go to `.product-check/`: `product-check-results.json`, `report.md`, `blueprint.md`, `work-packets/*.md`,
+`dashboard.html` (open it directly; no server) and, when the repository was read, an as-built spec
+(`specs/000-as-built/spec.md`, `as-built-spec.json`) reverse-engineered from its structure. After changing things, run
 `product-check retest --baseline .product-check/product-check-results.json …` with the same inputs.
 
 No deployed URL you can scan? Export a HAR file from your browser's DevTools on your app and pass `--har app.har`.
