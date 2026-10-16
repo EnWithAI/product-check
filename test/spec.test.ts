@@ -7,6 +7,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { renderDashboard, statementHtml } from "../src/dashboard/render.js";
 import { snapshotRepo } from "../src/discovery/repo.js";
 import { deriveFacts } from "../src/inspectors/source/facts.js";
 import { areaOf, deriveSurface } from "../src/inspectors/source/surface.js";
@@ -241,5 +242,61 @@ describe("as-built spec in run results", () => {
       expect(exact).toHaveLength(1);
       expect(linked(loc)).toEqual([exact[0]]);
     }
+  });
+});
+
+describe("as-built spec in the dashboard", () => {
+  it("renders the spec view from the results, linking requirements to findings", () => {
+    const results = JSON.parse(
+      readFileSync(join(ROOT, "examples/vibe-app-demo/output/baseline/product-check-results.json"), "utf8")
+    ) as Results;
+    const page = renderDashboard(results, { branding: false });
+    expect(page).toContain('<a href="#as-built">As-built spec</a>');
+    expect(page).toContain('<table id="as-built-table">');
+    const built = results.blueprint.as_is.as_built;
+    const rows = page.match(/<tr data-kind="[^"]+" data-certainty="[^"]+">/g) ?? [];
+    expect(rows).toHaveLength(
+      (built?.requirements.length ?? 0) +
+        (built?.non_functional.length ?? 0) +
+        (built?.success_criteria.length ?? 0) +
+        (built?.edge_cases.length ?? 0)
+    );
+    // FR-001 (the home page) carries the deployed-app findings.
+    const fr001 = page.slice(
+      page.indexOf('<td class="id"><code>FR-001</code>'),
+      page.indexOf('<td class="id"><code>FR-002</code>')
+    );
+    expect(fr001).toMatch(/\d+ open/);
+    expect(fr001).toContain("<code>/</code>");
+  });
+
+  it("says so when the repository was not inspected", () => {
+    const results = JSON.parse(
+      readFileSync(join(ROOT, "examples/aborted-run/product-check-results.json"), "utf8")
+    ) as Results;
+    expect(renderDashboard(results, { branding: false })).toContain(
+      "No as-built spec: the repository was not inspected in this run."
+    );
+  });
+
+  it("escapes repository-derived strings and keeps code spans", async () => {
+    const repo = tempFiles({
+      "package.json": { name: "x", dependencies: { next: "15.0.0" } },
+      "app/<img src=x onerror=alert(1)>/page.tsx": "export default function P() { return null; }\n",
+      "tests/a.test.ts": 'it("<script>alert(1)</script> renders", () => {});\n',
+    });
+    const r = await cli(["run", "--repo", ".", "--json"], repo);
+    expect(r.code, r.stderr).toBe(0);
+    const page = renderDashboard(JSON.parse(r.stdout) as Results, { branding: false });
+    expect(page).not.toContain("<img src=x");
+    expect(page).not.toContain("<script>alert");
+    expect(page.match(/<script>/g)).toHaveLength(1);
+    expect(statementHtml("The system MUST serve the page `/a|b`.")).toBe(
+      "The system MUST serve the page <code>/a|b</code>."
+    );
+    const zwsp = String.fromCharCode(0x200b); // what md() inserts after "@"
+    expect(statementHtml(`Uses \`a\\|b\` and \\<b\\> \\_x\\_ &amp; me@${zwsp}host`)).toBe(
+      "Uses <code>a|b</code> and &lt;b&gt; _x_ &amp; me@host"
+    );
   });
 });

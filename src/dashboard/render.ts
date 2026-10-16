@@ -3,13 +3,21 @@
 /**
  * Renders the local dashboard: one self-contained HTML file generated entirely from a results document. Every
  * number is read from (or recomputed from) the JSON; the integrity check runs first and a failure is shown as a
- * banner. Views: Executive Readiness, Scan Explorer, Validation Workbench, Blueprint & Remediation, Assurance
- * History. A small inline script (allowed by a hash-based CSP) adds tabs, filters and a theme toggle; without it
+ * banner. Views: Executive Readiness, Scan Explorer, Validation Workbench, Blueprint & Remediation, As-built Spec,
+ * Assurance History. A small inline script (allowed by a hash-based CSP) adds tabs, filters and a theme toggle; without it
  * every view is still readable. No external requests.
  */
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-import type { Pillar, Results, RunSummary, Validation, ValidationStatus } from "../types.js";
+import type {
+  Pillar,
+  Results,
+  RunSummary,
+  SpecRequirement,
+  SurfaceEntry,
+  Validation,
+  ValidationStatus,
+} from "../types.js";
 import { PILLARS } from "../types.js";
 import { CONTROL_BY_ID } from "../validation/catalog.js";
 import { checkResults } from "../validation/integrity.js";
@@ -187,6 +195,131 @@ function evidenceList(r: Results, ids: string[]): string {
       return `<li><code>${html(e.id)}</code> ${html(e.kind)} · ${html(e.strength)} · <code>${html(e.source.locator)}${e.source.line_start ? `:${e.source.line_start}` : ""}</code><br>${html(e.summary)}${e.excerpt ? `<br><code>${html(e.excerpt)}</code>` : ""}${e.checksum ? `<br><span class="muted">sha256 ${html(e.checksum.value.slice(0, 16))}…${e.run_id !== r.run.run_id ? ` · preserved from ${html(e.run_id)}` : ""}</span>` : ""}</li>`;
     })
     .join("")}</ul></details>`;
+}
+
+/**
+ * Converts an as-built statement (Markdown built in src/spec/build.ts: code spans for repository-derived names,
+ * backslash escapes elsewhere) to HTML. Every segment is HTML-escaped; only `<code>` is produced.
+ */
+export function statementHtml(statement: string): string {
+  const out: string[] = [];
+  let rest = statement;
+  for (;;) {
+    const m = /(`+)( ?)([\s\S]*?)\2\1(?!`)/.exec(rest);
+    if (!m) break;
+    out.push(html(unescapeMd(rest.slice(0, m.index))));
+    out.push(`<code>${html((m[3] ?? "").replace(/\\\|/g, "|"))}</code>`);
+    rest = rest.slice(m.index + m[0].length);
+  }
+  out.push(html(unescapeMd(rest)));
+  return out.join("");
+}
+
+/** Undoes the Markdown escaping of `md()` for plain-text display (the result is HTML-escaped afterwards). */
+function unescapeMd(text: string): string {
+  return text
+    .replace(/\\([\\`*_[\]<>|~#+=-])/g, "$1")
+    .replace(/&amp;/g, "&")
+    .replace(/@\u200b/g, "@");
+}
+
+const CERTAINTY_TONE: Record<string, Tone> = { observed: "good", inferred: "warning", hypothesis: "unknown" };
+const CERTAINTY_LABEL: Record<string, string> = {
+  observed: "observed",
+  inferred: "inferred",
+  hypothesis: "needs confirmation",
+};
+
+/** The As-built Spec view: the reverse-engineered specification carried in the blueprint. */
+function asBuiltView(r: Results): string {
+  const head = `<section class="view" id="as-built" aria-labelledby="h-as-built"><h2 id="h-as-built">As-built spec</h2>`;
+  const built = r.blueprint.as_is.as_built;
+  if (!built)
+    return `${head}<p class="muted">No as-built spec: the repository was not inspected in this run.</p></section>`;
+  const byId = new Map(built.surface.map((s) => [s.id, s]));
+  const count = (k: SurfaceEntry["kind"]): number => built.surface.filter((s) => s.kind === k).length;
+  const where = (s: SurfaceEntry): string =>
+    `<code>${html(`${s.location.path}${s.location.line ? `:${s.location.line}` : ""}`)}</code>`;
+  // Findings whose traceability names an as-built requirement ("As-built FR-001, FR-007; requirement …").
+  const findingsFor = new Map<string, string[]>();
+  for (const t of r.blueprint.traceability) {
+    const ids = /^As-built ([^;]+);/.exec(t.journey_or_requirement)?.[1]?.split(", ") ?? [];
+    for (const id of ids) findingsFor.set(id, [...(findingsFor.get(id) ?? []), t.finding_id]);
+  }
+  const openIds = new Set(
+    r.findings.filter((f) => f.status === "OPEN" || f.status === "UNVERIFIED").map((f) => f.id)
+  );
+  const reqRow = (q: SpecRequirement, kind: string): string => {
+    const sources = q.surface_ids.map((id) => byId.get(id)).filter((s): s is SurfaceEntry => s !== undefined);
+    const linked = findingsFor.get(q.id) ?? [];
+    const open = linked.filter((id) => openIds.has(id));
+    return `<tr data-kind="${kind}" data-certainty="${q.certainty}"><td class="id"><code>${html(q.id)}</code></td><td>${statementHtml(q.statement)}</td><td>${chip(CERTAINTY_LABEL[q.certainty] ?? q.certainty, CERTAINTY_TONE[q.certainty] ?? "neutral")}</td><td class="small">${sources.slice(0, 4).map(where).join("<br>") || "—"}${sources.length > 4 ? `<br><span class="muted">and ${sources.length - 4} more</span>` : ""}</td><td class="small">${linked.length ? `${open.length ? chip(`${open.length} open`, "critical") : chip("none open", "good")}<br>${linked.length > 3 ? `<details><summary>${linked.length} finding(s)</summary><code>${html(linked.join(", "))}</code></details>` : `<code>${html(linked.join(", "))}</code>`}` : "—"}</td><td class="small">${evidenceList(r, q.evidence_ids)}</td></tr>`;
+  };
+  const surfaceTable = (
+    title: string,
+    kind: SurfaceEntry["kind"],
+    cols: string[],
+    cells: (s: SurfaceEntry) => string[]
+  ): string => {
+    const rows = built.surface.filter((s) => s.kind === kind);
+    if (rows.length === 0) return "";
+    return `<details class="card" style="margin-bottom:8px"><summary>${html(title)} (${rows.length})</summary><div class="scroll"><table><thead><tr>${cols.map((c) => `<th>${html(c)}</th>`).join("")}</tr></thead><tbody>${rows
+      .map(
+        (s) =>
+          `<tr>${cells(s)
+            .map((c) => `<td class="small">${c}</td>`)
+            .join("")}</tr>`
+      )
+      .join("")}</tbody></table></div></details>`;
+  };
+  const auth = (s: SurfaceEntry): string => (s.auth_hint ? chip("auth helper (inferred)", "warning") : "—");
+  return `${head}
+<p class="muted small">Reverse-engineered from the repository's structure; nothing was executed. <em>Observed</em> statements point at a file and line, <em>inferred</em> ones interpret what was found, and anything the code cannot tell us needs a person to confirm. The same spec is written as <code>specs/000-as-built/spec.md</code> (Spec Kit layout, lint it with Spec Check) and <code>as-built-spec.json</code>.</p>
+<div class="grid kpis">${(
+    [
+      ["Pages", count("page")],
+      ["Endpoints", count("endpoint")],
+      ["Data entities", count("entity")],
+      ["Integrations", count("integration")],
+      ["Config names", count("config")],
+      ["Open questions", built.clarifications.length],
+    ] as const
+  )
+    .map(
+      ([k, v]) =>
+        `<div class="card kpi"><div class="label">${html(k)}</div><div class="value">${v}</div></div>`
+    )
+    .join("")}</div>
+${built.clarifications.length ? `<h3>Questions only a person can answer</h3><ul>${built.clarifications.map((c) => `<li>${html(c)}</li>`).join("")}</ul>` : ""}
+<h3>User stories</h3>${
+    built.stories
+      .map(
+        (s) =>
+          `<details class="card" style="margin-bottom:8px"><summary>${html(s.id)} ${html(s.title)} ${s.critical_journey ? chip(`critical journey: ${s.critical_journey}`, "neutral") : ""}</summary><p class="small"><strong>Requirements:</strong> <code>${html(s.requirement_ids.join(", ") || "—")}</code></p>${s.test_behaviours.length ? `<p class="small"><strong>Behaviour described by tests</strong> (inferred)</p><ul class="small">${s.test_behaviours.map((t) => `<li>${html(t)}</li>`).join("")}</ul>` : `<p class="small muted">No test titles mention this area.</p>`}</details>`
+      )
+      .join("") ||
+    `<p class="muted">No pages or endpoints were recognised, so no user stories could be derived.</p>`
+  }
+<h3>Requirements</h3>
+<div class="filters" data-filter-table="as-built-table"><label>Type<select data-key="kind"><option value="">All</option><option value="functional">Functional</option><option value="non-functional">Non-functional</option><option value="success">Success criteria</option><option value="edge">Edge cases</option></select></label>
+<label>Certainty<select data-key="certainty"><option value="">All</option><option value="observed">Observed</option><option value="inferred">Inferred</option><option value="hypothesis">Needs confirmation</option></select></label>
+<label>Search<input type="search" data-key="text" placeholder="ID, route, entity, path"></label><span class="small muted" data-count style="align-self:end"></span></div>
+<div class="scroll"><table id="as-built-table"><thead><tr><th>ID</th><th>Statement</th><th>Certainty</th><th>Source</th><th>Linked findings</th><th>Evidence</th></tr></thead><tbody>${[
+    ...built.requirements.map((q) => reqRow(q, "functional")),
+    ...built.non_functional.map((q) => reqRow(q, "non-functional")),
+    ...built.success_criteria.map((q) => reqRow(q, "success")),
+    ...built.edge_cases.map((q) => reqRow(q, "edge")),
+  ].join("")}</tbody></table></div>
+<h3>Discovered surface</h3>
+${surfaceTable("Pages", "page", ["Route", "Kind", "Source", "Auth"], (s) => [`<code>${html(s.name)}</code>`, html(s.detail), where(s), auth(s)])}
+${surfaceTable("Endpoints", "endpoint", ["Method", "Path", "Kind", "Source", "Auth"], (s) => [`<code>${html(s.method ?? "ANY")}</code>`, `<code>${html(s.name)}</code>`, html(s.detail), where(s), auth(s)])}
+${surfaceTable("Data entities", "entity", ["Entity", "Detail", "Source"], (s) => [`<code>${html(s.name)}</code>`, html(s.detail), where(s)])}
+${surfaceTable("Integrations", "integration", ["Package", "Category", "Declared in"], (s) => [`<code>${html(s.name)}</code>`, html(s.detail), where(s)])}
+${surfaceTable("Configuration (names only; values never read)", "config", ["Variable", "Use", "First reference"], (s) => [`<code>${html(s.name)}</code>`, html(s.detail), where(s)])}
+${surfaceTable("Authentication boundaries", "auth-boundary", ["Boundary", "Detail", "Source"], (s) => [`<code>${html(s.name)}</code>`, html(s.detail), where(s)])}
+${surfaceTable("Test titles", "test", ["Title", "Area", "Source"], (s) => [html(s.name), html(s.area), where(s)])}
+<h3>Uncertainties</h3><ul class="small">${built.uncertainties.map((u) => `<li>${html(u)}</li>`).join("")}</ul>
+</section>`;
 }
 
 /** Validation table row. */
@@ -382,12 +515,13 @@ ${
 <div class="wrap">
 <header class="top"><div><h1>Product Check: ${html(r.contract.target.name)}</h1><div class="meta">Run ${html(r.run.run_id)} · ${html(r.run.finished_at)} · ${html(r.run.status)}</div></div><button class="theme-toggle" type="button" hidden>Theme: auto</button></header>
 ${banners}
-<nav class="tabs" aria-label="Dashboard views"><a href="#readiness" aria-current="page">Executive readiness</a><a href="#scan">Scan explorer</a><a href="#workbench">Validation workbench</a><a href="#blueprint">Blueprint &amp; remediation</a><a href="#history">Assurance history</a></nav>
+<nav class="tabs" aria-label="Dashboard views"><a href="#readiness" aria-current="page">Executive readiness</a><a href="#scan">Scan explorer</a><a href="#workbench">Validation workbench</a><a href="#blueprint">Blueprint &amp; remediation</a><a href="#as-built">As-built spec</a><a href="#history">Assurance history</a></nav>
 <main>
 ${exec}
 ${scan}
 ${work}
 ${bp}
+${asBuiltView(r)}
 ${hist}
 </main>
 <footer>Generated from <code>product-check-results.json</code> (schema ${html(r.schema_version)}); every figure is derived from that file${integrity.errors.length === 0 ? " and its scorecard and verdict recompute from the validations" : ""}. Evidence-bounded readiness, not a penetration test, certification or guarantee.${options.branding ? " Product Check is an EnWithAI Engineering Commons tool." : ""}</footer>
