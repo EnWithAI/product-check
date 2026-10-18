@@ -63,7 +63,7 @@ Node 25 is outside the declared `engines` range (22/24/≥26). CI on GitHub pass
 | clean install of the packed tarball in an empty directory, then `product-check --version`, `run --repo <copy of spec-check>`, `validate` | 1 package added; all three succeeded                                                                                                                                            |
 | `npm run build && npm run demo`                                                                                                          | regenerates `examples/`; requires git; live part probes `127.0.0.1:4785` only                                                                                                   |
 | `product-check validate examples/**/product-check-results.json examples/vibe-app-demo/inputs/*.json`                                     | all OK (schema, references, recompute)                                                                                                                                          |
-| Dashboard in a browser (desktop and 375 px)                                                                                              | five views render; tabs/filters work under the hash-pinned CSP; no horizontal page scroll at 375 px                                                                             |
+| Dashboard in a browser (desktop and 375 px)                                                                                              | five views render; tabs/filters work under the hash-pinned CSP; no horizontal page scroll at 375 px (sixth view, As-built spec, rechecked the same way)                         |
 
 ### Demo results (committed in `examples/`)
 

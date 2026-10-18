@@ -17,6 +17,9 @@ versions may break the results schema, which carries its own `schema_version`, a
   only by exact line, and application URLs by path. Scores, verdicts and findings are unchanged.
 - Schema: additive, still `0.1.0`. Existing contracts, observations and baselines remain valid. Results that carry
   `as_is.as_built` do not validate with the schemas bundled in 0.1.0 and earlier.
+- Dashboard: a sixth view, **As-built spec**, shows the discovered surface, the questions only a person can answer,
+  user stories, and every FR/NFR/SC/EC item with its certainty, source, evidence and linked findings (open or fixed),
+  with type, certainty and text filters. It is rendered from the results JSON like every other view.
 - Demo: the baseline, retest and repository-only examples include the as-built spec, and
   `examples/vibe-app-demo/output/as-built/` holds the standalone `spec` output. Both are checked against a fresh run.
 
