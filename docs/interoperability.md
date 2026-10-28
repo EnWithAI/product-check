@@ -4,17 +4,20 @@ Product Check has no runtime dependency on any other tool or service. Integratio
 
 ## Inputs Product Check reads
 
-| Artifact                                                                                      | Flag                   | Used for                                                                                 |
-| --------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------- |
-| JUnit XML (Vitest, Jest via jest-junit, Playwright, pytest, Go, Node `--test-reporter=junit`) | `--test-results`       | PC-T-03, PC-C-08 (end-to-end detection by path/name), any control via `control_mappings` |
-| Jest/Vitest JSON reporter output                                                              | `--test-results`       | same                                                                                     |
-| `npm audit --json` (npm 7+)                                                                   | `--npm-audit`          | PC-S-15                                                                                  |
-| HAR (browser DevTools export)                                                                 | `--har`                | application controls, offline                                                            |
-| Product Check observations                                                                    | `--observations`       | application controls, offline replay                                                     |
-| Spec Check report, schema 1.0 (`spec-check check --format json`)                              | `--spec-check`         | PC-C-10 (requirements testable)                                                          |
-| Impact Check report, schema 2.0 (`impact-check --format json`)                                | `--impact-check`       | PC-T-12 (release-candidate change impact)                                                |
-| Outcome Check report, schema 1.0 (`outcome-check report --format json`)                       | `--outcome-check`      | PC-T-15 (delivery stability: CI first-pass rate, revert rate)                            |
-| Architecture Check report, schema 1.0 or 1.1 (`architecture-check check --format json`)       | `--architecture-check` | PC-T-17 (architecture model matches the code)                                            |
+| Artifact                                                                                      | Flag                   | Used for                                                                                                 |
+| --------------------------------------------------------------------------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------- |
+| JUnit XML (Vitest, Jest via jest-junit, Playwright, pytest, Go, Node `--test-reporter=junit`) | `--test-results`       | PC-T-03, PC-C-08 (end-to-end detection by path/name), any control via `control_mappings`                 |
+| Jest/Vitest JSON reporter output                                                              | `--test-results`       | same                                                                                                     |
+| `npm audit --json` (npm 7+)                                                                   | `--npm-audit`          | PC-S-15                                                                                                  |
+| HAR (browser DevTools export)                                                                 | `--har`                | application controls, offline                                                                            |
+| Product Check observations                                                                    | `--observations`       | application controls, offline replay                                                                     |
+| Spec Check report, schema 1.0 (`spec-check check --format json`)                              | `--spec-check`         | PC-C-10 (requirements testable)                                                                          |
+| Impact Check report, schema 2.0 (`impact-check --format json`)                                | `--impact-check`       | PC-T-12 (release-candidate change impact)                                                                |
+| Outcome Check report, schema 1.0 (`outcome-check report --format json`)                       | `--outcome-check`      | PC-T-15 (delivery stability: CI first-pass rate, revert rate)                                            |
+| Architecture Check report, schema 1.0 or 1.1 (`architecture-check check --format json`)       | `--architecture-check` | PC-T-17 (architecture model matches the code)                                                            |
+| OpenSLO v1 (YAML/JSON: SLO, SLI, AlertPolicy)                                                 | `--openslo`            | PC-T-18 (SLOs complete), PC-T-19 (SLOs alerted), PC-T-14 ([operational imports](operational-imports.md)) |
+| Prometheus/Mimir alert rules (rule files, `PrometheusRule`, `/api/v1/rules` JSON)             | `--alert-rules`        | PC-T-19, PC-T-14                                                                                         |
+| Service graph (Jaeger `/api/dependencies`, `traces_service_graph_request_total` query result) | `--service-graph`      | PC-T-20 (declared dependencies observed at runtime, with `--architecture-check`), PC-T-14                |
 
 The sibling-report importers read only documented fields (`schema_version`, `findings[].severity`,
 `requirements`, `affected_modules`, `test_candidates`, `repo_revision.commit`, `metrics[id].segments.all`, and for
