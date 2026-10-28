@@ -72,7 +72,8 @@ Inputs (run/retest):
   --npm-audit <file>        Output of \`npm audit --json\`
   --har <file>              Browser HAR export (offline application evidence)
   --observations <file>     Recorded observations (from --record-observations)
-  --spec-check/--impact-check/--outcome-check <file>   Optional Engineering Commons reports
+  --spec-check/--impact-check/--outcome-check/--architecture-check <file>
+                            Optional Engineering Commons reports
   --baseline <file>         Previous results to compare with (retest)
 Output:
   --out-dir <dir>           Default .product-check   --json   Print results JSON to stdout, write nothing
@@ -154,6 +155,7 @@ const OPTIONS = {
   "spec-check": { type: "string" },
   "impact-check": { type: "string" },
   "outcome-check": { type: "string" },
+  "architecture-check": { type: "string" },
   baseline: { type: "string" },
   "out-dir": { type: "string" },
   output: { type: "string" },
@@ -204,6 +206,7 @@ function buildContract(values: Values, io: CliIO): { contract: ScanContract; fro
       specCheck: values["spec-check"],
       impactCheck: values["impact-check"],
       outcomeCheck: values["outcome-check"],
+      architectureCheck: values["architecture-check"],
     },
     io.cwd,
     today
@@ -597,7 +600,7 @@ async function main(argv: string[], io: CliIO): Promise<number> {
         );
       else {
         const lines = [
-          "Control catalog (rubric pc-rubric-0.1). Tiers carry forward: a tier applies its own and all earlier controls.",
+          "Control catalog (rubric pc-rubric-0.2). Tiers carry forward: a tier applies its own and all earlier controls.",
           "",
         ];
         for (const c of CONTROLS)

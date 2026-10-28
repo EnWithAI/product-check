@@ -59,6 +59,7 @@ export function defaultContract(): ScanContract {
       spec_check: null,
       impact_check: null,
       outcome_check: null,
+      architecture_check: null,
     },
     control_mappings: [],
     risk_acceptances: [],
@@ -122,6 +123,7 @@ export function loadContract(path: string): ScanContract {
     "spec_check",
     "impact_check",
     "outcome_check",
+    "architecture_check",
   ] as const) {
     const value = i[key];
     if (value !== null) i[key] = abs(value);
@@ -144,6 +146,7 @@ export interface ContractFlags {
   specCheck?: string | undefined;
   impactCheck?: string | undefined;
   outcomeCheck?: string | undefined;
+  architectureCheck?: string | undefined;
 }
 
 /** Applies CLI flags over a contract (flags win). Paths are resolved against cwd. */
@@ -188,6 +191,7 @@ export function applyFlags(
   if (flags.specCheck !== undefined) c.imports.spec_check = abs(flags.specCheck);
   if (flags.impactCheck !== undefined) c.imports.impact_check = abs(flags.impactCheck);
   if (flags.outcomeCheck !== undefined) c.imports.outcome_check = abs(flags.outcomeCheck);
+  if (flags.architectureCheck !== undefined) c.imports.architecture_check = abs(flags.architectureCheck);
   if (c.target.name === "unnamed product") {
     c.target.name = c.target.repository
       ? (c.target.repository.path.split(/[\\/]/).filter(Boolean).at(-1) ?? "product")

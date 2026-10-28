@@ -282,6 +282,10 @@
         },
         "outcome_check": {
           "type": ["string", "null"]
+        },
+        "architecture_check": {
+          "type": ["string", "null"],
+          "description": "Architecture Check report (schema 1.0 or 1.1). Optional, so contracts from 0.1.0 stay valid."
         }
       }
     },

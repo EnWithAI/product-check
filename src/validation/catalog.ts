@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
- * The control catalog (rubric pc-rubric-0.1). Each control states what is expected, which pillar and lifecycle
+ * The control catalog (rubric pc-rubric-0.2). Each control states what is expected, which pillar and lifecycle
  * tier it belongs to, its weight, whether it backs a hard gate, and the remediation knowledge used by the
  * blueprint. Evaluation logic lives in evaluators; this file is data only.
  */
@@ -882,6 +882,39 @@ export const CONTROLS: ControlDef[] = [
   },
 
   // ------------------------------------------------------------------------------------------------- Trust
+  {
+    id: "PC-T-17",
+    pillar: "technology",
+    tier: "CT-T3",
+    title: "Architecture model matches the code",
+    expected:
+      "An imported Architecture Check report shows no verified drift of medium severity or above between the declared architecture model and the code.",
+    category: "architecture",
+    weight: 1,
+    gate: null,
+    severity: "P2",
+    ux: null,
+    pops: ["repository"],
+    impact: {
+      customer: null,
+      technology:
+        "Reviews, onboarding and risk decisions rely on an architecture model that no longer describes the system.",
+      trust: null,
+    },
+    root_cause: "The code changed (or the model was edited) without the other being updated.",
+    remediation: rem({
+      change:
+        "Resolve each verified Architecture Check finding: update the model where the code is right, or change the code where it breaks a declared boundary.",
+      why: "A launch decision about the architecture is only as good as the model it is made against.",
+      to_be: "The declared model and the code agree, and Architecture Check runs on every pull request.",
+      acceptance: [
+        "The Architecture Check report has no verified finding of medium severity or above.",
+        "Control PC-T-17 evaluates PASS on retest.",
+      ],
+      regression: "Architecture Check in pull-request CI.",
+      effort: "S",
+    }),
+  },
   {
     id: "PC-S-01",
     pillar: "trust",

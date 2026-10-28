@@ -12,6 +12,7 @@ import { GitIgnore } from "../src/discovery/gitignore.js";
 import { snapshotRepo } from "../src/discovery/repo.js";
 import { harToObservations } from "../src/importers/har.js";
 import {
+  parseArchitectureCheck,
   parseImpactCheck,
   parseNpmAudit,
   parseOutcomeCheck,
@@ -295,6 +296,48 @@ describe("test-result importers", () => {
       )
     ).toEqual({ ci_first_pass_rate: 0.8, reverted_prs: 2 });
     expect(() => parseOutcomeCheck({}, "o")).toThrow(/Outcome Check/);
+    const arch = (over: Record<string, unknown> = {}): Record<string, unknown> => ({
+      kind: "architecture-check-report",
+      schema_version: "1.1",
+      declared_model: { path: "architecture/workspace.dsl", format: "dsl", usable: true },
+      complete_mapping: true,
+      findings: [
+        { rule_id: "relationship-undeclared", severity: "medium", status: "verified_static_fact" },
+        { rule_id: "boundary-violation", severity: "high", status: "verified_static_fact" },
+        { rule_id: "boundary-violation", severity: "high", status: "verified_static_fact" },
+        { rule_id: "model-stale-reference", severity: "low", status: "verified_static_fact" },
+        { rule_id: "component-undeclared", severity: "medium", status: "hypothesis" },
+        { rule_id: "relationship-unobserved", severity: "info", status: "unknown" },
+      ],
+      ...over,
+    });
+    expect(parseArchitectureCheck(arch(), "a")).toEqual({
+      schema_version: "1.1",
+      model_path: "architecture/workspace.dsl",
+      model_format: "dsl",
+      model_usable: true,
+      complete_mapping: true,
+      findings: 6,
+      verified_drift: 3,
+      verified_rules: ["boundary-violation", "relationship-undeclared"],
+      hypotheses: 1,
+      unknown: 1,
+    });
+    expect(parseArchitectureCheck(arch({ schema_version: "1.0", findings: [] }), "a")).toMatchObject({
+      schema_version: "1.0",
+      findings: 0,
+      verified_drift: 0,
+      verified_rules: [],
+    });
+    for (const bad of [
+      arch({ schema_version: "2.0" }),
+      arch({ kind: undefined }),
+      arch({ declared_model: null }),
+      arch({ findings: {} }),
+      [],
+      null,
+    ])
+      expect(() => parseArchitectureCheck(bad, "a"), JSON.stringify(bad)).toThrow(/Architecture Check/);
   });
 });
 

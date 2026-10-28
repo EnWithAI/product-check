@@ -1,4 +1,4 @@
-# Scoring and gates (rubric pc-rubric-0.1)
+# Scoring and gates (rubric pc-rubric-0.2)
 
 All of this is implemented in `src/scoring/score.ts` and `src/scoring/verdict.ts` as pure functions.
 `product-check validate` recomputes them from a results file; the dashboard does the same and shows a banner if the

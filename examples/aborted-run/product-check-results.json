@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "kind": "product-check-results",
   "run": {
-    "run_id": "PCR-20261014T100000Z-64A316",
+    "run_id": "PCR-20261014T100000Z-539A4D",
     "status": "ABORTED",
     "started_at": "2026-10-14T10:00:00.000Z",
     "finished_at": "2026-10-14T10:00:00.000Z",
@@ -52,7 +52,7 @@
         "phase": "VALIDATE",
         "status": "SKIPPED",
         "notes": [
-          "47 controls evaluated against CT-T1",
+          "48 controls evaluated against CT-T1",
           "0 open finding(s)"
         ]
       },
@@ -158,7 +158,8 @@
       "observations": null,
       "spec_check": null,
       "impact_check": null,
-      "outcome_check": null
+      "outcome_check": null,
+      "architecture_check": null
     },
     "control_mappings": [],
     "risk_acceptances": [],
@@ -880,6 +881,24 @@
       "finding_ids": []
     },
     {
+      "id": "VAL-PC-T-17",
+      "control_id": "PC-T-17",
+      "pillar": "technology",
+      "tier": "CT-T3",
+      "title": "Architecture model matches the code",
+      "expected": "An imported Architecture Check report shows no verified drift of medium severity or above between the declared architecture model and the code.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
       "id": "VAL-PC-S-01",
       "control_id": "PC-S-01",
       "pillar": "trust",
@@ -1244,7 +1263,7 @@
   "scorecard": {
     "schema_version": "0.1.0",
     "kind": "scorecard",
-    "rubric_version": "pc-rubric-0.1",
+    "rubric_version": "pc-rubric-0.2",
     "pillars": {
       "customer": {
         "score": null,
@@ -1285,7 +1304,7 @@
           "FAIL": 0,
           "BLOCKED": 10,
           "NOT_TESTED": 0,
-          "NOT_APPLICABLE": 6
+          "NOT_APPLICABLE": 7
         },
         "applicable_weight": 16,
         "checked_weight": 0
@@ -1468,7 +1487,7 @@
   "comparison": null,
   "history": [
     {
-      "run_id": "PCR-20261014T100000Z-64A316",
+      "run_id": "PCR-20261014T100000Z-539A4D",
       "finished_at": "2026-10-14T10:00:00.000Z",
       "revision": null,
       "verdict": "INCONCLUSIVE",

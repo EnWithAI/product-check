@@ -409,6 +409,52 @@ const PC_T_12: Evaluator = (ctx) => {
   );
 };
 
+const PC_T_17: Evaluator = (ctx) => {
+  if (!ctx.architecture)
+    return unchecked(
+      "NOT_TESTED",
+      "No Architecture Check report was imported (optional; pass --architecture-check <report.json>)."
+    );
+  const s = ctx.architecture.data;
+  const rules = s.verified_rules.length > 0 ? ` (${s.verified_rules.join(", ")})` : "";
+  const id = ctx.ev.add({
+    kind: "imported-report",
+    pop: "repository",
+    strength: "imported-report",
+    provenance: "imported",
+    locator: ctx.architecture.source,
+    revision: null,
+    summary: `Architecture Check ${s.schema_version}: ${s.model_path ?? "model"} (${s.model_format ?? "unknown format"}), ${s.findings} finding(s); ${s.verified_drift} verified drift${rules}, ${s.hypotheses} hypotheses, ${s.unknown} unknown`,
+    checksum: ctx.architecture.sha256,
+  });
+  if (s.verified_drift === 0)
+    return checked(
+      "PASS",
+      "No verified architecture drift of medium severity or above.",
+      "imported-report",
+      "imported-report",
+      [id]
+    );
+  return checked(
+    "PARTIAL",
+    `${s.verified_drift} verified architecture drift finding(s)${rules}.`,
+    "imported-report",
+    "imported-report",
+    [id],
+    [
+      {
+        fingerprint: "architecture-drift",
+        location: s.model_path ?? ctx.architecture.source,
+        actual: `${s.verified_drift} verified drift finding(s) of medium severity or above${rules}.`,
+        evidence: [id],
+        epistemic: "fact",
+        confidence: "HIGH",
+        title: "The architecture model and the code have drifted",
+      },
+    ]
+  );
+};
+
 const PC_T_15: Evaluator = (ctx) => {
   if (!ctx.outcome)
     return unchecked(
@@ -507,6 +553,7 @@ export const IMPORT_EVALUATORS: Record<string, Evaluator> = {
       "No production monitoring adapter exists in this release (read-only telemetry import is planned)."
     ),
   "PC-T-15": PC_T_15,
+  "PC-T-17": PC_T_17,
   "PC-S-13": (ctx) =>
     ctx.contract.product.has_user_accounts === false
       ? unchecked(

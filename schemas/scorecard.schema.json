@@ -26,7 +26,7 @@
       "const": "scorecard"
     },
     "rubric_version": {
-      "const": "pc-rubric-0.1"
+      "enum": ["pc-rubric-0.1", "pc-rubric-0.2"]
     },
     "pillars": {
       "type": "object",

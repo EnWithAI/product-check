@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
- * Scorecard computation (rubric pc-rubric-0.1). Pure and deterministic, so `product-check validate` can recompute
+ * Scorecard computation (rubric pc-rubric-0.2). Pure and deterministic, so `product-check validate` can recompute
  * it from validations and findings and detect hand-edited figures.
  *
  * - Customer, Technology and Trust are scored separately; there is no composite score.

@@ -19,7 +19,7 @@ CLI (src/cli)                       parse flags → contract → safety gate →
  │            discovery/pops.ts      point-of-presence inventory
  │  TEST      importers/tests.ts     JUnit XML, Jest/Vitest JSON (executed elsewhere)
  │            importers/reports.ts   npm audit; Spec/Impact/Outcome Check reports
- │  VALIDATE  validation/catalog.ts  47 controls (rubric pc-rubric-0.1), gates, remediation knowledge
+ │  VALIDATE  validation/catalog.ts  48 controls (rubric pc-rubric-0.2), gates, remediation knowledge
  │            validation/*-evaluators.ts   source / application / import evaluators
  │            validation/engine.ts   merge outcomes → validations + findings (stable IDs)
  │            scoring/score.ts       pillar scores, coverage, confidence, caps, gates (pure)

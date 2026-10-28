@@ -13,7 +13,13 @@ import { buildPops, popCoverage } from "./discovery/pops.js";
 import { inputError } from "./errors.js";
 import { EvidenceCollector } from "./evidence/collector.js";
 import { harToObservations } from "./importers/har.js";
-import { parseImpactCheck, parseNpmAudit, parseOutcomeCheck, parseSpecCheck } from "./importers/reports.js";
+import {
+  parseArchitectureCheck,
+  parseImpactCheck,
+  parseNpmAudit,
+  parseOutcomeCheck,
+  parseSpecCheck,
+} from "./importers/reports.js";
 import { parseTestResults, type TestRun } from "./importers/tests.js";
 import { probe } from "./inspectors/http/fetch.js";
 import type { ObservationSet } from "./inspectors/http/observe.js";
@@ -226,6 +232,9 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
   const spec = aborted ? null : importReport(contract.imports.spec_check, label, parseSpecCheck);
   const impact = aborted ? null : importReport(contract.imports.impact_check, label, parseImpactCheck);
   const outcome = aborted ? null : importReport(contract.imports.outcome_check, label, parseOutcomeCheck);
+  const architecture = aborted
+    ? null
+    : importReport(contract.imports.architecture_check, label, parseArchitectureCheck);
   phases.push({
     phase: "TEST",
     status: aborted ? "SKIPPED" : "COMPLETED",
@@ -237,6 +246,7 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
         spec && "Spec Check report imported",
         impact && "Impact Check report imported",
         outcome && "Outcome Check report imported",
+        architecture && "Architecture Check report imported",
       ].filter((x): x is string => typeof x === "string"),
     ],
   });
@@ -272,6 +282,7 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
     spec,
     impact,
     outcome,
+    architecture,
     baseline: options.baseline?.results ?? null,
     aiInScope,
   };

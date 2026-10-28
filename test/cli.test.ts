@@ -4,7 +4,7 @@
  * CLI contract: help/version, every command, exit codes, contract init/merge, imports, risk acceptances,
  * control mappings, --fail-on and output files.
  */
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import type { Results } from "../src/types.js";
@@ -249,8 +249,77 @@ describe("imports, mappings and risk acceptance", () => {
     expect(statusOf(r, "PC-T-12")).toBe("PARTIAL");
     expect(statusOf(r, "PC-T-15")).toBe("PASS");
     expect(statusOf(r, "PC-T-14")).toBe("NOT_TESTED");
+    expect(statusOf(r, "PC-T-17")).toBe("NOT_TESTED");
     expect(r.pop_coverage.pops.find((p) => p.id === "observability")?.status).toBe("BLOCKED");
     expect(r.evidence.find((e) => e.kind === "test-result")?.checksum?.value).toMatch(/^[0-9a-f]{64}$/);
+  });
+
+  it("an Architecture Check report evidences PC-T-17: verified drift is PARTIAL, hypotheses alone PASS", async () => {
+    const report = (findings: object[]): object => ({
+      kind: "architecture-check-report",
+      schema_version: "1.1",
+      declared_model: { path: "architecture/workspace.dsl", format: "dsl", usable: true },
+      complete_mapping: true,
+      findings,
+    });
+    const dir = tempFiles({
+      ...cleanRepo(),
+      "drift.json": report([
+        { rule_id: "boundary-violation", severity: "high", status: "verified_static_fact" },
+        { rule_id: "relationship-undeclared", severity: "medium", status: "verified_static_fact" },
+        { rule_id: "component-undeclared", severity: "low", status: "hypothesis" },
+      ]),
+      "clean.json": report([{ rule_id: "component-undeclared", severity: "medium", status: "hypothesis" }]),
+      "derive.json": { ...report([]), declared_model: null },
+    });
+    commitAll(dir);
+    const drift = await runJson(dir, [
+      "--repo",
+      ".",
+      "--stage",
+      "LAUNCH_GATE",
+      "--architecture-check",
+      "drift.json",
+    ]);
+    expect(statusOf(drift, "PC-T-17")).toBe("PARTIAL");
+    const finding = drift.findings.filter((f) => f.control_id === "PC-T-17");
+    expect(finding).toHaveLength(1);
+    expect(finding[0]?.epistemic).toBe("fact");
+    const evidence = drift.evidence.find(
+      (e) => e.kind === "imported-report" && e.summary.startsWith("Architecture Check")
+    );
+    expect(evidence?.summary).toBe(
+      "Architecture Check 1.1: architecture/workspace.dsl (dsl), 3 finding(s); 2 verified drift (boundary-violation, relationship-undeclared), 1 hypotheses, 0 unknown"
+    );
+    const clean = await runJson(dir, [
+      "--repo",
+      ".",
+      "--stage",
+      "LAUNCH_GATE",
+      "--architecture-check",
+      "clean.json",
+    ]);
+    expect(statusOf(clean, "PC-T-17")).toBe("PASS");
+    expect(clean.findings.filter((f) => f.control_id === "PC-T-17")).toEqual([]);
+    const derive = await cli(
+      ["run", "--repo", ".", "--architecture-check", "derive.json", "--json", "--quiet"],
+      dir
+    );
+    expect(derive.code).toBe(3);
+    expect(derive.stderr).toMatch(/Architecture Check/);
+  });
+
+  it("results written with rubric pc-rubric-0.1 still validate and load as a baseline", async () => {
+    const dir = tempFiles(cleanRepo());
+    commitAll(dir);
+    const r = await runJson(dir, ["--repo", "."]);
+    expect(r.scorecard.rubric_version).toBe("pc-rubric-0.2");
+    const old = { ...r, scorecard: { ...r.scorecard, rubric_version: "pc-rubric-0.1" } };
+    writeFileSync(join(dir, "old.json"), JSON.stringify(old, null, 2));
+    expect((await cli(["validate", "old.json"], dir)).code).toBe(0);
+    expect(
+      (await cli(["retest", "--repo", ".", "--baseline", "old.json", "--json", "--quiet"], dir)).code
+    ).toBe(0);
   });
 
   it("valid risk acceptances relax P1/P2 but never P0, and expired ones are rejected", async () => {

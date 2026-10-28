@@ -2,7 +2,8 @@
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Optional importers for artifacts produced by other tools: `npm audit --json`, and the JSON reports of the
- * sibling Engineering Commons tools (Spec Check 1.0, Impact Check 2.0, Outcome Check 1.0). Each importer reads
+ * sibling Engineering Commons tools (Spec Check 1.0, Impact Check 2.0, Outcome Check 1.0, Architecture Check 1.0/1.1).
+ * Each importer reads
  * only the documented fields it needs and rejects unknown schema versions instead of guessing.
  */
 import { inputError } from "../errors.js";
@@ -135,5 +136,57 @@ export function parseOutcomeCheck(data: unknown, source: string): OutcomeCheckSu
   return {
     ci_first_pass_rate: ci && typeof ci["value"] === "number" ? ci["value"] : null,
     reverted_prs: reverts && typeof reverts["numerator"] === "number" ? reverts["numerator"] : null,
+  };
+}
+
+/** Summary of an Architecture Check report. */
+export interface ArchitectureCheckSummary {
+  schema_version: string;
+  model_path: string | null;
+  model_format: string | null;
+  model_usable: boolean;
+  complete_mapping: boolean;
+  findings: number;
+  /** Verified static facts of high or medium severity. */
+  verified_drift: number;
+  verified_rules: string[];
+  hypotheses: number;
+  unknown: number;
+}
+
+/**
+ * Parses an Architecture Check `analyze`/`check` report (schema 1.0 or 1.1; 1.1 only adds enum values). A `derive`
+ * report has no declared model and describes no drift, so it is rejected.
+ */
+export function parseArchitectureCheck(data: unknown, source: string): ArchitectureCheckSummary {
+  if (
+    !isObj(data) ||
+    data["kind"] !== "architecture-check-report" ||
+    (data["schema_version"] !== "1.0" && data["schema_version"] !== "1.1") ||
+    !Array.isArray(data["findings"]) ||
+    !isObj(data["declared_model"])
+  ) {
+    throw inputError(
+      `${source} is not an Architecture Check report with a declared model (schema 1.0 or 1.1).`,
+      "Produce it with `architecture-check check --format json` (or `analyze`); `derive` output has no drift to import."
+    );
+  }
+  const model = data["declared_model"];
+  const findings = data["findings"].filter(isObj);
+  const drift = findings.filter(
+    (f) => f["status"] === "verified_static_fact" && (f["severity"] === "high" || f["severity"] === "medium")
+  );
+  const str = (v: unknown): string | null => (typeof v === "string" ? v : null);
+  return {
+    schema_version: data["schema_version"],
+    model_path: str(model["path"]),
+    model_format: str(model["format"]),
+    model_usable: model["usable"] === true,
+    complete_mapping: data["complete_mapping"] === true,
+    findings: findings.length,
+    verified_drift: drift.length,
+    verified_rules: [...new Set(drift.map((f) => String(f["rule_id"])))].sort(),
+    hypotheses: findings.filter((f) => f["status"] === "hypothesis").length,
+    unknown: findings.filter((f) => f["status"] === "unknown").length,
   };
 }

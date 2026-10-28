@@ -6,6 +6,14 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
+- `--architecture-check <report.json>` (contract `imports.architecture_check`) imports an Architecture Check report
+  (schema 1.0 or 1.1, `analyze`/`check` output). New control **PC-T-17 "Architecture model matches the code"**
+  (technology, CT-T3, weight 1, P2): PASS with no verified drift of medium severity or above, PARTIAL with one
+  `architecture-drift` finding otherwise, NOT_TESTED without a report. Hypotheses and unknowns never count. Rules in
+  `docs/interoperability.md`.
+- Rubric `pc-rubric-0.2` (48 controls; scoring rules unchanged). The scorecard schema accepts `pc-rubric-0.1` and
+  `pc-rubric-0.2`, and integrity recomputation keeps the stored version, so 0.1.0 results still validate and load as
+  retest baselines. Results schema stays `0.1.0`; `imports.architecture_check` is optional in the contract schema.
 - `product-check spec`: reverse-engineers an as-built specification from a repository (pages, endpoints, data
   entities, integrations, configuration names, auth boundaries, test titles) with evidence for every item. It writes
   `as-built-spec.json` (new schema `as-built-spec.schema.json`) and a Spec Kit `specs/000-as-built/spec.md` that Spec
