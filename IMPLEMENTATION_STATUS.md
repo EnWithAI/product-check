@@ -2,7 +2,7 @@
 
 _Product Check 0.2.0 · results schema 0.1.0 · rubric pc-rubric-0.2 · 2026-10-28_
 
-**State: 0.2.0 prepared for release (2026-10-28), READY FOR HUMAN REVIEW**; see §0. Earlier: **released 0.1.0
+**State: released 0.2.0 (2026-10-28)** on GitHub and npm; see §0 and §5. Earlier: **released 0.1.0
 (2026-10-12)**, the first version without a pre-release suffix (no functional change from 0.1.0-alpha.0). Earlier: released alpha. 0.1.0-alpha.0 published 2026-10-12: GitHub `EnWithAI/product-check` (CI green on Node
 22/24/26), pre-release `v0.1.0-alpha.0`, npm `@enwithai/product-check` (`alpha` and `latest`).
 License: **MIT** (decided by the product sponsor on 2026-10-12, same as the other Commons tools); `LICENSE`, `package.json`
@@ -28,8 +28,21 @@ New in 0.2.0:
 | Retest of impact-check with its Architecture Check 0.2.0 report | 51 controls, rubric `pc-rubric-0.2`, PC-T-17 PASS; the results validate                                                                                                                                                                |
 | Demo outputs                                                    | regenerated; scores unchanged (the demo is assessed at CT-T2, before the new CT-T3/T4 controls apply); README excerpt updated (retest run ID)                                                                                          |
 
-The release still needs human approval for each public step: the merge, the tag, the GitHub release and the npm
-publication.
+Released 2026-10-28, each public step approved by the user:
+
+- **GitHub:** release PR EnWithAI/product-check#6 squash-merged as `cc8f8a4`; tag `v0.2.0` (`6a415cb`, adds the
+  built `dist/`) and a GitHub release.
+- **npm:** published by the user with 2FA from the tag build.
+  - `latest` → 0.2.0; `alpha` stays 0.1.0.
+  - Registry shasum `365dd172f0d2aaa05274542e37c536a1f811fba1`, identical to `npm pack` of the tag.
+  - One dependency, `yaml` 2.9.1. No `gitHead` is recorded, because it was published from a git worktree.
+- **Verified clean registry install:**
+  - 2 packages; `--version` 0.2.0; `controls` lists 51.
+  - With real OpenSLO and rule files: PC-T-18 and PC-T-19 PASS, PC-T-14 PARTIAL, PC-T-20 NOT_TESTED with its reason.
+  - A `retest` of impact-check against results from 0.1.0 runs and validates (PC-T-17 PASS).
+- **Dependencies:** `npm audit --omit=dev` finds 0 vulnerabilities. The dev-only `fast-uri` (through Ajv) was
+  bumped afterwards from 3.1.8 to 3.1.9 for GHSA-w74x-v6f9-j3xg, GHSA-xhq7-xmqj-769h, GHSA-wjr9-j795-jxcr and
+  GHSA-333x-w4r6-6crp. That is a lockfile-only change; 3.1.9 has verified SLSA provenance from `fastify/fast-uri`.
 
 ## 1. Design brief (as built)
 
@@ -159,6 +172,9 @@ source files (caught by the Trojan-Source test).
       `90669a43bb94ed82b4a8d32507de279501839231` identical to the tag build, verified by a clean registry install.
 - [x] `0.0.0-stage` placeholder left by npm staged publishing deprecated by the user (2FA, 2026-10-12), as for the
       siblings.
+- [x] **0.2.0** (2026-10-28): release PR #6, tag `v0.2.0` with built `dist/`, GitHub release, npm publication by the
+      user with 2FA; registry shasum `365dd172f0d2aaa05274542e37c536a1f811fba1` identical to the tag build, verified by a
+      clean registry install (§0).
 - [ ] Not separately performed: an independent human review of control wording/severities and of the demo outputs.
       The release was approved on the basis of this status report.
 
