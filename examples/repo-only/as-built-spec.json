@@ -4,7 +4,7 @@
   "generated_at": "2026-10-14T10:00:00.000Z",
   "tool": {
     "name": "product-check",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "target": {
     "name": "Vibe Notes (synthetic demo, source only)",

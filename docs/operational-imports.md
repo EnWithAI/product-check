@@ -1,7 +1,6 @@
 # Operational imports (tier CT-T4 Launch Watch)
 
-Status: specification for the next release. Rubric `pc-rubric-0.2`, which is still unreleased, so its catalog
-grows from 48 to 51 controls. Results schema `0.1.0`, additive.
+Status: released in 0.2.0. Rubric `pc-rubric-0.2` (51 controls with these three). Results schema `0.1.0`, additive.
 
 Before this, every CT-T4 control was `NOT_TESTED` because Product Check had no telemetry adapter. This increment
 adds three **file** importers. There is still no network access and no live querying: you export the files, as you
