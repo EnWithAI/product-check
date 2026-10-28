@@ -152,6 +152,8 @@ export interface ArchitectureCheckSummary {
   verified_rules: string[];
   hypotheses: number;
   unknown: number;
+  /** Declared relationships with no static evidence (`relationship-unobserved`), as declared IDs. */
+  unobserved: { from: string; to: string }[];
 }
 
 /**
@@ -188,5 +190,11 @@ export function parseArchitectureCheck(data: unknown, source: string): Architect
     verified_rules: [...new Set(drift.map((f) => String(f["rule_id"])))].sort(),
     hypotheses: findings.filter((f) => f["status"] === "hypothesis").length,
     unknown: findings.filter((f) => f["status"] === "unknown").length,
+    unobserved: findings
+      .filter((f) => f["rule_id"] === "relationship-unobserved" && typeof f["subject"] === "string")
+      .map((f) => /^(\S+) -> (\S+)$/.exec(f["subject"] as string))
+      .filter((m): m is RegExpExecArray => m !== null)
+      .map((m) => ({ from: m[1] as string, to: m[2] as string }))
+      .sort((a, b) => (`${a.from} ${a.to}` < `${b.from} ${b.to}` ? -1 : 1)),
   };
 }

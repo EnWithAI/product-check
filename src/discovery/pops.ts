@@ -21,6 +21,8 @@ export interface PopInput {
   auditImported: boolean;
   specImported: boolean;
   outcomeImported: boolean;
+  /** OpenSLO, alert rules or a service graph was imported (CT-T4). */
+  operationalImported: boolean;
   aiInScope: boolean;
   tier: Tier;
   now: string;
@@ -300,14 +302,16 @@ export function buildPops(input: PopInput): PopEntry[] {
       id: "observability",
       category: "operations",
       name: "Production telemetry (logs, metrics, traces, alerts)",
-      status: postLaunch ? "BLOCKED" : "NOT_APPLICABLE",
+      status: postLaunch ? (input.operationalImported ? "AVAILABLE" : "BLOCKED") : "NOT_APPLICABLE",
       relevant: postLaunch,
       scope: null,
-      provenance: "none",
+      provenance: postLaunch && input.operationalImported ? "imported" : "none",
       limitations: [
-        postLaunch
-          ? "No telemetry adapter in this release; production signals were not read."
-          : "Not required before launch tiers (CT-T4+).",
+        !postLaunch
+          ? "Not required before launch tiers (CT-T4+)."
+          : input.operationalImported
+            ? "Read from exported files (OpenSLO, alert rules, service graph); nothing was queried live, and a service graph covers only its time window."
+            : "No operational files were imported (--openslo, --alert-rules, --service-graph); production signals were not read.",
       ],
     })
   );

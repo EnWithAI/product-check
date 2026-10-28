@@ -9,7 +9,7 @@ user's explicit instructions.
 - Install: `npm ci --ignore-scripts`
 - Full gate: `npm run check:all` (typecheck → lint → format check → build → tests with coverage ≥ 80% lines)
 - Demo/examples: `npm run build && npm run demo` (needs git; commit the regenerated examples)
-- Licenses: `node scripts/license-audit.mjs --all` (no production dependencies)
+- Licenses: `node scripts/license-audit.mjs --all` (one production dependency: `yaml`, ISC, pinned)
 
 ## Invariants (tests enforce most of these)
 

@@ -286,6 +286,22 @@
         "architecture_check": {
           "type": ["string", "null"],
           "description": "Architecture Check report (schema 1.0 or 1.1). Optional, so contracts from 0.1.0 stay valid."
+        },
+        "openslo": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "maxItems": 50,
+          "description": "OpenSLO v1 files. Optional, so contracts from 0.1.0 stay valid."
+        },
+        "alert_rules": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "maxItems": 50,
+          "description": "Prometheus/Mimir rule files, PrometheusRule resources or /api/v1/rules exports. Optional."
+        },
+        "service_graph": {
+          "type": ["string", "null"],
+          "description": "Jaeger /api/dependencies or service-graph metrics query result. Optional."
         }
       }
     },

@@ -813,10 +813,13 @@ export const CONTROLS: ControlDef[] = [
     root_cause: "No production telemetry is connected to the assessment.",
     remediation: rem({
       change:
-        "Connect production metrics, logs and alerts; this release of Product Check has no telemetry adapter, so record evidence manually.",
+        "Connect production metrics, logs and alerts, then export the alert rules (or OpenSLO alert policies) and a service graph and import them (--alert-rules, --openslo, --service-graph).",
       why: "Launch watch depends on detection speed.",
       to_be: "Alerts on error rate, latency and journey success.",
-      acceptance: ["Alerting is configured for critical signals."],
+      acceptance: [
+        "Alerting is configured for critical signals.",
+        "Control PC-T-14 evaluates PASS on retest with alert configuration and a service graph imported.",
+      ],
       regression: "Alert test on deployment.",
       effort: "M",
     }),
@@ -912,6 +915,103 @@ export const CONTROLS: ControlDef[] = [
         "Control PC-T-17 evaluates PASS on retest.",
       ],
       regression: "Architecture Check in pull-request CI.",
+      effort: "S",
+    }),
+  },
+  {
+    id: "PC-T-18",
+    pillar: "technology",
+    tier: "CT-T4",
+    title: "SLOs define an objective, a time window and an indicator",
+    expected:
+      "Imported OpenSLO v1 files define at least one SLO, and every SLO has a service, one time window, an objective target and an indicator.",
+    category: "launch-watch",
+    weight: 1,
+    gate: null,
+    severity: "P2",
+    ux: null,
+    pops: ["observability"],
+    impact: {
+      customer: null,
+      technology:
+        "Without complete SLOs nobody can tell whether the launched service meets its reliability target.",
+      trust: null,
+    },
+    root_cause: "SLOs are missing or were written without a measurable objective, window or indicator.",
+    remediation: rem({
+      change:
+        "Define an OpenSLO v1 SLO per critical service with a target, one time window and an indicator (inline or an SLI reference).",
+      why: "A launch watch needs an agreed, measurable target to watch against.",
+      to_be: "Every critical service has a complete SLO under version control.",
+      acceptance: [
+        "Every imported SLO lists a service, a time window, an objective target and an indicator.",
+        "Control PC-T-18 evaluates PASS on retest.",
+      ],
+      regression: "OpenSLO files validated in CI (oslo validate) and imported on every assessment.",
+      effort: "S",
+    }),
+  },
+  {
+    id: "PC-T-19",
+    pillar: "technology",
+    tier: "CT-T4",
+    title: "Every SLO is alerted on",
+    expected: "Every imported SLO has an OpenSLO alert policy or an imported alerting rule that names it.",
+    category: "launch-watch",
+    weight: 1,
+    gate: null,
+    severity: "P2",
+    ux: null,
+    pops: ["observability"],
+    impact: {
+      customer: null,
+      technology: "An SLO without an alert is breached silently; users notice before the team does.",
+      trust: null,
+    },
+    root_cause: "SLOs were defined without alert policies or burn-rate alert rules.",
+    remediation: rem({
+      change:
+        "Attach an alert policy to each SLO, or generate burn-rate alerts (Sloth, Pyrra) that carry the SLO name as a label.",
+      why: "Detection speed decides how much error budget an incident consumes.",
+      to_be: "Every SLO pages through a burn-rate alert.",
+      acceptance: [
+        "Every SLO has an alert policy or an alerting rule labelled with its name.",
+        "Control PC-T-19 evaluates PASS on retest.",
+      ],
+      regression: "Alert rules generated from the SLO files in CI.",
+      effort: "S",
+    }),
+  },
+  {
+    id: "PC-T-20",
+    pillar: "technology",
+    tier: "CT-T4",
+    title: "Declared dependencies are observed at runtime",
+    expected:
+      "Each declared relationship that Architecture Check could not confirm statically appears as an edge in an imported service graph.",
+    category: "launch-watch",
+    weight: 1,
+    gate: null,
+    severity: "P2",
+    ux: null,
+    pops: ["observability", "repository"],
+    impact: {
+      customer: null,
+      technology:
+        "The architecture model claims dependencies that may not exist at runtime, or that run through paths nobody traced.",
+      trust: null,
+    },
+    root_cause: "The model lists relationships that neither the code nor runtime traces show.",
+    remediation: rem({
+      change:
+        "Check each listed relationship: remove it from the model if it no longer exists, or instrument the call so traces show it.",
+      why: "Runtime evidence is the only evidence for calls that static analysis cannot see.",
+      to_be: "Every declared relationship has static or runtime evidence.",
+      acceptance: [
+        "No declared relationship lacks both static evidence and a runtime edge.",
+        "Control PC-T-20 evaluates PASS on retest.",
+      ],
+      regression: "Architecture Check and a service-graph export on every release.",
       effort: "S",
     }),
   },

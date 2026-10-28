@@ -322,6 +322,7 @@ describe("test-result importers", () => {
       verified_rules: ["boundary-violation", "relationship-undeclared"],
       hypotheses: 1,
       unknown: 1,
+      unobserved: [],
     });
     expect(parseArchitectureCheck(arch({ schema_version: "1.0", findings: [] }), "a")).toMatchObject({
       schema_version: "1.0",

@@ -21,8 +21,9 @@ Controls above the primary tier are reported as `NOT_APPLICABLE` with the reason
   Authorization and isolation need your executed tests (control mappings).
 - **T3:** change impact (via an Impact Check report), architecture drift (via an Architecture Check report, PC-T-17)
   and rollback (via a mapped rehearsal test).
-- **T4:** production monitoring and real-user journey health are `NOT_TESTED`: there is no telemetry adapter yet,
-  and the observability PoP is `BLOCKED` with that reason.
+- **T4:** SLOs (PC-T-18), SLO alerting (PC-T-19), runtime confirmation of declared dependencies (PC-T-20) and
+  monitoring (PC-T-14) from exported OpenSLO, alert-rule and service-graph files ([operational imports](operational-imports.md)).
+  Without them the observability PoP is `BLOCKED`. Real-user journey health (PC-C-11) stays `NOT_TESTED`.
 - **T5:** delivery stability via an Outcome Check report.
 - **T6:** PC-T-16 compares with the baseline and fails on any control that went from PASS to PARTIAL/FAIL.
 

@@ -55,41 +55,41 @@ Open findings: P0 0 · P1 0 · P2 2 · P3 0 · accepted risks 0 · overall cover
 
 ### Verified fixes (resolved on retest)
 
-- PCF-222F650216 Sensitive file publicly served: /.env — verified in PCR-20261015T100000Z-248001
-- PCF-484BD31627 Stripe secret key in .env.local — verified in PCR-20261015T100000Z-248001
-- PCF-4DF8A34CE8 Service-role JWT (bypasses row-level security) in lib/supabase.ts — verified in PCR-20261015T100000Z-248001
-- PCF-63B9B21478 Privileged key NEXT\_PUBLIC\_SUPABASE\_SERVICE\_ROLE\_KEY exposed to the browser — verified in PCR-20261015T100000Z-248001
-- PCF-6AE991A057 Privileged key NEXT\_PUBLIC\_OPENAI\_API\_KEY exposed to the browser — verified in PCR-20261015T100000Z-248001
-- PCF-6F76AC0627 Credentials embedded in a connection URL in .env.local — verified in PCR-20261015T100000Z-248001
-- PCF-E2CE361289 AI provider called from the browser in app/page.tsx — verified in PCR-20261015T100000Z-248001
-- PCF-E8ACA75BD3 Privileged key NEXT\_PUBLIC\_OPENAI\_API\_KEY exposed to the browser — verified in PCR-20261015T100000Z-248001
-- PCF-AC6E17E07C Environment file .env.local is committed — verified in PCR-20261015T100000Z-248001
-- PCF-0BD32ABB20 No automated tests — verified in PCR-20261015T100000Z-248001
-- PCF-1E72F2F7B0 Cookies lack security attributes — verified in PCR-20261015T100000Z-248001
-- PCF-2E884D06D5 Database schema changes are not versioned — verified in PCR-20261015T100000Z-248001
-- PCF-3E3C906C89 No CI pipeline — verified in PCR-20261015T100000Z-248001
-- PCF-4537D66695 Critical journeys have no end-to-end tests — verified in PCR-20261015T100000Z-248001
-- PCF-5C358D43AB Served images lack text alternatives — verified in PCR-20261015T100000Z-248001
-- PCF-70B846CB03 Possible injection sink: raw HTML injection of a non-literal value in app/page.tsx — verified in PCR-20261015T100000Z-248001
-- PCF-9901AF5D1D No privacy notice reachable — verified in PCR-20261015T100000Z-248001
-- PCF-A79BB3B752 No lockfile: builds are not reproducible — verified in PCR-20261015T100000Z-248001
-- PCF-C7E301195D Possible injection sink: SQL built with string interpolation in lib/db.ts — verified in PCR-20261015T100000Z-248001
-- PCF-CDCE917FE3 Credentialed wildcard CORS in app/api/notes/route.ts — verified in PCR-20261015T100000Z-248001
-- PCF-CEED9100D9 Pages can be framed by other sites (clickjacking) — verified in PCR-20261015T100000Z-248001
-- PCF-CF1364323D No Content Security Policy — verified in PCR-20261015T100000Z-248001
-- PCF-E0A3F8E153 Image without alt text in app/page.tsx — verified in PCR-20261015T100000Z-248001
-- PCF-026FD4A0D8 MIME sniffing not disabled — verified in PCR-20261015T100000Z-248001
-- PCF-14B347C463 Unbounded dependency version: @​supabase/supabase-js — verified in PCR-20261015T100000Z-248001
-- PCF-2BBFB74CD4 Runtime version is not declared — verified in PCR-20261015T100000Z-248001
-- PCF-2D30FA9048 No page language in app/layout.tsx — verified in PCR-20261015T100000Z-248001
-- PCF-2EFAD2152B No security contact published — verified in PCR-20261015T100000Z-248001
-- PCF-2FD01AC810 Server advertises its stack — verified in PCR-20261015T100000Z-248001
-- PCF-3D0D04F8EA Unknown URLs answer 200 (soft 404) — verified in PCR-20261015T100000Z-248001
-- PCF-5B93B2ED59 Entry page still has the starter-template title — verified in PCR-20261015T100000Z-248001
-- PCF-83CA52EEEB README lacks setup/run instructions — verified in PCR-20261015T100000Z-248001
-- PCF-9C547F7002 No type checking or linting configured — verified in PCR-20261015T100000Z-248001
-- PCF-A355BF9FA1 Served page does not declare its language — verified in PCR-20261015T100000Z-248001
-- PCF-C205AFB621 Unbounded dependency version: openai — verified in PCR-20261015T100000Z-248001
+- PCF-222F650216 Sensitive file publicly served: /.env — verified in PCR-20261015T100000Z-B68F0A
+- PCF-484BD31627 Stripe secret key in .env.local — verified in PCR-20261015T100000Z-B68F0A
+- PCF-4DF8A34CE8 Service-role JWT (bypasses row-level security) in lib/supabase.ts — verified in PCR-20261015T100000Z-B68F0A
+- PCF-63B9B21478 Privileged key NEXT\_PUBLIC\_SUPABASE\_SERVICE\_ROLE\_KEY exposed to the browser — verified in PCR-20261015T100000Z-B68F0A
+- PCF-6AE991A057 Privileged key NEXT\_PUBLIC\_OPENAI\_API\_KEY exposed to the browser — verified in PCR-20261015T100000Z-B68F0A
+- PCF-6F76AC0627 Credentials embedded in a connection URL in .env.local — verified in PCR-20261015T100000Z-B68F0A
+- PCF-E2CE361289 AI provider called from the browser in app/page.tsx — verified in PCR-20261015T100000Z-B68F0A
+- PCF-E8ACA75BD3 Privileged key NEXT\_PUBLIC\_OPENAI\_API\_KEY exposed to the browser — verified in PCR-20261015T100000Z-B68F0A
+- PCF-AC6E17E07C Environment file .env.local is committed — verified in PCR-20261015T100000Z-B68F0A
+- PCF-0BD32ABB20 No automated tests — verified in PCR-20261015T100000Z-B68F0A
+- PCF-1E72F2F7B0 Cookies lack security attributes — verified in PCR-20261015T100000Z-B68F0A
+- PCF-2E884D06D5 Database schema changes are not versioned — verified in PCR-20261015T100000Z-B68F0A
+- PCF-3E3C906C89 No CI pipeline — verified in PCR-20261015T100000Z-B68F0A
+- PCF-4537D66695 Critical journeys have no end-to-end tests — verified in PCR-20261015T100000Z-B68F0A
+- PCF-5C358D43AB Served images lack text alternatives — verified in PCR-20261015T100000Z-B68F0A
+- PCF-70B846CB03 Possible injection sink: raw HTML injection of a non-literal value in app/page.tsx — verified in PCR-20261015T100000Z-B68F0A
+- PCF-9901AF5D1D No privacy notice reachable — verified in PCR-20261015T100000Z-B68F0A
+- PCF-A79BB3B752 No lockfile: builds are not reproducible — verified in PCR-20261015T100000Z-B68F0A
+- PCF-C7E301195D Possible injection sink: SQL built with string interpolation in lib/db.ts — verified in PCR-20261015T100000Z-B68F0A
+- PCF-CDCE917FE3 Credentialed wildcard CORS in app/api/notes/route.ts — verified in PCR-20261015T100000Z-B68F0A
+- PCF-CEED9100D9 Pages can be framed by other sites (clickjacking) — verified in PCR-20261015T100000Z-B68F0A
+- PCF-CF1364323D No Content Security Policy — verified in PCR-20261015T100000Z-B68F0A
+- PCF-E0A3F8E153 Image without alt text in app/page.tsx — verified in PCR-20261015T100000Z-B68F0A
+- PCF-026FD4A0D8 MIME sniffing not disabled — verified in PCR-20261015T100000Z-B68F0A
+- PCF-14B347C463 Unbounded dependency version: @​supabase/supabase-js — verified in PCR-20261015T100000Z-B68F0A
+- PCF-2BBFB74CD4 Runtime version is not declared — verified in PCR-20261015T100000Z-B68F0A
+- PCF-2D30FA9048 No page language in app/layout.tsx — verified in PCR-20261015T100000Z-B68F0A
+- PCF-2EFAD2152B No security contact published — verified in PCR-20261015T100000Z-B68F0A
+- PCF-2FD01AC810 Server advertises its stack — verified in PCR-20261015T100000Z-B68F0A
+- PCF-3D0D04F8EA Unknown URLs answer 200 (soft 404) — verified in PCR-20261015T100000Z-B68F0A
+- PCF-5B93B2ED59 Entry page still has the starter-template title — verified in PCR-20261015T100000Z-B68F0A
+- PCF-83CA52EEEB README lacks setup/run instructions — verified in PCR-20261015T100000Z-B68F0A
+- PCF-9C547F7002 No type checking or linting configured — verified in PCR-20261015T100000Z-B68F0A
+- PCF-A355BF9FA1 Served page does not declare its language — verified in PCR-20261015T100000Z-B68F0A
+- PCF-C205AFB621 Unbounded dependency version: openai — verified in PCR-20261015T100000Z-B68F0A
 
 ## Not verified: the next evidence to collect
 
@@ -100,7 +100,7 @@ Open findings: P0 0 · P1 0 · P2 2 · P3 0 · accepted risks 0 · overall cover
 
 ## Retest comparison
 
-Baseline PCR-20261014T100000Z-4619B7.
+Baseline PCR-20261014T100000Z-D74DF2.
 
 - Score change: Customer +60, Technology +90, Trust +95
 - Findings: 0 new, 35 resolved (verified), 0 reopened, 2 persisting, 0 not re-checked
@@ -112,7 +112,7 @@ Baseline PCR-20261014T100000Z-4619B7.
 
 ## Run
 
-Run PCR-20261015T100000Z-248001 · COMPLETED · mode HYBRID (requested HYBRID) · tiers CT-T0, CT-T1, CT-T2 · Product Check 0.1.0 · methodology CT3 (Customer × Technology × Trust, inspired) · rubric pc-rubric-0.2 · network requests 0
+Run PCR-20261015T100000Z-B68F0A · COMPLETED · mode HYBRID (requested HYBRID) · tiers CT-T0, CT-T1, CT-T2 · Product Check 0.1.0 · methodology CT3 (Customer × Technology × Trust, inspired) · rubric pc-rubric-0.2 · network requests 0
 
 Product Check reports evidence-bounded readiness. It is not a penetration test, a legal or compliance certification, or a guarantee of production readiness.
 

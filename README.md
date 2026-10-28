@@ -28,7 +28,7 @@ never submits forms and never sends anything anywhere except passive GET request
 
 ## Two-minute demo
 
-Requires Node.js 22, 24 or ≥ 26, and git. No account, no network, no runtime dependencies.
+Requires Node.js 22, 24 or ≥ 26, and git. No account, no network, one runtime dependency (`yaml`, for OpenSLO and alert-rule files).
 
 ```bash
 git clone https://github.com/enwithai/product-check.git && cd product-check

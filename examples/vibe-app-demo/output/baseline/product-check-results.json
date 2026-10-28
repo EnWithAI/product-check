@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "kind": "product-check-results",
   "run": {
-    "run_id": "PCR-20261014T100000Z-4619B7",
+    "run_id": "PCR-20261014T100000Z-D74DF2",
     "status": "COMPLETED",
     "started_at": "2026-10-14T10:00:00.000Z",
     "finished_at": "2026-10-14T10:00:00.000Z",
@@ -58,7 +58,7 @@
         "phase": "VALIDATE",
         "status": "COMPLETED",
         "notes": [
-          "48 controls evaluated against CT-T2",
+          "51 controls evaluated against CT-T2",
           "37 open finding(s)"
         ]
       },
@@ -177,7 +177,10 @@
       "spec_check": null,
       "impact_check": null,
       "outcome_check": null,
-      "architecture_check": null
+      "architecture_check": null,
+      "openslo": [],
+      "alert_rules": [],
+      "service_graph": null
     },
     "control_mappings": [
       {
@@ -489,7 +492,7 @@
   "evidence": [
     {
       "id": "EV-02D673294F61",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -517,7 +520,7 @@
     },
     {
       "id": "EV-0D2CDB2052AC",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -545,7 +548,7 @@
     },
     {
       "id": "EV-172504A92CE8",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -573,7 +576,7 @@
     },
     {
       "id": "EV-191D17CEB58D",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -603,7 +606,7 @@
     },
     {
       "id": "EV-1B2313AC5501",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -631,7 +634,7 @@
     },
     {
       "id": "EV-1CFEDA07419B",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -657,7 +660,7 @@
     },
     {
       "id": "EV-1D895C14EE45",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -683,7 +686,7 @@
     },
     {
       "id": "EV-1F14A512601B",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -711,7 +714,7 @@
     },
     {
       "id": "EV-1FBE61E84F69",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -737,7 +740,7 @@
     },
     {
       "id": "EV-29BFC1F47A93",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -765,7 +768,7 @@
     },
     {
       "id": "EV-2B6E0A68B9BA",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -793,7 +796,7 @@
     },
     {
       "id": "EV-379221F3CEE9",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -821,7 +824,7 @@
     },
     {
       "id": "EV-395109F28016",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -849,7 +852,7 @@
     },
     {
       "id": "EV-3C91DCB02FB6",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -875,7 +878,7 @@
     },
     {
       "id": "EV-4455F569DFD9",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -903,7 +906,7 @@
     },
     {
       "id": "EV-45307C11A4AE",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -931,7 +934,7 @@
     },
     {
       "id": "EV-457B39784D6A",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -957,7 +960,7 @@
     },
     {
       "id": "EV-46488A40A621",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -983,7 +986,7 @@
     },
     {
       "id": "EV-4781DDFDBECC",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1011,7 +1014,7 @@
     },
     {
       "id": "EV-4925E351D5B5",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "automated-tests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1036,7 +1039,7 @@
     },
     {
       "id": "EV-49DA8951F52A",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1064,7 +1067,7 @@
     },
     {
       "id": "EV-51E695460209",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1092,7 +1095,7 @@
     },
     {
       "id": "EV-54E8659FCA14",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1123,7 +1126,7 @@
     },
     {
       "id": "EV-596E4495782B",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1153,7 +1156,7 @@
     },
     {
       "id": "EV-59DBE76D4BC2",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1181,7 +1184,7 @@
     },
     {
       "id": "EV-5B468F324EDA",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1209,7 +1212,7 @@
     },
     {
       "id": "EV-5BEF25ECE52F",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1235,7 +1238,7 @@
     },
     {
       "id": "EV-611B5C06FE78",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1261,7 +1264,7 @@
     },
     {
       "id": "EV-6329C31A3F2B",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1289,7 +1292,7 @@
     },
     {
       "id": "EV-6E255262AEBB",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1317,7 +1320,7 @@
     },
     {
       "id": "EV-74CCC5E538AB",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1345,7 +1348,7 @@
     },
     {
       "id": "EV-753CEA136000",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1373,7 +1376,7 @@
     },
     {
       "id": "EV-7A9B31C936BD",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1401,7 +1404,7 @@
     },
     {
       "id": "EV-7C05EA339339",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1429,7 +1432,7 @@
     },
     {
       "id": "EV-7F5D190C7369",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1459,7 +1462,7 @@
     },
     {
       "id": "EV-82F664BD7682",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1487,7 +1490,7 @@
     },
     {
       "id": "EV-935FDA624942",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1515,7 +1518,7 @@
     },
     {
       "id": "EV-9A72C9100D5D",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1543,7 +1546,7 @@
     },
     {
       "id": "EV-9D9E623182ED",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1569,7 +1572,7 @@
     },
     {
       "id": "EV-A2E9F4A847E7",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1597,7 +1600,7 @@
     },
     {
       "id": "EV-A5095F98D5CC",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1627,7 +1630,7 @@
     },
     {
       "id": "EV-A900965FEC4B",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1655,7 +1658,7 @@
     },
     {
       "id": "EV-AA2F59D9DEBF",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1681,7 +1684,7 @@
     },
     {
       "id": "EV-AEE63A911559",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1707,7 +1710,7 @@
     },
     {
       "id": "EV-B91D560FD629",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1735,7 +1738,7 @@
     },
     {
       "id": "EV-BE9027E2E29A",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1761,7 +1764,7 @@
     },
     {
       "id": "EV-C4CA53746CB8",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1789,7 +1792,7 @@
     },
     {
       "id": "EV-CEC3986784AA",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1817,7 +1820,7 @@
     },
     {
       "id": "EV-D06C9861BD7C",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1845,7 +1848,7 @@
     },
     {
       "id": "EV-D24CD56A807C",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1871,7 +1874,7 @@
     },
     {
       "id": "EV-D5A22BAA19B5",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1899,7 +1902,7 @@
     },
     {
       "id": "EV-D72CA28DECBA",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1927,7 +1930,7 @@
     },
     {
       "id": "EV-DBE3B2E218EE",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1955,7 +1958,7 @@
     },
     {
       "id": "EV-E29ECB3AFCC8",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1985,7 +1988,7 @@
     },
     {
       "id": "EV-E5A23FEDCFEF",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2013,7 +2016,7 @@
     },
     {
       "id": "EV-E7014085A22C",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2041,7 +2044,7 @@
     },
     {
       "id": "EV-EDC24BAAED95",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2071,7 +2074,7 @@
     },
     {
       "id": "EV-EE1E19478D9F",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2099,7 +2102,7 @@
     },
     {
       "id": "EV-F3A7C5E3B6AF",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2127,7 +2130,7 @@
     },
     {
       "id": "EV-F4BD66FD50FA",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2153,7 +2156,7 @@
     },
     {
       "id": "EV-F648BC0023F4",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2181,7 +2184,7 @@
     },
     {
       "id": "EV-F88727144FC0",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2209,7 +2212,7 @@
     },
     {
       "id": "EV-FF6546F44E70",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2816,6 +2819,60 @@
       "finding_ids": []
     },
     {
+      "id": "VAL-PC-T-18",
+      "control_id": "PC-T-18",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "SLOs define an objective, a time window and an indicator",
+      "expected": "Imported OpenSLO v1 files define at least one SLO, and every SLO has a service, one time window, an objective target and an indicator.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T2.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-19",
+      "control_id": "PC-T-19",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Every SLO is alerted on",
+      "expected": "Every imported SLO has an OpenSLO alert policy or an imported alerting rule that names it.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T2.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-20",
+      "control_id": "PC-T-20",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Declared dependencies are observed at runtime",
+      "expected": "Each declared relationship that Architecture Check could not confirm statically appears as an edge in an imported service graph.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T2.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
       "id": "VAL-PC-S-01",
       "control_id": "PC-S-01",
       "pillar": "trust",
@@ -3292,7 +3349,7 @@
       ],
       "validation_id": "VAL-PC-S-09",
       "work_packet_id": "WP-PC-S-09",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3329,7 +3386,7 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3366,7 +3423,7 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3403,7 +3460,7 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3440,7 +3497,7 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3477,7 +3534,7 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3512,7 +3569,7 @@
       ],
       "validation_id": "VAL-PC-AI-01",
       "work_packet_id": "WP-PC-AI-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3549,7 +3606,7 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3584,7 +3641,7 @@
       ],
       "validation_id": "VAL-PC-S-03",
       "work_packet_id": "WP-PC-S-03",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3619,7 +3676,7 @@
       ],
       "validation_id": "VAL-PC-T-02",
       "work_packet_id": "WP-PC-T-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3656,7 +3713,7 @@
       ],
       "validation_id": "VAL-PC-S-08",
       "work_packet_id": "WP-PC-S-08",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3692,7 +3749,7 @@
       ],
       "validation_id": "VAL-PC-T-11",
       "work_packet_id": "WP-PC-T-11",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3727,7 +3784,7 @@
       ],
       "validation_id": "VAL-PC-T-04",
       "work_packet_id": "WP-PC-T-04",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3762,7 +3819,7 @@
       ],
       "validation_id": "VAL-PC-T-10",
       "work_packet_id": "WP-PC-T-10",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3797,7 +3854,7 @@
       ],
       "validation_id": "VAL-PC-C-08",
       "work_packet_id": "WP-PC-C-08",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3834,7 +3891,7 @@
       ],
       "validation_id": "VAL-PC-C-04",
       "work_packet_id": "WP-PC-C-04",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3869,7 +3926,7 @@
       ],
       "validation_id": "VAL-PC-S-16",
       "work_packet_id": "WP-PC-S-16",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3907,7 +3964,7 @@
       ],
       "validation_id": "VAL-PC-S-12",
       "work_packet_id": "WP-PC-S-12",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3942,7 +3999,7 @@
       ],
       "validation_id": "VAL-PC-T-01",
       "work_packet_id": "WP-PC-T-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -3977,7 +4034,7 @@
       ],
       "validation_id": "VAL-PC-AI-02",
       "work_packet_id": "WP-PC-AI-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4012,7 +4069,7 @@
       ],
       "validation_id": "VAL-PC-S-16",
       "work_packet_id": "WP-PC-S-16",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4047,7 +4104,7 @@
       ],
       "validation_id": "VAL-PC-S-17",
       "work_packet_id": "WP-PC-S-17",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4084,7 +4141,7 @@
       ],
       "validation_id": "VAL-PC-S-06",
       "work_packet_id": "WP-PC-S-06",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4121,7 +4178,7 @@
       ],
       "validation_id": "VAL-PC-S-05",
       "work_packet_id": "WP-PC-S-05",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4156,7 +4213,7 @@
       ],
       "validation_id": "VAL-PC-C-04",
       "work_packet_id": "WP-PC-C-04",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4193,7 +4250,7 @@
       ],
       "validation_id": "VAL-PC-S-07",
       "work_packet_id": "WP-PC-S-07",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4228,7 +4285,7 @@
       ],
       "validation_id": "VAL-PC-T-09",
       "work_packet_id": "WP-PC-T-09",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4263,7 +4320,7 @@
       ],
       "validation_id": "VAL-PC-T-07",
       "work_packet_id": "WP-PC-T-07",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4298,7 +4355,7 @@
       ],
       "validation_id": "VAL-PC-C-02",
       "work_packet_id": "WP-PC-C-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4334,7 +4391,7 @@
       ],
       "validation_id": "VAL-PC-S-11",
       "work_packet_id": "WP-PC-S-11",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4371,7 +4428,7 @@
       ],
       "validation_id": "VAL-PC-S-10",
       "work_packet_id": "WP-PC-S-10",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4408,7 +4465,7 @@
       ],
       "validation_id": "VAL-PC-C-06",
       "work_packet_id": "WP-PC-C-06",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4445,7 +4502,7 @@
       ],
       "validation_id": "VAL-PC-C-05",
       "work_packet_id": "WP-PC-C-05",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4480,7 +4537,7 @@
       ],
       "validation_id": "VAL-PC-T-06",
       "work_packet_id": "WP-PC-T-06",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4515,7 +4572,7 @@
       ],
       "validation_id": "VAL-PC-T-08",
       "work_packet_id": "WP-PC-T-08",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4552,7 +4609,7 @@
       ],
       "validation_id": "VAL-PC-C-02",
       "work_packet_id": "WP-PC-C-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     },
     {
@@ -4587,7 +4644,7 @@
       ],
       "validation_id": "VAL-PC-T-09",
       "work_packet_id": "WP-PC-T-09",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": []
     }
   ],
@@ -4635,7 +4692,7 @@
           "FAIL": 8,
           "BLOCKED": 0,
           "NOT_TESTED": 1,
-          "NOT_APPLICABLE": 7
+          "NOT_APPLICABLE": 10
         },
         "applicable_weight": 15,
         "checked_weight": 12
@@ -8226,7 +8283,7 @@
   "comparison": null,
   "history": [
     {
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "finished_at": "2026-10-14T10:00:00.000Z",
       "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5",
       "verdict": "NOT_READY",

@@ -8,9 +8,11 @@ license.
 
 ## Third-party material
 
-Product Check has **no runtime dependencies** and contains no vendored source code. It reads formats defined by others
-(JSON Schema, JUnit XML, HAR, `npm audit` JSON, and the report schemas of Spec Check, Impact Check and Outcome Check);
-no code from those projects is included.
+Product Check has **one runtime dependency**, [`yaml`](https://github.com/eemeli/yaml) 2.9.1 (ISC License, Copyright
+Eemeli Aro), installed from npm and not vendored. It reads formats defined by others (JSON Schema, JUnit XML, HAR,
+`npm audit` JSON, the report schemas of Spec Check, Impact Check, Outcome Check and Architecture Check, OpenSLO,
+Prometheus rule files, Jaeger dependencies and the OpenTelemetry service-graph metrics); no code from those projects
+is included.
 
 ## Trademarks
 

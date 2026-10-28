@@ -103,7 +103,7 @@ Open findings: P0 8 · P1 1 · P2 16 · P3 12 · accepted risks 0 · overall cov
 
 ## Run
 
-Run PCR-20261014T100000Z-4619B7 · COMPLETED · mode HYBRID (requested HYBRID) · tiers CT-T0, CT-T1, CT-T2 · Product Check 0.1.0 · methodology CT3 (Customer × Technology × Trust, inspired) · rubric pc-rubric-0.2 · network requests 0
+Run PCR-20261014T100000Z-D74DF2 · COMPLETED · mode HYBRID (requested HYBRID) · tiers CT-T0, CT-T1, CT-T2 · Product Check 0.1.0 · methodology CT3 (Customer × Technology × Trust, inspired) · rubric pc-rubric-0.2 · network requests 0
 
 Product Check reports evidence-bounded readiness. It is not a penetration test, a legal or compliance certification, or a guarantee of production readiness.
 

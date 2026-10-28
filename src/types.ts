@@ -131,6 +131,9 @@ export interface ScanContract {
     impact_check: string | null;
     outcome_check: string | null;
     architecture_check: string | null;
+    openslo: string[];
+    alert_rules: string[];
+    service_graph: string | null;
   };
   control_mappings: ControlMapping[];
   risk_acceptances: RiskAcceptance[];
