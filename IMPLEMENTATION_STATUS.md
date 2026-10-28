@@ -1,11 +1,35 @@
 # Implementation status
 
-_Product Check 0.1.0 · results schema 0.1.0 · rubric pc-rubric-0.1 · 2026-10-12_
+_Product Check 0.2.0 · results schema 0.1.0 · rubric pc-rubric-0.2 · 2026-10-28_
 
-**State: released 0.1.0 (2026-10-12)**, the first version without a pre-release suffix (no functional change from 0.1.0-alpha.0). Earlier: released alpha. 0.1.0-alpha.0 published 2026-10-12: GitHub `EnWithAI/product-check` (CI green on Node
+**State: 0.2.0 prepared for release (2026-10-28), READY FOR HUMAN REVIEW**; see §0. Earlier: **released 0.1.0
+(2026-10-12)**, the first version without a pre-release suffix (no functional change from 0.1.0-alpha.0). Earlier: released alpha. 0.1.0-alpha.0 published 2026-10-12: GitHub `EnWithAI/product-check` (CI green on Node
 22/24/26), pre-release `v0.1.0-alpha.0`, npm `@enwithai/product-check` (`alpha` and `latest`).
 License: **MIT** (decided by the product sponsor on 2026-10-12, same as the other Commons tools); `LICENSE`, `package.json`
 and SPDX headers updated accordingly. Release decisions recorded in §5.
+
+## 0. Release 0.2.0 (2026-10-28, macOS, Node v25.9.0, npm 11.12.1)
+
+New in 0.2.0:
+
+- **Architecture Check import, control PC-T-17.** EnWithAI/product-check#4, D-103.
+- **CT-T4 operational imports** (OpenSLO, alert rules, service graph): controls PC-T-18, PC-T-19 and PC-T-20, and
+  PC-T-14 is now evaluated. EnWithAI/product-check#5, D-105, D-106.
+- **Rubric `pc-rubric-0.2`** (51 controls; scoring rules unchanged). Results schema `0.1.0`.
+- **First runtime dependency:** `yaml` 2.9.1 (ISC, pinned).
+
+| Check                                                           | Result                                                                                                                                                                                                                                 |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run check:all`                                             | exit 0: typecheck, ESLint, Prettier, build, **121 tests passed (7 files)**; lines 94.11%, statements 92.03%, branches 79.28%, functions 97.05%                                                                                         |
+| `node scripts/license-audit.mjs` / `--all`                      | production: **1 package (`yaml`, ISC)**; all: 42 packages (MIT 39, ISC 1, BSD-3-Clause 1, Apache-2.0 1); disallowed 0                                                                                                                  |
+| `npm pack --dry-run`                                            | 117 files, 171.8 kB                                                                                                                                                                                                                    |
+| Clean install of the packed tarball                             | 2 packages (`@enwithai/product-check`, `yaml`); `--version` 0.2.0; `run` with real OpenSLO and Sloth-style rule files: PC-T-18 PASS, PC-T-19 PASS (rule match), PC-T-14 PARTIAL (no service graph), PC-T-20 NOT_TESTED with its reason |
+| Backward compatibility (real 0.1.0)                             | results written by the **npm-published 0.1.0** on impact-check validate under 0.2.0 (schema, references, recompute) and load as a `retest --baseline`                                                                                  |
+| Retest of impact-check with its Architecture Check 0.2.0 report | 51 controls, rubric `pc-rubric-0.2`, PC-T-17 PASS; the results validate                                                                                                                                                                |
+| Demo outputs                                                    | regenerated; scores unchanged (the demo is assessed at CT-T2, before the new CT-T3/T4 controls apply); README excerpt updated (retest run ID)                                                                                          |
+
+The release still needs human approval for each public step: the merge, the tag, the GitHub release and the npm
+publication.
 
 ## 1. Design brief (as built)
 
@@ -14,21 +38,22 @@ and SPDX headers updated accordingly. Release decisions recorded in §5.
 **Features.** CLI (`run`, `retest`, `scan`, `init`, `validate`, `report`, `blueprint`, `dashboard`, `controls`,
 `schema`); read-only source inspection; authorized passive HTTP probe and optional exposure probe; HAR and recorded
 observation replay; importers for JUnit XML, Jest/Vitest JSON, `npm audit`, Spec Check 1.0, Impact Check 2.0,
-Outcome Check 1.0; contract `control_mappings`; 47 controls in three pillars over tiers CT-T0…T6; three hard gates;
+Outcome Check 1.0, Architecture Check 1.0/1.1, OpenSLO v1, Prometheus/Mimir alert rules and service-graph exports;
+contract `control_mappings`; 51 controls in three pillars over tiers CT-T0…T6; three hard gates;
 scoring with coverage/confidence/caps/withholding; verdict rules with risk acceptance; blueprint with work packets and
 regression-test candidates; retest with stable IDs and preserved evidence; JSON Schemas for every artifact with a
 built-in validator plus integrity/recompute checks; self-contained dashboard.
 
 **Non-goals (this release).** Browser automation, credentialed or authenticated testing, active security scanning,
-API conformance testing, telemetry ingestion, AI model evaluation, code modification, hosted service, GitHub Action,
+API conformance testing, live telemetry queries (exported files only), AI model evaluation, code modification, hosted service, GitHub Action,
 composite scores, legal or compliance determinations.
 
 **Module contracts.** See [docs/architecture.md](docs/architecture.md). Evaluators are `(EvalContext) => Outcome | null`;
 returning `null` means "did not run", so no adapter can appear to have run when it has not. Scoring and verdict are
 pure functions of validations and findings.
 
-**Versions.** Package `0.1.0-alpha.0`; results schema `0.1.0` (`schemas/*.schema.json`, JSON Schema 2020-12);
-rubric `pc-rubric-0.1`; methodology recorded separately as `CT3`, relationship `inspired`, reference "CLEAR CT v3.1
+**Versions.** Package `0.2.0`; results schema `0.1.0` (`schemas/*.schema.json`, JSON Schema 2020-12);
+rubric `pc-rubric-0.2` (stored scorecards may carry `pc-rubric-0.1`); methodology recorded separately as `CT3`, relationship `inspired`, reference "CLEAR CT v3.1
 (unpublished; principles only)".
 
 **Safety model.** [docs/safety-and-authorization.md](docs/safety-and-authorization.md): prohibited actions are
@@ -50,7 +75,7 @@ repository code executed; ignored files never read; refusals produce an ABORTED 
 | 9   | Unsafe request rejected or needs explicit, scoped authorization | A9 (9 refusal cases, ABORTED record)                                                              | pass   |
 | 10  | Demo works locally from a fresh clone with documented commands  | A10 (regenerates the app with git, reruns the documented commands, compares to committed outputs) | pass   |
 
-## 3. Commands run and results (2026-10-12, macOS, Node v25.9.0, npm 11.12.1)
+## 3. Commands run and results for 0.1.0 (2026-10-12, macOS, Node v25.9.0, npm 11.12.1)
 
 Node 25 is outside the declared `engines` range (22/24/≥26). CI on GitHub passed on Node 22, 24 and 26.
 
@@ -104,7 +129,7 @@ source files (caught by the Trojan-Source test).
 | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Browser journeys (onboarding, critical journeys) | Not implemented. PC-C-09 and journey evidence come only from imported executed tests (control mappings).                                                                                 |
 | Authorization and tenant-isolation testing       | Not performed by Product Check (never logs in). PC-S-13/14 need the user's executed tests.                                                                                               |
-| Production telemetry (CT-T4/T5)                  | No adapter. PC-C-11 and PC-T-14 are always NOT_TESTED; the observability PoP is BLOCKED at T4+.                                                                                          |
+| Production telemetry (CT-T4/T5)                  | Exported files only (OpenSLO, alert rules, service graph); nothing is queried live. PC-C-11 (real-user journey health) stays NOT_TESTED. SLO matching to as-built endpoints is not done. |
 | API definitions                                  | Inventoried as a PoP only; no API conformance controls.                                                                                                                                  |
 | As-built spec (`spec`)                           | Regex-based, JS/TS and Python only; CLI commands (`bin`), GraphQL/tRPC/gRPC schemas and Go/Rust/Java/PHP/Ruby routes are not read. Traceability links are path/line based, not semantic. |
 | AI behaviour                                     | Static checks only (client-side SDK use, eval suite presence); PC-AI-03 needs mapped executed evals.                                                                                     |
@@ -115,7 +140,7 @@ source files (caught by the Trojan-Source test).
 | Response timing (PC-C-07)                        | One sample from the scanning machine; low confidence by design.                                                                                                                          |
 | GitHub Action, SARIF output, plugin loading      | Not implemented. Extension is by adding evaluators/importers in code.                                                                                                                    |
 | Built-in schema validator                        | Supports the keyword subset the bundled schemas use; unsupported keywords are rejected at load. Ajv cross-checks in tests.                                                               |
-| CI                                               | Workflow written, never executed (no remote).                                                                                                                                            |
+| CI                                               | Green on Node 22/24/26 on GitHub.                                                                                                                                                        |
 
 ## 5. Release checklist (stop: every item needs a human decision)
 

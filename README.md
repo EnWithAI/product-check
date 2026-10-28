@@ -16,7 +16,7 @@ Customer, Technology and Trust controls, and gives you:
 
 Everything is written to one versioned JSON file. The report, blueprint and dashboard are renderings of it.
 
-> Status: **early release** (`0.1.0`, pre-1.0, results schema `0.1.0`). Install with
+> Status: **early release** (`0.2.0`, pre-1.0, results schema `0.1.0`, rubric `pc-rubric-0.2`). Install with
 > `npm install --global @enwithai/product-check`, or build from source as in the demo below.
 
 ## What it will not pretend
@@ -64,7 +64,7 @@ Verdict: READY_WITH_CONDITIONS at CT-T2 ("CONDITIONAL")
 Customer   100/100 (coverage 92%, confidence HIGH)
 Technology 94/100 (coverage 100%, confidence MEDIUM)
 Trust      97/100 (coverage 83%, confidence HIGH)
-Retest vs PCR-20261014T100000Z-7386B1: 35 verified fixed, 0 new, 0 reopened, 0 regressed control(s)
+Retest vs PCR-20261014T100000Z-D74DF2: 35 verified fixed, 0 new, 0 reopened, 0 regressed control(s)
 ```
 
 The two remaining P2s (no error monitoring, no AI evaluation suite) are real gaps in the fixed demo app. A

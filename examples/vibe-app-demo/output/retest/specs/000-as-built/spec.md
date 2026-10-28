@@ -6,7 +6,7 @@
 
 **Status**: Draft (reverse-engineered)
 
-**Input**: Repository `Vibe Notes (synthetic demo)` at commit `56b23fac4391`, read by Product Check `0.1.0`
+**Input**: Repository `Vibe Notes (synthetic demo)` at commit `56b23fac4391`, read by Product Check `0.2.0`
 
 > **Reverse-engineered, not authored.** Product Check derived this specification from the repository's structure
 > without running it. _observed_ statements point at a file and line; _inferred_ ones interpret what was found;

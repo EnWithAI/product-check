@@ -6,12 +6,17 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
+## 0.2.0 — 2026-10-28
+
+Commons integration and the first CT-T4 controls. Rubric `pc-rubric-0.2` (51 controls; scoring rules unchanged);
+results schema `0.1.0`, additive. Results and baselines written by 0.1.0 still validate and load.
+
 - CT-T4 operational imports ([docs/operational-imports.md](docs/operational-imports.md)): `--openslo` (OpenSLO v1
   YAML/JSON, repeatable), `--alert-rules` (Prometheus/Mimir rule files, `PrometheusRule`, `/api/v1/rules` JSON,
   repeatable) and `--service-graph` (Jaeger `/api/dependencies`, `traces_service_graph_request_total` query result).
   New controls PC-T-18 (SLOs complete), PC-T-19 (every SLO alerted on), PC-T-20 (declared dependencies observed at
   runtime, with `--architecture-check`); PC-T-14 is now evaluated from these files; the observability PoP is
-  AVAILABLE when they are given. Rubric `pc-rubric-0.2` (still unreleased) now has 51 controls.
+  AVAILABLE when they are given.
 - First runtime dependency: `yaml` 2.9.1 (ISC, pinned), used only through `src/parse/yaml.ts` (core schema, unique
   keys, at most 100 aliases, 10 MiB per file).
 - `--architecture-check <report.json>` (contract `imports.architecture_check`) imports an Architecture Check report
