@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "kind": "product-check-results",
   "run": {
-    "run_id": "PCR-20261014T100000Z-36EE7E",
+    "run_id": "PCR-20261014T100000Z-078FC3",
     "status": "COMPLETED",
     "started_at": "2026-10-14T10:00:00.000Z",
     "finished_at": "2026-10-14T10:00:00.000Z",
@@ -54,7 +54,7 @@
         "phase": "VALIDATE",
         "status": "COMPLETED",
         "notes": [
-          "47 controls evaluated against CT-T2",
+          "48 controls evaluated against CT-T2",
           "26 open finding(s)"
         ]
       },
@@ -156,7 +156,8 @@
       "observations": null,
       "spec_check": null,
       "impact_check": null,
-      "outcome_check": null
+      "outcome_check": null,
+      "architecture_check": null
     },
     "control_mappings": [],
     "risk_acceptances": [],
@@ -180,33 +181,33 @@
           "EV-0D2CDB2052AC",
           "EV-172504A92CE8",
           "EV-191D17CEB58D",
+          "EV-1B2313AC5501",
           "EV-1F14A512601B",
-          "EV-1F4CBA5F3815",
           "EV-1FBE61E84F69",
+          "EV-2B6E0A68B9BA",
+          "EV-379221F3CEE9",
           "EV-3C91DCB02FB6",
           "EV-4455F569DFD9",
           "EV-4781DDFDBECC",
           "EV-54E8659FCA14",
           "EV-596E4495782B",
+          "EV-59DBE76D4BC2",
           "EV-5B468F324EDA",
           "EV-5BEF25ECE52F",
-          "EV-5C041BFFFC57",
           "EV-611B5C06FE78",
           "EV-6329C31A3F2B",
-          "EV-7C71539B5FEE",
           "EV-7F5D190C7369",
-          "EV-83833F99D87B",
           "EV-935FDA624942",
           "EV-9A72C9100D5D",
           "EV-A2E9F4A847E7",
           "EV-A5095F98D5CC",
           "EV-B91D560FD629",
-          "EV-C2D6EC68B549",
-          "EV-C39927AEAB12",
           "EV-CEC3986784AA",
-          "EV-D11387DBDCEC",
           "EV-D24CD56A807C",
+          "EV-D5A22BAA19B5",
+          "EV-DBE3B2E218EE",
           "EV-E29ECB3AFCC8",
+          "EV-E5A23FEDCFEF",
           "EV-E7014085A22C",
           "EV-EDC24BAAED95",
           "EV-F3A7C5E3B6AF",
@@ -433,7 +434,7 @@
   "evidence": [
     {
       "id": "EV-0D2CDB2052AC",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -461,7 +462,7 @@
     },
     {
       "id": "EV-172504A92CE8",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -489,7 +490,7 @@
     },
     {
       "id": "EV-191D17CEB58D",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -518,8 +519,36 @@
       ]
     },
     {
+      "id": "EV-1B2313AC5501",
+      "run_id": "PCR-20261014T100000Z-078FC3",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (1 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "Searched 1 readable, non-ignored text files for error-tracking / telemetry dependencies (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "05a38aceee09e3d3161c9f3b18e253f6186d8f477410274e58beb36b2989f9d9"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-10"
+      ]
+    },
+    {
       "id": "EV-1CFEDA07419B",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -545,7 +574,7 @@
     },
     {
       "id": "EV-1D895C14EE45",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -571,7 +600,7 @@
     },
     {
       "id": "EV-1F14A512601B",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -598,36 +627,8 @@
       ]
     },
     {
-      "id": "EV-1F4CBA5F3815",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
-      "kind": "search-scope",
-      "pop": "repository",
-      "collected_at": "2026-10-14T10:00:00.000Z",
-      "strength": "static",
-      "provenance": "observed",
-      "source": {
-        "locator": "repository (11 text files)",
-        "line_start": null,
-        "line_end": null,
-        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
-      },
-      "summary": "Searched 11 readable, non-ignored text files for no ci pipeline (rubric pc-rubric-0.1).",
-      "excerpt": null,
-      "checksum": {
-        "algorithm": "sha256",
-        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
-      },
-      "redaction": {
-        "applied": false,
-        "rules": []
-      },
-      "validation_ids": [
-        "VAL-PC-T-04"
-      ]
-    },
-    {
       "id": "EV-1FBE61E84F69",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -652,8 +653,64 @@
       "validation_ids": []
     },
     {
+      "id": "EV-2B6E0A68B9BA",
+      "run_id": "PCR-20261014T100000Z-078FC3",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (11 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "Searched 11 readable, non-ignored text files for AI evaluation suites (promptfoo, evals/, *.eval.*) (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-AI-02"
+      ]
+    },
+    {
+      "id": "EV-379221F3CEE9",
+      "run_id": "PCR-20261014T100000Z-078FC3",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (11 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "Searched 11 readable, non-ignored text files for no ci pipeline (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-04"
+      ]
+    },
+    {
       "id": "EV-3C91DCB02FB6",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -679,7 +736,7 @@
     },
     {
       "id": "EV-4455F569DFD9",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -707,7 +764,7 @@
     },
     {
       "id": "EV-457B39784D6A",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -733,7 +790,7 @@
     },
     {
       "id": "EV-46488A40A621",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -759,7 +816,7 @@
     },
     {
       "id": "EV-4781DDFDBECC",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -787,7 +844,7 @@
     },
     {
       "id": "EV-4925E351D5B5",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "search-scope",
       "pop": "automated-tests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -812,7 +869,7 @@
     },
     {
       "id": "EV-54E8659FCA14",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -843,7 +900,7 @@
     },
     {
       "id": "EV-596E4495782B",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -872,8 +929,36 @@
       ]
     },
     {
+      "id": "EV-59DBE76D4BC2",
+      "run_id": "PCR-20261014T100000Z-078FC3",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (11 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "Searched 11 readable, non-ignored text files for no type checking or linting configured (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-08"
+      ]
+    },
+    {
       "id": "EV-5B468F324EDA",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -901,7 +986,7 @@
     },
     {
       "id": "EV-5BEF25ECE52F",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -926,36 +1011,8 @@
       "validation_ids": []
     },
     {
-      "id": "EV-5C041BFFFC57",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
-      "kind": "search-scope",
-      "pop": "repository",
-      "collected_at": "2026-10-14T10:00:00.000Z",
-      "strength": "static",
-      "provenance": "observed",
-      "source": {
-        "locator": "repository (1 text files)",
-        "line_start": null,
-        "line_end": null,
-        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
-      },
-      "summary": "Searched 1 readable, non-ignored text files for error-tracking / telemetry dependencies (rubric pc-rubric-0.1).",
-      "excerpt": null,
-      "checksum": {
-        "algorithm": "sha256",
-        "value": "05a38aceee09e3d3161c9f3b18e253f6186d8f477410274e58beb36b2989f9d9"
-      },
-      "redaction": {
-        "applied": false,
-        "rules": []
-      },
-      "validation_ids": [
-        "VAL-PC-T-10"
-      ]
-    },
-    {
       "id": "EV-611B5C06FE78",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -981,7 +1038,7 @@
     },
     {
       "id": "EV-6329C31A3F2B",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1008,36 +1065,8 @@
       ]
     },
     {
-      "id": "EV-7C71539B5FEE",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
-      "kind": "search-scope",
-      "pop": "repository",
-      "collected_at": "2026-10-14T10:00:00.000Z",
-      "strength": "static",
-      "provenance": "observed",
-      "source": {
-        "locator": "repository (11 text files)",
-        "line_start": null,
-        "line_end": null,
-        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
-      },
-      "summary": "Searched 11 readable, non-ignored text files for runtime version is not declared (rubric pc-rubric-0.1).",
-      "excerpt": null,
-      "checksum": {
-        "algorithm": "sha256",
-        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
-      },
-      "redaction": {
-        "applied": false,
-        "rules": []
-      },
-      "validation_ids": [
-        "VAL-PC-T-07"
-      ]
-    },
-    {
       "id": "EV-7F5D190C7369",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1066,36 +1095,8 @@
       ]
     },
     {
-      "id": "EV-83833F99D87B",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
-      "kind": "search-scope",
-      "pop": "repository",
-      "collected_at": "2026-10-14T10:00:00.000Z",
-      "strength": "static",
-      "provenance": "observed",
-      "source": {
-        "locator": "repository (11 text files)",
-        "line_start": null,
-        "line_end": null,
-        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
-      },
-      "summary": "Searched 11 readable, non-ignored text files for no type checking or linting configured (rubric pc-rubric-0.1).",
-      "excerpt": null,
-      "checksum": {
-        "algorithm": "sha256",
-        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
-      },
-      "redaction": {
-        "applied": false,
-        "rules": []
-      },
-      "validation_ids": [
-        "VAL-PC-T-08"
-      ]
-    },
-    {
       "id": "EV-935FDA624942",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1123,7 +1124,7 @@
     },
     {
       "id": "EV-9A72C9100D5D",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1151,7 +1152,7 @@
     },
     {
       "id": "EV-9D9E623182ED",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1177,7 +1178,7 @@
     },
     {
       "id": "EV-A2E9F4A847E7",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1205,7 +1206,7 @@
     },
     {
       "id": "EV-A5095F98D5CC",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1235,7 +1236,7 @@
     },
     {
       "id": "EV-AA2F59D9DEBF",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1261,7 +1262,7 @@
     },
     {
       "id": "EV-AEE63A911559",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1287,7 +1288,7 @@
     },
     {
       "id": "EV-B91D560FD629",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1314,64 +1315,8 @@
       "validation_ids": []
     },
     {
-      "id": "EV-C2D6EC68B549",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
-      "kind": "search-scope",
-      "pop": "repository",
-      "collected_at": "2026-10-14T10:00:00.000Z",
-      "strength": "static",
-      "provenance": "observed",
-      "source": {
-        "locator": "repository (11 text files)",
-        "line_start": null,
-        "line_end": null,
-        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
-      },
-      "summary": "Searched 11 readable, non-ignored text files for AI evaluation suites (promptfoo, evals/, *.eval.*) (rubric pc-rubric-0.1).",
-      "excerpt": null,
-      "checksum": {
-        "algorithm": "sha256",
-        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
-      },
-      "redaction": {
-        "applied": false,
-        "rules": []
-      },
-      "validation_ids": [
-        "VAL-PC-AI-02"
-      ]
-    },
-    {
-      "id": "EV-C39927AEAB12",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
-      "kind": "search-scope",
-      "pop": "repository",
-      "collected_at": "2026-10-14T10:00:00.000Z",
-      "strength": "static",
-      "provenance": "observed",
-      "source": {
-        "locator": "repository (11 text files)",
-        "line_start": null,
-        "line_end": null,
-        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
-      },
-      "summary": "Searched 11 readable, non-ignored text files for SECURITY.md or .well-known/security.txt (rubric pc-rubric-0.1).",
-      "excerpt": null,
-      "checksum": {
-        "algorithm": "sha256",
-        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
-      },
-      "redaction": {
-        "applied": false,
-        "rules": []
-      },
-      "validation_ids": [
-        "VAL-PC-S-11"
-      ]
-    },
-    {
       "id": "EV-CEC3986784AA",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1398,36 +1343,8 @@
       ]
     },
     {
-      "id": "EV-D11387DBDCEC",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
-      "kind": "search-scope",
-      "pop": "repository",
-      "collected_at": "2026-10-14T10:00:00.000Z",
-      "strength": "static",
-      "provenance": "observed",
-      "source": {
-        "locator": "repository (11 text files)",
-        "line_start": null,
-        "line_end": null,
-        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
-      },
-      "summary": "Searched 11 readable, non-ignored text files for test files (*.test.*, *.spec.*, tests/, __tests__/, test_*.py) (rubric pc-rubric-0.1).",
-      "excerpt": null,
-      "checksum": {
-        "algorithm": "sha256",
-        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
-      },
-      "redaction": {
-        "applied": false,
-        "rules": []
-      },
-      "validation_ids": [
-        "VAL-PC-T-02"
-      ]
-    },
-    {
       "id": "EV-D24CD56A807C",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1452,8 +1369,64 @@
       "validation_ids": []
     },
     {
+      "id": "EV-D5A22BAA19B5",
+      "run_id": "PCR-20261014T100000Z-078FC3",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (11 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "Searched 11 readable, non-ignored text files for test files (*.test.*, *.spec.*, tests/, __tests__/, test_*.py) (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-02"
+      ]
+    },
+    {
+      "id": "EV-DBE3B2E218EE",
+      "run_id": "PCR-20261014T100000Z-078FC3",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (11 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "Searched 11 readable, non-ignored text files for runtime version is not declared (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-07"
+      ]
+    },
+    {
       "id": "EV-E29ECB3AFCC8",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1482,8 +1455,36 @@
       ]
     },
     {
+      "id": "EV-E5A23FEDCFEF",
+      "run_id": "PCR-20261014T100000Z-078FC3",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-10-14T10:00:00.000Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (11 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5"
+      },
+      "summary": "Searched 11 readable, non-ignored text files for SECURITY.md or .well-known/security.txt (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8891ff22dae9abe8803e6d8a0339f791e4e192a67617d0bcc697dab4a0c96e44"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-S-11"
+      ]
+    },
+    {
       "id": "EV-E7014085A22C",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1511,7 +1512,7 @@
     },
     {
       "id": "EV-EDC24BAAED95",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1541,7 +1542,7 @@
     },
     {
       "id": "EV-F3A7C5E3B6AF",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1569,7 +1570,7 @@
     },
     {
       "id": "EV-F4BD66FD50FA",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1595,7 +1596,7 @@
     },
     {
       "id": "EV-F88727144FC0",
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1870,7 +1871,7 @@
       "strength": "static",
       "reason": null,
       "evidence_ids": [
-        "EV-D11387DBDCEC"
+        "EV-D5A22BAA19B5"
       ],
       "reproduction": [],
       "hard_gate": null,
@@ -1910,7 +1911,7 @@
       "strength": "static",
       "reason": null,
       "evidence_ids": [
-        "EV-1F4CBA5F3815"
+        "EV-379221F3CEE9"
       ],
       "reproduction": [],
       "hard_gate": null,
@@ -1972,7 +1973,7 @@
       "strength": "static",
       "reason": null,
       "evidence_ids": [
-        "EV-7C71539B5FEE"
+        "EV-DBE3B2E218EE"
       ],
       "reproduction": [],
       "hard_gate": null,
@@ -1994,7 +1995,7 @@
       "strength": "static",
       "reason": null,
       "evidence_ids": [
-        "EV-83833F99D87B"
+        "EV-59DBE76D4BC2"
       ],
       "reproduction": [],
       "hard_gate": null,
@@ -2040,7 +2041,7 @@
       "strength": "static",
       "reason": null,
       "evidence_ids": [
-        "EV-5C041BFFFC57"
+        "EV-1B2313AC5501"
       ],
       "reproduction": [],
       "hard_gate": null,
@@ -2160,6 +2161,24 @@
       "reproduction": [],
       "hard_gate": null,
       "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-17",
+      "control_id": "PC-T-17",
+      "pillar": "technology",
+      "tier": "CT-T3",
+      "title": "Architecture model matches the code",
+      "expected": "An imported Architecture Check report shows no verified drift of medium severity or above between the declared architecture model and the code.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T2.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
       "finding_ids": []
     },
     {
@@ -2375,7 +2394,7 @@
       "strength": "static",
       "reason": null,
       "evidence_ids": [
-        "EV-C39927AEAB12"
+        "EV-E5A23FEDCFEF"
       ],
       "reproduction": [],
       "hard_gate": null,
@@ -2537,7 +2556,7 @@
       "strength": "static",
       "reason": null,
       "evidence_ids": [
-        "EV-C2D6EC68B549"
+        "EV-2B6E0A68B9BA"
       ],
       "reproduction": [],
       "hard_gate": null,
@@ -2600,7 +2619,7 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2637,7 +2656,7 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2674,7 +2693,7 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2711,7 +2730,7 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2748,7 +2767,7 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2783,7 +2802,7 @@
       ],
       "validation_id": "VAL-PC-AI-01",
       "work_packet_id": "WP-PC-AI-01",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2820,7 +2839,7 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2855,7 +2874,7 @@
       ],
       "validation_id": "VAL-PC-S-03",
       "work_packet_id": "WP-PC-S-03",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2886,11 +2905,11 @@
         "certainty": "inference"
       },
       "evidence_ids": [
-        "EV-D11387DBDCEC"
+        "EV-D5A22BAA19B5"
       ],
       "validation_id": "VAL-PC-T-02",
       "work_packet_id": "WP-PC-T-02",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2926,7 +2945,7 @@
       ],
       "validation_id": "VAL-PC-T-11",
       "work_packet_id": "WP-PC-T-11",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2957,11 +2976,11 @@
         "certainty": "inference"
       },
       "evidence_ids": [
-        "EV-1F4CBA5F3815"
+        "EV-379221F3CEE9"
       ],
       "validation_id": "VAL-PC-T-04",
       "work_packet_id": "WP-PC-T-04",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -2992,11 +3011,11 @@
         "certainty": "inference"
       },
       "evidence_ids": [
-        "EV-5C041BFFFC57"
+        "EV-1B2313AC5501"
       ],
       "validation_id": "VAL-PC-T-10",
       "work_packet_id": "WP-PC-T-10",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3031,7 +3050,7 @@
       ],
       "validation_id": "VAL-PC-C-08",
       "work_packet_id": "WP-PC-C-08",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3066,7 +3085,7 @@
       ],
       "validation_id": "VAL-PC-S-16",
       "work_packet_id": "WP-PC-S-16",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3101,7 +3120,7 @@
       ],
       "validation_id": "VAL-PC-T-01",
       "work_packet_id": "WP-PC-T-01",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3132,11 +3151,11 @@
         "certainty": "inference"
       },
       "evidence_ids": [
-        "EV-C2D6EC68B549"
+        "EV-2B6E0A68B9BA"
       ],
       "validation_id": "VAL-PC-AI-02",
       "work_packet_id": "WP-PC-AI-02",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3171,7 +3190,7 @@
       ],
       "validation_id": "VAL-PC-S-16",
       "work_packet_id": "WP-PC-S-16",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3206,7 +3225,7 @@
       ],
       "validation_id": "VAL-PC-S-17",
       "work_packet_id": "WP-PC-S-17",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3241,7 +3260,7 @@
       ],
       "validation_id": "VAL-PC-C-04",
       "work_packet_id": "WP-PC-C-04",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3276,7 +3295,7 @@
       ],
       "validation_id": "VAL-PC-T-09",
       "work_packet_id": "WP-PC-T-09",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3307,11 +3326,11 @@
         "certainty": "inference"
       },
       "evidence_ids": [
-        "EV-7C71539B5FEE"
+        "EV-DBE3B2E218EE"
       ],
       "validation_id": "VAL-PC-T-07",
       "work_packet_id": "WP-PC-T-07",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3346,7 +3365,7 @@
       ],
       "validation_id": "VAL-PC-C-02",
       "work_packet_id": "WP-PC-C-02",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3377,11 +3396,11 @@
         "certainty": "inference"
       },
       "evidence_ids": [
-        "EV-C39927AEAB12"
+        "EV-E5A23FEDCFEF"
       ],
       "validation_id": "VAL-PC-S-11",
       "work_packet_id": "WP-PC-S-11",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3416,7 +3435,7 @@
       ],
       "validation_id": "VAL-PC-T-06",
       "work_packet_id": "WP-PC-T-06",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3447,11 +3466,11 @@
         "certainty": "inference"
       },
       "evidence_ids": [
-        "EV-83833F99D87B"
+        "EV-59DBE76D4BC2"
       ],
       "validation_id": "VAL-PC-T-08",
       "work_packet_id": "WP-PC-T-08",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     },
     {
@@ -3486,14 +3505,14 @@
       ],
       "validation_id": "VAL-PC-T-09",
       "work_packet_id": "WP-PC-T-09",
-      "first_seen_run": "PCR-20261014T100000Z-36EE7E",
+      "first_seen_run": "PCR-20261014T100000Z-078FC3",
       "history": []
     }
   ],
   "scorecard": {
     "schema_version": "0.1.0",
     "kind": "scorecard",
-    "rubric_version": "pc-rubric-0.1",
+    "rubric_version": "pc-rubric-0.2",
     "pillars": {
       "customer": {
         "score": null,
@@ -3534,7 +3553,7 @@
           "FAIL": 8,
           "BLOCKED": 0,
           "NOT_TESTED": 1,
-          "NOT_APPLICABLE": 6
+          "NOT_APPLICABLE": 7
         },
         "applicable_weight": 15,
         "checked_weight": 12
@@ -5247,7 +5266,7 @@
             "repository"
           ],
           "evidence_ids": [
-            "EV-D11387DBDCEC"
+            "EV-D5A22BAA19B5"
           ]
         },
         "constraints": [
@@ -5283,7 +5302,7 @@
             "repository"
           ],
           "evidence_ids": [
-            "EV-1F4CBA5F3815"
+            "EV-379221F3CEE9"
           ]
         },
         "constraints": [
@@ -5319,7 +5338,7 @@
             "package.json"
           ],
           "evidence_ids": [
-            "EV-5C041BFFFC57"
+            "EV-1B2313AC5501"
           ]
         },
         "constraints": [
@@ -5470,7 +5489,7 @@
             "repository"
           ],
           "evidence_ids": [
-            "EV-C2D6EC68B549"
+            "EV-2B6E0A68B9BA"
           ]
         },
         "constraints": [
@@ -5578,7 +5597,7 @@
             "repository"
           ],
           "evidence_ids": [
-            "EV-7C71539B5FEE"
+            "EV-DBE3B2E218EE"
           ]
         },
         "constraints": [
@@ -5614,7 +5633,7 @@
             "repository"
           ],
           "evidence_ids": [
-            "EV-83833F99D87B"
+            "EV-59DBE76D4BC2"
           ]
         },
         "constraints": [
@@ -5690,7 +5709,7 @@
             "repository"
           ],
           "evidence_ids": [
-            "EV-C39927AEAB12"
+            "EV-E5A23FEDCFEF"
           ]
         },
         "constraints": [
@@ -5876,7 +5895,7 @@
         "observed_behavior": "No automated test files found.",
         "component": "repository",
         "evidence_ids": [
-          "EV-D11387DBDCEC"
+          "EV-D5A22BAA19B5"
         ],
         "root_cause": "No test harness has been set up.",
         "remediation_id": "REM-PC-T-02",
@@ -5907,7 +5926,7 @@
         "observed_behavior": "No CI configuration found.",
         "component": "repository",
         "evidence_ids": [
-          "EV-1F4CBA5F3815"
+          "EV-379221F3CEE9"
         ],
         "root_cause": "No automated pipeline was set up.",
         "remediation_id": "REM-PC-T-04",
@@ -5922,7 +5941,7 @@
         "observed_behavior": "No error-tracking or telemetry SDK in dependencies.",
         "component": "package.json",
         "evidence_ids": [
-          "EV-5C041BFFFC57"
+          "EV-1B2313AC5501"
         ],
         "root_cause": "No error tracking or telemetry was added.",
         "remediation_id": "REM-PC-T-10",
@@ -5982,7 +6001,7 @@
         "observed_behavior": "No promptfoo config, evals/ directory or *.eval.* files.",
         "component": "repository",
         "evidence_ids": [
-          "EV-C2D6EC68B549"
+          "EV-2B6E0A68B9BA"
         ],
         "root_cause": "AI features were added without an evaluation harness.",
         "remediation_id": "REM-PC-AI-02",
@@ -6057,7 +6076,7 @@
         "observed_behavior": "No runtime version declaration found.",
         "component": "repository",
         "evidence_ids": [
-          "EV-7C71539B5FEE"
+          "EV-DBE3B2E218EE"
         ],
         "root_cause": "The runtime version is implicit.",
         "remediation_id": "REM-PC-T-07",
@@ -6087,7 +6106,7 @@
         "observed_behavior": "No published security contact.",
         "component": "repository",
         "evidence_ids": [
-          "EV-C39927AEAB12"
+          "EV-E5A23FEDCFEF"
         ],
         "root_cause": "No disclosure policy was written.",
         "remediation_id": "REM-PC-S-11",
@@ -6117,7 +6136,7 @@
         "observed_behavior": "No strict type checking or linter configuration found.",
         "component": "repository",
         "evidence_ids": [
-          "EV-83833F99D87B"
+          "EV-59DBE76D4BC2"
         ],
         "root_cause": "No static analysis is configured.",
         "remediation_id": "REM-PC-T-08",
@@ -6192,7 +6211,7 @@
   "comparison": null,
   "history": [
     {
-      "run_id": "PCR-20261014T100000Z-36EE7E",
+      "run_id": "PCR-20261014T100000Z-078FC3",
       "finished_at": "2026-10-14T10:00:00.000Z",
       "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5",
       "verdict": "NOT_READY",

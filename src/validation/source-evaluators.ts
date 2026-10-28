@@ -53,7 +53,7 @@ function scopeEv(ctx: EvalContext, files: RepoFile[], what: string): string {
     provenance: "observed",
     locator: `repository (${files.length} text files)`,
     revision: ctx.revision,
-    summary: `Searched ${files.length} readable, non-ignored text files for ${what} (rubric pc-rubric-0.1).`,
+    summary: `Searched ${files.length} readable, non-ignored text files for ${what} (rubric pc-rubric-0.2).`,
     checksum: fingerprint,
   });
 }

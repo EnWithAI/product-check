@@ -7,6 +7,7 @@ import type { EvidenceCollector } from "../evidence/collector.js";
 import type { ObservationSet } from "../inspectors/http/observe.js";
 import type { RepoFacts } from "../inspectors/source/facts.js";
 import type {
+  ArchitectureCheckSummary,
   AuditSummary,
   ImpactCheckSummary,
   OutcomeCheckSummary,
@@ -46,6 +47,7 @@ export interface EvalContext {
   spec: Imported<SpecCheckSummary> | null;
   impact: Imported<ImpactCheckSummary> | null;
   outcome: Imported<OutcomeCheckSummary> | null;
+  architecture: Imported<ArchitectureCheckSummary> | null;
   baseline: Results | null;
   aiInScope: boolean;
 }

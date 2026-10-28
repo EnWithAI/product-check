@@ -19,7 +19,8 @@ Controls above the primary tier are reported as `NOT_APPLICABLE` with the reason
 
 - **T0–T2:** most controls are checkable from source, passive application observation and imported results.
   Authorization and isolation need your executed tests (control mappings).
-- **T3:** change impact (via an Impact Check report) and rollback (via a mapped rehearsal test).
+- **T3:** change impact (via an Impact Check report), architecture drift (via an Architecture Check report, PC-T-17)
+  and rollback (via a mapped rehearsal test).
 - **T4:** production monitoring and real-user journey health are `NOT_TESTED`: there is no telemetry adapter yet,
   and the observability PoP is `BLOCKED` with that reason.
 - **T5:** delivery stability via an Outcome Check report.

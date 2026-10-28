@@ -8,7 +8,7 @@
 import { formatErrors, validateAgainst } from "../schema/registry.js";
 import { computeScorecard } from "../scoring/score.js";
 import { computeVerdict } from "../scoring/verdict.js";
-import type { Results } from "../types.js";
+import { RUBRIC_VERSIONS, type Results } from "../types.js";
 import { CONTROL_BY_ID } from "./catalog.js";
 
 /** Outcome of an integrity check. */
@@ -91,6 +91,9 @@ export function checkResults(doc: unknown): IntegrityReport {
 
   const previous = r.history.length >= 2 ? (r.history.at(-2) ?? null) : null;
   const scorecard = computeScorecard(r.validations, r.findings, r.scorecard.parameters, previous);
+  // Earlier rubrics share the scoring rules; keep the stored version so their results still recompute.
+  if ((RUBRIC_VERSIONS as readonly string[]).includes(r.scorecard.rubric_version))
+    scorecard.rubric_version = r.scorecard.rubric_version;
   if (canon(scorecard) !== canon(r.scorecard))
     errors.push(
       "The scorecard does not recompute from the validations and findings (edited after generation?)."

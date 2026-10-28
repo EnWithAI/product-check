@@ -6,7 +6,13 @@
  */
 
 export const SCHEMA_VERSION = "0.1.0" as const;
-export const RUBRIC_VERSION = "pc-rubric-0.1" as const;
+export const RUBRIC_VERSION = "pc-rubric-0.2" as const;
+/**
+ * Rubric versions a stored scorecard may carry. pc-rubric-0.2 only adds control PC-T-17; the scoring rules are those
+ * of pc-rubric-0.1, so earlier results still recompute and load as baselines.
+ */
+export const RUBRIC_VERSIONS = ["pc-rubric-0.1", RUBRIC_VERSION] as const;
+export type RubricVersion = (typeof RUBRIC_VERSIONS)[number];
 
 /** The three independent assessment pillars (CT3: Customer × Technology × Trust). */
 export type Pillar = "customer" | "technology" | "trust";
@@ -124,6 +130,7 @@ export interface ScanContract {
     spec_check: string | null;
     impact_check: string | null;
     outcome_check: string | null;
+    architecture_check: string | null;
   };
   control_mappings: ControlMapping[];
   risk_acceptances: RiskAcceptance[];
@@ -273,7 +280,7 @@ export interface GateResult {
 export interface Scorecard {
   schema_version: typeof SCHEMA_VERSION;
   kind: "scorecard";
-  rubric_version: typeof RUBRIC_VERSION;
+  rubric_version: RubricVersion;
   pillars: Record<Pillar, PillarScore>;
   overall_coverage: number;
   gates: GateResult[];
