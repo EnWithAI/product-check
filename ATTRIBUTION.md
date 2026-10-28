@@ -15,8 +15,8 @@
 ## Development provenance
 
 Product Check was written for this repository with substantial AI assistance (Claude Code), directed and reviewed by
-the project's human sponsor. Commits carry a `Co-Authored-By` trailer. It has **no runtime dependencies** and contains
-no vendored third-party code. Test fixtures and the demo application are synthetic; credential-like strings in them
+the project's human sponsor. Commits carry a `Co-Authored-By` trailer. It has **one runtime dependency**, `yaml` (ISC,
+by Eemeli Aro), and contains no vendored third-party code. Test fixtures and the demo application are synthetic; credential-like strings in them
 are generated at run time and are not real.
 
 ## Built on

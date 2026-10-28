@@ -1,6 +1,6 @@
 # Architecture
 
-TypeScript (strict, ESM), Node.js 22/24/≥26, **no runtime dependencies**. The same conventions as the other
+TypeScript (strict, ESM), Node.js 22/24/≥26, **one runtime dependency** (`yaml` 2.9.1, pinned, read only through `src/parse/yaml.ts`). The same conventions as the other
 Engineering Commons tools (Impact Check, Spec Check, Outcome Check): `run(argv, io)` CLI seam, documented exit codes,
 deterministic output, escaping and redaction modules, SPDX headers, a single `check:all` gate.
 
@@ -19,7 +19,7 @@ CLI (src/cli)                       parse flags → contract → safety gate →
  │            discovery/pops.ts      point-of-presence inventory
  │  TEST      importers/tests.ts     JUnit XML, Jest/Vitest JSON (executed elsewhere)
  │            importers/reports.ts   npm audit; Spec/Impact/Outcome Check reports
- │  VALIDATE  validation/catalog.ts  48 controls (rubric pc-rubric-0.2), gates, remediation knowledge
+ │  VALIDATE  validation/catalog.ts  51 controls (rubric pc-rubric-0.2), gates, remediation knowledge
  │            validation/*-evaluators.ts   source / application / import evaluators
  │            validation/engine.ts   merge outcomes → validations + findings (stable IDs)
  │            scoring/score.ts       pillar scores, coverage, confidence, caps, gates (pure)

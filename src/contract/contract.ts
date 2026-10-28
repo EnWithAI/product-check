@@ -60,6 +60,9 @@ export function defaultContract(): ScanContract {
       impact_check: null,
       outcome_check: null,
       architecture_check: null,
+      openslo: [],
+      alert_rules: [],
+      service_graph: null,
     },
     control_mappings: [],
     risk_acceptances: [],
@@ -116,6 +119,8 @@ export function loadContract(path: string): ScanContract {
   if (contract.target.repository) contract.target.repository.path = abs(contract.target.repository.path);
   const i = contract.imports;
   i.test_results = i.test_results.map(abs);
+  i.openslo = i.openslo.map(abs);
+  i.alert_rules = i.alert_rules.map(abs);
   for (const key of [
     "npm_audit",
     "har",
@@ -124,6 +129,7 @@ export function loadContract(path: string): ScanContract {
     "impact_check",
     "outcome_check",
     "architecture_check",
+    "service_graph",
   ] as const) {
     const value = i[key];
     if (value !== null) i[key] = abs(value);
@@ -147,6 +153,9 @@ export interface ContractFlags {
   impactCheck?: string | undefined;
   outcomeCheck?: string | undefined;
   architectureCheck?: string | undefined;
+  openslo?: string[] | undefined;
+  alertRules?: string[] | undefined;
+  serviceGraph?: string | undefined;
 }
 
 /** Applies CLI flags over a contract (flags win). Paths are resolved against cwd. */
@@ -192,6 +201,9 @@ export function applyFlags(
   if (flags.impactCheck !== undefined) c.imports.impact_check = abs(flags.impactCheck);
   if (flags.outcomeCheck !== undefined) c.imports.outcome_check = abs(flags.outcomeCheck);
   if (flags.architectureCheck !== undefined) c.imports.architecture_check = abs(flags.architectureCheck);
+  if (flags.openslo) c.imports.openslo = [...c.imports.openslo, ...flags.openslo.map(abs)];
+  if (flags.alertRules) c.imports.alert_rules = [...c.imports.alert_rules, ...flags.alertRules.map(abs)];
+  if (flags.serviceGraph !== undefined) c.imports.service_graph = abs(flags.serviceGraph);
   if (c.target.name === "unnamed product") {
     c.target.name = c.target.repository
       ? (c.target.repository.path.split(/[\\/]/).filter(Boolean).at(-1) ?? "product")

@@ -74,6 +74,9 @@ Inputs (run/retest):
   --observations <file>     Recorded observations (from --record-observations)
   --spec-check/--impact-check/--outcome-check/--architecture-check <file>
                             Optional Engineering Commons reports
+  --openslo <file>          OpenSLO v1 YAML/JSON (SLO, SLI, AlertPolicy; repeatable)
+  --alert-rules <file>      Prometheus/Mimir rules, PrometheusRule, or /api/v1/rules JSON (repeatable)
+  --service-graph <file>    Jaeger /api/dependencies or traces_service_graph_request_total query JSON
   --baseline <file>         Previous results to compare with (retest)
 Output:
   --out-dir <dir>           Default .product-check   --json   Print results JSON to stdout, write nothing
@@ -156,6 +159,9 @@ const OPTIONS = {
   "impact-check": { type: "string" },
   "outcome-check": { type: "string" },
   "architecture-check": { type: "string" },
+  openslo: { type: "string", multiple: true },
+  "alert-rules": { type: "string", multiple: true },
+  "service-graph": { type: "string" },
   baseline: { type: "string" },
   "out-dir": { type: "string" },
   output: { type: "string" },
@@ -207,6 +213,9 @@ function buildContract(values: Values, io: CliIO): { contract: ScanContract; fro
       impactCheck: values["impact-check"],
       outcomeCheck: values["outcome-check"],
       architectureCheck: values["architecture-check"],
+      openslo: values.openslo,
+      alertRules: values["alert-rules"],
+      serviceGraph: values["service-graph"],
     },
     io.cwd,
     today
@@ -343,6 +352,10 @@ function commandScan(values: Values, io: CliIO): number {
     auditImported: contract.imports.npm_audit !== null,
     specImported: contract.imports.spec_check !== null,
     outcomeImported: contract.imports.outcome_check !== null,
+    operationalImported:
+      contract.imports.openslo.length > 0 ||
+      contract.imports.alert_rules.length > 0 ||
+      contract.imports.service_graph !== null,
     aiInScope: contract.product.uses_ai === true || (repo?.aiDeps.length ?? 0) > 0,
     tier,
     now: (io.now?.() ?? new Date()).toISOString(),

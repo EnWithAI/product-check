@@ -7,7 +7,7 @@ Thanks for helping! Product Check aims to stay **small, deterministic and honest
 - **Evidence or nothing.** A new check must say exactly which evidence makes it PASS, PARTIAL or FAIL. If it cannot
   run, its evaluator returns `null` or an unchecked status with a reason. Never report PASS without evidence.
 - **Safety.** No new network access beyond `src/inspectors/http/fetch.ts`, no child processes, no execution of
-  repository code, no telemetry, no runtime dependencies, without an issue discussing it first.
+  repository code, no telemetry, no runtime dependency beyond `yaml`, without an issue discussing it first.
 - **Controls** live in `src/validation/catalog.ts` with tier, weight, gate, impacts, root cause and remediation. Write
   a failing test first, then the evaluator.
 - **Schema changes** bump the results `schema_version` and update `schemas/` (via `scripts/dev/write-schemas.mjs`) and

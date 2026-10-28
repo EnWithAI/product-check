@@ -33,8 +33,8 @@ OpenSLO and rule files are YAML. Product Check therefore takes its **first runti
 
 The importer reads documents with `apiVersion: openslo/v1` and `kind` `SLO`, `SLI` or `AlertPolicy`. Other kinds
 are counted but not read: `Service`, `DataSource`, `AlertCondition`, `AlertNotificationTarget`. Other
-`apiVersion`s (`openslo/v1alpha`, `openslo/v2alpha`) are counted as unsupported. A set of files with no
-`openslo/v1` document at all is an input error. References (`indicatorRef`, `alertPolicyRef`) resolve across all
+`apiVersion`s (`openslo/v1alpha`, `openslo/v2alpha`) are counted as unsupported. Each file must contain at
+least one `openslo/v1` document, otherwise it is an input error (a wrong file passed by mistake). References (`indicatorRef`, `alertPolicyRef`) resolve across all
 imported OpenSLO files by `metadata.name`.
 
 Fields read:

@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "kind": "product-check-results",
   "run": {
-    "run_id": "PCR-20261015T100000Z-248001",
+    "run_id": "PCR-20261015T100000Z-B68F0A",
     "status": "COMPLETED",
     "started_at": "2026-10-15T10:00:00.000Z",
     "finished_at": "2026-10-15T10:00:00.000Z",
@@ -58,7 +58,7 @@
         "phase": "VALIDATE",
         "status": "COMPLETED",
         "notes": [
-          "48 controls evaluated against CT-T2",
+          "51 controls evaluated against CT-T2",
           "2 open finding(s)"
         ]
       },
@@ -87,7 +87,7 @@
         "phase": "RETEST",
         "status": "COMPLETED",
         "notes": [
-          "compared with PCR-20261014T100000Z-4619B7"
+          "compared with PCR-20261014T100000Z-D74DF2"
         ]
       }
     ],
@@ -98,8 +98,8 @@
       "origins": []
     },
     "baseline": {
-      "run_id": "PCR-20261014T100000Z-4619B7",
-      "sha256": "9c3357ee8b5cf1c1bd227c0139b2e2664fa54e104790b028be873a7afeea1c01"
+      "run_id": "PCR-20261014T100000Z-D74DF2",
+      "sha256": "82546ddfbf5e609f67828acdcbb942315732230a0ef8bbaf7ccebb1f3eae03a7"
     },
     "demo": true
   },
@@ -182,7 +182,10 @@
       "spec_check": null,
       "impact_check": null,
       "outcome_check": null,
-      "architecture_check": null
+      "architecture_check": null,
+      "openslo": [],
+      "alert_rules": [],
+      "service_graph": null
     },
     "control_mappings": [
       {
@@ -510,7 +513,7 @@
   "evidence": [
     {
       "id": "EV-0D2CDB2052AC",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -536,7 +539,7 @@
     },
     {
       "id": "EV-0FC863D2A487",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -564,7 +567,7 @@
     },
     {
       "id": "EV-144544F6067B",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -590,7 +593,7 @@
     },
     {
       "id": "EV-172504A92CE8",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -616,7 +619,7 @@
     },
     {
       "id": "EV-18C86403D062",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -642,7 +645,7 @@
     },
     {
       "id": "EV-191573559CBC",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "automated-tests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -668,7 +671,7 @@
     },
     {
       "id": "EV-191D17CEB58D",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -696,7 +699,7 @@
     },
     {
       "id": "EV-1B2313AC5501",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -722,7 +725,7 @@
     },
     {
       "id": "EV-1D15C006C286",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -748,7 +751,7 @@
     },
     {
       "id": "EV-1E4B8B25DD80",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -776,7 +779,7 @@
     },
     {
       "id": "EV-1FBE61E84F69",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -802,7 +805,7 @@
     },
     {
       "id": "EV-21CE4D7ED4B3",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -830,7 +833,7 @@
     },
     {
       "id": "EV-224BCB044C14",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -858,7 +861,7 @@
     },
     {
       "id": "EV-260EAB5BFA2F",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -886,7 +889,7 @@
     },
     {
       "id": "EV-28E4F8ED8192",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -914,7 +917,7 @@
     },
     {
       "id": "EV-291D4005C074",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -940,7 +943,7 @@
     },
     {
       "id": "EV-29BFC1F47A93",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -966,7 +969,7 @@
     },
     {
       "id": "EV-2B6E0A68B9BA",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -992,7 +995,7 @@
     },
     {
       "id": "EV-313843BF192C",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1018,7 +1021,7 @@
     },
     {
       "id": "EV-32A35C5A66C7",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "automated-tests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1044,7 +1047,7 @@
     },
     {
       "id": "EV-34650927F709",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1072,7 +1075,7 @@
     },
     {
       "id": "EV-34EE7E71B9D4",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "test-result",
       "pop": "test-results",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1100,7 +1103,7 @@
     },
     {
       "id": "EV-379221F3CEE9",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1126,7 +1129,7 @@
     },
     {
       "id": "EV-3A4C1E104489",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1154,7 +1157,7 @@
     },
     {
       "id": "EV-3B7C368A0A0E",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1182,7 +1185,7 @@
     },
     {
       "id": "EV-3E91936747FD",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1208,7 +1211,7 @@
     },
     {
       "id": "EV-412D4CE7AFDD",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1236,7 +1239,7 @@
     },
     {
       "id": "EV-4455F569DFD9",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1262,7 +1265,7 @@
     },
     {
       "id": "EV-45307C11A4AE",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1288,7 +1291,7 @@
     },
     {
       "id": "EV-4781DDFDBECC",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1314,7 +1317,7 @@
     },
     {
       "id": "EV-4925E351D5B5",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "automated-tests",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1337,7 +1340,7 @@
     },
     {
       "id": "EV-4A0C8E4A9DB3",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1365,7 +1368,7 @@
     },
     {
       "id": "EV-4C0325B2E116",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "automated-tests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1391,7 +1394,7 @@
     },
     {
       "id": "EV-4CF96BA278E3",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1419,7 +1422,7 @@
     },
     {
       "id": "EV-50ABE1653422",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1447,7 +1450,7 @@
     },
     {
       "id": "EV-51E695460209",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1473,7 +1476,7 @@
     },
     {
       "id": "EV-54E8659FCA14",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1502,7 +1505,7 @@
     },
     {
       "id": "EV-574BEC5C9675",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "test-result",
       "pop": "test-results",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1530,7 +1533,7 @@
     },
     {
       "id": "EV-5859BDD48DBE",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1558,7 +1561,7 @@
     },
     {
       "id": "EV-58D3AFE95BED",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1586,7 +1589,7 @@
     },
     {
       "id": "EV-596E4495782B",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1614,7 +1617,7 @@
     },
     {
       "id": "EV-59DBE76D4BC2",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1640,7 +1643,7 @@
     },
     {
       "id": "EV-5DD4353E4D55",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1668,7 +1671,7 @@
     },
     {
       "id": "EV-5F3BB42D05D6",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1696,7 +1699,7 @@
     },
     {
       "id": "EV-600BBECF10CE",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1724,7 +1727,7 @@
     },
     {
       "id": "EV-6329C31A3F2B",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1750,7 +1753,7 @@
     },
     {
       "id": "EV-637D6B1FAFEE",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1776,7 +1779,7 @@
     },
     {
       "id": "EV-65B1DCB2C813",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1802,7 +1805,7 @@
     },
     {
       "id": "EV-6612E40B9FF6",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1830,7 +1833,7 @@
     },
     {
       "id": "EV-66CEB407A66E",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1858,7 +1861,7 @@
     },
     {
       "id": "EV-68298607ED35",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1884,7 +1887,7 @@
     },
     {
       "id": "EV-6C0251A926C5",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1912,7 +1915,7 @@
     },
     {
       "id": "EV-6E255262AEBB",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -1938,7 +1941,7 @@
     },
     {
       "id": "EV-73871D143FA4",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1966,7 +1969,7 @@
     },
     {
       "id": "EV-73D36908E083",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -1994,7 +1997,7 @@
     },
     {
       "id": "EV-74CCC5E538AB",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2020,7 +2023,7 @@
     },
     {
       "id": "EV-753CEA136000",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2046,7 +2049,7 @@
     },
     {
       "id": "EV-7687D9872648",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2074,7 +2077,7 @@
     },
     {
       "id": "EV-7A4E8B96280C",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2102,7 +2105,7 @@
     },
     {
       "id": "EV-7A9B31C936BD",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2128,7 +2131,7 @@
     },
     {
       "id": "EV-7E950C2EC193",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2156,7 +2159,7 @@
     },
     {
       "id": "EV-7F5D190C7369",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2184,7 +2187,7 @@
     },
     {
       "id": "EV-8075327FB136",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2210,7 +2213,7 @@
     },
     {
       "id": "EV-881CC846E9A3",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2235,7 +2238,7 @@
     },
     {
       "id": "EV-8E1C7A62BB98",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2263,7 +2266,7 @@
     },
     {
       "id": "EV-8ED5F2FEF364",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2291,7 +2294,7 @@
     },
     {
       "id": "EV-926D13CA902C",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2319,7 +2322,7 @@
     },
     {
       "id": "EV-935FDA624942",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2345,7 +2348,7 @@
     },
     {
       "id": "EV-9598609B0A03",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2373,7 +2376,7 @@
     },
     {
       "id": "EV-9A72C9100D5D",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2399,7 +2402,7 @@
     },
     {
       "id": "EV-A2E9F4A847E7",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2425,7 +2428,7 @@
     },
     {
       "id": "EV-A5095F98D5CC",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2453,7 +2456,7 @@
     },
     {
       "id": "EV-A73625D32574",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2481,7 +2484,7 @@
     },
     {
       "id": "EV-A900965FEC4B",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2507,7 +2510,7 @@
     },
     {
       "id": "EV-AA12B9253892",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2535,7 +2538,7 @@
     },
     {
       "id": "EV-AED31D629698",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "test-result",
       "pop": "test-results",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2563,7 +2566,7 @@
     },
     {
       "id": "EV-B1DDC63D6B27",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2591,7 +2594,7 @@
     },
     {
       "id": "EV-B270F916FEFB",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2619,7 +2622,7 @@
     },
     {
       "id": "EV-B3C2A7857EEF",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2645,7 +2648,7 @@
     },
     {
       "id": "EV-B8953F455111",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "automated-tests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2671,7 +2674,7 @@
     },
     {
       "id": "EV-B8C6CEF7B544",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "ci-cd",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2697,7 +2700,7 @@
     },
     {
       "id": "EV-B9ED1DACDCB4",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2723,7 +2726,7 @@
     },
     {
       "id": "EV-BB789B0B979C",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "automated-tests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2749,7 +2752,7 @@
     },
     {
       "id": "EV-BCDD7DB49604",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2777,7 +2780,7 @@
     },
     {
       "id": "EV-C133E23FCFE5",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "automated-tests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2803,7 +2806,7 @@
     },
     {
       "id": "EV-C3A1B74A2991",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2829,7 +2832,7 @@
     },
     {
       "id": "EV-C3EA49B4DA82",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2857,7 +2860,7 @@
     },
     {
       "id": "EV-C43CF587B598",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2885,7 +2888,7 @@
     },
     {
       "id": "EV-C4CA53746CB8",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -2911,7 +2914,7 @@
     },
     {
       "id": "EV-CAB76B6F49CD",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2939,7 +2942,7 @@
     },
     {
       "id": "EV-CC7A8FB57C13",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2967,7 +2970,7 @@
     },
     {
       "id": "EV-CDC063911EED",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "test-result",
       "pop": "test-results",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -2995,7 +2998,7 @@
     },
     {
       "id": "EV-CE87AC89A4BB",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3021,7 +3024,7 @@
     },
     {
       "id": "EV-CEC3986784AA",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3047,7 +3050,7 @@
     },
     {
       "id": "EV-D3916BC90F80",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "automated-tests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3073,7 +3076,7 @@
     },
     {
       "id": "EV-D5A22BAA19B5",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3099,7 +3102,7 @@
     },
     {
       "id": "EV-D72CA28DECBA",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3125,7 +3128,7 @@
     },
     {
       "id": "EV-D852FEA0B98C",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3153,7 +3156,7 @@
     },
     {
       "id": "EV-DBE3B2E218EE",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3179,7 +3182,7 @@
     },
     {
       "id": "EV-DCB751FEA513",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3207,7 +3210,7 @@
     },
     {
       "id": "EV-DF85655B0058",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3233,7 +3236,7 @@
     },
     {
       "id": "EV-E0A17DF45347",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3261,7 +3264,7 @@
     },
     {
       "id": "EV-E29ECB3AFCC8",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3289,7 +3292,7 @@
     },
     {
       "id": "EV-E344694CEDB8",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "automated-tests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3315,7 +3318,7 @@
     },
     {
       "id": "EV-E568CBDC3327",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3341,7 +3344,7 @@
     },
     {
       "id": "EV-E5A23FEDCFEF",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3367,7 +3370,7 @@
     },
     {
       "id": "EV-E7014085A22C",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3393,7 +3396,7 @@
     },
     {
       "id": "EV-E84DC7107016",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3421,7 +3424,7 @@
     },
     {
       "id": "EV-E8D9A45C59A9",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3449,7 +3452,7 @@
     },
     {
       "id": "EV-EAB7FB65417F",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3475,7 +3478,7 @@
     },
     {
       "id": "EV-EDC24BAAED95",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3503,7 +3506,7 @@
     },
     {
       "id": "EV-EE1E19478D9F",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3529,7 +3532,7 @@
     },
     {
       "id": "EV-EEC5874B7F3F",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3555,7 +3558,7 @@
     },
     {
       "id": "EV-EF36AC236715",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "search-scope",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3583,7 +3586,7 @@
     },
     {
       "id": "EV-F3A7C5E3B6AF",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3609,7 +3612,7 @@
     },
     {
       "id": "EV-F5CAB5FC15F6",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "file-presence",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3637,7 +3640,7 @@
     },
     {
       "id": "EV-F648BC0023F4",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3663,7 +3666,7 @@
     },
     {
       "id": "EV-F75E9C653CF3",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "test-result",
       "pop": "test-results",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3691,7 +3694,7 @@
     },
     {
       "id": "EV-F88727144FC0",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -3717,7 +3720,7 @@
     },
     {
       "id": "EV-FCB7E33D1FEB",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "manifest-field",
       "pop": "dependency-manifests",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3743,7 +3746,7 @@
     },
     {
       "id": "EV-FF484649291A",
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "kind": "source-location",
       "pop": "repository",
       "collected_at": "2026-10-15T10:00:00.000Z",
@@ -3771,7 +3774,7 @@
     },
     {
       "id": "EV-FF6546F44E70",
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "kind": "http-response",
       "pop": "deployed-web",
       "collected_at": "2026-10-14T10:00:00.000Z",
@@ -4356,6 +4359,60 @@
       "finding_ids": []
     },
     {
+      "id": "VAL-PC-T-18",
+      "control_id": "PC-T-18",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "SLOs define an objective, a time window and an indicator",
+      "expected": "Imported OpenSLO v1 files define at least one SLO, and every SLO has a service, one time window, an objective target and an indicator.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T2.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-19",
+      "control_id": "PC-T-19",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Every SLO is alerted on",
+      "expected": "Every imported SLO has an OpenSLO alert policy or an imported alerting rule that names it.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T2.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-20",
+      "control_id": "PC-T-20",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Declared dependencies are observed at runtime",
+      "expected": "Each declared relationship that Architecture Check could not confirm statically appears as an edge in an imported service graph.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T2.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
       "id": "VAL-PC-S-01",
       "control_id": "PC-S-01",
       "pillar": "trust",
@@ -4803,10 +4860,10 @@
       ],
       "validation_id": "VAL-PC-S-09",
       "work_packet_id": "WP-PC-S-09",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-29BFC1F47A93"
@@ -4849,10 +4906,10 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-54E8659FCA14"
@@ -4895,10 +4952,10 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-A5095F98D5CC"
@@ -4941,10 +4998,10 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-EDC24BAAED95"
@@ -4987,10 +5044,10 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-7F5D190C7369"
@@ -5033,10 +5090,10 @@
       ],
       "validation_id": "VAL-PC-S-01",
       "work_packet_id": "WP-PC-S-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-596E4495782B"
@@ -5077,10 +5134,10 @@
       ],
       "validation_id": "VAL-PC-AI-01",
       "work_packet_id": "WP-PC-AI-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-191D17CEB58D"
@@ -5123,10 +5180,10 @@
       ],
       "validation_id": "VAL-PC-S-02",
       "work_packet_id": "WP-PC-S-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-E29ECB3AFCC8"
@@ -5168,10 +5225,10 @@
       ],
       "validation_id": "VAL-PC-S-03",
       "work_packet_id": "WP-PC-S-03",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-9A72C9100D5D"
@@ -5215,10 +5272,10 @@
       ],
       "validation_id": "VAL-PC-T-02",
       "work_packet_id": "WP-PC-T-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-D5A22BAA19B5"
@@ -5261,10 +5318,10 @@
       ],
       "validation_id": "VAL-PC-S-08",
       "work_packet_id": "WP-PC-S-08",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-7A9B31C936BD"
@@ -5306,10 +5363,10 @@
       ],
       "validation_id": "VAL-PC-T-11",
       "work_packet_id": "WP-PC-T-11",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-172504A92CE8",
@@ -5351,10 +5408,10 @@
       ],
       "validation_id": "VAL-PC-T-04",
       "work_packet_id": "WP-PC-T-04",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-379221F3CEE9"
@@ -5394,10 +5451,10 @@
       ],
       "validation_id": "VAL-PC-T-10",
       "work_packet_id": "WP-PC-T-10",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-1B2313AC5501"
@@ -5438,10 +5495,10 @@
       ],
       "validation_id": "VAL-PC-C-08",
       "work_packet_id": "WP-PC-C-08",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-4925E351D5B5"
@@ -5485,10 +5542,10 @@
       ],
       "validation_id": "VAL-PC-C-04",
       "work_packet_id": "WP-PC-C-04",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-A900965FEC4B"
@@ -5529,10 +5586,10 @@
       ],
       "validation_id": "VAL-PC-S-16",
       "work_packet_id": "WP-PC-S-16",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-935FDA624942"
@@ -5578,10 +5635,10 @@
       ],
       "validation_id": "VAL-PC-S-12",
       "work_packet_id": "WP-PC-S-12",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-C4CA53746CB8",
@@ -5624,10 +5681,10 @@
       ],
       "validation_id": "VAL-PC-T-01",
       "work_packet_id": "WP-PC-T-01",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-0D2CDB2052AC"
@@ -5667,10 +5724,10 @@
       ],
       "validation_id": "VAL-PC-AI-02",
       "work_packet_id": "WP-PC-AI-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-2B6E0A68B9BA"
@@ -5711,10 +5768,10 @@
       ],
       "validation_id": "VAL-PC-S-16",
       "work_packet_id": "WP-PC-S-16",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-F3A7C5E3B6AF"
@@ -5755,10 +5812,10 @@
       ],
       "validation_id": "VAL-PC-S-17",
       "work_packet_id": "WP-PC-S-17",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-4455F569DFD9"
@@ -5801,10 +5858,10 @@
       ],
       "validation_id": "VAL-PC-S-06",
       "work_packet_id": "WP-PC-S-06",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-51E695460209"
@@ -5847,10 +5904,10 @@
       ],
       "validation_id": "VAL-PC-S-05",
       "work_packet_id": "WP-PC-S-05",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-F648BC0023F4"
@@ -5892,10 +5949,10 @@
       ],
       "validation_id": "VAL-PC-C-04",
       "work_packet_id": "WP-PC-C-04",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-F88727144FC0"
@@ -5938,10 +5995,10 @@
       ],
       "validation_id": "VAL-PC-S-07",
       "work_packet_id": "WP-PC-S-07",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-FF6546F44E70"
@@ -5982,10 +6039,10 @@
       ],
       "validation_id": "VAL-PC-T-09",
       "work_packet_id": "WP-PC-T-09",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-E7014085A22C"
@@ -6026,10 +6083,10 @@
       ],
       "validation_id": "VAL-PC-T-07",
       "work_packet_id": "WP-PC-T-07",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-DBE3B2E218EE"
@@ -6071,10 +6128,10 @@
       ],
       "validation_id": "VAL-PC-C-02",
       "work_packet_id": "WP-PC-C-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-4781DDFDBECC"
@@ -6116,10 +6173,10 @@
       ],
       "validation_id": "VAL-PC-S-11",
       "work_packet_id": "WP-PC-S-11",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-753CEA136000",
@@ -6163,10 +6220,10 @@
       ],
       "validation_id": "VAL-PC-S-10",
       "work_packet_id": "WP-PC-S-10",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-74CCC5E538AB"
@@ -6210,10 +6267,10 @@
       ],
       "validation_id": "VAL-PC-C-06",
       "work_packet_id": "WP-PC-C-06",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-45307C11A4AE"
@@ -6256,10 +6313,10 @@
       ],
       "validation_id": "VAL-PC-C-05",
       "work_packet_id": "WP-PC-C-05",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-EE1E19478D9F"
@@ -6300,10 +6357,10 @@
       ],
       "validation_id": "VAL-PC-T-06",
       "work_packet_id": "WP-PC-T-06",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-6329C31A3F2B"
@@ -6344,10 +6401,10 @@
       ],
       "validation_id": "VAL-PC-T-08",
       "work_packet_id": "WP-PC-T-08",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-59DBE76D4BC2"
@@ -6391,10 +6448,10 @@
       ],
       "validation_id": "VAL-PC-C-02",
       "work_packet_id": "WP-PC-C-02",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-6E255262AEBB"
@@ -6435,10 +6492,10 @@
       ],
       "validation_id": "VAL-PC-T-09",
       "work_packet_id": "WP-PC-T-09",
-      "first_seen_run": "PCR-20261014T100000Z-4619B7",
+      "first_seen_run": "PCR-20261014T100000Z-D74DF2",
       "history": [
         {
-          "run_id": "PCR-20261014T100000Z-4619B7",
+          "run_id": "PCR-20261014T100000Z-D74DF2",
           "status": "OPEN",
           "evidence_ids": [
             "EV-A2E9F4A847E7"
@@ -6465,7 +6522,7 @@
         "trend": {
           "previous_score": 40,
           "delta": 60,
-          "previous_run_id": "PCR-20261014T100000Z-4619B7"
+          "previous_run_id": "PCR-20261014T100000Z-D74DF2"
         },
         "counts": {
           "PASS": 9,
@@ -6491,7 +6548,7 @@
         "trend": {
           "previous_score": 4,
           "delta": 90,
-          "previous_run_id": "PCR-20261014T100000Z-4619B7"
+          "previous_run_id": "PCR-20261014T100000Z-D74DF2"
         },
         "counts": {
           "PASS": 10,
@@ -6499,7 +6556,7 @@
           "FAIL": 1,
           "BLOCKED": 0,
           "NOT_TESTED": 0,
-          "NOT_APPLICABLE": 6
+          "NOT_APPLICABLE": 9
         },
         "applicable_weight": 17,
         "checked_weight": 17
@@ -6517,7 +6574,7 @@
         "trend": {
           "previous_score": 2,
           "delta": 95,
-          "previous_run_id": "PCR-20261014T100000Z-4619B7"
+          "previous_run_id": "PCR-20261014T100000Z-D74DF2"
         },
         "counts": {
           "PASS": 16,
@@ -7256,7 +7313,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-B270F916FEFB"
           ]
@@ -7302,7 +7359,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-3B7C368A0A0E"
           ]
@@ -7343,7 +7400,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-7687D9872648",
             "EV-66CEB407A66E",
@@ -7384,7 +7441,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-5859BDD48DBE"
           ]
@@ -7423,7 +7480,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-881CC846E9A3",
             "EV-F5CAB5FC15F6"
@@ -7464,7 +7521,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-A73625D32574",
             "EV-9598609B0A03"
@@ -7503,7 +7560,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-F75E9C653CF3"
           ]
@@ -7541,7 +7598,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-CC7A8FB57C13",
             "EV-50ABE1653422"
@@ -7580,7 +7637,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-C43CF587B598",
             "EV-7A4E8B96280C",
@@ -7621,7 +7678,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-412D4CE7AFDD"
           ]
@@ -7697,7 +7754,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-5F3BB42D05D6"
           ]
@@ -7738,7 +7795,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-5DD4353E4D55"
           ]
@@ -7779,7 +7836,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-BCDD7DB49604"
           ]
@@ -7817,7 +7874,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-AA12B9253892"
           ]
@@ -7855,7 +7912,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-58D3AFE95BED",
             "EV-4A0C8E4A9DB3",
@@ -7897,7 +7954,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-260EAB5BFA2F"
           ]
@@ -7935,7 +7992,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-EF36AC236715"
           ]
@@ -8013,7 +8070,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-CAB76B6F49CD",
             "EV-B1DDC63D6B27"
@@ -8052,7 +8109,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-8E1C7A62BB98"
           ]
@@ -8093,7 +8150,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-D852FEA0B98C",
             "EV-7E950C2EC193"
@@ -8132,7 +8189,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-FF484649291A"
           ]
@@ -8170,7 +8227,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-3A4C1E104489"
           ]
@@ -8208,7 +8265,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-224BCB044C14"
           ]
@@ -8248,7 +8305,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-6C0251A926C5"
           ]
@@ -8289,7 +8346,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-600BBECF10CE"
           ]
@@ -8330,7 +8387,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-926D13CA902C"
           ]
@@ -8368,7 +8425,7 @@
         "verification": {
           "status": "VERIFIED",
           "method": "Retest: the control was re-evaluated and the findings were no longer observed.",
-          "verified_in_run": "PCR-20261015T100000Z-248001",
+          "verified_in_run": "PCR-20261015T100000Z-B68F0A",
           "evidence_ids": [
             "EV-0FC863D2A487"
           ]
@@ -10184,8 +10241,8 @@
     "rationale": "Readiness is bounded by the evidence listed; untested areas remain unknown, not passed."
   },
   "comparison": {
-    "baseline_run_id": "PCR-20261014T100000Z-4619B7",
-    "baseline_sha256": "9c3357ee8b5cf1c1bd227c0139b2e2664fa54e104790b028be873a7afeea1c01",
+    "baseline_run_id": "PCR-20261014T100000Z-D74DF2",
+    "baseline_sha256": "82546ddfbf5e609f67828acdcbb942315732230a0ef8bbaf7ccebb1f3eae03a7",
     "score_delta": {
       "customer": 60,
       "technology": 90,
@@ -10273,7 +10330,7 @@
   },
   "history": [
     {
-      "run_id": "PCR-20261014T100000Z-4619B7",
+      "run_id": "PCR-20261014T100000Z-D74DF2",
       "finished_at": "2026-10-14T10:00:00.000Z",
       "revision": "d1d8f2bd3ac23321a077249a4dc9410ee8982ad5",
       "verdict": "NOT_READY",
@@ -10290,7 +10347,7 @@
       "open_findings": 37
     },
     {
-      "run_id": "PCR-20261015T100000Z-248001",
+      "run_id": "PCR-20261015T100000Z-B68F0A",
       "finished_at": "2026-10-15T10:00:00.000Z",
       "revision": "56b23fac439176b4ea0666b96854350a82606ec6",
       "verdict": "READY_WITH_CONDITIONS",

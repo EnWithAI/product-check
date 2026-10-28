@@ -2,7 +2,7 @@
   "schema_version": "0.1.0",
   "kind": "product-check-results",
   "run": {
-    "run_id": "PCR-20261014T100000Z-539A4D",
+    "run_id": "PCR-20261014T100000Z-D1738E",
     "status": "ABORTED",
     "started_at": "2026-10-14T10:00:00.000Z",
     "finished_at": "2026-10-14T10:00:00.000Z",
@@ -52,7 +52,7 @@
         "phase": "VALIDATE",
         "status": "SKIPPED",
         "notes": [
-          "48 controls evaluated against CT-T1",
+          "51 controls evaluated against CT-T1",
           "0 open finding(s)"
         ]
       },
@@ -159,7 +159,10 @@
       "spec_check": null,
       "impact_check": null,
       "outcome_check": null,
-      "architecture_check": null
+      "architecture_check": null,
+      "openslo": [],
+      "alert_rules": [],
+      "service_graph": null
     },
     "control_mappings": [],
     "risk_acceptances": [],
@@ -899,6 +902,60 @@
       "finding_ids": []
     },
     {
+      "id": "VAL-PC-T-18",
+      "control_id": "PC-T-18",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "SLOs define an objective, a time window and an indicator",
+      "expected": "Imported OpenSLO v1 files define at least one SLO, and every SLO has a service, one time window, an objective target and an indicator.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-19",
+      "control_id": "PC-T-19",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Every SLO is alerted on",
+      "expected": "Every imported SLO has an OpenSLO alert policy or an imported alerting rule that names it.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-20",
+      "control_id": "PC-T-20",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Declared dependencies are observed at runtime",
+      "expected": "Each declared relationship that Architecture Check could not confirm statically appears as an edge in an imported service graph.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
       "id": "VAL-PC-S-01",
       "control_id": "PC-S-01",
       "pillar": "trust",
@@ -1304,7 +1361,7 @@
           "FAIL": 0,
           "BLOCKED": 10,
           "NOT_TESTED": 0,
-          "NOT_APPLICABLE": 7
+          "NOT_APPLICABLE": 10
         },
         "applicable_weight": 16,
         "checked_weight": 0
@@ -1487,7 +1544,7 @@
   "comparison": null,
   "history": [
     {
-      "run_id": "PCR-20261014T100000Z-539A4D",
+      "run_id": "PCR-20261014T100000Z-D1738E",
       "finished_at": "2026-10-14T10:00:00.000Z",
       "revision": null,
       "verdict": "INCONCLUSIVE",

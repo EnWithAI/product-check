@@ -2,7 +2,8 @@
 // SPDX-FileCopyrightText: 2026 EnWithAI Technologies
 /**
  * Evaluators backed by imported artifacts: executed test results (including contract control_mappings that link
- * named tests to any control), npm audit, and Spec/Impact/Outcome Check reports. Imported results are evidence
+ * named tests to any control), npm audit, Spec/Impact/Outcome/Architecture Check reports, and the operational
+ * files of CT-T4 (operational-evaluators.ts). Imported results are evidence
  * of executions that happened elsewhere; Product Check records where they came from and their checksum.
  */
 import { isEndToEnd, tally, type TestCase, type TestRun } from "../importers/tests.js";
@@ -14,6 +15,7 @@ import {
   type FindingDraft,
   type Outcome,
 } from "./context.js";
+import { OPERATIONAL_EVALUATORS } from "./operational-evaluators.js";
 
 /** Evidence for a set of test cases from one results file. */
 function testEv(ctx: EvalContext, run: TestRun, cases: TestCase[], what: string): string {
@@ -546,14 +548,12 @@ export const IMPORT_EVALUATORS: Record<string, Evaluator> = {
   "PC-T-03": PC_T_03,
   "PC-T-12": PC_T_12,
   "PC-T-13": mappedOnly("PC-T-13", "Rollback needs an executed rehearsal."),
-  "PC-T-14": (ctx) =>
-    mappedOutcome(ctx, "PC-T-14") ??
-    unchecked(
-      "NOT_TESTED",
-      "No production monitoring adapter exists in this release (read-only telemetry import is planned)."
-    ),
+  "PC-T-14": (ctx) => mappedOutcome(ctx, "PC-T-14") ?? (OPERATIONAL_EVALUATORS["PC-T-14"] as Evaluator)(ctx),
   "PC-T-15": PC_T_15,
   "PC-T-17": PC_T_17,
+  "PC-T-18": OPERATIONAL_EVALUATORS["PC-T-18"] as Evaluator,
+  "PC-T-19": OPERATIONAL_EVALUATORS["PC-T-19"] as Evaluator,
+  "PC-T-20": OPERATIONAL_EVALUATORS["PC-T-20"] as Evaluator,
   "PC-S-13": (ctx) =>
     ctx.contract.product.has_user_accounts === false
       ? unchecked(

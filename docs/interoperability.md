@@ -59,7 +59,7 @@ not its consequence. A model that Architecture Check cannot use is reported as a
 finding, so it lands here as PARTIAL too. The evidence summary reads
 `Architecture Check <schema>: <model path> (<format>), <n> finding(s); <v> verified drift (<rules>), <h> hypotheses, <u> unknown`.
 
-**Rubric.** Adding the control moves the catalog to 48 controls and the rubric to `pc-rubric-0.2`. Scoring rules
+**Rubric.** Adding the control moves the catalog to 48 controls and the rubric to `pc-rubric-0.2` (51 with the [operational controls](operational-imports.md), same unreleased rubric). Scoring rules
 are unchanged. The scorecard schema accepts `pc-rubric-0.1` and `pc-rubric-0.2`, and integrity recomputation keeps the
 stored rubric version. Results and retest baselines written by 0.1.0 therefore still load, validate and recompute.
 The results `schema_version` stays `0.1.0`. The new contract key `imports.architecture_check` defaults to `null`,

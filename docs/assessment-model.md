@@ -23,7 +23,7 @@ Each run records the status of every phase in `run.phases`. Lifecycle tiers are 
 | Technology | Is it built, tested and operated soundly?                     | lockfile, tests exist and pass, CI runs tests, runtime pinned, migrations, monitoring, rollback, regressions                                                |
 | Trust      | Can users and operators trust it with their data and actions? | committed secrets, public-prefixed keys, exposed files, security headers, cookies, authorization, isolation, vulnerabilities, client-side AI keys, AI evals |
 
-`product-check controls` prints the full catalog (48 controls). Each control declares its tier, weight
+`product-check controls` prints the full catalog (51 controls). Each control declares its tier, weight
 (1 hygiene, 2 core, 3 critical), the points of presence that can evidence it, the hard gate it belongs to (if any),
 impacts per pillar, a root-cause statement and remediation knowledge.
 

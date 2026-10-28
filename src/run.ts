@@ -11,8 +11,10 @@ import type { RunPermissions } from "./contract/safety.js";
 import { snapshotRepo } from "./discovery/repo.js";
 import { buildPops, popCoverage } from "./discovery/pops.js";
 import { inputError } from "./errors.js";
+import { readYaml } from "./parse/yaml.js";
 import { EvidenceCollector } from "./evidence/collector.js";
 import { harToObservations } from "./importers/har.js";
+import { parseAlertRules, parseOpenSlo, parseServiceGraph, type InputDocs } from "./importers/operational.js";
 import {
   parseArchitectureCheck,
   parseImpactCheck,
@@ -89,6 +91,27 @@ function importReport<T>(
   if (path === null) return null;
   const { data, sha } = readJson(path);
   return { data: parse(data, label(path)), source: label(path), sha256: sha };
+}
+
+/**
+ * Imports a set of YAML/JSON files through one parser. The source lists every file; the checksum covers all of them
+ * in order.
+ */
+function importYamlSet<T>(
+  paths: string[],
+  label: (p: string) => string,
+  parse: (files: InputDocs[]) => T
+): Imported<T> | null {
+  if (paths.length === 0) return null;
+  const files = paths.map((path) => {
+    const { text, sha } = readInput(path);
+    return { source: label(path), docs: readYaml(text, label(path)), sha };
+  });
+  return {
+    data: parse(files),
+    source: files.map((f) => f.source).join(", "),
+    sha256: files.length === 1 ? (files[0]?.sha ?? "") : sha256(files.map((f) => f.sha).join("\n")),
+  };
 }
 
 /** Run ID: UTC timestamp plus a short hash of the contract and start time. */
@@ -235,6 +258,11 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
   const architecture = aborted
     ? null
     : importReport(contract.imports.architecture_check, label, parseArchitectureCheck);
+  const openslo = aborted ? null : importYamlSet(contract.imports.openslo, label, parseOpenSlo);
+  const alertRules = aborted ? null : importYamlSet(contract.imports.alert_rules, label, parseAlertRules);
+  const serviceGraph = aborted
+    ? null
+    : importReport(contract.imports.service_graph, label, parseServiceGraph);
   phases.push({
     phase: "TEST",
     status: aborted ? "SKIPPED" : "COMPLETED",
@@ -247,6 +275,9 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
         impact && "Impact Check report imported",
         outcome && "Outcome Check report imported",
         architecture && "Architecture Check report imported",
+        openslo && `OpenSLO imported (${openslo.data.slos.length} SLO(s))`,
+        alertRules && `alert rules imported (${alertRules.data.alerting.length} alerting rule(s))`,
+        serviceGraph && `service graph imported (${serviceGraph.data.edges.length} edge(s))`,
       ].filter((x): x is string => typeof x === "string"),
     ],
   });
@@ -265,6 +296,7 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
     auditImported: audit !== null,
     specImported: spec !== null,
     outcomeImported: outcome !== null,
+    operationalImported: openslo !== null || alertRules !== null || serviceGraph !== null,
     aiInScope,
     tier,
     now: startedIso,
@@ -283,6 +315,9 @@ export async function runAssessment(options: RunOptions): Promise<RunOutput> {
     impact,
     outcome,
     architecture,
+    openslo,
+    alertRules,
+    serviceGraph,
     baseline: options.baseline?.results ?? null,
     aiInScope,
   };

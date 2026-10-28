@@ -13,6 +13,7 @@ import type {
   OutcomeCheckSummary,
   SpecCheckSummary,
 } from "../importers/reports.js";
+import type { AlertRulesSummary, OpenSloSummary, ServiceGraphSummary } from "../importers/operational.js";
 import type { TestRun } from "../importers/tests.js";
 import type {
   Confidence,
@@ -48,6 +49,9 @@ export interface EvalContext {
   impact: Imported<ImpactCheckSummary> | null;
   outcome: Imported<OutcomeCheckSummary> | null;
   architecture: Imported<ArchitectureCheckSummary> | null;
+  openslo: Imported<OpenSloSummary> | null;
+  alertRules: Imported<AlertRulesSummary> | null;
+  serviceGraph: Imported<ServiceGraphSummary> | null;
   baseline: Results | null;
   aiInScope: boolean;
 }
