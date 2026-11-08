@@ -19,6 +19,15 @@ export const KIND_SCHEMA: Record<string, string> = {
   "release-verdict": "release-verdict.schema.json",
   observations: "observations.schema.json",
   "as-built-spec": "as-built-spec.schema.json",
+  "assurance-policy": "assurance-policy.schema.json",
+  "evidence-record": "evidence-record.schema.json",
+  "change-review": "change-review.schema.json",
+  approval: "approval.schema.json",
+  "verification-run": "verification-run.schema.json",
+  "fix-packet": "fix-packet.schema.json",
+  "closure-register": "closure-register.schema.json",
+  "release-gate": "release-gate.schema.json",
+  "reviewer-findings": "reviewer-findings.schema.json",
 };
 
 let cached: SchemaRegistry | null = null;

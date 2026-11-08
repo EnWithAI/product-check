@@ -1,0 +1,308 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/release-gate.schema.json",
+  "title": "Product Check release gate",
+  "description": "Explicit GO / CONDITIONAL_GO / NO_GO / UNKNOWN decision with release conditions, open blockers, accepted-risk expiry, approvals for the head commit, executed checks, disclosed coverage gaps and VC-P0…P7 phase progress.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "methodology_version",
+    "gate_id",
+    "evaluated_at",
+    "target",
+    "head_sha",
+    "decision",
+    "product_verdict",
+    "change_gate",
+    "conditions",
+    "blocking_reasons",
+    "open",
+    "open_blocking_ids",
+    "accepted_risks",
+    "approvals",
+    "executed_checks",
+    "coverage",
+    "rollback",
+    "phases",
+    "inputs"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "assurance-common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "release-gate"
+    },
+    "methodology_version": {
+      "$ref": "assurance-common.schema.json#/$defs/methodology_version"
+    },
+    "gate_id": {
+      "type": "string",
+      "pattern": "^RG-[0-9A-F]{10}$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "repository"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "repository": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "head_sha": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+    },
+    "decision": {
+      "$ref": "assurance-common.schema.json#/$defs/release_decision"
+    },
+    "product_verdict": {
+      "$ref": "common.schema.json#/$defs/verdict"
+    },
+    "change_gate": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "assurance-common.schema.json#/$defs/gate_status"
+        }
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "status", "detail", "refs"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^RC-\\d+$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "enum": ["PASS", "FAIL", "NOT_EVALUATED"]
+          },
+          "detail": {
+            "type": "string"
+          },
+          "refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "blocking_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "open": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["P0", "P1", "P2", "P3"],
+      "properties": {
+        "P0": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "P1": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "P2": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "P3": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "open_blocking_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "accepted_risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["acceptance_id", "finding_id", "expires", "status"],
+        "properties": {
+          "acceptance_id": {
+            "type": "string"
+          },
+          "finding_id": {
+            "type": "string"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "enum": ["ACTIVE", "REVIEW_DUE", "EXPIRED"]
+          }
+        }
+      }
+    },
+    "approvals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "valid", "stale"],
+      "properties": {
+        "required": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "valid": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stale": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "executed_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "passed", "failed", "not_run"],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "not_run": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["customer", "technology", "trust", "overall", "gaps"],
+      "properties": {
+        "customer": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "technology": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "trust": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "overall": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["declared", "ref"],
+      "properties": {
+        "declared": {
+          "type": "boolean"
+        },
+        "ref": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["phase", "name", "status", "evidence"],
+        "properties": {
+          "phase": {
+            "$ref": "assurance-common.schema.json#/$defs/phase"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "enum": ["COMPLETED", "PARTIAL", "NOT_STARTED", "NOT_SUPPORTED"]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "minItems": 8,
+      "maxItems": 8
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["results_sha256", "register_digest", "review_id", "proof_run_id"],
+      "properties": {
+        "results_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "register_digest": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "review_id": {
+          "type": ["string", "null"]
+        },
+        "proof_run_id": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  }
+}

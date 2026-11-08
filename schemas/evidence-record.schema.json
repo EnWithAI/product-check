@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/evidence-record.schema.json",
+  "title": "Product Check evidence record (review-evidence.jsonl line)",
+  "description": "One append-only, hash-chained evidence record. digest = SHA-256 of the canonical JSON of every other field; prev_digest links to the previous line.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "seq",
+    "evidence_id",
+    "recorded_at",
+    "type",
+    "subject",
+    "commit_sha",
+    "environment_id",
+    "summary",
+    "locator",
+    "line",
+    "payload_digest",
+    "payload",
+    "prev_digest",
+    "digest"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "assurance-common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "evidence-record"
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^EVR-[0-9A-F]{12}$"
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "type": {
+      "enum": [
+        "command-execution",
+        "diff-hunk",
+        "source-recheck",
+        "results-artifact",
+        "approval",
+        "verification",
+        "imported-report",
+        "reviewer-claim",
+        "transition"
+      ]
+    },
+    "subject": {
+      "type": "string"
+    },
+    "commit_sha": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+    },
+    "environment_id": {
+      "type": ["string", "null"]
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "locator": {
+      "type": ["string", "null"]
+    },
+    "line": {
+      "type": ["integer", "null"]
+    },
+    "payload_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "prev_digest": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

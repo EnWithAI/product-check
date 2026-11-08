@@ -29,12 +29,11 @@ function tree(dir: string, prefix = ""): string[] {
 }
 
 describe("security invariants", () => {
-  it("src/ has no process, vm or eval primitives, and network only in inspectors/http/fetch.ts", () => {
+  it("src/ has no vm or eval primitives, processes only in exec/process.ts, network only in inspectors/http/fetch.ts", () => {
     for (const file of files(join(ROOT, "src"))) {
       const text = readFileSync(file, "utf8");
-      expect(text, file).not.toMatch(
-        /from "node:(child_process|worker_threads|vm|http|https|net|tls|dgram|http2)"/
-      );
+      expect(text, file).not.toMatch(/from "node:(worker_threads|vm|http|https|net|tls|dgram|http2)"/);
+      if (!file.endsWith(join("exec", "process.ts"))) expect(text, file).not.toMatch(/node:child_process/);
       expect(text, file).not.toMatch(/\beval\(|new Function\(|\bimport\(/);
       // candidates.ts only contains test code as text for users to copy; it never calls fetch itself.
       if (
@@ -54,6 +53,31 @@ describe("security invariants", () => {
     ]) {
       expect(readFileSync(file, "utf8"), file).not.toMatch(/[\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff]/);
     }
+  });
+
+  it("the scan pipeline never reaches the process module", () => {
+    const scanFiles = files(join(ROOT, "src")).filter(
+      (f) =>
+        !f.includes(`${join("src", "assurance")}`) &&
+        !f.endsWith(join("cli", "run.ts")) &&
+        !f.endsWith(join("exec", "process.ts"))
+    );
+    for (const file of scanFiles) expect(readFileSync(file, "utf8"), file).not.toMatch(/exec\/process/);
+  });
+
+  it("the library entry (what Commons Check imports) never reaches the process module", () => {
+    const seen = new Set<string>();
+    const visit = (file: string): void => {
+      if (seen.has(file)) return;
+      seen.add(file);
+      for (const m of readFileSync(file, "utf8").matchAll(/from "(\.{1,2}\/[^"]+)\.js"/g))
+        visit(join(file, "..", `${m[1] as string}.ts`));
+    };
+    visit(join(ROOT, "src", "index.ts"));
+    expect(seen.size).toBeGreaterThan(20);
+    expect(
+      [...seen].filter((f) => f.includes(join("src", "exec")) || f.includes(join("src", "assurance")))
+    ).toEqual([]);
   });
 
   it("a run writes only inside --out-dir and never modifies the scanned repository", async () => {

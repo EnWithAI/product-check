@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-YKCVS6KkRzOFN3+4WXcMgsH5DyAA8oM5CR5RRe2RwtI='; img-src data:">
+<title>Product Check assurance: Vibe Invoices (synthetic demo)</title>
+<style>/* SPDX-License-Identifier: MIT */
+/* SPDX-FileCopyrightText: 2026 EnWithAI Technologies */
+/* Product Check dashboard styles. Inlined into each generated dashboard; no external requests. */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --raised: #ffffff;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #6f6d68;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --line: rgba(11, 11, 11, 0.12);
+  --focus: #2a78d6;
+  --s-customer: #2a78d6;
+  --s-technology: #eb6834;
+  --s-trust: #1baf7a;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --unknown: #898781;
+  --unknown-wash: #ecebe6;
+  --banner-demo: #fff4d6;
+  --banner-error: #fde6e6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --raised: #222220;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #a3a198;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --line: rgba(255, 255, 255, 0.12);
+    --focus: #3987e5;
+    --s-customer: #3987e5;
+    --s-technology: #d95926;
+    --s-trust: #199e70;
+    --unknown-wash: #2a2a28;
+    --banner-demo: #3a3010;
+    --banner-error: #3d1717;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --raised: #222220;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #a3a198;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --line: rgba(255, 255, 255, 0.12);
+  --focus: #3987e5;
+  --s-customer: #3987e5;
+  --s-technology: #d95926;
+  --s-trust: #199e70;
+  --unknown-wash: #2a2a28;
+  --banner-demo: #3a3010;
+  --banner-error: #3d1717;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font:
+    15px/1.5 system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+a {
+  color: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+header.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 20px 0 8px;
+}
+header.top h1 {
+  font-size: 1.35rem;
+  margin: 0;
+}
+header.top .meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.banner {
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  border: 1px solid var(--line);
+}
+.banner.demo {
+  background: var(--banner-demo);
+}
+.banner.error {
+  background: var(--banner-error);
+}
+nav.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--page);
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line);
+  margin: 8px 0 16px;
+  padding-top: 4px;
+}
+nav.tabs a {
+  white-space: nowrap;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--ink-2);
+  border-bottom: 2px solid transparent;
+}
+nav.tabs a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  font-weight: 600;
+}
+section.view {
+  margin-bottom: 32px;
+}
+section.view > h2 {
+  font-size: 1.15rem;
+  margin: 8px 0 12px;
+}
+h3 {
+  font-size: 1rem;
+  margin: 20px 0 8px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.grid {
+  display: grid;
+  gap: 12px;
+}
+.grid.three {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.grid.kpis {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+.hero .verdict {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.hero .alias {
+  color: var(--ink-2);
+}
+.reasons {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.bounded {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  white-space: nowrap;
+}
+.chip .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+}
+.chip.good .dot {
+  background: var(--good);
+}
+.chip.warning .dot {
+  background: var(--warning);
+}
+.chip.serious .dot {
+  background: var(--serious);
+}
+.chip.critical .dot {
+  background: var(--critical);
+}
+.chip.unknown .dot {
+  background: transparent;
+  border: 2px dashed var(--unknown);
+}
+.chip.neutral .dot {
+  background: var(--axis);
+}
+.kpi .label {
+  color: var(--ink-2);
+  font-size: 0.8rem;
+}
+.kpi .value {
+  font-size: 1.6rem;
+  font-weight: 650;
+}
+.dial {
+  text-align: center;
+}
+.dial svg {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.dial .name {
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.dial .swatch {
+  width: 12px;
+  height: 3px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.dial .sub {
+  color: var(--ink-2);
+  font-size: 0.85rem;
+}
+.meter {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--grid);
+  overflow: hidden;
+  margin: 6px 0 2px;
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  background: var(--ink-2);
+  border-radius: 4px;
+}
+.track {
+  fill: none;
+  stroke: var(--grid);
+}
+.track.unknown {
+  stroke: url(#hatch);
+}
+.fill {
+  fill: none;
+  stroke-linecap: round;
+}
+.tick {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.dial-value {
+  font-size: 30px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+.dial-caption {
+  font-size: 11px;
+  fill: var(--muted);
+}
+.hatch-line {
+  stroke: var(--unknown);
+  stroke-width: 2;
+}
+.scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88rem;
+}
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  color: var(--ink-2);
+  font-weight: 600;
+  background: var(--surface);
+}
+td.id {
+  white-space: nowrap;
+}
+td.id code {
+  overflow-wrap: normal;
+}
+td.num,
+th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+pre {
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  overflow-x: auto;
+  font-size: 0.8rem;
+}
+details {
+  margin: 4px 0;
+}
+details > summary {
+  cursor: pointer;
+  color: var(--ink-2);
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+.filters label {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.filters select,
+.filters input {
+  font: inherit;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  min-width: 140px;
+}
+.stack {
+  display: flex;
+  height: 18px;
+  gap: 2px;
+  margin: 4px 0;
+}
+.stack > span {
+  display: block;
+  height: 100%;
+}
+.stack > span:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.stack > span:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.seg-PASS {
+  background: var(--good);
+}
+.seg-PARTIAL {
+  background: var(--warning);
+}
+.seg-FAIL {
+  background: var(--critical);
+}
+.seg-BLOCKED,
+.seg-NOT_TESTED {
+  background: repeating-linear-gradient(45deg, var(--unknown) 0 2px, var(--unknown-wash) 2px 6px);
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  margin: 6px 0;
+}
+.legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 0.82rem;
+}
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chart .gridline {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+.chart .axis-label {
+  fill: var(--muted);
+  font-size: 11px;
+}
+.chart .series {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.chart .end-label {
+  fill: var(--ink-2);
+  font-size: 11px;
+}
+.theme-toggle {
+  font: inherit;
+  font-size: 0.8rem;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+footer {
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 24px;
+}
+@media (forced-colors: active) {
+  .seg-PASS,
+  .seg-PARTIAL,
+  .seg-FAIL {
+    forced-color-adjust: none;
+  }
+}
+@media print {
+  nav.tabs,
+  .filters,
+  .theme-toggle {
+    display: none;
+  }
+  section.view[hidden] {
+    display: block !important;
+  }
+}
+/* SPDX-License-Identifier: MIT */
+/* SPDX-FileCopyrightText: 2026 EnWithAI Technologies */
+/* Assurance dashboard additions (closure funnel, phase strip, decision hero). Inlined after dashboard.css. */
+.funnel {
+  display: grid;
+  gap: 6px;
+}
+.funnel .step {
+  display: grid;
+  grid-template-columns: minmax(110px, 180px) 1fr 48px;
+  gap: 8px;
+  align-items: center;
+}
+.funnel .bar {
+  height: 18px;
+  border-radius: 4px;
+  background: var(--grid);
+  overflow: hidden;
+}
+.funnel .bar > span {
+  display: block;
+  height: 100%;
+  background: var(--s-customer);
+}
+.funnel .step.done .bar > span {
+  background: var(--good);
+}
+.funnel .step.side .bar > span {
+  background: var(--unknown);
+}
+.phases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+.phases .card h4 {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+}
+.decision {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.insufficient {
+  border: 2px dashed var(--unknown);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+}
+pre.export {
+  max-height: 360px;
+  overflow: auto;
+  white-space: pre;
+}
+button.copy {
+  margin: 4px 0;
+}
+.decision.tone-good {
+  color: var(--good);
+}
+.decision.tone-warning {
+  color: var(--ink);
+  text-decoration: underline wavy var(--warning);
+}
+.decision.tone-critical {
+  color: var(--critical);
+}
+.decision.tone-unknown {
+  color: var(--unknown);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div><h1>Product Check assurance: Vibe Invoices (synthetic demo)</h1><div class="meta">Release gate RG-38FEA49F6F · scan PCR-20261108T075100Z-E27953 · CT3 v3.2</div></div><button class="theme-toggle" type="button" hidden>Theme: auto</button></header>
+
+<nav class="tabs" aria-label="Dashboard views"><a href="#gate" aria-current="page">Release gate</a><a href="#coverage">Coverage &amp; phases</a><a href="#findings">Findings</a><a href="#closure">Closure</a><a href="#risk">Risk &amp; approvals</a><a href="#tests">Tests &amp; verification</a><a href="#blueprint">Blueprint</a><a href="#export">Agent export</a></nav>
+<main>
+<section class="view" id="gate" aria-labelledby="h-gate"><h2 id="h-gate">Release gate</h2>
+<div class="hero"><div><div class="small muted">Release decision</div><div class="decision tone-critical">NO GO</div><div class="small muted">Head fd2abcf59c99 · evaluated 2026-11-08T07:51:01.246Z</div></div>
+<div><div>Baseline product verdict: <span class="chip unknown"><span class="dot" aria-hidden="true"></span>INCONCLUSIVE</span></div><div>Current change gate: <span class="chip critical"><span class="dot" aria-hidden="true"></span>BLOCK</span></div></div></div>
+
+<ul class="reasons"><li>RC-2 P1 handled under the CT3 policy (fixed, or a valid unexpired acceptance): 3 P1 without a valid acceptance; 0 expired acceptance(s); change-review P1 blockers: 3.</li><li>Change gate BLOCK: 3 verified (or fail-closed P0) blocking finding(s).</li><li>RC-4 Human approvals valid for the head commit: 0/2 valid signed approval(s) (scope change:simplify-invoices).</li></ul>
+<div class="grid three"><div class="card"><h3>Customer</h3><div class="dial-value">Not scored</div><div class="small">Coverage 15% · confidence LOW</div><div class="meter" aria-hidden="true"><span style="width:15%"></span></div><span class="chip unknown"><span class="dot" aria-hidden="true"></span>Insufficient evidence</span></div><div class="card"><h3>Technology</h3><div class="dial-value">39/100</div><div class="small">Coverage 75% · confidence MEDIUM</div><div class="meter" aria-hidden="true"><span style="width:75%"></span></div></div><div class="card"><h3>Trust</h3><div class="dial-value">100/100</div><div class="small">Coverage 60% · confidence MEDIUM</div><div class="meter" aria-hidden="true"><span style="width:60%"></span></div></div></div>
+<div class="grid kpis"><div class="card kpi"><div class="label">Open P0</div><div class="value">0</div></div><div class="card kpi"><div class="label">Open P1</div><div class="value">3</div></div><div class="card kpi"><div class="label">Open P2</div><div class="value">3</div></div><div class="card kpi"><div class="label">Executed checks</div><div class="value">5/5 passed</div></div><div class="card kpi"><div class="label">Valid approvals</div><div class="value">0/2</div></div><div class="card kpi"><div class="label">Accepted risks</div><div class="value">0</div></div></div>
+<h3>Release conditions</h3><div class="scroll"><table><thead><tr><th>Condition</th><th>Status</th><th>Detail</th></tr></thead><tbody><tr><td>RC-0 Product scan describes the head commit</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT EVALUATED</span></td><td class="small">The product scan is for 28d05afb57f3, HEAD is fd2abcf59c99: its verdict and gates describe an older commit. Re-run: product-check retest --baseline &lt;results&gt; --repo . --out-dir &lt;workspace&gt;, then product-check register.</td></tr><tr><td>RC-1 No open P0 or failed hard gate</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">0 open P0; failed gates: none (scan is stale; gates not re-checked at HEAD); change-review P0 blockers: 0.</td></tr><tr><td>RC-2 P1 handled under the CT3 policy (fixed, or a valid unexpired acceptance)</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span></td><td class="small">3 P1 without a valid acceptance; 0 expired acceptance(s); change-review P1 blockers: 3.</td></tr><tr><td>RC-3 Required checks executed and green at the head commit</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">Proof PR-29684B79B8: PASS.</td></tr><tr><td>RC-4 Human approvals valid for the head commit</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span></td><td class="small">0/2 valid signed approval(s) (scope change:simplify-invoices).</td></tr><tr><td>RC-5 Coverage gaps disclosed</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">16 gap(s) disclosed below; overall coverage 50%.</td></tr><tr><td>RC-6 Targeted fixes retested</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">No fix is waiting for verification.</td></tr><tr><td>RC-7 Rollback or containment available for material risk</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">Rollback plan: Revert the release commit and redeploy the previous build.</td></tr><tr><td>RC-8 No material regression</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">No regressed finding or control.</td></tr></tbody></table></div>
+<p class="bounded">Applies only to repository &quot;Vibe Invoices (synthetic demo)&quot; at revision 28d05afb57f3 and no deployed application, assessed 2026-11-08T07:51:00.658Z. 12 of 24 applicable controls were checked; 12 were blocked or not tested. A material change invalidates this verdict.</p></section>
+<section class="view" id="coverage" aria-labelledby="h-cov"><h2 id="h-cov">Coverage &amp; phases</h2>
+<p>Lifecycle tier <strong>CT-T1</strong> (applied CT-T0, CT-T1). Execution phases VC-P0…P7 describe what was actually run and are separate from lifecycle tiers.</p>
+<div class="phases"><div class="card"><h4>VC-P0 Intake and baseline</h4><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span><p class="small">Scan PCR-20261108T075100Z-E27953 (COMPLETED, SOURCE, CT-T1) at 28d05afb57f3; PoP 4 available / 2 blocked.</p></div><div class="card"><h4>VC-P1 Author-side proof</h4><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span><p class="small">Proof PR-29684B79B8: PASS, 1/1 command(s) passed at fd2abcf59c99.</p></div><div class="card"><h4>VC-P2 Layered independent review</h4><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span><p class="small">Review CR-97A3E2D1F6: 4 finding(s), 1 disproven; lanes not run: spec-outcome.</p></div><div class="card"><h4>VC-P3 Risk-routed gate</h4><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span><p class="small">Change risk HIGH, gate BLOCK, 0/2 valid approval(s).</p></div><div class="card"><h4>VC-P4 Blueprint and repair</h4><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span><p class="small">3 fix packet(s); blueprint from scan PCR-20261108T075100Z-E27953.</p></div><div class="card"><h4>VC-P5 Closure verification</h4><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span><p class="small">2 verification run(s): 1 PASS, 1 FAIL, 0 INCONCLUSIVE.</p></div><div class="card"><h4>VC-P6 Merge and release</h4><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span><p class="small">Release gate evaluated against the current commit with approval staleness. Merge-queue simulation, staged rollout and live canary watch are not executed by Product Check (declare a rollout plan; watch is NOT_SUPPORTED).</p></div><div class="card"><h4>VC-P7 Learn and assure</h4><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span><p class="small">1 regression corpus case(s); 0 false positive(s); 0 regressed finding(s). Telemetry-driven incident import is not supported.</p></div></div>
+<h3>Points of presence: inspected vs blocked</h3><div class="scroll"><table><thead><tr><th>PoP</th><th>Category</th><th>Status</th><th>Relevant</th><th>Limitations</th></tr></thead><tbody><tr><td>Source repository</td><td>source-build</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td>yes</td><td class="small"></td></tr><tr><td>Dependency manifests</td><td>source-build</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td>yes</td><td class="small"></td></tr><tr><td>Automated test sources</td><td>source-build</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td>yes</td><td class="small"></td></tr><tr><td>Executed test results</td><td>source-build</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td><td>yes</td><td class="small">No executed test results were imported (Product Check never runs repository code).</td></tr><tr><td>CI/CD configuration</td><td>source-build</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span></td><td>yes</td><td class="small">No CI configuration found.</td></tr><tr><td>Hosting / infrastructure configuration</td><td>operations</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td>no</td><td class="small">No hosting or IaC files in the repository.</td></tr><tr><td>Database schema and migrations</td><td>data</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td>no</td><td class="small">No database dependency detected.</td></tr><tr><td>Deployed web application</td><td>experience</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td><td>yes</td><td class="small">No deployed URL was provided (--url).</td></tr><tr><td>API definition (OpenAPI/GraphQL)</td><td>interfaces</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td>no</td><td class="small">No API definition files found.</td></tr><tr><td>Production telemetry (logs, metrics, traces, alerts)</td><td>operations</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td>no</td><td class="small">Not required before launch tiers (CT-T4+).</td></tr><tr><td>AI integration (SDKs, prompts, evals)</td><td>ai</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td>no</td><td class="small">No AI SDK detected.</td></tr><tr><td>Documentation and specifications</td><td>governance</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td>yes</td><td class="small"></td></tr><tr><td>Privacy and security policies</td><td>governance</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span></td><td>yes</td><td class="small">Presence only; policy content is not assessed (this is not a legal review).</td></tr></tbody></table></div>
+<h3>Disclosed gaps</h3><ul class="small"><li>Executed test results: BLOCKED (No executed test results were imported (Product Check never runs repository code).)</li><li>CI/CD configuration: PARTIAL (No CI configuration found.)</li><li>Deployed web application: BLOCKED (No deployed URL was provided (--url).)</li><li>Privacy and security policies: PARTIAL (Presence only; policy content is not assessed (this is not a legal review).)</li><li>PC-C-02 not tested</li><li>PC-C-03 not tested</li><li>PC-C-04 not tested</li><li>PC-C-06 not tested</li><li>PC-C-09 not tested</li><li>PC-C-10 not tested</li><li>PC-T-03 not tested</li><li>PC-S-13 not tested</li><li>PC-C-01 blocked</li><li>PC-C-05 blocked</li><li>PC-C-07 blocked</li><li>PC-S-09 blocked</li></ul></section>
+<section class="view" id="findings" aria-labelledby="h-f"><h2 id="h-f">Findings</h2>
+
+<div class="filters" data-filter-table="tbl-findings"><label>sev <select data-key="sev"><option value="">all</option><option value="p0">P0</option><option value="p1">P1</option><option value="p2">P2</option><option value="p3">P3</option></select></label><label>ver <select data-key="ver"><option value="">all</option><option value="confirmed">CONFIRMED</option><option value="corroborated">CORROBORATED</option><option value="reproduced">REPRODUCED</option><option value="evidence_collected">EVIDENCE_COLLECTED</option><option value="needs_human_triage">NEEDS_HUMAN_TRIAGE</option><option value="suspected">SUSPECTED</option></select></label><label>state <select data-key="state"><option value="">all</option><option value="open">OPEN</option><option value="acknowledged">ACKNOWLEDGED</option><option value="in_progress">IN_PROGRESS</option><option value="retest_required">RETEST_REQUIRED</option><option value="verified_fixed">VERIFIED_FIXED</option><option value="closed">CLOSED</option><option value="accepted_risk">ACCEPTED_RISK</option><option value="regressed">REGRESSED</option><option value="rejected_false_positive">REJECTED_FALSE_POSITIVE</option></select></label><label>Search <input data-key="text" type="search"></label> <span class="small muted" data-count></span></div>
+<div class="scroll"><table id="tbl-findings"><thead><tr><th>Finding</th><th>Sev</th><th>Verification</th><th>State</th><th>Source</th><th>Control/rule</th><th>Where</th><th>Owner</th><th>Age</th><th>Title</th></tr></thead><tbody><tr data-sev="P0" data-ver="CONFIRMED" data-state="CLOSED"><td><code>F-001</code></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>CONFIRMED</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>CLOSED</span></td><td>baseline-scan</td><td><code>PC-S-01</code></td><td class="small"><code>app/checkout/page.tsx:1</code></td><td>coding-agent</td><td class="num">0d</td><td>Stripe secret key in app/checkout/page.tsx</td></tr><tr data-sev="P2" data-ver="EVIDENCE_COLLECTED" data-state="OPEN"><td><code>F-002</code></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>EVIDENCE COLLECTED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>baseline-scan</td><td><code>PC-T-04</code></td><td class="small"><code>repository</code></td><td>unassigned</td><td class="num">0d</td><td>No CI pipeline</td></tr><tr data-sev="P2" data-ver="EVIDENCE_COLLECTED" data-state="OPEN"><td><code>F-003</code></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>EVIDENCE COLLECTED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>baseline-scan</td><td><code>PC-C-08</code></td><td class="small"><code>repository</code></td><td>unassigned</td><td class="num">0d</td><td>Critical journeys have no end-to-end tests</td></tr><tr data-sev="P2" data-ver="EVIDENCE_COLLECTED" data-state="OPEN"><td><code>F-004</code></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>EVIDENCE COLLECTED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>baseline-scan</td><td><code>PC-T-01</code></td><td class="small"><code>package.json</code></td><td>unassigned</td><td class="num">0d</td><td>No lockfile: builds are not reproducible</td></tr><tr data-sev="P3" data-ver="EVIDENCE_COLLECTED" data-state="OPEN"><td><code>F-005</code></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>EVIDENCE COLLECTED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>baseline-scan</td><td><code>PC-T-07</code></td><td class="small"><code>repository</code></td><td>unassigned</td><td class="num">0d</td><td>Runtime version is not declared</td></tr><tr data-sev="P3" data-ver="EVIDENCE_COLLECTED" data-state="OPEN"><td><code>F-006</code></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>EVIDENCE COLLECTED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>baseline-scan</td><td><code>PC-T-06</code></td><td class="small"><code>README.md</code></td><td>unassigned</td><td class="num">0d</td><td>README lacks setup/run instructions</td></tr><tr data-sev="P3" data-ver="EVIDENCE_COLLECTED" data-state="OPEN"><td><code>F-007</code></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>EVIDENCE COLLECTED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>baseline-scan</td><td><code>PC-T-08</code></td><td class="small"><code>repository</code></td><td>unassigned</td><td class="num">0d</td><td>No type checking or linting configured</td></tr><tr data-sev="P1" data-ver="CONFIRMED" data-state="OPEN"><td><code>F-008</code></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>P1</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>CONFIRMED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>change-review</td><td><code>VC-TR-AUTHZ-REMOVED</code></td><td class="small"><code>app/api/invoices/route.ts</code></td><td>unassigned</td><td class="num">0d</td><td>Authentication or authorization check removed</td></tr><tr data-sev="P1" data-ver="CORROBORATED" data-state="OPEN"><td><code>F-009</code></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>P1</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>CORROBORATED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>change-review</td><td><code>VC-EXT-CLAIM</code></td><td class="small"><code>app/api/invoices/route.ts:2</code></td><td>unassigned</td><td class="num">0d</td><td>Possible IDOR: invoice fetched by id without owner check</td></tr><tr data-sev="P1" data-ver="CORROBORATED" data-state="OPEN"><td><code>F-010</code></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>P1</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>CORROBORATED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>change-review</td><td><code>VC-TR-OBJECT-AUTHZ</code></td><td class="small"><code>app/api/invoices/route.ts:2</code></td><td>unassigned</td><td class="num">0d</td><td>Object fetched by request ID without an ownership or tenant filter</td></tr><tr data-sev="P3" data-ver="CORROBORATED" data-state="OPEN"><td><code>F-011</code></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>CORROBORATED</span></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>OPEN</span></td><td>change-review</td><td><code>VC-CR-NO-TESTS</code></td><td class="small"><code>app/api/invoices/route.ts</code></td><td>unassigned</td><td class="num">0d</td><td>Behavior changed without any test change</td></tr></tbody></table></div>
+<h3>Awaiting corroboration (not proven defects)</h3><div class="scroll"><table><thead><tr><th>Finding</th><th>Sev</th><th>Title</th><th>Checks</th></tr></thead><tbody><tr><td colspan="4" class="muted">None.</td></tr></tbody></table></div>
+<h3>False-positive trend by rule</h3><div class="scroll"><table><thead><tr><th>Rule/control</th><th>Rejected as false positive</th></tr></thead><tbody><tr><td colspan="2" class="muted">None.</td></tr></tbody></table></div>
+<h3>Disproven reviewer claims (1)</h3><div class="scroll"><table><thead><tr><th>ID</th><th>Reviewer</th><th>Claim</th><th>Why</th></tr></thead><tbody><tr><td><code>RF-71CCA391A5</code></td><td>ai-code-reviewer (ai)</td><td>Race condition when totals are recomputed</td><td class="small">app/api/invoices/route.ts has 4 lines; line 40 does not exist.</td></tr></tbody></table></div></section>
+<section class="view" id="closure" aria-labelledby="h-c"><h2 id="h-c">Closure</h2>
+<p class="small">A proposed fix is not a fix: findings move to VERIFIED_FIXED only through a passing verification at the exact fix commit, and to CLOSED only with signed human approval.</p>
+<div class="funnel"><div class="step "><span>Open / acknowledged</span><div class="bar" role="img" aria-label="Open / acknowledged: 10"><span style="width:100%"></span></div><span class="num">10</span></div><div class="step "><span>Remediation</span><div class="bar" role="img" aria-label="Remediation: 0"><span style="width:0%"></span></div><span class="num">0</span></div><div class="step "><span>Retest required</span><div class="bar" role="img" aria-label="Retest required: 0"><span style="width:0%"></span></div><span class="num">0</span></div><div class="step done"><span>Verified fixed</span><div class="bar" role="img" aria-label="Verified fixed: 0"><span style="width:0%"></span></div><span class="num">0</span></div><div class="step done"><span>Closed</span><div class="bar" role="img" aria-label="Closed: 1"><span style="width:10%"></span></div><span class="num">1</span></div><div class="step side"><span>Accepted risk</span><div class="bar" role="img" aria-label="Accepted risk: 0"><span style="width:0%"></span></div><span class="num">0</span></div><div class="step side"><span>Deferred</span><div class="bar" role="img" aria-label="Deferred: 0"><span style="width:0%"></span></div><span class="num">0</span></div><div class="step side"><span>Regressed</span><div class="bar" role="img" aria-label="Regressed: 0"><span style="width:0%"></span></div><span class="num">0</span></div><div class="step side"><span>Rejected (false positive)</span><div class="bar" role="img" aria-label="Rejected (false positive): 0"><span style="width:0%"></span></div><span class="num">0</span></div></div>
+<div class="grid kpis"><div class="card kpi"><div class="label">Verification runs</div><div class="value">2</div></div><div class="card kpi"><div class="label">Avg cycles to verified fix</div><div class="value">2.0</div></div><div class="card kpi"><div class="label">Escalated</div><div class="value">0</div></div><div class="card kpi"><div class="label">Repeated unchanged (review)</div><div class="value">0</div></div><div class="card kpi"><div class="label">Disproven claims</div><div class="value">1</div></div><div class="card kpi"><div class="label">Chain length</div><div class="value">20</div></div></div>
+<h3>Closures</h3><div class="scroll"><table><thead><tr><th>Closure</th><th>Finding</th><th>Actor</th><th>At</th><th>Verification</th><th>Approvals</th></tr></thead><tbody><tr><td><code>CL-001</code></td><td><code>F-001</code></td><td>alice</td><td>2026-11-08T07:51:00.483Z</td><td><code>VR-002</code></td><td class="small">AP-3039A2C12FC1, AP-C7085600D1FF</td></tr></tbody></table></div></section>
+<section class="view" id="risk" aria-labelledby="h-r"><h2 id="h-r">Risk &amp; approvals</h2>
+<p>Change simplify-invoices 28d05afb57f3 → fd2abcf59c99: risk <span class="chip critical"><span class="dot" aria-hidden="true"></span>HIGH</span> (treated as HIGH), gate <span class="chip critical"><span class="dot" aria-hidden="true"></span>BLOCK</span>, cycle 1/3.</p><ul class="small"><li>High-risk surface(s) touched: auth, billing (app/api/invoices/route.ts).</li></ul>
+<p>Required: 2 human approval(s). Waiver: Not eligible: risk is HIGH.</p>
+<div class="scroll"><table><thead><tr><th>Approval</th><th>Approver</th><th>Status</th><th>Reason</th></tr></thead><tbody><tr><td colspan="4" class="muted">None.</td></tr></tbody></table></div>
+<h3>Lanes</h3><div class="scroll"><table><thead><tr><th>Lane</th><th>Status</th><th>Findings</th><th>Notes</th></tr></thead><tbody><tr><td>spec-outcome</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td><td class="num">0</td><td class="small">No Spec Check or Outcome Check report supplied (--spec-check, --outcome-check); intent vs outcome not reviewed.</td></tr><tr><td>correctness</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span></td><td class="num">2</td><td class="small">Ran over 1 changed file(s).</td></tr><tr><td>impact</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span></td><td class="num">0</td><td class="small">Blast radius from paths only (no Impact Check report): 1 file(s), surfaces auth, billing.</td></tr><tr><td>trust-security</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span></td><td class="num">2</td><td class="small">Ran over 1 changed file(s).</td></tr><tr><td>experience</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="num">0</td><td class="small">No files in this lane&#39;s scope changed.</td></tr><tr><td>operations</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="num">0</td><td class="small">Ran over 1 changed file(s).</td></tr></tbody></table></div>
+<h3>Accepted risks and expiry</h3><div class="scroll"><table><thead><tr><th>Acceptance</th><th>Finding</th><th>Owner</th><th>Scope</th><th>Review</th><th>Expires</th><th>Status</th></tr></thead><tbody><tr><td colspan="7" class="muted">None.</td></tr></tbody></table></div>
+<h3>Signed approvals on record</h3><div class="scroll"><table><thead><tr><th>Approval</th><th>Approver</th><th>Scope</th><th>Reviewed commit</th><th>Decision</th><th>Signed</th></tr></thead><tbody><tr><td><code>AP-3039A2C12FC1</code></td><td>alice (human)</td><td>closure:F-001</td><td><code>28d05afb57f3</code></td><td>approve</td><td>Ed25519</td></tr><tr><td><code>AP-C7085600D1FF</code></td><td>bob (human)</td><td>closure:F-001</td><td><code>28d05afb57f3</code></td><td>approve</td><td>Ed25519</td></tr></tbody></table></div></section>
+<section class="view" id="tests" aria-labelledby="h-t"><h2 id="h-t">Tests &amp; verification</h2>
+<h3>Author-side proof</h3><p><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span> at <code>fd2abcf59c99</code>. All 1 required check(s) passed at fd2abcf59c99.</p>
+<h3>Command executions</h3><div class="scroll"><table><thead><tr><th>Run</th><th>Command</th><th>Purpose</th><th>Status</th><th>Exit</th><th>Duration</th><th>Commit</th><th>Environment</th><th>Output digest</th></tr></thead><tbody><tr><td><code>PR-29684B79B8</code></td><td><code>node --test</code></td><td>test</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="num">0</td><td class="num">117 ms</td><td><code>fd2abcf59c99</code></td><td><code>ENV-CD6F3E6F8C</code></td><td class="small"><code>50c9ea18f7d2</code></td></tr><tr><td><code>VR-001</code></td><td><code>node --test test/secret.test.mjs</code></td><td>reproduction</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="num">0</td><td class="num">115 ms</td><td><code>2d9a97671bab</code></td><td><code>ENV-CD6F3E6F8C</code></td><td class="small"><code>9927d36e3175</code></td></tr><tr><td><code>VR-001</code></td><td><code>node --test</code></td><td>test</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="num">0</td><td class="num">125 ms</td><td><code>2d9a97671bab</code></td><td><code>ENV-CD6F3E6F8C</code></td><td class="small"><code>cdd172a7ee63</code></td></tr><tr><td><code>VR-002</code></td><td><code>node --test test/secret.test.mjs</code></td><td>reproduction</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="num">0</td><td class="num">111 ms</td><td><code>28d05afb57f3</code></td><td><code>ENV-CD6F3E6F8C</code></td><td class="small"><code>6d457ab47b34</code></td></tr><tr><td><code>VR-002</code></td><td><code>node --test</code></td><td>test</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="num">0</td><td class="num">119 ms</td><td><code>28d05afb57f3</code></td><td><code>ENV-CD6F3E6F8C</code></td><td class="small"><code>2fab5377e622</code></td></tr></tbody></table></div>
+<h3>Verification runs</h3><div class="scroll"><table><thead><tr><th>Run</th><th>Findings</th><th>Fix</th><th>Commit</th><th>Result</th><th>Checks</th><th>Reasons</th></tr></thead><tbody><tr><td><code>VR-001</code></td><td>F-001</td><td>FX-001</td><td><code>2d9a97671bab</code></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span></td><td class="small">targeted:F-001:control <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br>targeted:F-001:gate <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br>targeted:repro-1 <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br>regression:unit <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br>regression:no-new-critical <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br>regression:controls <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">Failed: targeted:F-001:control — The original location is gone but PC-S-01 still fails at app/lib/config.ts:1 (P0): the fix moved the problem. | targeted:F-001:gate — Associated hard gate G-SECRETS: FAIL. | regression:no-new-critical — New P0/P1 finding(s): PCF-AC2DF9263D.</td></tr><tr><td><code>VR-002</code></td><td>F-001</td><td>FX-002</td><td><code>28d05afb57f3</code></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">targeted:F-001:control <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br>targeted:F-001:gate <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br>targeted:repro-1 <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br>regression:unit <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br>regression:no-new-critical <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br>regression:controls <span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span></td><td class="small">All 6 targeted and regression check(s) passed at 28d05afb57f3.</td></tr></tbody></table></div>
+<h3>Regression corpus (incident-derived)</h3><div class="scroll"><table><thead><tr><th>Case</th><th>Finding</th><th>Origin</th><th>Command</th><th>Added</th></tr></thead><tbody><tr><td><code>RC-001</code></td><td><code>F-001</code></td><td>verified-fix</td><td><code>node --test test/secret.test.mjs</code></td><td>2026-11-08T07:51:00.566Z by alice</td></tr></tbody></table></div>
+<h3>Merge &amp; rollout watch</h3><p><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT SUPPORTED</span> Product Check does not simulate merge queues, run canaries or read live telemetry. Rollback plan: Revert the release commit and redeploy the previous build.</p></section>
+<section class="view" id="blueprint" aria-labelledby="h-b"><h2 id="h-b">Blueprint</h2>
+<p class="small">Mermaid sources (paste into any Mermaid viewer; this page loads nothing external). Inferred components are labelled.</p>
+<h3>As-is architecture and gaps</h3><button class="copy" type="button" data-copy="mm-asis" hidden>Copy</button><pre id="mm-asis">flowchart LR\n  subgraph cat_framework[&quot;framework&quot;]\n    CMP_framework_next_js[&quot;Next.js&quot;]\n    CMP_framework_react[&quot;React&quot;]\n  end\n  gap_F_001{{&quot;F-001 P0: Stripe secret key in app/checkout/page.tsx&quot;}}\n  class gap_F_001 gap\n  gap_F_008{{&quot;F-008 P1: Authentication or authorization check removed&quot;}}\n  class gap_F_008 gap\n  gap_F_009{{&quot;F-009 P1: Possible IDOR: invoice fetched by id without owner check&quot;}}\n  class gap_F_009 gap\n  gap_F_010{{&quot;F-010 P1: Object fetched by request ID without an ownership or tenant &quot;}}\n  class gap_F_010 gap\n  classDef gap fill:#fde6e6,stroke:#d03b3b\n  classDef todo fill:#fff4d6,stroke:#b07d00\n  classDef done fill:#e3f6e3,stroke:#0c7a0c</pre>
+<h3>To-be architecture</h3><button class="copy" type="button" data-copy="mm-tobe" hidden>Copy</button><pre id="mm-tobe">flowchart LR\n  subgraph cat_framework[&quot;framework&quot;]\n    CMP_framework_next_js[&quot;Next.js&quot;]\n    CMP_framework_react[&quot;React&quot;]\n  end\n  fix_F_001[&quot;verified: Stripe secret key in app/checkout/page.tsx&quot;]\n  class fix_F_001 done\n  fix_F_008[&quot;planned: Every protected route keeps an authentication and authorizat&quot;]\n  class fix_F_008 todo\n  fix_F_009[&quot;planned: (as stated by the reviewer)&quot;]\n  class fix_F_009 todo\n  fix_F_010[&quot;planned: Objects looked up by a client-supplied ID are scoped to the &quot;]\n  class fix_F_010 todo\n  TB_PC_C_08([&quot;Each critical journey has an end-to-end test that gates depl&quot;])\n  TB_PC_T_01([&quot;Lockfile committed; CI installs with a frozen lockfile.&quot;])\n  TB_PC_T_04([&quot;Every pull request runs build, lint and tests automatically.&quot;])\n  TB_PC_T_06([&quot;README documents setup, environment and test commands.&quot;])\n  TB_PC_T_07([&quot;Runtime version declared once and used by CI and hosting.&quot;])\n  TB_PC_T_08([&quot;Type check and lint run in CI.&quot;])\n  classDef gap fill:#fde6e6,stroke:#d03b3b\n  classDef todo fill:#fff4d6,stroke:#b07d00\n  classDef done fill:#e3f6e3,stroke:#0c7a0c</pre>
+<h3>Improvement backlog (fix packets)</h3><div class="scroll"><table><thead><tr><th>Packet</th><th>Sev</th><th>Risk</th><th>Status</th><th>Where</th><th>Proposed change</th><th>Acceptance</th></tr></thead><tbody><tr><td><code>FP-F-008</code></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>P1</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>HIGH</span></td><td>PROPOSED</td><td class="small"><code>app/api/invoices/route.ts</code></td><td class="small">Every protected route keeps an authentication and authorization check.</td><td class="small">Every protected route keeps an authentication and authorization check. · product-check verify --finding F-008 passes at the exact fix commit. · Signed human approval(s) for closure (2).</td></tr><tr><td><code>FP-F-009</code></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>P1</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>HIGH</span></td><td>PROPOSED</td><td class="small"><code>app/api/invoices/route.ts:2</code></td><td class="small">(as stated by the reviewer)</td><td class="small">(as stated by the reviewer) · product-check verify --finding F-009 passes at the exact fix commit. · Signed human approval(s) for closure (2).</td></tr><tr><td><code>FP-F-010</code></td><td><span class="chip serious"><span class="dot" aria-hidden="true"></span>P1</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>HIGH</span></td><td>PROPOSED</td><td class="small"><code>app/api/invoices/route.ts:2</code></td><td class="small">Objects looked up by a client-supplied ID are scoped to the signed-in user or tenant.</td><td class="small">Objects looked up by a client-supplied ID are scoped to the signed-in user or tenant. · product-check verify --finding F-010 passes at the exact fix commit. · Signed human approval(s) for closure (2).</td></tr></tbody></table></div></section>
+<section class="view" id="export" aria-labelledby="h-x"><h2 id="h-x">Agent export</h2>
+<p class="small">Fix packets for an engineering agent (for example CrewPE as an optional executor). Evidence is referenced by ID; excerpts, command output and credentials are not included.</p>
+<button class="copy" type="button" data-copy="agent-export" hidden>Copy JSON</button><pre class="export" id="agent-export">{\n  &quot;kind&quot;: &quot;product-check-agent-export&quot;,\n  &quot;note&quot;: &quot;Proposals only. Apply with permission; a fix is not verified until product-check verify passes at the exact fix commit; closure needs signed human approval.&quot;,\n  &quot;target&quot;: {\n    &quot;name&quot;: &quot;Vibe Invoices (synthetic demo)&quot;,\n    &quot;repository&quot;: &quot;Vibe Invoices (synthetic demo)&quot;\n  },\n  &quot;head_sha&quot;: &quot;fd2abcf59c99048368b63f0337e213fe1606c2e9&quot;,\n  &quot;release_decision&quot;: &quot;NO_GO&quot;,\n  &quot;packets&quot;: [\n    {\n      &quot;fix_id&quot;: &quot;FP-F-008&quot;,\n      &quot;finding_ids&quot;: [\n        &quot;F-008&quot;\n      ],\n      &quot;severity&quot;: &quot;P1&quot;,\n      &quot;risk_class&quot;: &quot;HIGH&quot;,\n      &quot;title&quot;: &quot;VC-TR-AUTHZ-REMOVED: Authentication or authorization check removed&quot;,\n      &quot;locations&quot;: [\n        &quot;app/api/invoices/route.ts&quot;\n      ],\n      &quot;root_cause&quot;: {\n        &quot;hypothesis&quot;: &quot;app/api/invoices/route.ts removes 1 line(s) with an auth check (old line 3: const user = await requireAuth(req);) and adds none. Expected: Every protected route keeps an authentication and authorization check.&quot;,\n        &quot;certainty&quot;: &quot;fact&quot;,\n        &quot;confidence&quot;: &quot;HIGH&quot;\n      },\n      &quot;proposed_change&quot;: &quot;Every protected route keeps an authentication and authorization check.&quot;,\n      &quot;constraints&quot;: [\n        &quot;Change only what the packet&#39;s scope guard allows; anything else needs a new review.&quot;,\n        &quot;Do not disable, skip or weaken tests, checks or security controls to make verification pass.&quot;,\n        &quot;Use synthetic data; never commit credentials or real personal data.&quot;,\n        &quot;A proposed fix is not a verified fix: run product-check verify against the exact fix commit.&quot;,\n        &quot;An agent cannot approve its own change; closure needs signed human approval for the risk tier.&quot;\n      ],\n      &quot;tests_required&quot;: [\n        {\n          &quot;id&quot;: &quot;reproduction:F-008&quot;,\n          &quot;kind&quot;: &quot;reproduction&quot;,\n          &quot;description&quot;: &quot;The VC-TR-AUTHZ-REMOVED rule no longer matches at the fix commit (built into verify), plus a declared test that fails before the fix.&quot;,\n          &quot;argv&quot;: null\n        },\n        {\n          &quot;id&quot;: &quot;regression:unit&quot;,\n          &quot;kind&quot;: &quot;regression&quot;,\n          &quot;description&quot;: &quot;Policy required check unit (test).&quot;,\n          &quot;argv&quot;: [\n            &quot;node&quot;,\n            &quot;--test&quot;\n          ]\n        }\n      ],\n      &quot;negative_cases&quot;: [\n        &quot;An unauthenticated request to the affected path is refused (401/403), not served.&quot;,\n        &quot;A signed-in user cannot read or change another user&#39;s or tenant&#39;s record by changing an ID.&quot;,\n        &quot;No credential or privileged value appears in the client bundle or responses.&quot;\n      ],\n      &quot;acceptance_conditions&quot;: [\n        &quot;Every protected route keeps an authentication and authorization check.&quot;,\n        &quot;product-check verify --finding F-008 passes at the exact fix commit.&quot;,\n        &quot;Signed human approval(s) for closure (2).&quot;\n      ],\n      &quot;scope_guard&quot;: {\n        &quot;allowed_paths&quot;: [\n          &quot;app/api/invoices/route.ts&quot;,\n          &quot;test/**&quot;,\n          &quot;tests/**&quot;,\n          &quot;**/*.test.*&quot;,\n          &quot;**/*.spec.*&quot;\n        ],\n        &quot;note&quot;: &quot;Edits outside these paths need explicit approval or a new review.&quot;\n      },\n      &quot;rollback_plan&quot;: &quot;Revert the fix commit (git revert &lt;fix-sha&gt;) and redeploy the previous release; follow Revert the release commit and redeploy the previous build. If the fix includes a data migration, run its down step first and confirm with a backup restore test.&quot;,\n      &quot;evidence_refs&quot;: [\n        &quot;EVR-3F69C5B23572&quot;\n      ]\n    },\n    {\n      &quot;fix_id&quot;: &quot;FP-F-009&quot;,\n      &quot;finding_ids&quot;: [\n        &quot;F-009&quot;\n      ],\n      &quot;severity&quot;: &quot;P1&quot;,\n      &quot;risk_class&quot;: &quot;HIGH&quot;,\n      &quot;title&quot;: &quot;VC-EXT-CLAIM: Possible IDOR: invoice fetched by id without owner check&quot;,\n      &quot;locations&quot;: [\n        &quot;app/api/invoices/route.ts:2&quot;\n      ],\n      &quot;root_cause&quot;: {\n        &quot;hypothesis&quot;: &quot;findUnique({ where: { id: params.id } }) is not scoped to the user. Expected: (as stated by the reviewer)&quot;,\n        &quot;certainty&quot;: &quot;hypothesis&quot;,\n        &quot;confidence&quot;: &quot;LOW&quot;\n      },\n      &quot;proposed_change&quot;: &quot;(as stated by the reviewer)&quot;,\n      &quot;constraints&quot;: [\n        &quot;Change only what the packet&#39;s scope guard allows; anything else needs a new review.&quot;,\n        &quot;Do not disable, skip or weaken tests, checks or security controls to make verification pass.&quot;,\n        &quot;Use synthetic data; never commit credentials or real personal data.&quot;,\n        &quot;A proposed fix is not a verified fix: run product-check verify against the exact fix commit.&quot;,\n        &quot;An agent cannot approve its own change; closure needs signed human approval for the risk tier.&quot;\n      ],\n      &quot;tests_required&quot;: [\n        {\n          &quot;id&quot;: &quot;reproduction:F-009&quot;,\n          &quot;kind&quot;: &quot;reproduction&quot;,\n          &quot;description&quot;: &quot;The VC-EXT-CLAIM rule no longer matches at the fix commit (built into verify), plus a declared test that fails before the fix.&quot;,\n          &quot;argv&quot;: null\n        },\n        {\n          &quot;id&quot;: &quot;regression:unit&quot;,\n          &quot;kind&quot;: &quot;regression&quot;,\n          &quot;description&quot;: &quot;Policy required check unit (test).&quot;,\n          &quot;argv&quot;: [\n            &quot;node&quot;,\n            &quot;--test&quot;\n          ]\n        }\n      ],\n      &quot;negative_cases&quot;: [\n        &quot;Error, empty and timeout paths return a handled response, not a crash or silent fallback.&quot;,\n        &quot;Retrying the operation does not repeat its side effect.&quot;\n      ],\n      &quot;acceptance_conditions&quot;: [\n        &quot;(as stated by the reviewer)&quot;,\n        &quot;product-check verify --finding F-009 passes at the exact fix commit.&quot;,\n        &quot;Signed human approval(s) for closure (2).&quot;\n      ],\n      &quot;scope_guard&quot;: {\n        &quot;allowed_paths&quot;: [\n          &quot;app/api/invoices/route.ts&quot;,\n          &quot;test/**&quot;,\n          &quot;tests/**&quot;,\n          &quot;**/*.test.*&quot;,\n          &quot;**/*.spec.*&quot;\n        ],\n        &quot;note&quot;: &quot;Edits outside these paths need explicit approval or a new review.&quot;\n      },\n      &quot;rollback_plan&quot;: &quot;Revert the fix commit (git revert &lt;fix-sha&gt;) and redeploy the previous release; follow Revert the release commit and redeploy the previous build. If the fix includes a data migration, run its down step first and confirm with a backup restore test.&quot;,\n      &quot;evidence_refs&quot;: [\n        &quot;EVR-49CFA9205DEF&quot;\n      ]\n    },\n    {\n      &quot;fix_id&quot;: &quot;FP-F-010&quot;,\n      &quot;finding_ids&quot;: [\n        &quot;F-010&quot;\n      ],\n      &quot;severity&quot;: &quot;P1&quot;,\n      &quot;risk_class&quot;: &quot;HIGH&quot;,\n      &quot;title&quot;: &quot;VC-TR-OBJECT-AUTHZ: Object fetched by request ID without an ownership or tenant filter&quot;,\n      &quot;locations&quot;: [\n        &quot;app/api/invoices/route.ts:2&quot;\n      ],\n      &quot;root_cause&quot;: {\n        &quot;hypothesis&quot;: &quot;app/api/invoices/route.ts:2 looks up a record by a request ID; no user/tenant filter appears in the file. Expected: Objects looked up by a client-supplied ID are scoped to the signed-in user or tenant.&quot;,\n        &quot;certainty&quot;: &quot;hypothesis&quot;,\n        &quot;confidence&quot;: &quot;MEDIUM&quot;\n      },\n      &quot;proposed_change&quot;: &quot;Objects looked up by a client-supplied ID are scoped to the signed-in user or tenant.&quot;,\n      &quot;constraints&quot;: [\n        &quot;Change only what the packet&#39;s scope guard allows; anything else needs a new review.&quot;,\n        &quot;Do not disable, skip or weaken tests, checks or security controls to make verification pass.&quot;,\n        &quot;Use synthetic data; never commit credentials or real personal data.&quot;,\n        &quot;A proposed fix is not a verified fix: run product-check verify against the exact fix commit.&quot;,\n        &quot;An agent cannot approve its own change; closure needs signed human approval for the risk tier.&quot;\n      ],\n      &quot;tests_required&quot;: [\n        {\n          &quot;id&quot;: &quot;reproduction:F-010&quot;,\n          &quot;kind&quot;: &quot;reproduction&quot;,\n          &quot;description&quot;: &quot;The VC-TR-OBJECT-AUTHZ rule no longer matches at the fix commit (built into verify), plus a declared test that fails before the fix.&quot;,\n          &quot;argv&quot;: null\n        },\n        {\n          &quot;id&quot;: &quot;regression:unit&quot;,\n          &quot;kind&quot;: &quot;regression&quot;,\n          &quot;description&quot;: &quot;Policy required check unit (test).&quot;,\n          &quot;argv&quot;: [\n            &quot;node&quot;,\n            &quot;--test&quot;\n          ]\n        }\n      ],\n      &quot;negative_cases&quot;: [\n        &quot;An unauthenticated request to the affected path is refused (401/403), not served.&quot;,\n        &quot;A signed-in user cannot read or change another user&#39;s or tenant&#39;s record by changing an ID.&quot;,\n        &quot;No credential or privileged value appears in the client bundle or responses.&quot;\n      ],\n      &quot;acceptance_conditions&quot;: [\n        &quot;Objects looked up by a client-supplied ID are scoped to the signed-in user or tenant.&quot;,\n        &quot;product-check verify --finding F-010 passes at the exact fix commit.&quot;,\n        &quot;Signed human approval(s) for closure (2).&quot;\n      ],\n      &quot;scope_guard&quot;: {\n        &quot;allowed_paths&quot;: [\n          &quot;app/api/invoices/route.ts&quot;,\n          &quot;test/**&quot;,\n          &quot;tests/**&quot;,\n          &quot;**/*.test.*&quot;,\n          &quot;**/*.spec.*&quot;\n        ],\n        &quot;note&quot;: &quot;Edits outside these paths need explicit approval or a new review.&quot;\n      },\n      &quot;rollback_plan&quot;: &quot;Revert the fix commit (git revert &lt;fix-sha&gt;) and redeploy the previous release; follow Revert the release commit and redeploy the previous build. If the fix includes a data migration, run its down step first and confirm with a backup restore test.&quot;,\n      &quot;evidence_refs&quot;: [\n        &quot;EVR-F99DA1C1C52F&quot;\n      ]\n    }\n  ]\n}</pre></section>
+</main>
+<footer>Generated from the workspace JSON (product-check-results.json, closure-register.json, change review, proof run, fix-packets/, release-gate.json and review-evidence.jsonl); every figure is derived from those files. Evidence-bounded assurance, not a penetration test, certification or guarantee. Product Check is an EnWithAI Engineering Commons tool.</footer>
+</div>
+<script>// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2026 EnWithAI Technologies
+// Progressive enhancement for the Product Check dashboard: tab switching, table filters and a theme toggle.
+// Every figure is server-rendered from the results JSON; without JavaScript all views are shown in sequence.
+(function () {
+  var views = Array.prototype.slice.call(document.querySelectorAll("section.view"));
+  var links = Array.prototype.slice.call(document.querySelectorAll("nav.tabs a"));
+  function show(id) {
+    if (
+      !views.some(function (v) {
+        return v.id === id;
+      })
+    )
+      id = views[0] && views[0].id;
+    views.forEach(function (v) {
+      v.hidden = v.id !== id;
+    });
+    links.forEach(function (a) {
+      if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+  }
+  links.forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      var id = a.getAttribute("href").slice(1);
+      show(id);
+      try {
+        window.history.replaceState(null, "", "#" + id);
+      } catch {
+        /* file:// may refuse */
+      }
+    });
+  });
+  show((window.location.hash || "").slice(1));
+
+  Array.prototype.slice.call(document.querySelectorAll("[data-filter-table]")).forEach(function (box) {
+    var table = document.getElementById(box.getAttribute("data-filter-table"));
+    if (!table) return;
+    var controls = Array.prototype.slice.call(box.querySelectorAll("select, input"));
+    var count = box.querySelector("[data-count]");
+    function apply() {
+      var shown = 0;
+      Array.prototype.slice.call(table.tBodies[0].rows).forEach(function (row) {
+        var ok = controls.every(function (c) {
+          var v = (c.value || "").toLowerCase();
+          if (!v) return true;
+          var key = c.getAttribute("data-key");
+          if (key === "text") return row.textContent.toLowerCase().indexOf(v) !== -1;
+          return (row.getAttribute("data-" + key) || "").toLowerCase() === v;
+        });
+        row.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (count) count.textContent = shown + " shown";
+    }
+    controls.forEach(function (c) {
+      c.addEventListener("input", apply);
+    });
+    apply();
+  });
+
+  var toggle = document.querySelector(".theme-toggle");
+  var root = document.documentElement;
+  function setTheme(t) {
+    if (t === "auto") root.removeAttribute("data-theme");
+    else root.setAttribute("data-theme", t);
+    if (toggle) toggle.textContent = "Theme: " + t;
+  }
+  var saved;
+  try {
+    saved = window.localStorage.getItem("product-check-theme") || "auto";
+  } catch {
+    saved = "auto";
+  }
+  setTheme(saved);
+  if (toggle) {
+    toggle.hidden = false;
+    toggle.addEventListener("click", function () {
+      var order = ["auto", "light", "dark"];
+      var next = order[(order.indexOf(root.getAttribute("data-theme") || "auto") + 1) % 3];
+      setTheme(next);
+      try {
+        window.localStorage.setItem("product-check-theme", next);
+      } catch {
+        /* storage unavailable */
+      }
+    });
+  }
+})();
+
+// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2026 EnWithAI Technologies
+// Progressive enhancement for the assurance dashboard: copy buttons for the agent export and Mermaid sources.
+// Every figure is server-rendered from the JSON artifacts; without JavaScript everything is still readable.
+(function () {
+  Array.prototype.slice.call(document.querySelectorAll("[data-copy]")).forEach(function (btn) {
+    var target = document.getElementById(btn.getAttribute("data-copy"));
+    if (!target || !window.navigator || !window.navigator.clipboard) return;
+    btn.hidden = false;
+    btn.addEventListener("click", function () {
+      window.navigator.clipboard.writeText(target.textContent || "").then(
+        function () {
+          btn.textContent = "Copied";
+        },
+        function () {
+          btn.textContent = "Copy failed";
+        }
+      );
+    });
+  });
+})();
+</script>
+</body>
+</html>

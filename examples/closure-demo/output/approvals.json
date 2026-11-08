@@ -1,0 +1,46 @@
+[
+  {
+    "schema_version": "0.1.0",
+    "kind": "approval",
+    "approver": {
+      "id": "alice",
+      "type": "human"
+    },
+    "scope": {
+      "type": "closure",
+      "ref": "F-001"
+    },
+    "reviewed_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+    "decision": "approve",
+    "comment": "Verified repro and regression; key rotated",
+    "created_at": "2026-11-08T07:51:00.308Z",
+    "approval_id": "AP-3039A2C12FC1",
+    "signature": {
+      "algorithm": "ed25519",
+      "key_id": "798515f7609eb53f",
+      "value": "SaLT/QeRV/SUczTRXXcpf0Jg/uREDXm5GYelx4NsKa1cZG2iXAElAfVVz6DjA7juXnVoCZYpWZlHXQ3Yu2O/Aw=="
+    }
+  },
+  {
+    "schema_version": "0.1.0",
+    "kind": "approval",
+    "approver": {
+      "id": "bob",
+      "type": "human"
+    },
+    "scope": {
+      "type": "closure",
+      "ref": "F-001"
+    },
+    "reviewed_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+    "decision": "approve",
+    "comment": "",
+    "created_at": "2026-11-08T07:51:00.400Z",
+    "approval_id": "AP-C7085600D1FF",
+    "signature": {
+      "algorithm": "ed25519",
+      "key_id": "eb24a22314692e7f",
+      "value": "CUqyOfHHFMimeLAgz6aoDlk4/FLZAkx0x9GDBl/FW1JQtNgqsrbk1s/oV2c8jv4jo/tUVPU1e9+aZAMN8p/xBQ=="
+    }
+  }
+]

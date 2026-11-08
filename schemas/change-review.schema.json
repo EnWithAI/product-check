@@ -1,0 +1,711 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/change-review.schema.json",
+  "title": "Product Check change review",
+  "description": "Layered review of one change (PR_DIFF or PRE_PR_LOCAL): risk, lanes, independently verified findings, approvals, convergence cycle and the change gate. A change PASS never implies product readiness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "methodology_version",
+    "review_id",
+    "mode",
+    "change_ref",
+    "created_at",
+    "target",
+    "base_sha",
+    "head_sha",
+    "author",
+    "diff",
+    "risk",
+    "approvals_required",
+    "approvals",
+    "lanes",
+    "findings",
+    "disproven",
+    "checks",
+    "baseline",
+    "cycle",
+    "gate",
+    "product_vs_change",
+    "limitations",
+    "evidence_ids",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "assurance-common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "change-review"
+    },
+    "methodology_version": {
+      "$ref": "assurance-common.schema.json#/$defs/methodology_version"
+    },
+    "review_id": {
+      "type": "string",
+      "pattern": "^CR-[0-9A-F]{10}$"
+    },
+    "mode": {
+      "enum": ["PR_DIFF", "PRE_PR_LOCAL"]
+    },
+    "change_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "repository"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        }
+      }
+    },
+    "base_sha": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+    },
+    "head_sha": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+    },
+    "author": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "source", "trusted"],
+      "properties": {
+        "id": {
+          "type": ["string", "null"]
+        },
+        "source": {
+          "enum": ["flag", "git", "unknown"]
+        },
+        "trusted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "diff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "digest", "files", "truncated"],
+      "properties": {
+        "source": {
+          "enum": ["git", "file"]
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "previous_path",
+              "status",
+              "additions",
+              "deletions",
+              "surfaces",
+              "protected"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "previous_path": {
+                "type": ["string", "null"]
+              },
+              "status": {
+                "enum": ["added", "modified", "deleted", "renamed", "binary"]
+              },
+              "additions": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "deletions": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "surfaces": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "protected": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "truncated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "effective_level", "surfaces", "reasons", "protected_paths", "impact_check"],
+      "properties": {
+        "level": {
+          "$ref": "assurance-common.schema.json#/$defs/risk_level"
+        },
+        "effective_level": {
+          "enum": ["LOW", "MEDIUM", "HIGH"]
+        },
+        "surfaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "protected_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "impact_check": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["schema_version", "high", "affected_modules", "commit"],
+              "properties": {
+                "schema_version": {
+                  "type": "string"
+                },
+                "high": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "affected_modules": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "commit": {
+                  "type": ["string", "null"]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "approvals_required": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["humans", "domain_owners", "waiver"],
+      "properties": {
+        "humans": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "domain_owners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "waiver": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["eligible", "applied", "reason"],
+          "properties": {
+            "eligible": {
+              "type": "boolean"
+            },
+            "applied": {
+              "type": "boolean"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "$ref": "assurance-common.schema.json#/$defs/approval_evaluation"
+      }
+    },
+    "lanes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["lane", "reviewer", "status", "findings", "notes"],
+        "properties": {
+          "lane": {
+            "$ref": "assurance-common.schema.json#/$defs/lane"
+          },
+          "reviewer": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/validation_status"
+          },
+          "findings": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "rule_id",
+          "lane",
+          "reviewer",
+          "title",
+          "severity",
+          "pillars",
+          "location",
+          "expected",
+          "actual",
+          "steps_or_command",
+          "evidence_ids",
+          "confidence",
+          "epistemic",
+          "impact",
+          "affected_scope",
+          "baseline_sha",
+          "head_sha",
+          "uncertainty",
+          "verification",
+          "dedupe_key",
+          "occurrences",
+          "repeat_of_review",
+          "blocking"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^RF-[0-9A-F]{10}$"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "lane": {
+            "$ref": "assurance-common.schema.json#/$defs/lane"
+          },
+          "reviewer": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "type", "version"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "enum": ["deterministic", "ai", "human", "imported"]
+              },
+              "version": {
+                "type": "string"
+              }
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "severity": {
+            "$ref": "common.schema.json#/$defs/severity"
+          },
+          "pillars": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/pillar"
+            }
+          },
+          "location": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "line", "runtime"],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "line": {
+                "type": ["integer", "null"]
+              },
+              "runtime": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "expected": {
+            "type": "string"
+          },
+          "actual": {
+            "type": "string"
+          },
+          "steps_or_command": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "$ref": "common.schema.json#/$defs/confidence"
+          },
+          "epistemic": {
+            "$ref": "common.schema.json#/$defs/epistemic"
+          },
+          "impact": {
+            "type": "string"
+          },
+          "affected_scope": {
+            "type": "string"
+          },
+          "baseline_sha": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+          },
+          "head_sha": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+          },
+          "uncertainty": {
+            "type": ["string", "null"]
+          },
+          "verification": {
+            "$ref": "assurance-common.schema.json#/$defs/verification"
+          },
+          "dedupe_key": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{20}$"
+          },
+          "occurrences": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "repeat_of_review": {
+            "type": ["string", "null"]
+          },
+          "blocking": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "disproven": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "rule_id",
+          "lane",
+          "reviewer",
+          "title",
+          "severity",
+          "pillars",
+          "location",
+          "expected",
+          "actual",
+          "steps_or_command",
+          "evidence_ids",
+          "confidence",
+          "epistemic",
+          "impact",
+          "affected_scope",
+          "baseline_sha",
+          "head_sha",
+          "uncertainty",
+          "verification",
+          "dedupe_key",
+          "occurrences",
+          "repeat_of_review",
+          "blocking"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^RF-[0-9A-F]{10}$"
+          },
+          "rule_id": {
+            "type": "string"
+          },
+          "lane": {
+            "$ref": "assurance-common.schema.json#/$defs/lane"
+          },
+          "reviewer": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "type", "version"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "enum": ["deterministic", "ai", "human", "imported"]
+              },
+              "version": {
+                "type": "string"
+              }
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "severity": {
+            "$ref": "common.schema.json#/$defs/severity"
+          },
+          "pillars": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/pillar"
+            }
+          },
+          "location": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "line", "runtime"],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "line": {
+                "type": ["integer", "null"]
+              },
+              "runtime": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "expected": {
+            "type": "string"
+          },
+          "actual": {
+            "type": "string"
+          },
+          "steps_or_command": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "$ref": "common.schema.json#/$defs/confidence"
+          },
+          "epistemic": {
+            "$ref": "common.schema.json#/$defs/epistemic"
+          },
+          "impact": {
+            "type": "string"
+          },
+          "affected_scope": {
+            "type": "string"
+          },
+          "baseline_sha": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+          },
+          "head_sha": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+          },
+          "uncertainty": {
+            "type": ["string", "null"]
+          },
+          "verification": {
+            "$ref": "assurance-common.schema.json#/$defs/verification"
+          },
+          "dedupe_key": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{20}$"
+          },
+          "occurrences": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "repeat_of_review": {
+            "type": ["string", "null"]
+          },
+          "blocking": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proof_run_id", "status", "detail"],
+      "properties": {
+        "proof_run_id": {
+          "type": ["string", "null"]
+        },
+        "status": {
+          "$ref": "common.schema.json#/$defs/validation_status"
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "baseline": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["run_id", "verdict", "results_sha256"],
+          "properties": {
+            "run_id": {
+              "type": "string"
+            },
+            "verdict": {
+              "type": "string"
+            },
+            "results_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      ]
+    },
+    "cycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["number", "max", "previous_review_id", "repeated_unchanged", "new_findings", "escalated"],
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "previous_review_id": {
+          "type": ["string", "null"]
+        },
+        "repeated_unchanged": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "new_findings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "escalated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reasons", "blocking_finding_ids"],
+      "properties": {
+        "status": {
+          "$ref": "assurance-common.schema.json#/$defs/gate_status"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blocking_finding_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "product_vs_change": {
+      "type": "string"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool", "tool_version", "policy_id", "policy_digest"],
+      "properties": {
+        "tool": {
+          "const": "product-check"
+        },
+        "tool_version": {
+          "type": "string"
+        },
+        "policy_id": {
+          "type": ["string", "null"]
+        },
+        "policy_digest": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

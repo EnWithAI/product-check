@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/verification-run.schema.json",
+  "title": "Product Check verification run",
+  "description": "Executed proof bound to an exact commit and environment: author-side proof (VC-P1) or closure verification (VC-P5) with targeted and regression checks and retained before/after evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "verification_id",
+    "purpose",
+    "finding_ids",
+    "fix_id",
+    "exact_sha",
+    "worktree_clean",
+    "environment",
+    "started_at",
+    "finished_at",
+    "checks",
+    "executions",
+    "before_evidence_ids",
+    "after_evidence_ids",
+    "after_results",
+    "result",
+    "reasons",
+    "limitations",
+    "actor"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "assurance-common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "verification-run"
+    },
+    "verification_id": {
+      "type": "string",
+      "pattern": "^(VR-\\d{3,}|PR-[0-9A-F]{10})$"
+    },
+    "purpose": {
+      "enum": ["closure", "author-proof"]
+    },
+    "finding_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fix_id": {
+      "type": ["string", "null"]
+    },
+    "exact_sha": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+    },
+    "worktree_clean": {
+      "type": ["boolean", "null"]
+    },
+    "environment": {
+      "$ref": "assurance-common.schema.json#/$defs/environment"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check_id", "kind", "role", "status", "detail", "execution_id", "evidence_ids"],
+        "properties": {
+          "check_id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "control-reassessment",
+              "rule-recheck",
+              "command",
+              "no-new-critical",
+              "no-regressed-controls",
+              "gate-recheck"
+            ]
+          },
+          "role": {
+            "enum": ["targeted", "regression"]
+          },
+          "status": {
+            "$ref": "common.schema.json#/$defs/validation_status"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "execution_id": {
+            "type": ["string", "null"]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "executions": {
+      "type": "array",
+      "items": {
+        "$ref": "assurance-common.schema.json#/$defs/execution"
+      }
+    },
+    "before_evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "after_evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "after_results": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["run_id", "results_path", "results_sha256", "verdict", "open"],
+          "properties": {
+            "run_id": {
+              "type": "string"
+            },
+            "results_path": {
+              "type": "string"
+            },
+            "results_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "verdict": {
+              "type": "string"
+            },
+            "open": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["P0", "P1", "P2", "P3"],
+              "properties": {
+                "P0": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "P1": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "P2": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "P3": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "result": {
+      "enum": ["PASS", "FAIL", "INCONCLUSIVE"]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "actor": {
+      "$ref": "assurance-common.schema.json#/$defs/actor"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/approval.schema.json",
+  "title": "Product Check approval",
+  "description": "A signed accountable decision. Counts only when the Ed25519 signature verifies against an approver key in the policy, the approver is human, the scope matches and reviewed_sha is the current commit.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "approval_id",
+    "approver",
+    "scope",
+    "reviewed_sha",
+    "decision",
+    "comment",
+    "created_at",
+    "signature"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "assurance-common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "approval"
+    },
+    "approval_id": {
+      "type": "string",
+      "pattern": "^AP-[0-9A-F]{12}$"
+    },
+    "approver": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": ["human", "bot"]
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "ref"],
+      "properties": {
+        "type": {
+          "enum": ["change", "closure", "risk-acceptance", "false-positive", "release", "continue"]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "reviewed_sha": {
+      "type": "string",
+      "minLength": 7
+    },
+    "decision": {
+      "enum": ["approve", "reject"]
+    },
+    "comment": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signature": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "key_id", "value"],
+          "properties": {
+            "algorithm": {
+              "const": "ed25519"
+            },
+            "key_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

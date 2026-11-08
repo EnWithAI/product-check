@@ -12,7 +12,12 @@ Customer, Technology and Trust controls, and gives you:
   and that states exactly what it does and does not cover;
 - an **engineering blueprint**: prioritized fixes, acceptance criteria, regression-test candidates and one
   **work packet** per fix that you (or any coding agent) can act on;
-- a **local dashboard** and a **retest** loop that shows verified fixes, regressions and trends.
+- a **local dashboard** and a **retest** loop that shows verified fixes, regressions and trends;
+- **vibe-code review and verified closure** (unreleased; design inspired by CLEAR CT v3.2): layered change review with independent
+  verification of findings, risk-routed signed human approvals, agent-ready fix packets, a closure state machine in
+  which a finding is only `VERIFIED_FIXED` after executed proof at the exact fix commit and only `CLOSED` with
+  accountable human sign-off, and an explicit `GO / CONDITIONAL_GO / NO_GO / UNKNOWN` release gate
+  ([docs/vibe-code-assurance.md](docs/vibe-code-assurance.md)).
 
 Everything is written to one versioned JSON file. The report, blueprint and dashboard are renderings of it.
 
@@ -23,8 +28,10 @@ Everything is written to one versioned JSON file. The report, blueprint and dash
 
 Untested is never passed. Product Check reports `BLOCKED` or `NOT_TESTED` (with the reason) for anything it could not
 check, lowers coverage accordingly, and withholds a score when evidence is thin. It is **not** a penetration test, a
-compliance certification or a guarantee of production readiness. It never runs your repository's code, never logs in,
-never submits forms and never sends anything anywhere except passive GET requests to an origin you authorize.
+compliance certification or a guarantee of production readiness. The scan never runs your repository's code, never
+logs in, never submits forms and never sends anything anywhere except passive GET requests to an origin you authorize.
+Only the opt-in `proof` and `verify` commands run commands, and only those you declare in a policy, with
+`--allow-exec` on that invocation.
 
 ## Two-minute demo
 
@@ -108,16 +115,20 @@ authorization or tenant-isolation tests) to the controls Product Check cannot te
 
 ## Commands
 
-| Command                            | What it does                                                                                      |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `run`                              | Scan → Test → Validate → Blueprint; writes results and renderings                                 |
-| `retest --baseline <file>`         | `run` plus comparison: verified fixes, reopened and new findings, regressions, trends             |
-| `scan`                             | Discovery only: which points of presence exist and what could be checked (no requests, no checks) |
-| `spec`                             | Reverse-engineers an as-built spec (Spec Kit `spec.md` + JSON) from the repository's structure    |
-| `init`                             | Writes an editable scan contract                                                                  |
-| `validate <file>…`                 | Schema validation; for results also referential integrity and recomputation of scores and verdict |
-| `report`, `blueprint`, `dashboard` | Re-render from a results file                                                                     |
-| `controls`, `schema [name]`        | The control catalog and the JSON Schemas                                                          |
+| Command                             | What it does                                                                                      |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `run`                               | Scan → Test → Validate → Blueprint; writes results and renderings                                 |
+| `retest --baseline <file>`          | `run` plus comparison: verified fixes, reopened and new findings, regressions, trends             |
+| `scan`                              | Discovery only: which points of presence exist and what could be checked (no requests, no checks) |
+| `spec`                              | Reverse-engineers an as-built spec (Spec Kit `spec.md` + JSON) from the repository's structure    |
+| `init`                              | Writes an editable scan contract                                                                  |
+| `validate <file>…`                  | Schema validation; for results also referential integrity and recomputation of scores and verdict |
+| `report`, `blueprint`, `dashboard`  | Re-render from a results file                                                                     |
+| `controls`, `schema [name]`         | The control catalog and the JSON Schemas                                                          |
+| `register`, `review`, `proof`       | Closure register; layered change review (PR diff); author-side proof (runs declared checks)       |
+| `fix`, `verify`, `approve`, `close` | Record a fix; verify it at the exact commit; signed human approval; verified closure              |
+| `accept-risk`, `reject`, `learn`    | Accepted risk with expiry; false positive; regression corpus                                      |
+| `fix-packets`, `gate`, `assure`     | Agent-ready fix packets; release gate; all assurance reports and `dashboard/index.html`           |
 
 Exit codes: `0` ok · `1` internal error · `2` usage · `3` input · `4` safety refusal · `5` invalid artifact ·
 `6` `--fail-on` matched (for CI gating, for example `--fail-on NOT_READY`). Full reference: [docs/cli.md](docs/cli.md).
@@ -136,7 +147,8 @@ Exit codes: `0` ok · `1` internal error · `2` usage · `3` input · `4` safety
 
 ## Privacy and security
 
-No telemetry, account, model call or child process. The repository is read, never executed; git-ignored files (such
+No telemetry, account or model call. The scan starts no process: the repository is read, never executed (the opt-in
+`proof`/`verify` commands are the exception, see [vibe-code assurance](docs/vibe-code-assurance.md#execution-model-a-deliberate-change-opt-in-only)); git-ignored files (such
 as your local `.env`) are listed but never read. Evidence keeps short redacted excerpts, never file or response
 contents; response headers are filtered to a security-relevant allowlist with cookie values removed. The dashboard is
 a single file with a hash-pinned script and a `default-src 'none'` Content-Security-Policy. See
@@ -147,7 +159,8 @@ a single file with a hash-pinned script and a `default-src 'none'` Content-Secur
 [Philosophy](docs/philosophy.md) · [Architecture](docs/architecture.md) ·
 [Assessment model](docs/assessment-model.md) · [Scoring and gates](docs/scoring-and-gates.md) ·
 [Lifecycle tiers](docs/lifecycle-tiers.md) · [Safety and authorization](docs/safety-and-authorization.md) ·
-[Interoperability](docs/interoperability.md) · [CLI](docs/cli.md) · [Threat model](docs/threat-model.md) ·
+[Interoperability](docs/interoperability.md) · [Vibe-code assurance](docs/vibe-code-assurance.md) ·
+[v3.2 implementation audit](IMPLEMENTATION_AUDIT_v3.2.md) · [CLI](docs/cli.md) · [Threat model](docs/threat-model.md) ·
 [Branding and attribution](docs/branding-and-attribution.md) · [Implementation status](IMPLEMENTATION_STATUS.md) ·
 [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [Governance](GOVERNANCE.md)
 

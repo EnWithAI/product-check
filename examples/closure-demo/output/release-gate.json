@@ -1,0 +1,218 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "release-gate",
+  "methodology_version": "CT3 v3.2",
+  "gate_id": "RG-38FEA49F6F",
+  "evaluated_at": "2026-11-08T07:51:01.246Z",
+  "target": {
+    "name": "Vibe Invoices (synthetic demo)",
+    "repository": "Vibe Invoices (synthetic demo)"
+  },
+  "head_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+  "decision": "NO_GO",
+  "product_verdict": "INCONCLUSIVE",
+  "change_gate": "BLOCK",
+  "conditions": [
+    {
+      "id": "RC-0",
+      "title": "Product scan describes the head commit",
+      "status": "NOT_EVALUATED",
+      "detail": "The product scan is for 28d05afb57f3, HEAD is fd2abcf59c99: its verdict and gates describe an older commit. Re-run: product-check retest --baseline <results> --repo . --out-dir <workspace>, then product-check register.",
+      "refs": []
+    },
+    {
+      "id": "RC-1",
+      "title": "No open P0 or failed hard gate",
+      "status": "PASS",
+      "detail": "0 open P0; failed gates: none (scan is stale; gates not re-checked at HEAD); change-review P0 blockers: 0.",
+      "refs": [
+        "F-008",
+        "F-009",
+        "F-010"
+      ]
+    },
+    {
+      "id": "RC-2",
+      "title": "P1 handled under the CT3 policy (fixed, or a valid unexpired acceptance)",
+      "status": "FAIL",
+      "detail": "3 P1 without a valid acceptance; 0 expired acceptance(s); change-review P1 blockers: 3.",
+      "refs": [
+        "F-008",
+        "F-009",
+        "F-010"
+      ]
+    },
+    {
+      "id": "RC-3",
+      "title": "Required checks executed and green at the head commit",
+      "status": "PASS",
+      "detail": "Proof PR-29684B79B8: PASS.",
+      "refs": [
+        "PR-29684B79B8"
+      ]
+    },
+    {
+      "id": "RC-4",
+      "title": "Human approvals valid for the head commit",
+      "status": "FAIL",
+      "detail": "0/2 valid signed approval(s) (scope change:simplify-invoices).",
+      "refs": []
+    },
+    {
+      "id": "RC-5",
+      "title": "Coverage gaps disclosed",
+      "status": "PASS",
+      "detail": "16 gap(s) disclosed below; overall coverage 50%.",
+      "refs": []
+    },
+    {
+      "id": "RC-6",
+      "title": "Targeted fixes retested",
+      "status": "PASS",
+      "detail": "No fix is waiting for verification.",
+      "refs": []
+    },
+    {
+      "id": "RC-7",
+      "title": "Rollback or containment available for material risk",
+      "status": "PASS",
+      "detail": "Rollback plan: Revert the release commit and redeploy the previous build.",
+      "refs": []
+    },
+    {
+      "id": "RC-8",
+      "title": "No material regression",
+      "status": "PASS",
+      "detail": "No regressed finding or control.",
+      "refs": []
+    }
+  ],
+  "blocking_reasons": [
+    "RC-2 P1 handled under the CT3 policy (fixed, or a valid unexpired acceptance): 3 P1 without a valid acceptance; 0 expired acceptance(s); change-review P1 blockers: 3.",
+    "Change gate BLOCK: 3 verified (or fail-closed P0) blocking finding(s).",
+    "RC-4 Human approvals valid for the head commit: 0/2 valid signed approval(s) (scope change:simplify-invoices)."
+  ],
+  "open": {
+    "P0": 0,
+    "P1": 3,
+    "P2": 3,
+    "P3": 4
+  },
+  "open_blocking_ids": [
+    "F-008",
+    "F-009",
+    "F-010"
+  ],
+  "accepted_risks": [],
+  "approvals": {
+    "required": 2,
+    "valid": 0,
+    "stale": 0
+  },
+  "executed_checks": {
+    "count": 5,
+    "passed": 5,
+    "failed": 0,
+    "not_run": 0
+  },
+  "coverage": {
+    "customer": 0.1538,
+    "technology": 0.75,
+    "trust": 0.6,
+    "overall": 0.5,
+    "gaps": [
+      "Executed test results: BLOCKED (No executed test results were imported (Product Check never runs repository code).)",
+      "CI/CD configuration: PARTIAL (No CI configuration found.)",
+      "Deployed web application: BLOCKED (No deployed URL was provided (--url).)",
+      "Privacy and security policies: PARTIAL (Presence only; policy content is not assessed (this is not a legal review).)",
+      "PC-C-02 not tested",
+      "PC-C-03 not tested",
+      "PC-C-04 not tested",
+      "PC-C-06 not tested",
+      "PC-C-09 not tested",
+      "PC-C-10 not tested",
+      "PC-T-03 not tested",
+      "PC-S-13 not tested",
+      "PC-C-01 blocked",
+      "PC-C-05 blocked",
+      "PC-C-07 blocked",
+      "PC-S-09 blocked"
+    ]
+  },
+  "rollback": {
+    "declared": true,
+    "ref": "Revert the release commit and redeploy the previous build"
+  },
+  "phases": [
+    {
+      "phase": "VC-P0",
+      "name": "Intake and baseline",
+      "status": "COMPLETED",
+      "evidence": [
+        "Scan PCR-20261108T075100Z-E27953 (COMPLETED, SOURCE, CT-T1) at 28d05afb57f3; PoP 4 available / 2 blocked."
+      ]
+    },
+    {
+      "phase": "VC-P1",
+      "name": "Author-side proof",
+      "status": "COMPLETED",
+      "evidence": [
+        "Proof PR-29684B79B8: PASS, 1/1 command(s) passed at fd2abcf59c99."
+      ]
+    },
+    {
+      "phase": "VC-P2",
+      "name": "Layered independent review",
+      "status": "PARTIAL",
+      "evidence": [
+        "Review CR-97A3E2D1F6: 4 finding(s), 1 disproven; lanes not run: spec-outcome."
+      ]
+    },
+    {
+      "phase": "VC-P3",
+      "name": "Risk-routed gate",
+      "status": "COMPLETED",
+      "evidence": [
+        "Change risk HIGH, gate BLOCK, 0/2 valid approval(s)."
+      ]
+    },
+    {
+      "phase": "VC-P4",
+      "name": "Blueprint and repair",
+      "status": "COMPLETED",
+      "evidence": [
+        "3 fix packet(s); blueprint from scan PCR-20261108T075100Z-E27953."
+      ]
+    },
+    {
+      "phase": "VC-P5",
+      "name": "Closure verification",
+      "status": "COMPLETED",
+      "evidence": [
+        "2 verification run(s): 1 PASS, 1 FAIL, 0 INCONCLUSIVE."
+      ]
+    },
+    {
+      "phase": "VC-P6",
+      "name": "Merge and release",
+      "status": "PARTIAL",
+      "evidence": [
+        "Release gate evaluated against the current commit with approval staleness. Merge-queue simulation, staged rollout and live canary watch are not executed by Product Check (declare a rollout plan; watch is NOT_SUPPORTED)."
+      ]
+    },
+    {
+      "phase": "VC-P7",
+      "name": "Learn and assure",
+      "status": "PARTIAL",
+      "evidence": [
+        "1 regression corpus case(s); 0 false positive(s); 0 regressed finding(s). Telemetry-driven incident import is not supported."
+      ]
+    }
+  ],
+  "inputs": {
+    "results_sha256": "3e52884aabb297e29150691b5f503ce23086549f1d6bd3000ad5ed8e3e7dbc0d",
+    "register_digest": "df73f3bcc83a650ebddd0858ca5fecf6304903a73fde97767bdcd7776922cbd4",
+    "review_id": "CR-97A3E2D1F6",
+    "proof_run_id": "PR-29684B79B8"
+  }
+}

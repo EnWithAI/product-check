@@ -1,0 +1,115 @@
+
+$ product-check keygen --approver alice --out-dir <tmp>/ops --quiet
+  [exit 0]
+
+$ product-check keygen --approver bob --out-dir <tmp>/ops --quiet
+  [exit 0]
+
+$ product-check run --repo . --out-dir .product-check --name Vibe Invoices (synthetic demo) --quiet
+  [exit 0]
+
+$ product-check register --repo .
+Created closure register REG-DBC2711A08 with 7 finding(s) from scan PCR-20261108T075058Z-D21CC5.
+Verification: 1 confirmed, 0 corroborated, 6 evidence only, 0 need triage, 0 suspected.
+Wrote .product-check/closure-register.json  [exit 0]
+
+$ product-check proof --policy <tmp>/ops/policy.json --allow-exec
+Author-side proof PR-9C4741510F: PASS at da8f9753c6ec
+  PASS       node --test (exit 0, 124 ms)
+  All 1 required check(s) passed at da8f9753c6ec.
+Detected but not declared (add to the policy's required_checks to run them): npm run test
+Wrote .product-check/proof-run.json  [exit 0]
+
+$ product-check fix-packets --policy <tmp>/ops/policy.json
+Wrote 1 fix packet(s) to .product-check/fix-packets.  [exit 0]
+
+$ product-check transition --finding F-001 --to ACKNOWLEDGED --reason Confirmed: live key in client bundle --actor coding-agent
+F-001: OPEN → ACKNOWLEDGED (seq 8)  [exit 0]
+
+$ product-check transition --finding F-001 --to IN_PROGRESS --reason Applying fix packet --actor coding-agent
+F-001: ACKNOWLEDGED → IN_PROGRESS (seq 9)  [exit 0]
+
+$ product-check fix --finding F-001 --sha 2d9a97671bab9d34a753251ca4de14fc51a50f11 --actor coding-agent --repro-cmd node --test test/secret.test.mjs
+Fix FX-001 recorded at 2d9a97671bab for F-001: FIX_PROPOSED → RETEST_REQUIRED. Not fixed until verify passes:
+  product-check verify --finding F-001 --head 2d9a97671bab9d34a753251ca4de14fc51a50f11 --allow-exec  [exit 0]
+
+$ product-check verify --finding F-001 --head 2d9a97671bab9d34a753251ca4de14fc51a50f11 --policy <tmp>/ops/policy.json --allow-exec
+Verification VR-001: FAIL at 2d9a97671bab
+  FAIL         targeted:F-001:control — The original location is gone but PC-S-01 still fails at app/lib/config.ts:1 (P0): the fix moved the problem.
+  FAIL         targeted:F-001:gate — Associated hard gate G-SECRETS: FAIL.
+  PASS         targeted:repro-1 — node --test test/secret.test.mjs exited 0 in 115 ms.
+  PASS         regression:unit — node --test exited 0 in 125 ms.
+  FAIL         regression:no-new-critical — New P0/P1 finding(s): PCF-AC2DF9263D.
+  PASS         regression:controls — No control regressed compared with the baseline.
+  reason: Failed: targeted:F-001:control — The original location is gone but PC-S-01 still fails at app/lib/config.ts:1 (P0): the fix moved the problem. | targeted:F-001:gate — Associated hard gate G-SECRETS: FAIL. | regression:no-new-critical — New P0/P1 finding(s): PCF-AC2DF9263D.
+  note: Imported artifacts from the baseline (test results, reports, observations) were not reused; controls that need them are NOT_TESTED unless re-supplied.
+Back to IN_PROGRESS: F-001  [exit 6]
+
+$ product-check fix --finding F-001 --sha 28d05afb57f323444572a6149292f162f99c1a1f --actor coding-agent --repro-cmd node --test test/secret.test.mjs
+Fix FX-002 recorded at 28d05afb57f3 for F-001: FIX_PROPOSED → RETEST_REQUIRED. Not fixed until verify passes:
+  product-check verify --finding F-001 --head 28d05afb57f323444572a6149292f162f99c1a1f --allow-exec  [exit 0]
+
+$ product-check verify --finding F-001 --head 28d05afb57f323444572a6149292f162f99c1a1f --policy <tmp>/ops/policy.json --allow-exec
+Verification VR-002: PASS at 28d05afb57f3
+  PASS         targeted:F-001:control — PC-S-01 is PASS at the fix commit and no longer reports the finding.
+  PASS         targeted:F-001:gate — Associated hard gate G-SECRETS no longer fails; it stays UNVERIFIED overall because other gate controls were not testable here (disclosed by the release gate).
+  PASS         targeted:repro-1 — node --test test/secret.test.mjs exited 0 in 111 ms.
+  PASS         regression:unit — node --test exited 0 in 119 ms.
+  PASS         regression:no-new-critical — No new P0/P1 finding compared with the baseline.
+  PASS         regression:controls — No control regressed compared with the baseline.
+  note: Imported artifacts from the baseline (test results, reports, observations) were not reused; controls that need them are NOT_TESTED unless re-supplied.
+VERIFIED_FIXED: F-001 (close needs signed human approval)  [exit 0]
+
+$ product-check close --finding F-001 --evidence VR-002 --approver alice --policy <tmp>/ops/policy.json
+product-check: error: F-001 needs 2 valid signed human approval(s) for closure at 28d05afb57f3; found 0.
+product-check: hint: Sign one: product-check approve --scope closure:F-001 --sha 28d05afb57f323444572a6149292f162f99c1a1f --approver <id> --key <private.pem>  [exit 2]
+
+$ product-check approve --scope closure:F-001 --sha 28d05afb57f323444572a6149292f162f99c1a1f --approver alice --key <tmp>/ops/alice.key.pem --policy <tmp>/ops/policy.json --comment Verified repro and regression; key rotated
+Signed approve AP-3039A2C12FC1 by alice for closure:F-001 at 28d05afb57f3.  [exit 0]
+
+$ product-check approve --scope closure:F-001 --sha 28d05afb57f323444572a6149292f162f99c1a1f --approver bob --key <tmp>/ops/bob.key.pem --policy <tmp>/ops/policy.json
+Signed approve AP-C7085600D1FF by bob for closure:F-001 at 28d05afb57f3.  [exit 0]
+
+$ product-check close --finding F-001 --evidence VR-002 --approver alice --policy <tmp>/ops/policy.json
+F-001 CLOSED as CL-001 by alice on VR-002 with approvals AP-3039A2C12FC1, AP-C7085600D1FF.  [exit 0]
+
+$ product-check learn --finding F-001 --cmd node --test test/secret.test.mjs --origin verified-fix --actor alice
+Added RC-001 to the regression corpus; every future verify runs it.  [exit 0]
+
+$ product-check retest --baseline .product-check/product-check-results.json --repo . --out-dir .product-check --name Vibe Invoices (synthetic demo) --quiet
+  [exit 0]
+
+$ product-check register --repo .
+Synced scan PCR-20261108T075100Z-E27953: 0 new, 0 regressed. Findings that disappeared are not marked fixed: use verify.
+Verification: 1 confirmed, 0 corroborated, 6 evidence only, 0 need triage, 0 suspected.
+Wrote .product-check/closure-register.json  [exit 0]
+
+$ product-check proof --policy <tmp>/ops/policy.json --allow-exec
+Author-side proof PR-29684B79B8: PASS at fd2abcf59c99
+  PASS       node --test (exit 0, 117 ms)
+  All 1 required check(s) passed at fd2abcf59c99.
+Detected but not declared (add to the policy's required_checks to run them): npm run test
+Wrote .product-check/proof-run.json  [exit 0]
+
+$ product-check review --repo . --base main --head HEAD --policy <tmp>/ops/policy.json --change simplify-invoices --reviewer-findings <tmp>/ops/ai-review.json
+Change review CR-97A3E2D1F6 (PR_DIFF): gate BLOCK, risk HIGH, cycle 1/3
+  - 3 verified (or fail-closed P0) blocking finding(s).
+  1 file(s); 4 finding(s) (3 blocking, 0 for triage), 1 disproven
+  P1 CONFIRMED          VC-TR-AUTHZ-REMOVED app/api/invoices/route.ts — Authentication or authorization check removed
+  P1 CORROBORATED       VC-EXT-CLAIM app/api/invoices/route.ts:2 — Possible IDOR: invoice fetched by id without owner check
+  P1 CORROBORATED       VC-TR-OBJECT-AUTHZ app/api/invoices/route.ts:2 — Object fetched by request ID without an ownership or tenant filter
+  P3 CORROBORATED       VC-CR-NO-TESTS app/api/invoices/route.ts — Behavior changed without any test change
+  Approvals: 0/2 valid (scope change:simplify-invoices)
+  Register: 4 new entr(y/ies)
+Wrote .product-check/change-review.json  [exit 0]
+
+$ product-check assure --policy <tmp>/ops/policy.json
+Release gate: NO_GO
+  - RC-2 P1 handled under the CT3 policy (fixed, or a valid unexpired acceptance): 3 P1 without a valid acceptance; 0 expired acceptance(s); change-review P1 blockers: 3.
+  - Change gate BLOCK: 3 verified (or fail-closed P0) blocking finding(s).
+  - RC-4 Human approvals valid for the head commit: 0/2 valid signed approval(s) (scope change:simplify-invoices).
+Phases: VC-P0 COMPLETED · VC-P1 COMPLETED · VC-P2 PARTIAL · VC-P3 COMPLETED · VC-P4 COMPLETED · VC-P5 COMPLETED · VC-P6 PARTIAL · VC-P7 PARTIAL
+Evidence log: 22 record(s), chain intact.
+Wrote .product-check/: PRODUCT_CHECK_REVIEW.md, PRODUCT_CHECK_BLUEPRINT.md, PRODUCT_CHECK_RELEASE_GATE.md, release-gate.json, fix-packets/ (3), .product-check/dashboard/index.html  [exit 0]
+
+Copied the workspace to examples/closure-demo/output (no keys, no app). Open output/dashboard/index.html.

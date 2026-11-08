@@ -1,5 +1,8 @@
 # Implementation status
 
+> **Unreleased (branch `feat/ct3-v3.2-vibe-code-closure`):** CT3 v3.2 vibe-code review and verified closure. Status of
+> every capability, test evidence and the readiness verdict: [IMPLEMENTATION_AUDIT_v3.2.md](IMPLEMENTATION_AUDIT_v3.2.md).
+
 _Product Check 0.2.0 · results schema 0.1.0 · rubric pc-rubric-0.2 · 2026-10-28_
 
 **State: released 0.2.0 (2026-10-28)** on GitHub and npm; see §0 and §5. Earlier: **released 0.1.0
