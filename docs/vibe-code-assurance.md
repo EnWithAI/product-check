@@ -207,7 +207,7 @@ their review's head is HEAD or an ancestor of it (they belong to that code).
 
 The brief's `scan-contract`, `result`, `evidence` and `finding` schemas already exist and are unchanged, so every
 0.1.0/0.2.0 results file still validates and loads. `product-check validate` checks all new kinds. Versions are
-separate: methodology `CT3 v3.2`, package 0.2.0 (unreleased changes), results schema 0.1.0, assurance schema 0.1.0.
+separate: methodology `CT3 v3.2`, package 0.3.0, results schema 0.1.0, assurance schema 0.1.0.
 The internal canonical methodology document is not copied into this repository.
 
 ## Data relationships

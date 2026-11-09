@@ -6,7 +6,9 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
-Vibe-code review and verified closure, inspired by CLEAR CT v3.2 (relationship `inspired`; wording pending sponsor approval). Additive: the results schema stays `0.1.0`, the scan
+## 0.3.0 — 2026-11-09
+
+Vibe-code review and verified closure, inspired by CLEAR CT v3.2 (relationship `inspired`; wording approved for publication 2026-11-09). Additive: the results schema stays `0.1.0`, the scan
 pipeline and its outputs are unchanged (the committed demo outputs are byte-identical), and new artifacts carry their
 own assurance schema `0.1.0`. Design: [docs/vibe-code-assurance.md](docs/vibe-code-assurance.md); status:
 [IMPLEMENTATION_AUDIT_v3.2.md](IMPLEMENTATION_AUDIT_v3.2.md).
