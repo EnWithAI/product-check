@@ -5,13 +5,30 @@
 
 _Product Check 0.3.0 · results schema 0.1.0 · rubric pc-rubric-0.2 · assurance schema 0.1.0 · 2026-11-09_
 
-**State: releasing 0.3.0 (2026-11-09)**: the CT3 v3.2 layer, approved by the sponsor (D-111, V32-1); see the v3.2 audit. Earlier: **released 0.2.0 (2026-10-28)** on GitHub and npm; see §0 and §5. Earlier: **released 0.1.0
+**State: released 0.3.0 (2026-11-09)** on GitHub and npm: the CT3 v3.2 layer, approved by the sponsor (D-111, V32-1); see §0 and the v3.2 audit. Earlier: **released 0.2.0 (2026-10-28)** on GitHub and npm; see §0a and §5. Earlier: **released 0.1.0
 (2026-10-12)**, the first version without a pre-release suffix (no functional change from 0.1.0-alpha.0). Earlier: released alpha. 0.1.0-alpha.0 published 2026-10-12: GitHub `EnWithAI/product-check` (CI green on Node
 22/24/26), pre-release `v0.1.0-alpha.0`, npm `@enwithai/product-check` (`alpha` and `latest`).
 License: **MIT** (decided by the product sponsor on 2026-10-12, same as the other Commons tools); `LICENSE`, `package.json`
 and SPDX headers updated accordingly. Release decisions recorded in §5.
 
-## 0. Release 0.2.0 (2026-10-28, macOS, Node v25.9.0, npm 11.12.1)
+## 0. Release 0.3.0 (2026-11-09)
+
+New in 0.3.0: the CT3 v3.2 vibe-code review and verified closure layer. Capabilities, evidence and gaps:
+[IMPLEMENTATION_AUDIT_v3.2.md](IMPLEMENTATION_AUDIT_v3.2.md). Released 2026-11-09, each public step approved by the user:
+
+- **GitHub:** feature PR EnWithAI/product-check#8 (`f8392da`) and release PR #9 (`113645c`), both squash-merged with CI
+  green on Node 22/24/26; tag `v0.3.0` (`0947484`, adds the built `dist/`) and a GitHub release.
+- **Before release:** `check:all` 143 tests; license audit and `npm audit --omit=dev` clean; demo outputs regenerated
+  (only `tool_version` changed).
+- **npm:** published by the user with 2FA from the tag build.
+  - `latest` → 0.3.0; `alpha` stays 0.1.0.
+  - Registry shasum `5b7af3a5bba37833524d218784046d7f149d40aa` (171 files), identical to `npm pack` of the tag.
+  - One dependency, `yaml` 2.9.1. No `gitHead` is recorded, because it was published from a git worktree.
+- **Verified clean registry install:** 2 packages; `--version` 0.3.0; `controls` lists 51; `npm audit --omit=dev`
+  0 vulnerabilities; `run`, `register` and `assure` on a fresh git repository write the closure register, an intact
+  evidence chain, the release gate and the dashboard.
+
+## 0a. Release 0.2.0 (2026-10-28, macOS, Node v25.9.0, npm 11.12.1)
 
 New in 0.2.0:
 
@@ -177,7 +194,10 @@ source files (caught by the Trojan-Source test).
       siblings.
 - [x] **0.2.0** (2026-10-28): release PR #6, tag `v0.2.0` with built `dist/`, GitHub release, npm publication by the
       user with 2FA; registry shasum `365dd172f0d2aaa05274542e37c536a1f811fba1` identical to the tag build, verified by a
-      clean registry install (§0).
+      clean registry install (§0a).
+- [x] **0.3.0** (2026-11-09): sponsor decisions D-111 and V32-1; PRs #8 and #9, tag `v0.3.0` with built `dist/`,
+      GitHub release, npm publication by the user with 2FA; registry shasum `5b7af3a5bba37833524d218784046d7f149d40aa`
+      identical to the tag build, verified by a clean registry install (§0).
 - [ ] Not separately performed: an independent human review of control wording/severities and of the demo outputs.
       The release was approved on the basis of this status report.
 
