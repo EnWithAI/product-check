@@ -13,7 +13,7 @@ Customer, Technology and Trust controls, and gives you:
 - an **engineering blueprint**: prioritized fixes, acceptance criteria, regression-test candidates and one
   **work packet** per fix that you (or any coding agent) can act on;
 - a **local dashboard** and a **retest** loop that shows verified fixes, regressions and trends;
-- **vibe-code review and verified closure** (unreleased; design inspired by CLEAR CT v3.2): layered change review with independent
+- **vibe-code review and verified closure** (new in 0.3.0; design inspired by CLEAR CT v3.2): layered change review with independent
   verification of findings, risk-routed signed human approvals, agent-ready fix packets, a closure state machine in
   which a finding is only `VERIFIED_FIXED` after executed proof at the exact fix commit and only `CLOSED` with
   accountable human sign-off, and an explicit `GO / CONDITIONAL_GO / NO_GO / UNKNOWN` release gate
@@ -21,7 +21,7 @@ Customer, Technology and Trust controls, and gives you:
 
 Everything is written to one versioned JSON file. The report, blueprint and dashboard are renderings of it.
 
-> Status: **early release** (`0.2.0`, pre-1.0, results schema `0.1.0`, rubric `pc-rubric-0.2`). Install with
+> Status: **early release** (`0.3.0`, pre-1.0, results schema `0.1.0`, rubric `pc-rubric-0.2`). Install with
 > `npm install --global @enwithai/product-check`, or build from source as in the demo below.
 
 ## What it will not pretend

@@ -1,8 +1,7 @@
 # Implementation audit: CT3 v3.2 vibe-code review and verified closure
 
-_Product Check 0.2.0 + unreleased changes on branch `feat/ct3-v3.2-vibe-code-closure` · results schema 0.1.0
-(unchanged) · assurance schema 0.1.0 · methodology CT3 v3.2 · audited 2026-11-08 on macOS, Node v25.9.0 (outside the
-declared engines 22/24/≥26; CI has not run on this branch because nothing was pushed)._
+_Product Check 0.3.0 · results schema 0.1.0 (unchanged) · assurance schema 0.1.0 · methodology CT3 v3.2 · audited
+2026-11-08 on macOS, Node v25.9.0; CI passed on Node 22/24/26 (EnWithAI/product-check#8, merged 2026-11-09)._
 
 Inputs: the CT3 v3.2 canonical master (additive to v3.1: three new sections, `upgrade_lineage_v3_2`,
 `vibe_code_review_and_closure_v3_2`, `closure_contract_v3_2`; no v3.1 key removed) and the Product Check v3.2 upgrade
@@ -143,12 +142,11 @@ Legend: **Done** = implemented, exercised by tests or the demo · **Partial** = 
   `dashboard` and `gate` accept `--from`. Positional forms behave as before.
 - New artifacts are versioned separately (assurance schema 0.1.0, `methodology_version: "CT3 v3.2"`).
 
-## Decisions for the product sponsor (before any publication)
+## Decisions for the product sponsor (resolved 2026-11-09)
 
-1. **Approve the safety-model change** (opt-in process execution in `proof`/`verify`), now documented in README,
-   SECURITY-related docs and CLAUDE.md. Until approved, keep it on this branch.
-2. **Public wording of the methodology**: the docs name "CT3 v3.2" and describe its concepts in our own words; the
-   canonical master is not copied. Confirm this is publishable, as was done for v3.1 on 2026-10-12.
-3. **The article reference** in REFERENCES.md (inspiration only, no endorsement implied): keep or remove.
-4. Version (0.3.0 suggested; additive) and whether `examples/closure-demo/output` (non-deterministic) should be
-   committed or generated on demand.
+1. **Safety-model change** (opt-in process execution in `proof`/`verify`): approved (workspace decision D-111).
+2. **Public wording of the methodology** ("CT3 v3.2", concepts described in our own words, canonical master not
+   copied): approved for publication (V32-1), as was done for v3.1 on 2026-10-12.
+3. **The article reference** in REFERENCES.md (inspiration only, no endorsement implied): kept.
+4. **Version 0.3.0** (additive). `examples/closure-demo/output` stays committed as an illustrative run; it is not
+   byte-compared by the tests.
