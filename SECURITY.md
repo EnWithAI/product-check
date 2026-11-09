@@ -12,7 +12,11 @@ minimal **synthetic** reproduction. Never send real results, HAR files or reposi
 
 ## Security properties Product Check is designed to keep
 
-- It never executes repository code, starts processes or uses `eval`/dynamic imports.
+- The scan (`run`, `retest`, `scan`, `spec`) never executes repository code or starts processes, and nothing uses
+  `eval`/dynamic imports. Only `proof` and `verify` (CT3 v3.2) can run commands: those the operator declares in a
+  policy, fix record or regression corpus, as argv without a shell, and only with `--allow-exec` on that invocation;
+  they then run with your permissions (see docs/safety-and-authorization.md). Read-only git plumbing runs with hooks,
+  fsmonitor, external diff/textconv drivers, pagers and system config disabled.
 - It never reads git-ignored files, and stores only short redacted excerpts and checksums as evidence.
 - It sends network requests only when explicitly authorized, only passive GETs to fixed paths on one origin, with no
   cookies, credentials or bodies, a request budget and timeouts. It never follows redirects to other origins.

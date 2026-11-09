@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/fix-packet.schema.json",
+  "title": "Product Check fix packet",
+  "description": "Agent-ready proposal for one verified finding: surfaces, evidence, root cause, change, tests (commands only when declared, never invented), negative cases, acceptance, owner, scope guard and rollback.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "methodology_version",
+    "fix_id",
+    "finding_ids",
+    "source_finding_ids",
+    "title",
+    "status",
+    "risk_class",
+    "severity",
+    "affected_surfaces",
+    "user_impact",
+    "evidence_refs",
+    "root_cause",
+    "constraints",
+    "proposed_change",
+    "tests_required",
+    "negative_cases",
+    "dependencies",
+    "acceptance_conditions",
+    "owner",
+    "rollback_plan",
+    "scope_guard",
+    "traceability",
+    "implementation",
+    "generated_from"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "assurance-common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "fix-packet"
+    },
+    "methodology_version": {
+      "$ref": "assurance-common.schema.json#/$defs/methodology_version"
+    },
+    "fix_id": {
+      "type": "string",
+      "pattern": "^FP-F-\\d{3,}$"
+    },
+    "finding_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "source_finding_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "assurance-common.schema.json#/$defs/fix_status"
+    },
+    "risk_class": {
+      "$ref": "assurance-common.schema.json#/$defs/risk_level"
+    },
+    "severity": {
+      "$ref": "common.schema.json#/$defs/severity"
+    },
+    "affected_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "line", "runtime"],
+        "properties": {
+          "path": {
+            "type": ["string", "null"]
+          },
+          "line": {
+            "type": ["integer", "null"]
+          },
+          "runtime": {
+            "type": ["string", "null"]
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "user_impact": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "root_cause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hypothesis", "certainty", "confidence"],
+      "properties": {
+        "hypothesis": {
+          "type": "string"
+        },
+        "certainty": {
+          "$ref": "common.schema.json#/$defs/epistemic"
+        },
+        "confidence": {
+          "$ref": "common.schema.json#/$defs/confidence"
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "proposed_change": {
+      "type": "string"
+    },
+    "tests_required": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "description", "argv"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": ["reproduction", "regression", "negative"]
+          },
+          "description": {
+            "type": "string"
+          },
+          "argv": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              }
+            ]
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "negative_cases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "acceptance_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "accountable_human_required"],
+      "properties": {
+        "id": {
+          "type": ["string", "null"]
+        },
+        "accountable_human_required": {
+          "const": true
+        }
+      }
+    },
+    "rollback_plan": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_guard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed_paths", "note"],
+      "properties": {
+        "allowed_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "traceability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["control_or_rule", "spec_requirement_ids", "locations"],
+      "properties": {
+        "control_or_rule": {
+          "type": "string"
+        },
+        "spec_requirement_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["change_sha", "implemented_by"],
+      "properties": {
+        "change_sha": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+        },
+        "implemented_by": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "assurance-common.schema.json#/$defs/actor"
+            }
+          ]
+        }
+      }
+    },
+    "generated_from": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["results_run_id", "review_id"],
+      "properties": {
+        "results_run_id": {
+          "type": ["string", "null"]
+        },
+        "review_id": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  }
+}

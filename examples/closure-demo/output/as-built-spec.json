@@ -1,0 +1,343 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "as-built-spec",
+  "generated_at": "2026-11-08T07:51:00.648Z",
+  "tool": {
+    "name": "product-check",
+    "version": "0.2.0"
+  },
+  "target": {
+    "name": "Vibe Invoices (synthetic demo)",
+    "repository": "Vibe Invoices (synthetic demo)",
+    "commit": "28d05afb57f323444572a6149292f162f99c1a1f",
+    "ref": "refs/heads/main"
+  },
+  "surface": [
+    {
+      "id": "SRF-FFDF09AF17",
+      "kind": "page",
+      "name": "/checkout",
+      "method": null,
+      "area": "checkout",
+      "detail": "Next.js app router page",
+      "location": {
+        "path": "app/checkout/page.tsx",
+        "line": 1
+      },
+      "certainty": "observed",
+      "auth_hint": false,
+      "evidence_ids": [
+        "EV-7DBE9D704B8C"
+      ]
+    },
+    {
+      "id": "SRF-6FCE981774",
+      "kind": "endpoint",
+      "name": "/api/invoices",
+      "method": "GET",
+      "area": "invoices",
+      "detail": "Next.js route handler",
+      "location": {
+        "path": "app/api/invoices/route.ts",
+        "line": 2
+      },
+      "certainty": "observed",
+      "auth_hint": true,
+      "evidence_ids": [
+        "EV-116620522519"
+      ]
+    },
+    {
+      "id": "SRF-9AF16ABB3A",
+      "kind": "config",
+      "name": "STRIPE_SECRET_KEY",
+      "method": null,
+      "area": "configuration",
+      "detail": "server-side; 1 reference(s)",
+      "location": {
+        "path": "app/lib/config.ts",
+        "line": 1
+      },
+      "certainty": "observed",
+      "auth_hint": false,
+      "evidence_ids": [
+        "EV-257386AF0FD2"
+      ]
+    },
+    {
+      "id": "SRF-D91D726272",
+      "kind": "test",
+      "name": "no secret key in client code",
+      "method": null,
+      "area": "test",
+      "detail": "test title",
+      "location": {
+        "path": "test/secret.test.mjs",
+        "line": 4
+      },
+      "certainty": "inferred",
+      "auth_hint": false,
+      "evidence_ids": [
+        "EV-3B28AB90CD61"
+      ]
+    },
+    {
+      "id": "SRF-E29C1E9935",
+      "kind": "test",
+      "name": "total",
+      "method": null,
+      "area": "test",
+      "detail": "test title",
+      "location": {
+        "path": "test/total.test.mjs",
+        "line": 3
+      },
+      "certainty": "inferred",
+      "auth_hint": false,
+      "evidence_ids": [
+        "EV-1E1C9B947247"
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "US-1",
+      "area": "checkout",
+      "title": "Checkout",
+      "critical_journey": null,
+      "surface_ids": [
+        "SRF-FFDF09AF17"
+      ],
+      "requirement_ids": [
+        "FR-001"
+      ],
+      "test_behaviours": []
+    },
+    {
+      "id": "US-2",
+      "area": "invoices",
+      "title": "Invoices",
+      "critical_journey": null,
+      "surface_ids": [
+        "SRF-6FCE981774"
+      ],
+      "requirement_ids": [
+        "FR-002"
+      ],
+      "test_behaviours": []
+    }
+  ],
+  "requirements": [
+    {
+      "id": "FR-001",
+      "statement": "The system MUST serve the page `/checkout`.",
+      "certainty": "observed",
+      "surface_ids": [
+        "SRF-FFDF09AF17"
+      ],
+      "evidence_ids": [
+        "EV-7DBE9D704B8C"
+      ]
+    },
+    {
+      "id": "FR-002",
+      "statement": "The system MUST handle `GET` requests to `/api/invoices`. The handler references an authentication helper, so access is likely limited to signed-in users.",
+      "certainty": "inferred",
+      "surface_ids": [
+        "SRF-6FCE981774"
+      ],
+      "evidence_ids": [
+        "EV-116620522519"
+      ]
+    },
+    {
+      "id": "FR-003",
+      "statement": "The system MUST be configured through 1 environment variable(s): `STRIPE_SECRET_KEY`.",
+      "certainty": "observed",
+      "surface_ids": [
+        "SRF-9AF16ABB3A"
+      ],
+      "evidence_ids": [
+        "EV-257386AF0FD2"
+      ]
+    }
+  ],
+  "non_functional": [
+    {
+      "id": "NFR-001",
+      "statement": "[NEEDS CLARIFICATION: response-time and throughput targets for the main pages and endpoints]",
+      "certainty": "hypothesis",
+      "surface_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "NFR-002",
+      "statement": "[NEEDS CLARIFICATION: availability target and acceptable downtime]",
+      "certainty": "hypothesis",
+      "surface_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "NFR-003",
+      "statement": "[NEEDS CLARIFICATION: how long personal and business data is kept, and how it is deleted]",
+      "certainty": "hypothesis",
+      "surface_ids": [],
+      "evidence_ids": []
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "SC-001",
+      "statement": "[NEEDS CLARIFICATION: measurable outcomes cannot be derived from source code; state the targets this product must meet]",
+      "certainty": "hypothesis",
+      "surface_ids": [],
+      "evidence_ids": []
+    }
+  ],
+  "edge_cases": [],
+  "clarifications": [
+    "Purpose of the Checkout area: who uses it, and what outcome it must deliver.",
+    "Purpose of the Invoices area: who uses it, and what outcome it must deliver."
+  ],
+  "uncertainties": [
+    "Purpose, users, priorities and business rules are not derivable from code; every story carries a clarification for them.",
+    "Nothing was executed: requirements describe what the code declares, not verified behaviour.",
+    "2 test title(s) could not be matched to a route area and are listed separately.",
+    "Configuration is listed by variable name only; values were never read."
+  ],
+  "evidence": [
+    {
+      "id": "EV-116620522519",
+      "run_id": "PCR-20261108T075100Z-E27953",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:51:00.648Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/api/invoices/route.ts",
+        "line_start": 2,
+        "line_end": 2,
+        "revision": "28d05afb57f323444572a6149292f162f99c1a1f"
+      },
+      "summary": "endpoint GET /api/invoices: Next.js route handler",
+      "excerpt": "export async function GET(req) {",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "0b3727bd4b523ccd14c97bd36516e14ea2dfc55cd64b415d0f3b171f9cd253fd"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-1E1C9B947247",
+      "run_id": "PCR-20261108T075100Z-E27953",
+      "kind": "source-location",
+      "pop": "automated-tests",
+      "collected_at": "2026-11-08T07:51:00.648Z",
+      "strength": "inferred",
+      "provenance": "inferred",
+      "source": {
+        "locator": "test/total.test.mjs",
+        "line_start": 3,
+        "line_end": 3,
+        "revision": "28d05afb57f323444572a6149292f162f99c1a1f"
+      },
+      "summary": "test total: test title",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b54e3ac2cfcdcb415a1093bf586b927334a0796a271d520b9c97856317d6f820"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-257386AF0FD2",
+      "run_id": "PCR-20261108T075100Z-E27953",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:51:00.648Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/lib/config.ts",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "28d05afb57f323444572a6149292f162f99c1a1f"
+      },
+      "summary": "config STRIPE_SECRET_KEY: [REDACTED]; 1 reference(s)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "6e86c1f8728c3a697c1f882c1826ce72a666a1c24bcce90f7d0f697fbc6c063e"
+      },
+      "redaction": {
+        "applied": true,
+        "rules": [
+          "assignment-value"
+        ]
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-3B28AB90CD61",
+      "run_id": "PCR-20261108T075100Z-E27953",
+      "kind": "source-location",
+      "pop": "automated-tests",
+      "collected_at": "2026-11-08T07:51:00.648Z",
+      "strength": "inferred",
+      "provenance": "inferred",
+      "source": {
+        "locator": "test/secret.test.mjs",
+        "line_start": 4,
+        "line_end": 4,
+        "revision": "28d05afb57f323444572a6149292f162f99c1a1f"
+      },
+      "summary": "test no secret key in client code: test title",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "c5fdfce4f67bb561c6b5464712b0e6d1573c3f9018c778de62a0219eb57d36b1"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-7DBE9D704B8C",
+      "run_id": "PCR-20261108T075100Z-E27953",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:51:00.648Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/checkout/page.tsx",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "28d05afb57f323444572a6149292f162f99c1a1f"
+      },
+      "summary": "page /checkout: Next.js app router page",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "acf34252c46fad3601e2f9fc4c735f7e26c64823f89b0f6080146506b91af84d"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    }
+  ],
+  "limitations": []
+}

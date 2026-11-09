@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "fix-packet",
+  "methodology_version": "CT3 v3.2",
+  "fix_id": "FP-F-008",
+  "finding_ids": [
+    "F-008"
+  ],
+  "source_finding_ids": [
+    "RF-2D880E0C81"
+  ],
+  "status": "PROPOSED",
+  "risk_class": "HIGH",
+  "severity": "P1",
+  "owner": {
+    "id": null,
+    "accountable_human_required": true
+  },
+  "implementation": {
+    "change_sha": null,
+    "implemented_by": null
+  },
+  "rollback_plan": "Revert the fix commit (git revert <fix-sha>) and redeploy the previous release; follow Revert the release commit and redeploy the previous build. If the fix includes a data migration, run its down step first and confirm with a backup restore test.",
+  "title": "VC-TR-AUTHZ-REMOVED: Authentication or authorization check removed",
+  "affected_surfaces": [
+    {
+      "path": "app/api/invoices/route.ts",
+      "line": null,
+      "runtime": null
+    }
+  ],
+  "user_impact": "Protected data or actions may become reachable without signing in.",
+  "evidence_refs": [
+    "EVR-3F69C5B23572"
+  ],
+  "root_cause": {
+    "hypothesis": "app/api/invoices/route.ts removes 1 line(s) with an auth check (old line 3: const user = await requireAuth(req);) and adds none. Expected: Every protected route keeps an authentication and authorization check.",
+    "certainty": "fact",
+    "confidence": "HIGH"
+  },
+  "constraints": [
+    "Change only what the packet's scope guard allows; anything else needs a new review.",
+    "Do not disable, skip or weaken tests, checks or security controls to make verification pass.",
+    "Use synthetic data; never commit credentials or real personal data.",
+    "A proposed fix is not a verified fix: run product-check verify against the exact fix commit.",
+    "An agent cannot approve its own change; closure needs signed human approval for the risk tier."
+  ],
+  "proposed_change": "Every protected route keeps an authentication and authorization check.",
+  "tests_required": [
+    {
+      "id": "reproduction:F-008",
+      "kind": "reproduction",
+      "description": "The VC-TR-AUTHZ-REMOVED rule no longer matches at the fix commit (built into verify), plus a declared test that fails before the fix.",
+      "argv": null
+    },
+    {
+      "id": "regression:unit",
+      "kind": "regression",
+      "description": "Policy required check unit (test).",
+      "argv": [
+        "node",
+        "--test"
+      ]
+    }
+  ],
+  "negative_cases": [
+    "An unauthenticated request to the affected path is refused (401/403), not served.",
+    "A signed-in user cannot read or change another user's or tenant's record by changing an ID.",
+    "No credential or privileged value appears in the client bundle or responses."
+  ],
+  "dependencies": [],
+  "acceptance_conditions": [
+    "Every protected route keeps an authentication and authorization check.",
+    "product-check verify --finding F-008 passes at the exact fix commit.",
+    "Signed human approval(s) for closure (2)."
+  ],
+  "scope_guard": {
+    "allowed_paths": [
+      "app/api/invoices/route.ts",
+      "test/**",
+      "tests/**",
+      "**/*.test.*",
+      "**/*.spec.*"
+    ],
+    "note": "Edits outside these paths need explicit approval or a new review."
+  },
+  "traceability": {
+    "control_or_rule": "VC-TR-AUTHZ-REMOVED",
+    "spec_requirement_ids": [],
+    "locations": [
+      "app/api/invoices/route.ts"
+    ]
+  },
+  "generated_from": {
+    "results_run_id": null,
+    "review_id": "CR-97A3E2D1F6"
+  }
+}

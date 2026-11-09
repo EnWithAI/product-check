@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "fix-packet",
+  "methodology_version": "CT3 v3.2",
+  "fix_id": "FP-F-001",
+  "finding_ids": [
+    "F-001"
+  ],
+  "source_finding_ids": [
+    "PCF-50D5C47465"
+  ],
+  "status": "PROPOSED",
+  "risk_class": "HIGH",
+  "severity": "P0",
+  "owner": {
+    "id": null,
+    "accountable_human_required": true
+  },
+  "implementation": {
+    "change_sha": null,
+    "implemented_by": null
+  },
+  "rollback_plan": "Revert the fix commit (git revert <fix-sha>) and redeploy the previous release; follow Revert the release commit and redeploy the previous build. If the fix includes a data migration, run its down step first and confirm with a backup restore test.",
+  "title": "PC-S-01: Stripe secret key in app/checkout/page.tsx",
+  "affected_surfaces": [
+    {
+      "path": "app/checkout/page.tsx",
+      "line": 1,
+      "runtime": null
+    }
+  ],
+  "user_impact": "Attackers can act as the product against customer data. Anyone with repository access (or a public mirror) holds working credentials.",
+  "evidence_refs": [
+    "EV-883A2C49A079"
+  ],
+  "root_cause": {
+    "hypothesis": "Credentials were pasted into code or committed configuration instead of the runtime secret store.",
+    "certainty": "inference",
+    "confidence": "HIGH"
+  },
+  "constraints": [
+    "Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.",
+    "Keep the change minimal and focused on the listed findings; do not refactor unrelated code.",
+    "Do not disable, skip or delete tests or checks to make them pass.",
+    "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.",
+    "Security- or data-sensitive change: a human must review and approve before merge.",
+    "Change only what the packet's scope guard allows; anything else needs a new review.",
+    "Do not disable, skip or weaken tests, checks or security controls to make verification pass.",
+    "Use synthetic data; never commit credentials or real personal data.",
+    "A proposed fix is not a verified fix: run product-check verify against the exact fix commit.",
+    "An agent cannot approve its own change; closure needs signed human approval for the risk tier."
+  ],
+  "proposed_change": "Rotate (revoke and reissue) every exposed credential first, then move it to environment variables / the hosting secret store and remove it from the code. Treat the history as compromised.",
+  "tests_required": [
+    {
+      "id": "reproduction:F-001",
+      "kind": "reproduction",
+      "description": "Product Check re-assesses PC-S-01 at the fix commit (built into verify). Also declare a test that fails before the fix and passes after it (fix --repro-cmd).",
+      "argv": null
+    },
+    {
+      "id": "regression:F-001",
+      "kind": "regression",
+      "description": "A secret-scanning pre-commit hook or CI step (for example gitleaks) on every pull request.",
+      "argv": null
+    },
+    {
+      "id": "regression:unit",
+      "kind": "regression",
+      "description": "Policy required check unit (test).",
+      "argv": [
+        "node",
+        "--test"
+      ]
+    }
+  ],
+  "negative_cases": [
+    "An unauthenticated request to the affected path is refused (401/403), not served.",
+    "A signed-in user cannot read or change another user's or tenant's record by changing an ID.",
+    "No credential or privileged value appears in the client bundle or responses."
+  ],
+  "dependencies": [],
+  "acceptance_conditions": [
+    "Each listed credential has been rotated at its provider (human confirmation).",
+    "No secret pattern matches in repository files.",
+    "Control PC-S-01 evaluates PASS on retest.",
+    "Finding PCF-50D5C47465 (app/checkout/page.tsx:1) is no longer observed on retest.",
+    "product-check verify --finding F-001 passes at the exact fix commit (targeted + regression).",
+    "Signed human approval(s) for closure (2 for HIGH risk)."
+  ],
+  "scope_guard": {
+    "allowed_paths": [
+      "app/checkout/page.tsx",
+      "test/**",
+      "tests/**",
+      "**/*.test.*",
+      "**/*.spec.*"
+    ],
+    "note": "Edits outside these paths need explicit approval or a new scan contract (scope drift)."
+  },
+  "traceability": {
+    "control_or_rule": "PC-S-01",
+    "spec_requirement_ids": [
+      "As-built FR-001; requirement PC-S-01"
+    ],
+    "locations": [
+      "app/checkout/page.tsx:1"
+    ]
+  },
+  "generated_from": {
+    "results_run_id": "PCR-20261108T075058Z-D21CC5",
+    "review_id": null
+  }
+}

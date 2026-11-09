@@ -1,0 +1,1419 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "closure-register",
+  "methodology_version": "CT3 v3.2",
+  "register_id": "REG-DBC2711A08",
+  "target": {
+    "name": "Vibe Invoices (synthetic demo)",
+    "repository": "Vibe Invoices (synthetic demo)"
+  },
+  "created_at": "2026-11-08T07:50:58.586Z",
+  "updated_at": "2026-11-08T07:51:01.143Z",
+  "baseline": {
+    "run_id": "PCR-20261108T075058Z-D21CC5",
+    "results_sha256": "e6bc0eab85ff57134de9ec65ccdeb2d2d6852b4502b58642ab434e123d1ae4ef",
+    "baseline_sha": "da8f9753c6ecec5849d87809be5f25ae4b42e8f7"
+  },
+  "settings": {
+    "max_cycles": 3
+  },
+  "entries": [
+    {
+      "finding_id": "F-001",
+      "source": "baseline-scan",
+      "source_finding_id": "PCF-50D5C47465",
+      "rule_or_control": "PC-S-01",
+      "title": "Stripe secret key in app/checkout/page.tsx",
+      "severity": "P0",
+      "pillar": "trust",
+      "epistemic": "fact",
+      "location": "app/checkout/page.tsx:1",
+      "dedupe_key": "7e27c2567208035c783c",
+      "verification": {
+        "state": "CONFIRMED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "1 evidence record(s) linked."
+          },
+          {
+            "check": "runtime-observation",
+            "result": "not-run",
+            "detail": "No runtime or executed-test evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "pass",
+            "detail": "Re-read 1 cited file(s); checksums match the evidence."
+          }
+        ]
+      },
+      "opened_in": "PCR-20261108T075058Z-D21CC5",
+      "state": "CLOSED",
+      "cycles": 1,
+      "escalated": false,
+      "fix_ids": [
+        "FX-001",
+        "FX-002"
+      ],
+      "verification_ids": [
+        "VR-001",
+        "VR-002"
+      ],
+      "approval_ids": [
+        "AP-3039A2C12FC1",
+        "AP-C7085600D1FF"
+      ],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": {
+        "closure_id": "CL-001",
+        "actor": {
+          "id": "alice",
+          "type": "human"
+        },
+        "at": "2026-11-08T07:51:00.483Z",
+        "verification_id": "VR-002",
+        "approval_ids": [
+          "AP-3039A2C12FC1",
+          "AP-C7085600D1FF"
+        ]
+      },
+      "transitions": [
+        {
+          "seq": 1,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:50:58.586Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from scan PCR-20261108T075058Z-D21CC5.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "PCR-20261108T075058Z-D21CC5"
+          },
+          "prev_digest": null,
+          "digest": "27d11f318180c04581c7fc9677702663b45d90cda206bcf5aee1dc667ef7d623"
+        },
+        {
+          "seq": 8,
+          "from": "OPEN",
+          "to": "ACKNOWLEDGED",
+          "at": "2026-11-08T07:50:58.998Z",
+          "actor": {
+            "id": "coding-agent",
+            "type": "agent"
+          },
+          "reason": "Confirmed: live key in client bundle",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": null
+          },
+          "prev_digest": "5e95b0db8e3ec316ae49b20e929b1cc4d905975ef0992877323f952dcd77f155",
+          "digest": "9e838af89f82b87ee8a4a9d15075e3d34494368d29e18de95cd24c8958f442ba"
+        },
+        {
+          "seq": 9,
+          "from": "ACKNOWLEDGED",
+          "to": "IN_PROGRESS",
+          "at": "2026-11-08T07:50:59.173Z",
+          "actor": {
+            "id": "coding-agent",
+            "type": "agent"
+          },
+          "reason": "Applying fix packet",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": null
+          },
+          "prev_digest": "9e838af89f82b87ee8a4a9d15075e3d34494368d29e18de95cd24c8958f442ba",
+          "digest": "a32f65d0b10778036d66105747b248a5595842acbe403e0b296c10216b97d0b3"
+        },
+        {
+          "seq": 10,
+          "from": "IN_PROGRESS",
+          "to": "FIX_PROPOSED",
+          "at": "2026-11-08T07:50:59.302Z",
+          "actor": {
+            "id": "coding-agent",
+            "type": "agent"
+          },
+          "reason": "Fix FX-001 submitted at 2d9a97671bab (proposed, not verified).",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": "FX-001",
+            "run_id": null
+          },
+          "prev_digest": "a32f65d0b10778036d66105747b248a5595842acbe403e0b296c10216b97d0b3",
+          "digest": "b49ca1816296f768fb0f34b3ada4c87725a03579cb55271a3907b7ac803d7f33"
+        },
+        {
+          "seq": 11,
+          "from": "FIX_PROPOSED",
+          "to": "RETEST_REQUIRED",
+          "at": "2026-11-08T07:50:59.302Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "A proposed fix needs targeted reproduction and regression against the exact commit.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": "FX-001",
+            "run_id": null
+          },
+          "prev_digest": "b49ca1816296f768fb0f34b3ada4c87725a03579cb55271a3907b7ac803d7f33",
+          "digest": "0ba1b8a26b7dca891ca336298e6efe4eeec97a839e46d22a3e9028c401c7c4a9"
+        },
+        {
+          "seq": 12,
+          "from": "RETEST_REQUIRED",
+          "to": "IN_PROGRESS",
+          "at": "2026-11-08T07:50:59.666Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Verification VR-001 failed (cycle 1/3): Failed: targeted:F-001:control — The original location is gone but PC-S-01 still fails at app/lib/config.ts:1 (P0): the fix moved the problem. | targeted:F-001:gate — Associated hard gate G-SECRETS: FAIL. | regression:no-new-critical — New P0/P1 finding(s): PCF-AC2DF9263D.",
+          "refs": {
+            "evidence_ids": [
+              "EVR-4871BFA0C1D1",
+              "EVR-2FE7F821CD16",
+              "EVR-A96D44D9EB26"
+            ],
+            "verification_id": "VR-001",
+            "approval_ids": [],
+            "fix_id": "FX-001",
+            "run_id": null
+          },
+          "prev_digest": "0ba1b8a26b7dca891ca336298e6efe4eeec97a839e46d22a3e9028c401c7c4a9",
+          "digest": "e55a24d804ac67b5d982c9b792e5044cf8461fdf50f8712120c82d169ed24399"
+        },
+        {
+          "seq": 13,
+          "from": "IN_PROGRESS",
+          "to": "FIX_PROPOSED",
+          "at": "2026-11-08T07:50:59.789Z",
+          "actor": {
+            "id": "coding-agent",
+            "type": "agent"
+          },
+          "reason": "Fix FX-002 submitted at 28d05afb57f3 (proposed, not verified).",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": "FX-002",
+            "run_id": null
+          },
+          "prev_digest": "e55a24d804ac67b5d982c9b792e5044cf8461fdf50f8712120c82d169ed24399",
+          "digest": "69794708dbd07bf0bf18d0b755a31456588e4685de47c71a3d21b1bc89e0f614"
+        },
+        {
+          "seq": 14,
+          "from": "FIX_PROPOSED",
+          "to": "RETEST_REQUIRED",
+          "at": "2026-11-08T07:50:59.789Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "A proposed fix needs targeted reproduction and regression against the exact commit.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": "FX-002",
+            "run_id": null
+          },
+          "prev_digest": "69794708dbd07bf0bf18d0b755a31456588e4685de47c71a3d21b1bc89e0f614",
+          "digest": "17be8ba348946e558d86e4c4c4fbec36278d411edad921750b99a662468bd229"
+        },
+        {
+          "seq": 15,
+          "from": "RETEST_REQUIRED",
+          "to": "VERIFIED_FIXED",
+          "at": "2026-11-08T07:51:00.141Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Verification VR-002 passed at 28d05afb57f3 (targeted + regression).",
+          "refs": {
+            "evidence_ids": [
+              "EVR-44ACAFA1BB05",
+              "EVR-5D0D734662D7",
+              "EVR-783C99440F64"
+            ],
+            "verification_id": "VR-002",
+            "approval_ids": [],
+            "fix_id": "FX-002",
+            "run_id": null
+          },
+          "prev_digest": "17be8ba348946e558d86e4c4c4fbec36278d411edad921750b99a662468bd229",
+          "digest": "eabade15b5d0d0d4be39816e95ee143d7a6a00fbc563529158b0640209b24315"
+        },
+        {
+          "seq": 16,
+          "from": "VERIFIED_FIXED",
+          "to": "CLOSED",
+          "at": "2026-11-08T07:51:00.483Z",
+          "actor": {
+            "id": "alice",
+            "type": "human"
+          },
+          "reason": "Closed as CL-001 on verification VR-002 with 2 signed approval(s).",
+          "refs": {
+            "evidence_ids": [
+              "EVR-44ACAFA1BB05",
+              "EVR-5D0D734662D7",
+              "EVR-783C99440F64"
+            ],
+            "verification_id": "VR-002",
+            "approval_ids": [
+              "AP-3039A2C12FC1",
+              "AP-C7085600D1FF"
+            ],
+            "fix_id": "FX-002",
+            "run_id": null
+          },
+          "prev_digest": "eabade15b5d0d0d4be39816e95ee143d7a6a00fbc563529158b0640209b24315",
+          "digest": "c2a0a4c101e52dd047ea062e76608272b26408cc220905b4d68d592cb15d89a9"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-002",
+      "source": "baseline-scan",
+      "source_finding_id": "PCF-3E3C906C89",
+      "rule_or_control": "PC-T-04",
+      "title": "No CI pipeline",
+      "severity": "P2",
+      "pillar": "technology",
+      "epistemic": "fact",
+      "location": "repository",
+      "dedupe_key": "b4663b73d555368865a4",
+      "verification": {
+        "state": "EVIDENCE_COLLECTED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "1 evidence record(s) linked."
+          },
+          {
+            "check": "runtime-observation",
+            "result": "not-run",
+            "detail": "No runtime or executed-test evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "not-run",
+            "detail": "No checksummed source evidence to re-read."
+          }
+        ]
+      },
+      "opened_in": "PCR-20261108T075058Z-D21CC5",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 2,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:50:58.586Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from scan PCR-20261108T075058Z-D21CC5.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "PCR-20261108T075058Z-D21CC5"
+          },
+          "prev_digest": "27d11f318180c04581c7fc9677702663b45d90cda206bcf5aee1dc667ef7d623",
+          "digest": "1cea1a911a89afa774e51d83aa4038d3e4d4d2d3549b90a9071824b9a48f5d85"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-003",
+      "source": "baseline-scan",
+      "source_finding_id": "PCF-4537D66695",
+      "rule_or_control": "PC-C-08",
+      "title": "Critical journeys have no end-to-end tests",
+      "severity": "P2",
+      "pillar": "customer",
+      "epistemic": "fact",
+      "location": "repository",
+      "dedupe_key": "35b75920d0dd0107b319",
+      "verification": {
+        "state": "EVIDENCE_COLLECTED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "1 evidence record(s) linked."
+          },
+          {
+            "check": "runtime-observation",
+            "result": "not-run",
+            "detail": "No runtime or executed-test evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "not-run",
+            "detail": "No checksummed source evidence to re-read."
+          }
+        ]
+      },
+      "opened_in": "PCR-20261108T075058Z-D21CC5",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 3,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:50:58.586Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from scan PCR-20261108T075058Z-D21CC5.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "PCR-20261108T075058Z-D21CC5"
+          },
+          "prev_digest": "1cea1a911a89afa774e51d83aa4038d3e4d4d2d3549b90a9071824b9a48f5d85",
+          "digest": "4c83db599012522e81f9a18a1352089b74f9ef48dda702f038eb681da14cbae5"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-004",
+      "source": "baseline-scan",
+      "source_finding_id": "PCF-A79BB3B752",
+      "rule_or_control": "PC-T-01",
+      "title": "No lockfile: builds are not reproducible",
+      "severity": "P2",
+      "pillar": "technology",
+      "epistemic": "fact",
+      "location": "package.json",
+      "dedupe_key": "7939cd5d676acf2fa14b",
+      "verification": {
+        "state": "EVIDENCE_COLLECTED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "1 evidence record(s) linked."
+          },
+          {
+            "check": "runtime-observation",
+            "result": "not-run",
+            "detail": "No runtime or executed-test evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "not-run",
+            "detail": "No checksummed source evidence to re-read."
+          }
+        ]
+      },
+      "opened_in": "PCR-20261108T075058Z-D21CC5",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 4,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:50:58.586Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from scan PCR-20261108T075058Z-D21CC5.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "PCR-20261108T075058Z-D21CC5"
+          },
+          "prev_digest": "4c83db599012522e81f9a18a1352089b74f9ef48dda702f038eb681da14cbae5",
+          "digest": "608395f01f69063478f678208634b4172bbfddab95969fa61357fb9a9cce2a06"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-005",
+      "source": "baseline-scan",
+      "source_finding_id": "PCF-2BBFB74CD4",
+      "rule_or_control": "PC-T-07",
+      "title": "Runtime version is not declared",
+      "severity": "P3",
+      "pillar": "technology",
+      "epistemic": "fact",
+      "location": "repository",
+      "dedupe_key": "dab6044df214b438c72d",
+      "verification": {
+        "state": "EVIDENCE_COLLECTED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "1 evidence record(s) linked."
+          },
+          {
+            "check": "runtime-observation",
+            "result": "not-run",
+            "detail": "No runtime or executed-test evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "not-run",
+            "detail": "No checksummed source evidence to re-read."
+          }
+        ]
+      },
+      "opened_in": "PCR-20261108T075058Z-D21CC5",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 5,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:50:58.586Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from scan PCR-20261108T075058Z-D21CC5.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "PCR-20261108T075058Z-D21CC5"
+          },
+          "prev_digest": "608395f01f69063478f678208634b4172bbfddab95969fa61357fb9a9cce2a06",
+          "digest": "81a31b7196827bac3d0679bb3edbf525a3bccf945e66b4c0a93eb54e3b67d07c"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-006",
+      "source": "baseline-scan",
+      "source_finding_id": "PCF-83CA52EEEB",
+      "rule_or_control": "PC-T-06",
+      "title": "README lacks setup/run instructions",
+      "severity": "P3",
+      "pillar": "technology",
+      "epistemic": "fact",
+      "location": "README.md",
+      "dedupe_key": "18d0645bdc03e1140f41",
+      "verification": {
+        "state": "EVIDENCE_COLLECTED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "1 evidence record(s) linked."
+          },
+          {
+            "check": "runtime-observation",
+            "result": "not-run",
+            "detail": "No runtime or executed-test evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "not-run",
+            "detail": "No checksummed source evidence to re-read."
+          }
+        ]
+      },
+      "opened_in": "PCR-20261108T075058Z-D21CC5",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 6,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:50:58.586Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from scan PCR-20261108T075058Z-D21CC5.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "PCR-20261108T075058Z-D21CC5"
+          },
+          "prev_digest": "81a31b7196827bac3d0679bb3edbf525a3bccf945e66b4c0a93eb54e3b67d07c",
+          "digest": "a4cc193f359750bd198b22e03a5a5d0288fba3eca3864219baaffe31d93b0fc3"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-007",
+      "source": "baseline-scan",
+      "source_finding_id": "PCF-9C547F7002",
+      "rule_or_control": "PC-T-08",
+      "title": "No type checking or linting configured",
+      "severity": "P3",
+      "pillar": "technology",
+      "epistemic": "fact",
+      "location": "repository",
+      "dedupe_key": "35d2dd6a12169e54d1a3",
+      "verification": {
+        "state": "EVIDENCE_COLLECTED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "1 evidence record(s) linked."
+          },
+          {
+            "check": "runtime-observation",
+            "result": "not-run",
+            "detail": "No runtime or executed-test evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "not-run",
+            "detail": "No checksummed source evidence to re-read."
+          }
+        ]
+      },
+      "opened_in": "PCR-20261108T075058Z-D21CC5",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 7,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:50:58.586Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from scan PCR-20261108T075058Z-D21CC5.",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "PCR-20261108T075058Z-D21CC5"
+          },
+          "prev_digest": "a4cc193f359750bd198b22e03a5a5d0288fba3eca3864219baaffe31d93b0fc3",
+          "digest": "5e95b0db8e3ec316ae49b20e929b1cc4d905975ef0992877323f952dcd77f155"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-008",
+      "source": "change-review",
+      "source_finding_id": "RF-2D880E0C81",
+      "rule_or_control": "VC-TR-AUTHZ-REMOVED",
+      "title": "Authentication or authorization check removed",
+      "severity": "P1",
+      "pillar": "trust",
+      "epistemic": "fact",
+      "location": "app/api/invoices/route.ts",
+      "dedupe_key": "2b4d726d1f315ffa3ee7",
+      "verification": {
+        "state": "CONFIRMED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "Diff line(s) recorded as evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "pass",
+            "detail": "Re-read at head: the auth check is absent."
+          },
+          {
+            "check": "second-signal",
+            "result": "pass",
+            "detail": "Also raised by: VC-TR-OBJECT-AUTHZ, VC-CR-NO-TESTS, ai-code-reviewer (ai)."
+          }
+        ]
+      },
+      "opened_in": "CR-97A3E2D1F6",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 17,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:51:01.143Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from change review CR-97A3E2D1F6 (CONFIRMED).",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "CR-97A3E2D1F6"
+          },
+          "prev_digest": "c2a0a4c101e52dd047ea062e76608272b26408cc220905b4d68d592cb15d89a9",
+          "digest": "e8bd27276cc046c710954c39d2805da095c5606c8a3b297dfc25bb6cabf9f744"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-009",
+      "source": "change-review",
+      "source_finding_id": "RF-562F5DC1EC",
+      "rule_or_control": "VC-EXT-CLAIM",
+      "title": "Possible IDOR: invoice fetched by id without owner check",
+      "severity": "P1",
+      "pillar": "technology",
+      "epistemic": "hypothesis",
+      "location": "app/api/invoices/route.ts:2",
+      "dedupe_key": "186bae4c930fa9526322",
+      "verification": {
+        "state": "CORROBORATED",
+        "checks": [
+          {
+            "check": "independent-reread",
+            "result": "pass",
+            "detail": "The cited location exists at head; the claim itself is not machine-checked."
+          },
+          {
+            "check": "second-signal",
+            "result": "pass",
+            "detail": "Deterministic rule(s) agree: VC-TR-AUTHZ-REMOVED, VC-TR-OBJECT-AUTHZ, VC-CR-NO-TESTS."
+          }
+        ]
+      },
+      "opened_in": "CR-97A3E2D1F6",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 18,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:51:01.143Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from change review CR-97A3E2D1F6 (CORROBORATED).",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "CR-97A3E2D1F6"
+          },
+          "prev_digest": "e8bd27276cc046c710954c39d2805da095c5606c8a3b297dfc25bb6cabf9f744",
+          "digest": "c6fbc00ddc08328e0ba6ae21385f39d03a17444cac95d759c9cada335318754f"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-010",
+      "source": "change-review",
+      "source_finding_id": "RF-B932E49961",
+      "rule_or_control": "VC-TR-OBJECT-AUTHZ",
+      "title": "Object fetched by request ID without an ownership or tenant filter",
+      "severity": "P1",
+      "pillar": "trust",
+      "epistemic": "hypothesis",
+      "location": "app/api/invoices/route.ts:2",
+      "dedupe_key": "2cf7c0025c6213cae572",
+      "verification": {
+        "state": "CORROBORATED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "Diff line(s) recorded as evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "pass",
+            "detail": "Re-read app/api/invoices/route.ts at head: the condition holds (line 2)."
+          },
+          {
+            "check": "second-signal",
+            "result": "pass",
+            "detail": "Also raised by: VC-TR-AUTHZ-REMOVED, VC-CR-NO-TESTS, ai-code-reviewer (ai)."
+          }
+        ]
+      },
+      "opened_in": "CR-97A3E2D1F6",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 19,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:51:01.143Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from change review CR-97A3E2D1F6 (CORROBORATED).",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "CR-97A3E2D1F6"
+          },
+          "prev_digest": "c6fbc00ddc08328e0ba6ae21385f39d03a17444cac95d759c9cada335318754f",
+          "digest": "2bbf550847a3ae2940347579d8b8958ad82307dec6814fcf121f563d0c410b1c"
+        }
+      ]
+    },
+    {
+      "finding_id": "F-011",
+      "source": "change-review",
+      "source_finding_id": "RF-0D8CBD4E8B",
+      "rule_or_control": "VC-CR-NO-TESTS",
+      "title": "Behavior changed without any test change",
+      "severity": "P3",
+      "pillar": "technology",
+      "epistemic": "inference",
+      "location": "app/api/invoices/route.ts",
+      "dedupe_key": "44410c1e39219d8d2ad2",
+      "verification": {
+        "state": "CORROBORATED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "Diff line(s) recorded as evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "not-run",
+            "detail": "Change-level inference; no single file to re-read."
+          },
+          {
+            "check": "second-signal",
+            "result": "pass",
+            "detail": "Also raised by: VC-TR-AUTHZ-REMOVED, VC-TR-OBJECT-AUTHZ, ai-code-reviewer (ai)."
+          }
+        ]
+      },
+      "opened_in": "CR-97A3E2D1F6",
+      "state": "OPEN",
+      "cycles": 0,
+      "escalated": false,
+      "fix_ids": [],
+      "verification_ids": [],
+      "approval_ids": [],
+      "acceptance_id": null,
+      "regressions": [],
+      "closure": null,
+      "transitions": [
+        {
+          "seq": 20,
+          "from": null,
+          "to": "OPEN",
+          "at": "2026-11-08T07:51:01.143Z",
+          "actor": {
+            "id": "product-check",
+            "type": "system"
+          },
+          "reason": "Opened from change review CR-97A3E2D1F6 (CORROBORATED).",
+          "refs": {
+            "evidence_ids": [],
+            "verification_id": null,
+            "approval_ids": [],
+            "fix_id": null,
+            "run_id": "CR-97A3E2D1F6"
+          },
+          "prev_digest": "2bbf550847a3ae2940347579d8b8958ad82307dec6814fcf121f563d0c410b1c",
+          "digest": "0df5471a5d0a70239633f70e8a3d83ff7492f21a3373c78245c736a77ad95d3e"
+        }
+      ]
+    }
+  ],
+  "fixes": [
+    {
+      "fix_id": "FX-001",
+      "finding_ids": [
+        "F-001"
+      ],
+      "change_sha": "2d9a97671bab9d34a753251ca4de14fc51a50f11",
+      "implemented_by": {
+        "id": "coding-agent",
+        "type": "agent"
+      },
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "reproduction": [
+        {
+          "id": "repro-1",
+          "argv": [
+            "node",
+            "--test",
+            "test/secret.test.mjs"
+          ],
+          "purpose": "reproduction",
+          "timeout_ms": 600000,
+          "cwd": ".",
+          "source": "fix"
+        }
+      ],
+      "recorded_at": "2026-11-08T07:50:59.302Z"
+    },
+    {
+      "fix_id": "FX-002",
+      "finding_ids": [
+        "F-001"
+      ],
+      "change_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "implemented_by": {
+        "id": "coding-agent",
+        "type": "agent"
+      },
+      "status": "VERIFIED",
+      "reproduction": [
+        {
+          "id": "repro-1",
+          "argv": [
+            "node",
+            "--test",
+            "test/secret.test.mjs"
+          ],
+          "purpose": "reproduction",
+          "timeout_ms": 600000,
+          "cwd": ".",
+          "source": "fix"
+        }
+      ],
+      "recorded_at": "2026-11-08T07:50:59.789Z"
+    }
+  ],
+  "verification_runs": [
+    {
+      "schema_version": "0.1.0",
+      "kind": "verification-run",
+      "verification_id": "VR-001",
+      "purpose": "closure",
+      "finding_ids": [
+        "F-001"
+      ],
+      "fix_id": "FX-001",
+      "exact_sha": "2d9a97671bab9d34a753251ca4de14fc51a50f11",
+      "worktree_clean": true,
+      "environment": {
+        "environment_id": "ENV-CD6F3E6F8C",
+        "runner": {
+          "platform": "darwin",
+          "arch": "arm64",
+          "node_version": "v25.9.0",
+          "tool_version": "0.2.0"
+        },
+        "lockfile_digest": null
+      },
+      "started_at": "2026-11-08T07:50:59.411Z",
+      "finished_at": "2026-11-08T07:50:59.666Z",
+      "checks": [
+        {
+          "check_id": "targeted:F-001:control",
+          "kind": "control-reassessment",
+          "role": "targeted",
+          "status": "FAIL",
+          "detail": "The original location is gone but PC-S-01 still fails at app/lib/config.ts:1 (P0): the fix moved the problem.",
+          "execution_id": null,
+          "evidence_ids": [
+            "EVR-4871BFA0C1D1"
+          ]
+        },
+        {
+          "check_id": "targeted:F-001:gate",
+          "kind": "gate-recheck",
+          "role": "targeted",
+          "status": "FAIL",
+          "detail": "Associated hard gate G-SECRETS: FAIL.",
+          "execution_id": null,
+          "evidence_ids": [
+            "EVR-4871BFA0C1D1"
+          ]
+        },
+        {
+          "check_id": "targeted:repro-1",
+          "kind": "command",
+          "role": "targeted",
+          "status": "PASS",
+          "detail": "node --test test/secret.test.mjs exited 0 in 115 ms.",
+          "execution_id": "EXE-22B4938022",
+          "evidence_ids": [
+            "EVR-2FE7F821CD16"
+          ]
+        },
+        {
+          "check_id": "regression:unit",
+          "kind": "command",
+          "role": "regression",
+          "status": "PASS",
+          "detail": "node --test exited 0 in 125 ms.",
+          "execution_id": "EXE-74D84F6377",
+          "evidence_ids": [
+            "EVR-A96D44D9EB26"
+          ]
+        },
+        {
+          "check_id": "regression:no-new-critical",
+          "kind": "no-new-critical",
+          "role": "regression",
+          "status": "FAIL",
+          "detail": "New P0/P1 finding(s): PCF-AC2DF9263D.",
+          "execution_id": null,
+          "evidence_ids": [
+            "EVR-4871BFA0C1D1"
+          ]
+        },
+        {
+          "check_id": "regression:controls",
+          "kind": "no-regressed-controls",
+          "role": "regression",
+          "status": "PASS",
+          "detail": "No control regressed compared with the baseline.",
+          "execution_id": null,
+          "evidence_ids": [
+            "EVR-4871BFA0C1D1"
+          ]
+        }
+      ],
+      "executions": [
+        {
+          "execution_id": "EXE-22B4938022",
+          "command_id": "repro-1",
+          "purpose": "reproduction",
+          "argv": [
+            "node",
+            "--test",
+            "test/secret.test.mjs"
+          ],
+          "cwd": ".",
+          "status": "PASS",
+          "exit_code": 0,
+          "signal": null,
+          "duration_ms": 115,
+          "started_at": "2026-11-08T07:50:59.424Z",
+          "environment_id": "ENV-CD6F3E6F8C",
+          "commit_sha": "2d9a97671bab9d34a753251ca4de14fc51a50f11",
+          "stdout_digest": "9927d36e31757017b2b9abd34e33fc8bc947137855613731690bec019db3bab1",
+          "stderr_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "output_bytes": 144,
+          "output_truncated": false,
+          "excerpt": "✔ secret moved (0.572417ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 63.024542",
+          "reason": null,
+          "evidence_id": "EVR-2FE7F821CD16"
+        },
+        {
+          "execution_id": "EXE-74D84F6377",
+          "command_id": "unit",
+          "purpose": "test",
+          "argv": [
+            "node",
+            "--test"
+          ],
+          "cwd": ".",
+          "status": "PASS",
+          "exit_code": 0,
+          "signal": null,
+          "duration_ms": 125,
+          "started_at": "2026-11-08T07:50:59.540Z",
+          "environment_id": "ENV-CD6F3E6F8C",
+          "commit_sha": "2d9a97671bab9d34a753251ca4de14fc51a50f11",
+          "stdout_digest": "cdd172a7ee637c823a9141c49f7cfe977f8887ff153957fde8de0725050bc3fe",
+          "stderr_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "output_bytes": 167,
+          "output_truncated": false,
+          "excerpt": "✔ secret moved (0.505917ms)\n✔ total (0.465209ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 69.635291",
+          "reason": null,
+          "evidence_id": "EVR-A96D44D9EB26"
+        }
+      ],
+      "before_evidence_ids": [
+        "EV-883A2C49A079"
+      ],
+      "after_evidence_ids": [
+        "EVR-4871BFA0C1D1",
+        "EVR-2FE7F821CD16",
+        "EVR-A96D44D9EB26"
+      ],
+      "after_results": {
+        "run_id": "PCR-20261108T075059Z-79884D",
+        "results_path": ".product-check/verification/VR-001-results.json",
+        "results_sha256": "d2c7e27e9bd8a39c263d58f2085ab08e4ebac5b35fc55c778be9f91992eab568",
+        "verdict": "NOT_READY",
+        "open": {
+          "P0": 1,
+          "P1": 0,
+          "P2": 3,
+          "P3": 3
+        }
+      },
+      "result": "FAIL",
+      "reasons": [
+        "Failed: targeted:F-001:control — The original location is gone but PC-S-01 still fails at app/lib/config.ts:1 (P0): the fix moved the problem. | targeted:F-001:gate — Associated hard gate G-SECRETS: FAIL. | regression:no-new-critical — New P0/P1 finding(s): PCF-AC2DF9263D."
+      ],
+      "limitations": [
+        "Imported artifacts from the baseline (test results, reports, observations) were not reused; controls that need them are NOT_TESTED unless re-supplied."
+      ],
+      "actor": {
+        "id": "product-check",
+        "type": "system"
+      }
+    },
+    {
+      "schema_version": "0.1.0",
+      "kind": "verification-run",
+      "verification_id": "VR-002",
+      "purpose": "closure",
+      "finding_ids": [
+        "F-001"
+      ],
+      "fix_id": "FX-002",
+      "exact_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "worktree_clean": true,
+      "environment": {
+        "environment_id": "ENV-CD6F3E6F8C",
+        "runner": {
+          "platform": "darwin",
+          "arch": "arm64",
+          "node_version": "v25.9.0",
+          "tool_version": "0.2.0"
+        },
+        "lockfile_digest": null
+      },
+      "started_at": "2026-11-08T07:50:59.896Z",
+      "finished_at": "2026-11-08T07:51:00.141Z",
+      "checks": [
+        {
+          "check_id": "targeted:F-001:control",
+          "kind": "control-reassessment",
+          "role": "targeted",
+          "status": "PASS",
+          "detail": "PC-S-01 is PASS at the fix commit and no longer reports the finding.",
+          "execution_id": null,
+          "evidence_ids": [
+            "EVR-44ACAFA1BB05"
+          ]
+        },
+        {
+          "check_id": "targeted:F-001:gate",
+          "kind": "gate-recheck",
+          "role": "targeted",
+          "status": "PASS",
+          "detail": "Associated hard gate G-SECRETS no longer fails; it stays UNVERIFIED overall because other gate controls were not testable here (disclosed by the release gate).",
+          "execution_id": null,
+          "evidence_ids": [
+            "EVR-44ACAFA1BB05"
+          ]
+        },
+        {
+          "check_id": "targeted:repro-1",
+          "kind": "command",
+          "role": "targeted",
+          "status": "PASS",
+          "detail": "node --test test/secret.test.mjs exited 0 in 111 ms.",
+          "execution_id": "EXE-D6F9CD9A99",
+          "evidence_ids": [
+            "EVR-5D0D734662D7"
+          ]
+        },
+        {
+          "check_id": "regression:unit",
+          "kind": "command",
+          "role": "regression",
+          "status": "PASS",
+          "detail": "node --test exited 0 in 119 ms.",
+          "execution_id": "EXE-94858F920A",
+          "evidence_ids": [
+            "EVR-783C99440F64"
+          ]
+        },
+        {
+          "check_id": "regression:no-new-critical",
+          "kind": "no-new-critical",
+          "role": "regression",
+          "status": "PASS",
+          "detail": "No new P0/P1 finding compared with the baseline.",
+          "execution_id": null,
+          "evidence_ids": [
+            "EVR-44ACAFA1BB05"
+          ]
+        },
+        {
+          "check_id": "regression:controls",
+          "kind": "no-regressed-controls",
+          "role": "regression",
+          "status": "PASS",
+          "detail": "No control regressed compared with the baseline.",
+          "execution_id": null,
+          "evidence_ids": [
+            "EVR-44ACAFA1BB05"
+          ]
+        }
+      ],
+      "executions": [
+        {
+          "execution_id": "EXE-D6F9CD9A99",
+          "command_id": "repro-1",
+          "purpose": "reproduction",
+          "argv": [
+            "node",
+            "--test",
+            "test/secret.test.mjs"
+          ],
+          "cwd": ".",
+          "status": "PASS",
+          "exit_code": 0,
+          "signal": null,
+          "duration_ms": 111,
+          "started_at": "2026-11-08T07:50:59.909Z",
+          "environment_id": "ENV-CD6F3E6F8C",
+          "commit_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+          "stdout_digest": "6d457ab47b342ee6dcb918d17b23a3016d7319f8edc41641f30ca879f975862a",
+          "stderr_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "output_bytes": 160,
+          "output_truncated": false,
+          "excerpt": "✔ no secret key in client code (0.507792ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 61.349709",
+          "reason": null,
+          "evidence_id": "EVR-5D0D734662D7"
+        },
+        {
+          "execution_id": "EXE-94858F920A",
+          "command_id": "unit",
+          "purpose": "test",
+          "argv": [
+            "node",
+            "--test"
+          ],
+          "cwd": ".",
+          "status": "PASS",
+          "exit_code": 0,
+          "signal": null,
+          "duration_ms": 119,
+          "started_at": "2026-11-08T07:51:00.021Z",
+          "environment_id": "ENV-CD6F3E6F8C",
+          "commit_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+          "stdout_digest": "2fab5377e6229ed39da45793938aada849bf35534cd206253c0b456f58655c55",
+          "stderr_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "output_bytes": 183,
+          "output_truncated": false,
+          "excerpt": "✔ no secret key in client code (0.570292ms)\n✔ total (0.485708ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 67.850333",
+          "reason": null,
+          "evidence_id": "EVR-783C99440F64"
+        }
+      ],
+      "before_evidence_ids": [
+        "EV-883A2C49A079"
+      ],
+      "after_evidence_ids": [
+        "EVR-44ACAFA1BB05",
+        "EVR-5D0D734662D7",
+        "EVR-783C99440F64"
+      ],
+      "after_results": {
+        "run_id": "PCR-20261108T075059Z-C0715B",
+        "results_path": ".product-check/verification/VR-002-results.json",
+        "results_sha256": "191d4cde3cdffc9f799a8503a5840063da932467a8a881ce792097b60812d85d",
+        "verdict": "INCONCLUSIVE",
+        "open": {
+          "P0": 0,
+          "P1": 0,
+          "P2": 3,
+          "P3": 3
+        }
+      },
+      "result": "PASS",
+      "reasons": [
+        "All 6 targeted and regression check(s) passed at 28d05afb57f3."
+      ],
+      "limitations": [
+        "Imported artifacts from the baseline (test results, reports, observations) were not reused; controls that need them are NOT_TESTED unless re-supplied."
+      ],
+      "actor": {
+        "id": "product-check",
+        "type": "system"
+      }
+    }
+  ],
+  "approvals": [
+    {
+      "schema_version": "0.1.0",
+      "kind": "approval",
+      "approver": {
+        "id": "alice",
+        "type": "human"
+      },
+      "scope": {
+        "type": "closure",
+        "ref": "F-001"
+      },
+      "reviewed_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "decision": "approve",
+      "comment": "Verified repro and regression; key rotated",
+      "created_at": "2026-11-08T07:51:00.308Z",
+      "approval_id": "AP-3039A2C12FC1",
+      "signature": {
+        "algorithm": "ed25519",
+        "key_id": "798515f7609eb53f",
+        "value": "SaLT/QeRV/SUczTRXXcpf0Jg/uREDXm5GYelx4NsKa1cZG2iXAElAfVVz6DjA7juXnVoCZYpWZlHXQ3Yu2O/Aw=="
+      }
+    },
+    {
+      "schema_version": "0.1.0",
+      "kind": "approval",
+      "approver": {
+        "id": "bob",
+        "type": "human"
+      },
+      "scope": {
+        "type": "closure",
+        "ref": "F-001"
+      },
+      "reviewed_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "decision": "approve",
+      "comment": "",
+      "created_at": "2026-11-08T07:51:00.400Z",
+      "approval_id": "AP-C7085600D1FF",
+      "signature": {
+        "algorithm": "ed25519",
+        "key_id": "eb24a22314692e7f",
+        "value": "CUqyOfHHFMimeLAgz6aoDlk4/FLZAkx0x9GDBl/FW1JQtNgqsrbk1s/oV2c8jv4jo/tUVPU1e9+aZAMN8p/xBQ=="
+      }
+    }
+  ],
+  "risk_acceptances": [],
+  "regression_corpus": [
+    {
+      "case_id": "RC-001",
+      "finding_id": "F-001",
+      "origin": "verified-fix",
+      "description": "Regression case for F-001",
+      "command": {
+        "id": "RC-001",
+        "argv": [
+          "node",
+          "--test",
+          "test/secret.test.mjs"
+        ],
+        "purpose": "regression",
+        "timeout_ms": 600000,
+        "cwd": ".",
+        "source": "corpus"
+      },
+      "added_at": "2026-11-08T07:51:00.566Z",
+      "added_by": {
+        "id": "alice",
+        "type": "agent"
+      }
+    }
+  ],
+  "chain": {
+    "length": 20,
+    "head_digest": "0df5471a5d0a70239633f70e8a3d83ff7492f21a3373c78245c736a77ad95d3e"
+  }
+}

@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-MVvmCH23E4MPnUc7CSByJVzjQB/Kr4DIfi34YjVxvbM='; img-src data:">
+<title>Product Check: Vibe Invoices (synthetic demo)</title>
+<style>/* SPDX-License-Identifier: MIT */
+/* SPDX-FileCopyrightText: 2026 EnWithAI Technologies */
+/* Product Check dashboard styles. Inlined into each generated dashboard; no external requests. */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --raised: #ffffff;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #6f6d68;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --line: rgba(11, 11, 11, 0.12);
+  --focus: #2a78d6;
+  --s-customer: #2a78d6;
+  --s-technology: #eb6834;
+  --s-trust: #1baf7a;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --unknown: #898781;
+  --unknown-wash: #ecebe6;
+  --banner-demo: #fff4d6;
+  --banner-error: #fde6e6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --raised: #222220;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #a3a198;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --line: rgba(255, 255, 255, 0.12);
+    --focus: #3987e5;
+    --s-customer: #3987e5;
+    --s-technology: #d95926;
+    --s-trust: #199e70;
+    --unknown-wash: #2a2a28;
+    --banner-demo: #3a3010;
+    --banner-error: #3d1717;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --raised: #222220;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #a3a198;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --line: rgba(255, 255, 255, 0.12);
+  --focus: #3987e5;
+  --s-customer: #3987e5;
+  --s-technology: #d95926;
+  --s-trust: #199e70;
+  --unknown-wash: #2a2a28;
+  --banner-demo: #3a3010;
+  --banner-error: #3d1717;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font:
+    15px/1.5 system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+}
+a {
+  color: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+header.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 20px 0 8px;
+}
+header.top h1 {
+  font-size: 1.35rem;
+  margin: 0;
+}
+header.top .meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.banner {
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  border: 1px solid var(--line);
+}
+.banner.demo {
+  background: var(--banner-demo);
+}
+.banner.error {
+  background: var(--banner-error);
+}
+nav.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--page);
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line);
+  margin: 8px 0 16px;
+  padding-top: 4px;
+}
+nav.tabs a {
+  white-space: nowrap;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--ink-2);
+  border-bottom: 2px solid transparent;
+}
+nav.tabs a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  font-weight: 600;
+}
+section.view {
+  margin-bottom: 32px;
+}
+section.view > h2 {
+  font-size: 1.15rem;
+  margin: 8px 0 12px;
+}
+h3 {
+  font-size: 1rem;
+  margin: 20px 0 8px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.grid {
+  display: grid;
+  gap: 12px;
+}
+.grid.three {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.grid.kpis {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+.hero .verdict {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.hero .alias {
+  color: var(--ink-2);
+}
+.reasons {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.bounded {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  white-space: nowrap;
+}
+.chip .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+}
+.chip.good .dot {
+  background: var(--good);
+}
+.chip.warning .dot {
+  background: var(--warning);
+}
+.chip.serious .dot {
+  background: var(--serious);
+}
+.chip.critical .dot {
+  background: var(--critical);
+}
+.chip.unknown .dot {
+  background: transparent;
+  border: 2px dashed var(--unknown);
+}
+.chip.neutral .dot {
+  background: var(--axis);
+}
+.kpi .label {
+  color: var(--ink-2);
+  font-size: 0.8rem;
+}
+.kpi .value {
+  font-size: 1.6rem;
+  font-weight: 650;
+}
+.dial {
+  text-align: center;
+}
+.dial svg {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.dial .name {
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.dial .swatch {
+  width: 12px;
+  height: 3px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.dial .sub {
+  color: var(--ink-2);
+  font-size: 0.85rem;
+}
+.meter {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--grid);
+  overflow: hidden;
+  margin: 6px 0 2px;
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  background: var(--ink-2);
+  border-radius: 4px;
+}
+.track {
+  fill: none;
+  stroke: var(--grid);
+}
+.track.unknown {
+  stroke: url(#hatch);
+}
+.fill {
+  fill: none;
+  stroke-linecap: round;
+}
+.tick {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.dial-value {
+  font-size: 30px;
+  font-weight: 700;
+  fill: var(--ink);
+}
+.dial-caption {
+  font-size: 11px;
+  fill: var(--muted);
+}
+.hatch-line {
+  stroke: var(--unknown);
+  stroke-width: 2;
+}
+.scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88rem;
+}
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  color: var(--ink-2);
+  font-weight: 600;
+  background: var(--surface);
+}
+td.id {
+  white-space: nowrap;
+}
+td.id code {
+  overflow-wrap: normal;
+}
+td.num,
+th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+pre {
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  overflow-x: auto;
+  font-size: 0.8rem;
+}
+details {
+  margin: 4px 0;
+}
+details > summary {
+  cursor: pointer;
+  color: var(--ink-2);
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+.filters label {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.filters select,
+.filters input {
+  font: inherit;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  min-width: 140px;
+}
+.stack {
+  display: flex;
+  height: 18px;
+  gap: 2px;
+  margin: 4px 0;
+}
+.stack > span {
+  display: block;
+  height: 100%;
+}
+.stack > span:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.stack > span:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.seg-PASS {
+  background: var(--good);
+}
+.seg-PARTIAL {
+  background: var(--warning);
+}
+.seg-FAIL {
+  background: var(--critical);
+}
+.seg-BLOCKED,
+.seg-NOT_TESTED {
+  background: repeating-linear-gradient(45deg, var(--unknown) 0 2px, var(--unknown-wash) 2px 6px);
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  margin: 6px 0;
+}
+.legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 0.82rem;
+}
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chart .gridline {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+.chart .axis-label {
+  fill: var(--muted);
+  font-size: 11px;
+}
+.chart .series {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.chart .end-label {
+  fill: var(--ink-2);
+  font-size: 11px;
+}
+.theme-toggle {
+  font: inherit;
+  font-size: 0.8rem;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+footer {
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 24px;
+}
+@media (forced-colors: active) {
+  .seg-PASS,
+  .seg-PARTIAL,
+  .seg-FAIL {
+    forced-color-adjust: none;
+  }
+}
+@media print {
+  nav.tabs,
+  .filters,
+  .theme-toggle {
+    display: none;
+  }
+  section.view[hidden] {
+    display: block !important;
+  }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="6"/></pattern></defs></svg>
+<div class="wrap">
+<header class="top"><div><h1>Product Check: Vibe Invoices (synthetic demo)</h1><div class="meta">Run PCR-20261108T075100Z-E27953 · 2026-11-08T07:51:00.658Z · COMPLETED</div></div><button class="theme-toggle" type="button" hidden>Theme: auto</button></header>
+
+<nav class="tabs" aria-label="Dashboard views"><a href="#readiness" aria-current="page">Executive readiness</a><a href="#scan">Scan explorer</a><a href="#workbench">Validation workbench</a><a href="#blueprint">Blueprint &amp; remediation</a><a href="#as-built">As-built spec</a><a href="#history">Assurance history</a></nav>
+<main>
+<section class="view" id="readiness" aria-labelledby="h-readiness"><h2 id="h-readiness">Executive readiness</h2>
+<div class="card"><div class="hero"><div><div class="verdict">INCONCLUSIVE</div><div class="alias">CT-T1 Experience &amp; Product Usefulness · "INSUFFICIENT EVIDENCE"</div></div><span class="chip unknown"><span class="dot" aria-hidden="true"></span>Evidence insufficient</span></div>
+<ul class="reasons"><li>Hard-gate controls not verified: PC-S-09, PC-S-13.</li><li>Insufficient evidence to score: customer.</li></ul><div class="bounded">Applies only to repository &quot;Vibe Invoices (synthetic demo)&quot; at revision 28d05afb57f3 and no deployed application, assessed 2026-11-08T07:51:00.658Z. 12 of 24 applicable controls were checked; 12 were blocked or not tested. A material change invalidates this verdict.</div></div>
+<h3>Customer × Technology × Trust</h3><p class="muted small">Three independent pillars, never averaged. The black tick marks the readiness threshold (70). A hatched dial means the pillar could not be scored; that is unknown, not passed.</p>
+<div class="grid three"><div class="card dial">
+<div class="name"><span class="swatch" style="background:var(--s-customer)" aria-hidden="true"></span>Customer</div>
+<div class="sub">Can intended users understand it, use it and get value?</div>
+<svg viewBox="0 0 220 128" role="img" aria-label="Customer not scored: insufficient evidence">
+<path class="track unknown" d="M 24 108 A 86 86 0 0 1 196.00 108.00" stroke-width="14"/>
+
+<line class="tick" x1="151.45" y1="50.95" x2="160.55" y2="38.42"><title>Readiness threshold 70</title></line>
+<text class="dial-value" x="110" y="94" text-anchor="middle">—</text>
+<text class="dial-caption" x="110" y="120" text-anchor="middle">not scored</text>
+</svg>
+<div><span class="chip unknown"><span class="dot" aria-hidden="true"></span>Insufficient evidence</span></div>
+<div class="sub" style="margin-top:8px">Coverage 15% · Confidence LOW</div>
+<div class="meter" role="img" aria-label="Coverage 15%"><span style="width:15.4%"></span></div>
+<div class="sub small">0 pass · 0 partial · 1 fail · 9 unchecked</div>
+</div><div class="card dial">
+<div class="name"><span class="swatch" style="background:var(--s-technology)" aria-hidden="true"></span>Technology</div>
+<div class="sub">Is it built, tested and operated soundly?</div>
+<svg viewBox="0 0 220 128" role="img" aria-label="Technology score 39 of 100">
+<path class="track" d="M 24 108 A 86 86 0 0 1 196.00 108.00" stroke-width="14"/>
+<path class="fill" d="M 24 108 A 86 86 0 0 1 80.87 27.08" stroke="var(--s-technology)" stroke-width="14"/>
+<line class="tick" x1="151.45" y1="50.95" x2="160.55" y2="38.42"><title>Readiness threshold 70</title></line>
+<text class="dial-value" x="110" y="94" text-anchor="middle">39</text>
+<text class="dial-caption" x="110" y="120" text-anchor="middle">of 100</text>
+</svg>
+<div><span class="chip warning"><span class="dot" aria-hidden="true"></span>Below threshold</span></div>
+<div class="sub" style="margin-top:8px">Coverage 75% · Confidence MEDIUM · trend +0</div>
+<div class="meter" role="img" aria-label="Coverage 75%"><span style="width:75.0%"></span></div>
+<div class="sub small">2 pass · 1 partial · 4 fail · 1 unchecked</div>
+</div><div class="card dial">
+<div class="name"><span class="swatch" style="background:var(--s-trust)" aria-hidden="true"></span>Trust</div>
+<div class="sub">Can users and operators trust it with their data and actions?</div>
+<svg viewBox="0 0 220 128" role="img" aria-label="Trust score 100 of 100">
+<path class="track" d="M 24 108 A 86 86 0 0 1 196.00 108.00" stroke-width="14"/>
+<path class="fill" d="M 24 108 A 86 86 0 0 1 196.00 108.00" stroke="var(--s-trust)" stroke-width="14"/>
+<line class="tick" x1="151.45" y1="50.95" x2="160.55" y2="38.42"><title>Readiness threshold 70</title></line>
+<text class="dial-value" x="110" y="94" text-anchor="middle">100</text>
+<text class="dial-caption" x="110" y="120" text-anchor="middle">of 100</text>
+</svg>
+<div><span class="chip good"><span class="dot" aria-hidden="true"></span>At or above threshold</span></div>
+<div class="sub" style="margin-top:8px">Coverage 60% · Confidence MEDIUM · trend +61</div>
+<div class="meter" role="img" aria-label="Coverage 60%"><span style="width:60.0%"></span></div>
+<div class="sub small">4 pass · 0 partial · 0 fail · 2 unchecked</div>
+</div></div>
+<h3>Key figures</h3><div class="grid kpis"><div class="card kpi"><div class="label">Open P0</div><div class="value">0</div></div><div class="card kpi"><div class="label">Open P1</div><div class="value">0</div></div><div class="card kpi"><div class="label">Open P2</div><div class="value">3</div></div><div class="card kpi"><div class="label">Open P3</div><div class="value">3</div></div><div class="card kpi"><div class="label">Accepted risks</div><div class="value">0</div></div><div class="card kpi"><div class="label">Overall coverage</div><div class="value">50%</div></div></div>
+<h3>Hard gates</h3><div class="scroll"><table><thead><tr><th>Gate</th><th>Status</th><th>Controls</th></tr></thead><tbody><tr><td>G-SECRETS: No exposed production secrets or client-side privileged keys</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>UNVERIFIED</span></td><td><code>PC-S-01, PC-S-02, PC-S-09, PC-AI-01</code></td></tr><tr><td>G-AUTHZ: No authentication or authorization bypass on privileged paths</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>UNVERIFIED</span></td><td><code>PC-S-13</code></td></tr><tr><td>G-ISOLATION: No cross-tenant or cross-user data exposure</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td><code>PC-S-14</code></td></tr></tbody></table></div>
+<h3>Top open findings</h3><div class="scroll"><table><thead><tr><th>Severity</th><th>Finding</th><th>Pillar</th><th>Location</th></tr></thead><tbody><tr><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No CI pipeline<br><span class="muted small">fact, high confidence</span></td><td>Technology</td><td><code>repository</code></td></tr><tr><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Critical journeys have no end-to-end tests<br><span class="muted small">fact, high confidence</span></td><td>Customer</td><td><code>repository</code></td></tr><tr><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No lockfile: builds are not reproducible<br><span class="muted small">fact, high confidence</span></td><td>Technology</td><td><code>package.json</code></td></tr><tr><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>Runtime version is not declared<br><span class="muted small">fact, high confidence</span></td><td>Technology</td><td><code>repository</code></td></tr><tr><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>README lacks setup/run instructions<br><span class="muted small">fact, medium confidence</span></td><td>Technology</td><td><code>README.md</code></td></tr><tr><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>No type checking or linting configured<br><span class="muted small">fact, high confidence</span></td><td>Technology</td><td><code>repository</code></td></tr></tbody></table></div>
+</section>
+<section class="view" id="scan" aria-labelledby="h-scan"><h2 id="h-scan">Scan explorer</h2>
+<div class="grid kpis"><div class="card kpi"><div class="label">PoPs available</div><div class="value">4</div></div><div class="card kpi"><div class="label">PoPs partial</div><div class="value">2</div></div><div class="card kpi"><div class="label">PoPs blocked</div><div class="value">2</div></div><div class="card kpi"><div class="label">PoPs not applicable</div><div class="value">5</div></div></div>
+<h3>Points of presence</h3><div class="scroll"><table><thead><tr><th>Point of presence</th><th>Status</th><th>Authorization</th><th>Scope</th><th>Observed</th><th>Limitations</th><th class="num">Evidence</th></tr></thead><tbody><tr><td>Source repository<br><span class="muted small">source-build</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-11-08T07:51:00.648Z</td><td class="small">—</td><td class="num">16</td></tr><tr><td>Dependency manifests<br><span class="muted small">source-build</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-11-08T07:51:00.648Z</td><td class="small">—</td><td class="num">2</td></tr><tr><td>Automated test sources<br><span class="muted small">source-build</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-11-08T07:51:00.648Z</td><td class="small">—</td><td class="num">5</td></tr><tr><td>Executed test results<br><span class="muted small">source-build</span></td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">No executed test results were imported (Product Check never runs repository code).</td><td class="num">0</td></tr><tr><td>CI/CD configuration<br><span class="muted small">source-build</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-11-08T07:51:00.648Z</td><td class="small">No CI configuration found.</td><td class="num">0</td></tr><tr><td>Hosting / infrastructure configuration<br><span class="muted small">operations</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="small">not-required · none</td><td class="small">local checkout (read-only)</td><td class="small">—</td><td class="small">No hosting or IaC files in the repository.</td><td class="num">0</td></tr><tr><td>Database schema and migrations<br><span class="muted small">data</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">No database dependency detected.</td><td class="num">0</td></tr><tr><td>Deployed web application<br><span class="muted small">experience</span></td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">No deployed URL was provided (--url).</td><td class="num">0</td></tr><tr><td>API definition (OpenAPI/GraphQL)<br><span class="muted small">interfaces</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">No API definition files found.</td><td class="num">0</td></tr><tr><td>Production telemetry (logs, metrics, traces, alerts)<br><span class="muted small">operations</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">Not required before launch tiers (CT-T4+).</td><td class="num">0</td></tr><tr><td>AI integration (SDKs, prompts, evals)<br><span class="muted small">ai</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td><td class="small">not-required · none</td><td class="small">—</td><td class="small">—</td><td class="small">No AI SDK detected.</td><td class="num">0</td></tr><tr><td>Documentation and specifications<br><span class="muted small">governance</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>AVAILABLE</span></td><td class="small">not-required · read-only</td><td class="small">local checkout (read-only)</td><td class="small">2026-11-08T07:51:00.648Z</td><td class="small">—</td><td class="num">0</td></tr><tr><td>Privacy and security policies<br><span class="muted small">governance</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span></td><td class="small">not-required · read-only</td><td class="small">—</td><td class="small">2026-11-08T07:51:00.648Z</td><td class="small">Presence only; policy content is not assessed (this is not a legal review).</td><td class="num">0</td></tr></tbody></table></div>
+<h3>Run</h3><div class="card small"><div>Run <code>PCR-20261108T075100Z-E27953</code> · COMPLETED · 2026-11-08T07:51:00.648Z · 10 ms</div>
+<div>Mode SOURCE (requested AUTO) · tier CT-T1 · tiers applied CT-T0, CT-T1</div>
+<div>Repository: Vibe Invoices (synthetic demo) @ <code>28d05afb57f323444572a6149292f162f99c1a1f</code> · Application: not inspected</div>
+<div>Network: no requests made · Product Check 0.2.0 · rubric pc-rubric-0.2 · methodology CT3 (inspired)</div></div>
+<h3>Workflow phases</h3><div class="scroll"><table><thead><tr><th>Phase</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td>SCAN</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">8 files inventoried<br>no application observed</td></tr><tr><td>TEST</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">no application checks<br>0 test results file(s) imported (0 cases); Product Check executes no repository code</td></tr><tr><td>VALIDATE</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">51 controls evaluated against CT-T1<br>6 open finding(s)</td></tr><tr><td>BLUEPRINT</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">7 remediation(s), 7 work packet(s)</td></tr><tr><td>DASHBOARD</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>SKIPPED</span></td><td class="small">Rendered on demand from this file (`product-check dashboard`).</td></tr><tr><td>REMEDIATE</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>ADVISORY</span></td><td class="small">Product Check proposes changes and work packets; it never modifies code.</td></tr><tr><td>RETEST</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>COMPLETED</span></td><td class="small">compared with PCR-20261108T075058Z-D21CC5</td></tr></tbody></table></div>
+
+</section>
+<section class="view" id="workbench" aria-labelledby="h-workbench"><h2 id="h-workbench">Validation workbench</h2>
+<div><strong>Customer</strong><div class="stack" role="img" aria-label="Customer: 0 PASS, 0 PARTIAL, 1 FAIL, 3 BLOCKED, 6 NOT_TESTED"><span class="seg-FAIL" style="flex:1" title="Customer: 1 fail"></span><span class="seg-BLOCKED" style="flex:3" title="Customer: 3 blocked"></span><span class="seg-NOT_TESTED" style="flex:6" title="Customer: 6 not tested"></span></div></div><div><strong>Technology</strong><div class="stack" role="img" aria-label="Technology: 2 PASS, 1 PARTIAL, 4 FAIL, 0 BLOCKED, 1 NOT_TESTED"><span class="seg-PASS" style="flex:2" title="Technology: 2 pass"></span><span class="seg-PARTIAL" style="flex:1" title="Technology: 1 partial"></span><span class="seg-FAIL" style="flex:4" title="Technology: 4 fail"></span><span class="seg-NOT_TESTED" style="flex:1" title="Technology: 1 not tested"></span></div></div><div><strong>Trust</strong><div class="stack" role="img" aria-label="Trust: 4 PASS, 0 PARTIAL, 0 FAIL, 1 BLOCKED, 1 NOT_TESTED"><span class="seg-PASS" style="flex:4" title="Trust: 4 pass"></span><span class="seg-BLOCKED" style="flex:1" title="Trust: 1 blocked"></span><span class="seg-NOT_TESTED" style="flex:1" title="Trust: 1 not tested"></span></div></div>
+<div class="legend"><span><i class="seg-PASS"></i>Pass</span><span><i class="seg-PARTIAL"></i>Partial</span><span><i class="seg-FAIL"></i>Fail</span><span><i class="seg-NOT_TESTED"></i>Blocked or not tested (unknown)</span></div>
+<div class="filters" data-filter-table="validations-table"><label>Pillar<select data-key="pillar"><option value="">All</option><option value="customer">Customer</option><option value="technology">Technology</option><option value="trust">Trust</option></select></label>
+<label>Status<select data-key="status"><option value="">All</option><option value="PASS">PASS</option><option value="PARTIAL">PARTIAL</option><option value="FAIL">FAIL</option><option value="BLOCKED">BLOCKED</option><option value="NOT_TESTED">NOT TESTED</option><option value="NOT_APPLICABLE">NOT APPLICABLE</option></select></label>
+<label>Search<input type="search" data-key="text" placeholder="control, text, path"></label><span class="small muted" data-count style="align-self:end"></span></div>
+<div class="scroll"><table id="validations-table"><thead><tr><th>Control</th><th>Requirement</th><th>Status</th><th>Expected / actual</th><th>Evidence</th></tr></thead><tbody><tr data-pillar="customer" data-status="BLOCKED">
+<td><code>PC-C-01</code></td>
+<td>Application is reachable over HTTPS<br><span class="muted small">CT-T1 · Customer · weight 2</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td>
+<td class="small"><strong>Expected:</strong> The declared URL answers with a 2xx page over HTTPS (after same-origin redirects).<br><strong>Reason:</strong> Deployed web application: No deployed URL was provided (--url).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="NOT_TESTED">
+<td><code>PC-C-02</code></td>
+<td>Page language is declared<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> The root &lt;html&gt; element declares a lang attribute.<br><strong>Reason:</strong> No &lt;html&gt; document template was found in source.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="NOT_TESTED">
+<td><code>PC-C-03</code></td>
+<td>Page is configured for mobile viewports<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> A responsive viewport meta tag is present.<br><strong>Reason:</strong> No document &lt;head&gt; template found in source.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="NOT_TESTED">
+<td><code>PC-C-04</code></td>
+<td>Images have text alternatives<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Every &lt;img&gt;/&lt;Image&gt; element has an alt attribute (empty alt for decorative images).<br><strong>Reason:</strong> No image elements found in source templates.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="BLOCKED">
+<td><code>PC-C-05</code></td>
+<td>Entry page has a meaningful title<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td>
+<td class="small"><strong>Expected:</strong> The entry page has a non-empty &lt;title&gt; that is not a framework starter default.<br><strong>Reason:</strong> Deployed web application: No deployed URL was provided (--url).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="NOT_TESTED">
+<td><code>PC-C-06</code></td>
+<td>Unknown URLs return a real 404 page<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> A request for a non-existent path returns HTTP 404 (not a 200 &quot;soft 404&quot;).<br><strong>Reason:</strong> No dedicated not-found page in source; the served status code needs a deployed URL.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="BLOCKED">
+<td><code>PC-C-07</code></td>
+<td>Entry page responds quickly<br><span class="muted small">CT-T1 · Customer · weight 1</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td>
+<td class="small"><strong>Expected:</strong> The entry page&#39;s server response completes within 2,500 ms (single passive sample).<br><strong>Reason:</strong> Deployed web application: No deployed URL was provided (--url).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="FAIL">
+<td><code>PC-C-08</code></td>
+<td>Critical journeys are covered by passing end-to-end tests<br><span class="muted small">CT-T1 · Customer · weight 2</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> End-to-end tests exist and their imported results pass.<br><strong>Actual:</strong> No end-to-end tests for critical journeys.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-A80991901098</code> search-scope · static · <code>repository (8 files)</code><br>Searched for end-to-end test files and Playwright/Cypress configuration; none found.</li></ul></details></td>
+</tr><tr data-pillar="customer" data-status="NOT_TESTED">
+<td><code>PC-C-09</code></td>
+<td>A new user can complete onboarding unaided<br><span class="muted small">CT-T1 · Customer · weight 2</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control (control_mappings) show the onboarding journey passing.<br><strong>Reason:</strong> Onboarding needs an executed journey (browser automation is not built into this release). No adapter in this release can verify it directly; map executed tests to PC-C-09 with contract.control_mappings.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="NOT_TESTED">
+<td><code>PC-C-10</code></td>
+<td>Requirements are specific and testable<br><span class="muted small">CT-T0 · Customer · weight 1</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> An imported Spec Check report shows no high-severity requirement findings.<br><strong>Reason:</strong> No Spec Check report was imported (optional; pass --spec-check &lt;report.json&gt;).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="customer" data-status="NOT_APPLICABLE">
+<td><code>PC-C-11</code></td>
+<td>Real-user journey health is observed in production<br><span class="muted small">CT-T4 · Customer · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Production telemetry shows critical journeys succeeding for real users.<br><strong>Reason:</strong> Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-01</code></td>
+<td>Dependency manifest and lockfile are present<br><span class="muted small">CT-T0 · Technology · weight 2</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> A dependency manifest and a matching lockfile exist so builds are reproducible.<br><strong>Actual:</strong> Manifest package.json has no lockfile next to it.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-74530FCD4DCF</code> file-presence · static · <code>package.json</code><br>dependency manifest (2 dependencies)<br><span class="muted">sha256 69f271a679d6d6e3…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="PASS">
+<td><code>PC-T-02</code></td>
+<td>Automated tests exist<br><span class="muted small">CT-T0 · Technology · weight 2</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> The repository contains automated test files and a test command.<br><strong>Actual:</strong> 2 test file(s) and a test command.</td>
+<td class="small"><details><summary>3 evidence item(s)</summary><ul class="small"><li><code>EV-15765D61D149</code> source-location · static · <code>package.json:5</code><br>scripts.test = node --test<br><span class="muted">sha256 69f271a679d6d6e3…</span></li><li><code>EV-251DCDFD8D8C</code> file-presence · static · <code>test/secret.test.mjs</code><br>test file<br><span class="muted">sha256 c5fdfce4f67bb561…</span></li><li><code>EV-290694968EA1</code> file-presence · static · <code>test/total.test.mjs</code><br>test file<br><span class="muted">sha256 b54e3ac2cfcdcb41…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="NOT_TESTED">
+<td><code>PC-T-03</code></td>
+<td>Automated tests pass<br><span class="muted small">CT-T0 · Technology · weight 3</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results (JUnit XML or Jest/Vitest JSON) show zero failures.<br><strong>Reason:</strong> No test results were imported (Product Check never runs repository code; pass --test-results &lt;junit.xml&gt;).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-04</code></td>
+<td>A CI pipeline is configured<br><span class="muted small">CT-T0 · Technology · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> A continuous-integration configuration exists (GitHub Actions, GitLab CI, CircleCI, …).<br><strong>Actual:</strong> No CI configuration found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-A2241F53F818</code> search-scope · static · <code>repository (8 text files)</code><br>Searched 8 readable, non-ignored text files for no ci pipeline (rubric pc-rubric-0.2).<br><span class="muted">sha256 ceabb41b9eca9e21…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-05</code></td>
+<td>CI runs the tests<br><span class="muted small">CT-T1 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> The CI configuration invokes the test command.<br><strong>Reason:</strong> No CI configuration exists (see PC-T-04).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="PARTIAL">
+<td><code>PC-T-06</code></td>
+<td>Setup and run instructions are documented<br><span class="muted small">CT-T0 · Technology · weight 1</span></td>
+<td><span class="chip warning"><span class="dot" aria-hidden="true"></span>PARTIAL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> A README explains how to install and run the project.<br><strong>Actual:</strong> README.md lacks install and run instructions.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-C20D88B2D9D3</code> file-presence · static · <code>README.md</code><br>README without install or run instructions<br><span class="muted">sha256 f7612345879448f6…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-07</code></td>
+<td>Runtime version is declared<br><span class="muted small">CT-T0 · Technology · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> The runtime version is pinned (engines field, .nvmrc, .node-version, .tool-versions or .python-version).<br><strong>Actual:</strong> No runtime version declaration found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-55C63A1D0B6D</code> search-scope · static · <code>repository (8 text files)</code><br>Searched 8 readable, non-ignored text files for runtime version is not declared (rubric pc-rubric-0.2).<br><span class="muted">sha256 ceabb41b9eca9e21…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="FAIL">
+<td><code>PC-T-08</code></td>
+<td>Static type checking or linting is configured<br><span class="muted small">CT-T1 · Technology · weight 1</span></td>
+<td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAIL</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> A type checker in strict mode or a linter configuration exists.<br><strong>Actual:</strong> No strict type checking or linter configuration found.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-B03FC32728C5</code> search-scope · static · <code>repository (8 text files)</code><br>Searched 8 readable, non-ignored text files for no type checking or linting configured (rubric pc-rubric-0.2).<br><span class="muted">sha256 ceabb41b9eca9e21…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="PASS">
+<td><code>PC-T-09</code></td>
+<td>Dependency versions are bounded<br><span class="muted small">CT-T1 · Technology · weight 1</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No dependency uses &quot;*&quot;, &quot;latest&quot;, an empty range or an unpinned git/URL source.<br><strong>Actual:</strong> All npm dependency versions are bounded.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-887BA2AA284F</code> file-presence · static · <code>package.json</code><br>dependency manifest<br><span class="muted">sha256 69f271a679d6d6e3…</span></li></ul></details></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-10</code></td>
+<td>Error monitoring is instrumented<br><span class="muted small">CT-T2 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> An error-tracking or telemetry SDK is a dependency (presence only; runtime operation is not verified).<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-11</code></td>
+<td>Database schema changes are versioned<br><span class="muted small">CT-T0 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> When a database or ORM is used, schema migrations are kept in the repository.<br><strong>Reason:</strong> No database or ORM dependency was found in the manifests.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-12</code></td>
+<td>Change impact of the release candidate is reviewed<br><span class="muted small">CT-T3 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> An imported Impact Check report shows no unreviewed high-severity impact findings.<br><strong>Reason:</strong> Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-13</code></td>
+<td>Rollback path is verified<br><span class="muted small">CT-T3 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control show a successful rollback/restore rehearsal.<br><strong>Reason:</strong> Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-14</code></td>
+<td>Production monitoring and alerting are live<br><span class="muted small">CT-T4 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Production telemetry and alert configuration are available to the assessment.<br><strong>Reason:</strong> Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-15</code></td>
+<td>Delivery is stable after launch<br><span class="muted small">CT-T5 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> An imported Outcome Check report shows a CI first-pass rate of at least 80% and no reverted PRs.<br><strong>Reason:</strong> Belongs to CT-T5 (Stabilization), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-16</code></td>
+<td>No control regressed since the previous run<br><span class="muted small">CT-T6 · Technology · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Compared with the baseline results, no control went from PASS to FAIL or PARTIAL.<br><strong>Reason:</strong> Belongs to CT-T6 (Continuous Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-17</code></td>
+<td>Architecture model matches the code<br><span class="muted small">CT-T3 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> An imported Architecture Check report shows no verified drift of medium severity or above between the declared architecture model and the code.<br><strong>Reason:</strong> Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-18</code></td>
+<td>SLOs define an objective, a time window and an indicator<br><span class="muted small">CT-T4 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Imported OpenSLO v1 files define at least one SLO, and every SLO has a service, one time window, an objective target and an indicator.<br><strong>Reason:</strong> Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-19</code></td>
+<td>Every SLO is alerted on<br><span class="muted small">CT-T4 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Every imported SLO has an OpenSLO alert policy or an imported alerting rule that names it.<br><strong>Reason:</strong> Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="technology" data-status="NOT_APPLICABLE">
+<td><code>PC-T-20</code></td>
+<td>Declared dependencies are observed at runtime<br><span class="muted small">CT-T4 · Technology · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Each declared relationship that Architecture Check could not confirm statically appears as an edge in an imported service graph.<br><strong>Reason:</strong> Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="PASS">
+<td><code>PC-S-01</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-SECRETS</span></td>
+<td>No credentials are committed in source<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.<br><strong>Actual:</strong> No credential patterns found in 8 readable files.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-43714823BAFA</code> search-scope · static · <code>repository (8 text files)</code><br>Searched 8 readable, non-ignored text files for credential patterns (rubric pc-rubric-0.2).<br><span class="muted">sha256 ceabb41b9eca9e21…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="PASS">
+<td><code>PC-S-02</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-SECRETS</span></td>
+<td>No server secrets are exposed through public environment prefixes<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).<br><strong>Actual:</strong> No secret-named variables with client-exposed prefixes in 6 files.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-35035815650B</code> search-scope · static · <code>repository (6 text files)</code><br>Searched 6 readable, non-ignored text files for secret-named variables with public prefixes (rubric pc-rubric-0.2).<br><span class="muted">sha256 2d363c27476280ba…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="PASS">
+<td><code>PC-S-03</code></td>
+<td>Environment files are excluded from version control<br><span class="muted small">CT-T0 · Trust · weight 2</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> Local .env files are ignored by .gitignore and not tracked in the git index.<br><strong>Actual:</strong> .gitignore covers environment files; no local env files.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-3BD79726AA70</code> file-presence · static · <code>.gitignore</code><br>.gitignore ignores .env and .env.local<br><span class="muted">sha256 b5198aa78d81a057…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-04</code></td>
+<td>HTTPS is enforced<br><span class="muted small">CT-T2 · Trust · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Plain-HTTP requests redirect to HTTPS and responses carry Strict-Transport-Security.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-05</code></td>
+<td>A Content Security Policy is set<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Responses carry a Content-Security-Policy that does not allow &#39;unsafe-inline&#39; scripts without nonces/hashes.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-06</code></td>
+<td>Clickjacking protection is set<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> CSP frame-ancestors or X-Frame-Options (DENY/SAMEORIGIN) is present.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-07</code></td>
+<td>MIME-type sniffing is disabled<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> X-Content-Type-Options: nosniff is present.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-08</code></td>
+<td>Cookies are set with Secure, HttpOnly and SameSite<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Every cookie observed on passive requests has Secure and SameSite; session-like cookies also have HttpOnly.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="BLOCKED">
+<td><code>PC-S-09</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-SECRETS</span></td>
+<td>No sensitive files are publicly served<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>BLOCKED</span></td>
+<td class="small"><strong>Expected:</strong> Well-known sensitive paths (/.env, /.env.local, /.git/HEAD, /.git/config) are not served with their content.<br><strong>Reason:</strong> Deployed web application: No deployed URL was provided (--url).</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-10</code></td>
+<td>Server and framework versions are not disclosed<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> No X-Powered-By header and no version numbers in the Server header.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-11</code></td>
+<td>A security contact is published<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> SECURITY.md in the repository or /.well-known/security.txt with a Contact field.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-12</code></td>
+<td>A privacy notice is available<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> The entry page links to a privacy notice, /privacy answers 2xx, or a privacy page exists in source.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_TESTED">
+<td><code>PC-S-13</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-AUTHZ</span></td>
+<td>Authorization is enforced on privileged paths<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>NOT TESTED</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control show unauthenticated and under-privileged requests to privileged routes being denied.<br><strong>Reason:</strong> Authorization bypass testing needs credentialed negative tests, which Product Check does not run itself. No adapter in this release can verify it directly; map executed tests to PC-S-13 with contract.control_mappings.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-14</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-ISOLATION</span></td>
+<td>Tenant and user data are isolated<br><span class="muted small">CT-T2 · Trust · weight 3</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control show one tenant/user cannot read or change another&#39;s data.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-15</code></td>
+<td>No critical or high known vulnerabilities in dependencies<br><span class="muted small">CT-T2 · Trust · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> An imported `npm audit --json` report shows zero critical and zero high vulnerabilities.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="PASS">
+<td><code>PC-S-16</code></td>
+<td>No high-risk code patterns<br><span class="muted small">CT-T1 · Trust · weight 1</span></td>
+<td><span class="chip good"><span class="dot" aria-hidden="true"></span>PASS</span><br><span class="small muted">static</span></td>
+<td class="small"><strong>Expected:</strong> No dynamic code evaluation, raw HTML injection of non-literal values, or SQL built by string interpolation.<br><strong>Actual:</strong> No high-risk code patterns in 3 source files.</td>
+<td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-0A01139825FB</code> search-scope · static · <code>repository (3 text files)</code><br>Searched 3 readable, non-ignored text files for eval/raw HTML/raw SQL patterns (rubric pc-rubric-0.2).<br><span class="muted">sha256 912780730fc24564…</span></li></ul></details></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-S-17</code></td>
+<td>No credentialed wildcard CORS<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> No CORS configuration allows any origin (&quot;*&quot;) or reflects origins while allowing credentials.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-AI-01</code><br><span class="chip neutral"><span class="dot" aria-hidden="true"></span>G-SECRETS</span></td>
+<td>AI provider calls run server-side only<br><span class="muted small">CT-T0 · Trust · weight 3</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> AI provider SDKs are not imported in client-side code and browser use is not enabled.<br><strong>Reason:</strong> No AI SDK dependency was found and the contract does not declare AI use.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-AI-02</code></td>
+<td>An AI evaluation suite exists<br><span class="muted small">CT-T2 · Trust · weight 1</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> AI behaviour has an evaluation suite (promptfoo config, evals directory or *.eval.* files).<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr><tr data-pillar="trust" data-status="NOT_APPLICABLE">
+<td><code>PC-AI-03</code></td>
+<td>Prompt-injection and guardrail behaviour is tested<br><span class="muted small">CT-T2 · Trust · weight 2</span></td>
+<td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>NOT APPLICABLE</span></td>
+<td class="small"><strong>Expected:</strong> Imported test results mapped to this control show adversarial AI cases passing.<br><strong>Reason:</strong> Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.</td>
+<td class="small"><span class="muted">No evidence.</span></td>
+</tr></tbody></table></div>
+<h3>Findings</h3>
+<div class="filters" data-filter-table="findings-table"><label>Severity<select data-key="severity"><option value="">All</option><option>P0</option><option>P1</option><option>P2</option><option>P3</option></select></label>
+<label>Status<select data-key="fstatus"><option value="">All</option><option>OPEN</option><option>UNVERIFIED</option><option>ACCEPTED_RISK</option><option>RESOLVED</option></select></label><span class="small muted" data-count style="align-self:end"></span></div>
+<div class="scroll"><table id="findings-table"><thead><tr><th>ID</th><th>Severity</th><th>Finding</th><th>Status</th><th>Reproduction</th><th>Evidence</th></tr></thead><tbody><tr data-severity="P0" data-fstatus="RESOLVED"><td><code>PCF-50D5C47465</code><br><span class="small muted">PC-S-01</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>Stripe secret key in app/checkout/page.tsx<br><span class="small">A Stripe secret key appears at app/checkout/page.tsx:1; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).</span><br><span class="small muted">fact · high confidence · root cause (inference): Credentials were pasted into code or committed configuration instead of the runtime secret store.</span></td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>RESOLVED</span><br><span class="small muted">RESOLVED</span></td><td class="small"><code>Open app/checkout/page.tsx at line 1 (value redacted in this report).</code><br>deterministic</td><td class="small"><details><summary>2 evidence item(s)</summary><ul class="small"><li><code>EV-883A2C49A079</code> source-location · static · <code>app/checkout/page.tsx:1</code><br>Stripe secret key pattern (stripe-secret-key) in a file that is tracked in the git index (committed or staged)<br><code>const STRIPE_SECRET_KEY = &quot;[REDACTED]&quot;;</code><br><span class="muted">sha256 3278937def186898… · preserved from PCR-20261108T075058Z-D21CC5</span></li><li><code>EV-43714823BAFA</code> search-scope · static · <code>repository (8 text files)</code><br>Searched 8 readable, non-ignored text files for credential patterns (rubric pc-rubric-0.2).<br><span class="muted">sha256 ceabb41b9eca9e21…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-3E3C906C89</code><br><span class="small muted">PC-T-04</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No CI pipeline<br><span class="small">No CI configuration found.</span><br><span class="small muted">fact · high confidence · root cause (inference): No automated pipeline was set up.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">PERSISTING</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-A2241F53F818</code> search-scope · static · <code>repository (8 text files)</code><br>Searched 8 readable, non-ignored text files for no ci pipeline (rubric pc-rubric-0.2).<br><span class="muted">sha256 ceabb41b9eca9e21…</span></li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-4537D66695</code><br><span class="small muted">PC-C-08</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>Critical journeys have no end-to-end tests<br><span class="small">No end-to-end tests found.</span><br><span class="small muted">fact · high confidence · root cause (inference): Critical user journeys have no executable end-to-end check, or the checks fail.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">PERSISTING</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-A80991901098</code> search-scope · static · <code>repository (8 files)</code><br>Searched for end-to-end test files and Playwright/Cypress configuration; none found.</li></ul></details></td></tr><tr data-severity="P2" data-fstatus="OPEN"><td><code>PCF-A79BB3B752</code><br><span class="small muted">PC-T-01</span></td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>No lockfile: builds are not reproducible<br><span class="small">No lockfile next to the root manifest.</span><br><span class="small muted">fact · high confidence · root cause (inference): The lockfile was never generated or is not kept with the code.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">PERSISTING</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-74530FCD4DCF</code> file-presence · static · <code>package.json</code><br>dependency manifest (2 dependencies)<br><span class="muted">sha256 69f271a679d6d6e3…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-2BBFB74CD4</code><br><span class="small muted">PC-T-07</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>Runtime version is not declared<br><span class="small">No runtime version declaration found.</span><br><span class="small muted">fact · high confidence · root cause (inference): The runtime version is implicit.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">PERSISTING</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-55C63A1D0B6D</code> search-scope · static · <code>repository (8 text files)</code><br>Searched 8 readable, non-ignored text files for runtime version is not declared (rubric pc-rubric-0.2).<br><span class="muted">sha256 ceabb41b9eca9e21…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-83CA52EEEB</code><br><span class="small muted">PC-T-06</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>README lacks setup/run instructions<br><span class="small">README does not explain how to install and run.</span><br><span class="small muted">fact · medium confidence · root cause (inference): Documentation was not written alongside the code.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">PERSISTING</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-C20D88B2D9D3</code> file-presence · static · <code>README.md</code><br>README without install or run instructions<br><span class="muted">sha256 f7612345879448f6…</span></li></ul></details></td></tr><tr data-severity="P3" data-fstatus="OPEN"><td><code>PCF-9C547F7002</code><br><span class="small muted">PC-T-08</span></td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>No type checking or linting configured<br><span class="small">No strict type checking or linter configuration found.</span><br><span class="small muted">fact · high confidence · root cause (inference): No static analysis is configured.</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>OPEN</span><br><span class="small muted">PERSISTING</span></td><td class="small">—<br>deterministic</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-B03FC32728C5</code> search-scope · static · <code>repository (8 text files)</code><br>Searched 8 readable, non-ignored text files for no type checking or linting configured (rubric pc-rubric-0.2).<br><span class="muted">sha256 ceabb41b9eca9e21…</span></li></ul></details></td></tr></tbody></table></div>
+</section>
+<section class="view" id="blueprint" aria-labelledby="h-blueprint"><h2 id="h-blueprint">Blueprint &amp; remediation</h2>
+<p class="muted small">Advisory: Product Check never changes code. A work packet is VERIFIED only when a retest observes the control passing.</p>
+<div class="scroll"><table><thead><tr><th>#</th><th>Remediation</th><th>Priority</th><th>Horizon</th><th>Effort</th><th>Depends on</th><th>Verification</th></tr></thead><tbody><tr><td class="num">1</td><td><code>REM-PC-S-01</code> No credentials are committed in source<br><span class="chip warning"><span class="dot" aria-hidden="true"></span>Human review</span></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>P0</span></td><td>NOW</td><td>S</td><td class="small">—</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>VERIFIED</span></td></tr><tr><td class="num">2</td><td><code>REM-PC-C-08</code> Critical journeys are covered by passing end-to-end tests</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>M</td><td class="small">—</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></td></tr><tr><td class="num">3</td><td><code>REM-PC-T-01</code> Dependency manifest and lockfile are present</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></td></tr><tr><td class="num">4</td><td><code>REM-PC-T-04</code> A CI pipeline is configured</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>P2</span></td><td>NEXT</td><td>S</td><td class="small">—</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></td></tr><tr><td class="num">5</td><td><code>REM-PC-T-06</code> Setup and run instructions are documented</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></td></tr><tr><td class="num">6</td><td><code>REM-PC-T-07</code> Runtime version is declared</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></td></tr><tr><td class="num">7</td><td><code>REM-PC-T-08</code> Static type checking or linting is configured</td><td><span class="chip neutral"><span class="dot" aria-hidden="true"></span>P3</span></td><td>LATER</td><td>S</td><td class="small">—</td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></td></tr></tbody></table></div>
+<h3>Work packets</h3><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-S-01</code> Fix PC-S-01: No credentials are committed in source <span class="chip good"><span class="dot" aria-hidden="true"></span>VERIFIED</span></summary>
+<p><strong>Objective.</strong> Rotate (revoke and reissue) every exposed credential first, then move it to environment variables / the hosting secret store and remove it from the code. Treat the history as compromised.</p><p><strong>Findings:</strong> <code>PCF-50D5C47465</code></p>
+<p><strong>Where:</strong> <code>app/checkout/page.tsx:1</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>Each listed credential has been rotated at its provider (human confirmation).</li><li>No secret pattern matches in repository files.</li><li>Control PC-S-01 evaluates PASS on retest.</li><li>Finding PCF-50D5C47465 (app/checkout/page.tsx:1) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li><li>Security- or data-sensitive change: a human must review and approve before merge.</li></ul>
+<p><strong>Regression test candidate</strong> (yaml (GitHub Actions step))</p><pre># Add to your CI workflow: fails the build when credentials or public-prefixed secrets are committed.
+- name: Secret guard
+  run: |
+    ! git grep -nE &#39;(sk_live_|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|(NEXT_PUBLIC_|VITE_|REACT_APP_|EXPO_PUBLIC_)[A-Z0-9_]*(SECRET|SERVICE_ROLE|PRIVATE))&#39; -- . &#39;:!*.lock&#39; &#39;:!package-lock.json&#39;
+</pre>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-C-08</code> Fix PC-C-08: Critical journeys are covered by passing end-to-end tests <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></summary>
+<p><strong>Objective.</strong> Write end-to-end tests (for example Playwright) for the declared critical journeys, run them in CI and import their JUnit results.</p><p><strong>Findings:</strong> <code>PCF-4537D66695</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>At least one end-to-end suite runs and all its cases pass in imported results.</li><li>Control PC-C-08 evaluates PASS on retest.</li><li>Finding PCF-4537D66695 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> The end-to-end suite itself, run on every pull request and deployment.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-01</code> Fix PC-T-01: Dependency manifest and lockfile are present <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></summary>
+<p><strong>Objective.</strong> Generate and commit the package manager&#39;s lockfile; use the frozen install command (npm ci / pnpm install --frozen-lockfile) in CI.</p><p><strong>Findings:</strong> <code>PCF-A79BB3B752</code></p>
+<p><strong>Where:</strong> <code>package.json</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A lockfile exists next to each manifest.</li><li>Control PC-T-01 evaluates PASS on retest.</li><li>Finding PCF-A79BB3B752 (package.json) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> CI fails when the lockfile is out of date (frozen install).</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-04</code> Fix PC-T-04: A CI pipeline is configured <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></summary>
+<p><strong>Objective.</strong> Add a CI workflow that installs with a frozen lockfile, builds, lints and runs tests on every pull request.</p><p><strong>Findings:</strong> <code>PCF-3E3C906C89</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A CI configuration file exists.</li><li>Control PC-T-04 evaluates PASS on retest.</li><li>Finding PCF-3E3C906C89 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Branch protection requiring CI.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-06</code> Fix PC-T-06: Setup and run instructions are documented <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></summary>
+<p><strong>Objective.</strong> Add a README section with prerequisites, install, environment variables (names only) and run/test commands.</p><p><strong>Findings:</strong> <code>PCF-83CA52EEEB</code></p>
+<p><strong>Where:</strong> <code>README.md</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>README contains install and run instructions.</li><li>Control PC-T-06 evaluates PASS on retest.</li><li>Finding PCF-83CA52EEEB (README.md) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Review checklist item for setup changes.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-07</code> Fix PC-T-07: Runtime version is declared <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></summary>
+<p><strong>Objective.</strong> Declare the runtime version (for example &quot;engines&quot;: {&quot;node&quot;: &quot;&gt;=22&quot;} and an .nvmrc).</p><p><strong>Findings:</strong> <code>PCF-2BBFB74CD4</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>A runtime version declaration exists.</li><li>Control PC-T-07 evaluates PASS on retest.</li><li>Finding PCF-2BBFB74CD4 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> CI uses the declared version file.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details><details class="card" style="margin-bottom:8px"><summary><code>WP-PC-T-08</code> Fix PC-T-08: Static type checking or linting is configured <span class="chip critical"><span class="dot" aria-hidden="true"></span>FAILED VERIFICATION</span></summary>
+<p><strong>Objective.</strong> Enable TypeScript strict mode and/or a linter (ESLint, Biome, Ruff) and run it in CI.</p><p><strong>Findings:</strong> <code>PCF-9C547F7002</code></p>
+<p><strong>Where:</strong> <code>repository</code></p>
+<p><strong>Acceptance criteria</strong></p><ul><li>tsconfig has strict: true or a linter configuration exists.</li><li>Control PC-T-08 evaluates PASS on retest.</li><li>Finding PCF-9C547F7002 (repository) is no longer observed on retest.</li></ul>
+<p><strong>Constraints</strong></p><ul class="small"><li>Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.</li><li>Keep the change minimal and focused on the listed findings; do not refactor unrelated code.</li><li>Do not disable, skip or delete tests or checks to make them pass.</li><li>Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.</li></ul>
+<p><strong>Regression protection.</strong> Lint/typecheck CI step.</p>
+<p class="small"><strong>Verify:</strong> <code>product-check retest --baseline &lt;this results file&gt; (with the same inputs as this run)</code></p></details>
+<h3>To-be architecture</h3><ul><li><strong>Each critical journey has an end-to-end test that gates deployment.</strong> <span class="muted small">Only executed journeys provide runtime evidence that the product works for users.</span></li><li><strong>Lockfile committed; CI installs with a frozen lockfile.</strong> <span class="muted small">Reproducible builds are a precondition for meaningful testing and rollback.</span></li><li><strong>Every pull request runs build, lint and tests automatically.</strong> <span class="muted small">CI is where tests become a gate rather than a suggestion.</span></li><li><strong>README documents setup, environment and test commands.</strong> <span class="muted small">Reproducible setup is a precondition for testing and handover.</span></li><li><strong>Runtime version declared once and used by CI and hosting.</strong> <span class="muted small">Runtime drift causes works-on-my-machine failures.</span></li><li><strong>Type check and lint run in CI.</strong> <span class="muted small">Cheap automated checks catch common defects introduced by fast iteration.</span></li></ul>
+<h3>As-is architecture</h3><div class="scroll"><table><thead><tr><th>Component</th><th>Category</th><th>Certainty</th></tr></thead><tbody><tr><td><code>Next.js</code></td><td>framework</td><td>observed</td></tr><tr><td><code>React</code></td><td>framework</td><td>observed</td></tr></tbody></table></div>
+<h3>Uncertainties</h3><ul class="small"><li>No deployed application was observed: runtime behaviour, headers and real user experience are unknown.</li><li>No executed test results were imported: whether tests pass is unknown.</li><li>Tenancy model not declared (product.multi_tenant): isolation requirements are unknown.</li><li>No authentication library detected; whether the product has user accounts or custom auth was not determined.</li><li>Authenticated, multi-step and data-changing journeys were not exercised (no browser automation or credentialed access in this release).</li></ul>
+<h3>Target test architecture</h3><div class="scroll"><table><thead><tr><th>Layer</th><th>Current</th><th>Target</th></tr></thead><tbody><tr><td>unit and integration</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>present</span></td><td class="small">Fast tests for business logic, data access and authorization rules, run on every pull request.</td></tr><tr><td>end-to-end journeys</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>absent</span></td><td class="small">One end-to-end test per critical journey (sign-up to first value first), gating deployment; import results with --test-results.</td></tr><tr><td>security regression</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>absent</span></td><td class="small">Secret scanning, dependency audit and negative authorization tests in CI; Product Check retest on each release.</td></tr><tr><td>accessibility</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>absent</span></td><td class="small">Lint rules plus automated axe checks on key pages.</td></tr></tbody></table></div>
+</section>
+<section class="view" id="as-built" aria-labelledby="h-as-built"><h2 id="h-as-built">As-built spec</h2>
+<p class="muted small">Reverse-engineered from the repository's structure; nothing was executed. <em>Observed</em> statements point at a file and line, <em>inferred</em> ones interpret what was found, and anything the code cannot tell us needs a person to confirm. The same spec is written as <code>specs/000-as-built/spec.md</code> (Spec Kit layout, lint it with Spec Check) and <code>as-built-spec.json</code>.</p>
+<div class="grid kpis"><div class="card kpi"><div class="label">Pages</div><div class="value">1</div></div><div class="card kpi"><div class="label">Endpoints</div><div class="value">1</div></div><div class="card kpi"><div class="label">Data entities</div><div class="value">0</div></div><div class="card kpi"><div class="label">Integrations</div><div class="value">0</div></div><div class="card kpi"><div class="label">Config names</div><div class="value">1</div></div><div class="card kpi"><div class="label">Open questions</div><div class="value">2</div></div></div>
+<h3>Questions only a person can answer</h3><ul><li>Purpose of the Checkout area: who uses it, and what outcome it must deliver.</li><li>Purpose of the Invoices area: who uses it, and what outcome it must deliver.</li></ul>
+<h3>User stories</h3><details class="card" style="margin-bottom:8px"><summary>US-1 Checkout </summary><p class="small"><strong>Requirements:</strong> <code>FR-001</code></p><p class="small muted">No test titles mention this area.</p></details><details class="card" style="margin-bottom:8px"><summary>US-2 Invoices </summary><p class="small"><strong>Requirements:</strong> <code>FR-002</code></p><p class="small muted">No test titles mention this area.</p></details>
+<h3>Requirements</h3>
+<div class="filters" data-filter-table="as-built-table"><label>Type<select data-key="kind"><option value="">All</option><option value="functional">Functional</option><option value="non-functional">Non-functional</option><option value="success">Success criteria</option><option value="edge">Edge cases</option></select></label>
+<label>Certainty<select data-key="certainty"><option value="">All</option><option value="observed">Observed</option><option value="inferred">Inferred</option><option value="hypothesis">Needs confirmation</option></select></label>
+<label>Search<input type="search" data-key="text" placeholder="ID, route, entity, path"></label><span class="small muted" data-count style="align-self:end"></span></div>
+<div class="scroll"><table id="as-built-table"><thead><tr><th>ID</th><th>Statement</th><th>Certainty</th><th>Source</th><th>Linked findings</th><th>Evidence</th></tr></thead><tbody><tr data-kind="functional" data-certainty="observed"><td class="id"><code>FR-001</code></td><td>The system MUST serve the page <code>/checkout</code>.</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>observed</span></td><td class="small"><code>app/checkout/page.tsx:1</code></td><td class="small"><span class="chip good"><span class="dot" aria-hidden="true"></span>none open</span><br><code>PCF-50D5C47465</code></td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-7DBE9D704B8C</code> source-location · static · <code>app/checkout/page.tsx:1</code><br>page /checkout: Next.js app router page<br><span class="muted">sha256 acf34252c46fad36…</span></li></ul></details></td></tr><tr data-kind="functional" data-certainty="inferred"><td class="id"><code>FR-002</code></td><td>The system MUST handle <code>GET</code> requests to <code>/api/invoices</code>. The handler references an authentication helper, so access is likely limited to signed-in users.</td><td><span class="chip warning"><span class="dot" aria-hidden="true"></span>inferred</span></td><td class="small"><code>app/api/invoices/route.ts:2</code></td><td class="small">—</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-116620522519</code> source-location · static · <code>app/api/invoices/route.ts:2</code><br>endpoint GET /api/invoices: Next.js route handler<br><code>export async function GET(req) {</code><br><span class="muted">sha256 0b3727bd4b523ccd…</span></li></ul></details></td></tr><tr data-kind="functional" data-certainty="observed"><td class="id"><code>FR-003</code></td><td>The system MUST be configured through 1 environment variable(s): <code>STRIPE_SECRET_KEY</code>.</td><td><span class="chip good"><span class="dot" aria-hidden="true"></span>observed</span></td><td class="small"><code>app/lib/config.ts:1</code></td><td class="small">—</td><td class="small"><details><summary>1 evidence item(s)</summary><ul class="small"><li><code>EV-257386AF0FD2</code> source-location · static · <code>app/lib/config.ts:1</code><br>config STRIPE_SECRET_KEY: [REDACTED]; 1 reference(s)<br><span class="muted">sha256 6e86c1f8728c3a69…</span></li></ul></details></td></tr><tr data-kind="non-functional" data-certainty="hypothesis"><td class="id"><code>NFR-001</code></td><td>[NEEDS CLARIFICATION: response-time and throughput targets for the main pages and endpoints]</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>needs confirmation</span></td><td class="small">—</td><td class="small">—</td><td class="small"><span class="muted">No evidence.</span></td></tr><tr data-kind="non-functional" data-certainty="hypothesis"><td class="id"><code>NFR-002</code></td><td>[NEEDS CLARIFICATION: availability target and acceptable downtime]</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>needs confirmation</span></td><td class="small">—</td><td class="small">—</td><td class="small"><span class="muted">No evidence.</span></td></tr><tr data-kind="non-functional" data-certainty="hypothesis"><td class="id"><code>NFR-003</code></td><td>[NEEDS CLARIFICATION: how long personal and business data is kept, and how it is deleted]</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>needs confirmation</span></td><td class="small">—</td><td class="small">—</td><td class="small"><span class="muted">No evidence.</span></td></tr><tr data-kind="success" data-certainty="hypothesis"><td class="id"><code>SC-001</code></td><td>[NEEDS CLARIFICATION: measurable outcomes cannot be derived from source code; state the targets this product must meet]</td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>needs confirmation</span></td><td class="small">—</td><td class="small">—</td><td class="small"><span class="muted">No evidence.</span></td></tr></tbody></table></div>
+<h3>Discovered surface</h3>
+<details class="card" style="margin-bottom:8px"><summary>Pages (1)</summary><div class="scroll"><table><thead><tr><th>Route</th><th>Kind</th><th>Source</th><th>Auth</th></tr></thead><tbody><tr><td class="small"><code>/checkout</code></td><td class="small">Next.js app router page</td><td class="small"><code>app/checkout/page.tsx:1</code></td><td class="small">—</td></tr></tbody></table></div></details>
+<details class="card" style="margin-bottom:8px"><summary>Endpoints (1)</summary><div class="scroll"><table><thead><tr><th>Method</th><th>Path</th><th>Kind</th><th>Source</th><th>Auth</th></tr></thead><tbody><tr><td class="small"><code>GET</code></td><td class="small"><code>/api/invoices</code></td><td class="small">Next.js route handler</td><td class="small"><code>app/api/invoices/route.ts:2</code></td><td class="small"><span class="chip warning"><span class="dot" aria-hidden="true"></span>auth helper (inferred)</span></td></tr></tbody></table></div></details>
+
+
+<details class="card" style="margin-bottom:8px"><summary>Configuration (names only; values never read) (1)</summary><div class="scroll"><table><thead><tr><th>Variable</th><th>Use</th><th>First reference</th></tr></thead><tbody><tr><td class="small"><code>STRIPE_SECRET_KEY</code></td><td class="small">server-side; 1 reference(s)</td><td class="small"><code>app/lib/config.ts:1</code></td></tr></tbody></table></div></details>
+
+<details class="card" style="margin-bottom:8px"><summary>Test titles (2)</summary><div class="scroll"><table><thead><tr><th>Title</th><th>Area</th><th>Source</th></tr></thead><tbody><tr><td class="small">no secret key in client code</td><td class="small">test</td><td class="small"><code>test/secret.test.mjs:4</code></td></tr><tr><td class="small">total</td><td class="small">test</td><td class="small"><code>test/total.test.mjs:3</code></td></tr></tbody></table></div></details>
+<h3>Uncertainties</h3><ul class="small"><li>Purpose, users, priorities and business rules are not derivable from code; every story carries a clarification for them.</li><li>Nothing was executed: requirements describe what the code declares, not verified behaviour.</li><li>2 test title(s) could not be matched to a route area and are listed separately.</li><li>Configuration is listed by variable name only; values were never read.</li></ul>
+</section>
+<section class="view" id="history" aria-labelledby="h-history"><h2 id="h-history">Assurance history</h2>
+<div class="chart card"><svg viewBox="0 0 640 240" role="img" aria-label="Pillar scores across runs"><line class="gridline" x1="36" x2="530" y1="212" y2="212"/><text class="axis-label" x="30" y="216" text-anchor="end">0</text><line class="gridline" x1="36" x2="530" y1="162" y2="162"/><text class="axis-label" x="30" y="166" text-anchor="end">25</text><line class="gridline" x1="36" x2="530" y1="112" y2="112"/><text class="axis-label" x="30" y="116" text-anchor="end">50</text><line class="gridline" x1="36" x2="530" y1="62" y2="62"/><text class="axis-label" x="30" y="66" text-anchor="end">75</text><line class="gridline" x1="36" x2="530" y1="12" y2="12"/><text class="axis-label" x="30" y="16" text-anchor="end">100</text><text class="axis-label" x="36" y="232" text-anchor="middle">run 1</text><text class="axis-label" x="530" y="232" text-anchor="middle">run 2</text><path class="series" d="M 36.0 134.0 L 530.0 134.0" stroke="var(--s-technology)"/><circle cx="36.0" cy="134.0" r="4" fill="var(--s-technology)" stroke="var(--surface)" stroke-width="2"><title>Technology 39 (PCR-20261108T075058Z-D21CC5)</title></circle><circle cx="530.0" cy="134.0" r="4" fill="var(--s-technology)" stroke="var(--surface)" stroke-width="2"><title>Technology 39 (PCR-20261108T075100Z-E27953)</title></circle><path class="series" d="M 36.0 134.0 L 530.0 12.0" stroke="var(--s-trust)"/><circle cx="36.0" cy="134.0" r="4" fill="var(--s-trust)" stroke="var(--surface)" stroke-width="2"><title>Trust 39 (PCR-20261108T075058Z-D21CC5)</title></circle><circle cx="530.0" cy="12.0" r="4" fill="var(--s-trust)" stroke="var(--surface)" stroke-width="2"><title>Trust 100 (PCR-20261108T075100Z-E27953)</title></circle><text class="end-label" x="538.0" y="16.0">Trust 100</text><text class="end-label" x="538.0" y="138.0">Technology 39</text></svg>
+<div class="legend"><span><i style="background:var(--s-customer)"></i>Customer</span><span><i style="background:var(--s-technology)"></i>Technology</span><span><i style="background:var(--s-trust)"></i>Trust</span><span class="muted">Gaps: pillar not scored in that run.</span></div></div>
+<h3>Runs</h3><div class="scroll"><table><thead><tr><th class="num">#</th><th>Run</th><th>Finished</th><th>Revision</th><th>Verdict</th><th class="num">Customer (coverage)</th><th class="num">Technology (coverage)</th><th class="num">Trust (coverage)</th><th class="num">Open findings</th></tr></thead><tbody><tr><td class="num">1</td><td><code>PCR-20261108T075058Z-D21CC5</code></td><td>2026-11-08T07:50:58.492Z</td><td><code>da8f9753c6ec</code></td><td><span class="chip critical"><span class="dot" aria-hidden="true"></span>NOT READY</span></td><td class="num">— <span class="muted small">(15%)</span></td><td class="num">39 <span class="muted small">(75%)</span></td><td class="num">39 <span class="muted small">(60%)</span></td><td class="num">7</td></tr><tr><td class="num">2</td><td><code>PCR-20261108T075100Z-E27953</code></td><td>2026-11-08T07:51:00.658Z</td><td><code>28d05afb57f3</code></td><td><span class="chip unknown"><span class="dot" aria-hidden="true"></span>INCONCLUSIVE</span></td><td class="num">— <span class="muted small">(15%)</span></td><td class="num">39 <span class="muted small">(75%)</span></td><td class="num">100 <span class="muted small">(60%)</span></td><td class="num">6</td></tr></tbody></table></div>
+<h3>Latest retest</h3><div class="grid kpis"><div class="card kpi"><div class="label">New</div><div class="value">0</div></div><div class="card kpi"><div class="label">Verified fixed</div><div class="value">1</div></div><div class="card kpi"><div class="label">Reopened</div><div class="value">0</div></div><div class="card kpi"><div class="label">Still open</div><div class="value">6</div></div><div class="card kpi"><div class="label">Not re-checked</div><div class="value">0</div></div><div class="card kpi"><div class="label">Regressed controls</div><div class="value">0</div></div></div>
+<p class="small">Compared with <code>PCR-20261108T075058Z-D21CC5</code>. Improved: PC-S-01. Regressed: none.</p>
+</section>
+</main>
+<footer>Generated from <code>product-check-results.json</code> (schema 0.1.0); every figure is derived from that file and its scorecard and verdict recompute from the validations. Evidence-bounded readiness, not a penetration test, certification or guarantee. Product Check is an EnWithAI Engineering Commons tool.</footer>
+</div>
+<script>// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2026 EnWithAI Technologies
+// Progressive enhancement for the Product Check dashboard: tab switching, table filters and a theme toggle.
+// Every figure is server-rendered from the results JSON; without JavaScript all views are shown in sequence.
+(function () {
+  var views = Array.prototype.slice.call(document.querySelectorAll("section.view"));
+  var links = Array.prototype.slice.call(document.querySelectorAll("nav.tabs a"));
+  function show(id) {
+    if (
+      !views.some(function (v) {
+        return v.id === id;
+      })
+    )
+      id = views[0] && views[0].id;
+    views.forEach(function (v) {
+      v.hidden = v.id !== id;
+    });
+    links.forEach(function (a) {
+      if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+  }
+  links.forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      var id = a.getAttribute("href").slice(1);
+      show(id);
+      try {
+        window.history.replaceState(null, "", "#" + id);
+      } catch {
+        /* file:// may refuse */
+      }
+    });
+  });
+  show((window.location.hash || "").slice(1));
+
+  Array.prototype.slice.call(document.querySelectorAll("[data-filter-table]")).forEach(function (box) {
+    var table = document.getElementById(box.getAttribute("data-filter-table"));
+    if (!table) return;
+    var controls = Array.prototype.slice.call(box.querySelectorAll("select, input"));
+    var count = box.querySelector("[data-count]");
+    function apply() {
+      var shown = 0;
+      Array.prototype.slice.call(table.tBodies[0].rows).forEach(function (row) {
+        var ok = controls.every(function (c) {
+          var v = (c.value || "").toLowerCase();
+          if (!v) return true;
+          var key = c.getAttribute("data-key");
+          if (key === "text") return row.textContent.toLowerCase().indexOf(v) !== -1;
+          return (row.getAttribute("data-" + key) || "").toLowerCase() === v;
+        });
+        row.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (count) count.textContent = shown + " shown";
+    }
+    controls.forEach(function (c) {
+      c.addEventListener("input", apply);
+    });
+    apply();
+  });
+
+  var toggle = document.querySelector(".theme-toggle");
+  var root = document.documentElement;
+  function setTheme(t) {
+    if (t === "auto") root.removeAttribute("data-theme");
+    else root.setAttribute("data-theme", t);
+    if (toggle) toggle.textContent = "Theme: " + t;
+  }
+  var saved;
+  try {
+    saved = window.localStorage.getItem("product-check-theme") || "auto";
+  } catch {
+    saved = "auto";
+  }
+  setTheme(saved);
+  if (toggle) {
+    toggle.hidden = false;
+    toggle.addEventListener("click", function () {
+      var order = ["auto", "light", "dark"];
+      var next = order[(order.indexOf(root.getAttribute("data-theme") || "auto") + 1) % 3];
+      setTheme(next);
+      try {
+        window.localStorage.setItem("product-check-theme", next);
+      } catch {
+        /* storage unavailable */
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

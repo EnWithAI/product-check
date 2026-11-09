@@ -16,6 +16,18 @@ diagrams or tables are reproduced.
 - **What we did not take:** its prompts, question flows, control catalogs, scoring dimensions, report templates and
   wording. Product Check's 47 controls, rubric weights, caps, confidence rules, verdict rules and texts are its own.
 - **Relationship:** `inspired` (see ATTRIBUTION.md). Not an implementation, not certified.
+- **v3.2 "Vibe-Code Review and Evidence-Based Closure"** (8 November 2026), internal and unpublished; an additive
+  revision of v3.1. Taken: execution phases VC-P0…P7 separate from the lifecycle tiers, finding verification states,
+  the closure state machine and its invariants, risk-routed approvals, release conditions. The document itself is
+  not copied into this repository; rule texts, IDs and implementation are Product Check's own.
+
+### Publicly described code-review practice (inspiration only)
+
+- "How the Claude Code team does code review" (Anthropic engineering blog, 15 October 2026), read from a copy the
+  product sponsor supplied. Ideas it informed: author-side verification before review, independent verification of
+  automated findings before they block, risk-based human approval, approvals invalidated by new commits, capping
+  review cycles, turning escaped defects into regression cases. Product Check's design, rules, names and metrics are
+  its own; nothing is reproduced, and no endorsement by Anthropic is implied.
 
 ## Practice and standards consulted for control content
 

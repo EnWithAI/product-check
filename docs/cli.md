@@ -85,3 +85,10 @@ mostly empty surface with a stated uncertainty.
 | 4    | safety refusal (unauthorized or prohibited action); an ABORTED record is written unless `--json` |
 | 5    | `validate`: at least one artifact is invalid                                                     |
 | 6    | `--fail-on` matched the verdict                                                                  |
+
+## Vibe-code review and verified closure (CT3 v3.2)
+
+Commands, flags and the workspace layout are described in [vibe-code-assurance.md](vibe-code-assurance.md) and in
+`product-check --help`. Exit codes are the same; additionally `verify` exits 6 when the verification is not PASS,
+`proof` exits 6 on FAIL, and `review`, `gate` and `assure` exit 6 when `--fail-on` matches (`BLOCK`,
+`NOT_EVALUATED`, `NO_GO`, `UNKNOWN`, …). A tampered closure register or evidence log is refused with exit 5.

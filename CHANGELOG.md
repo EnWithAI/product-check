@@ -6,6 +6,32 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
+Vibe-code review and verified closure, inspired by CLEAR CT v3.2 (relationship `inspired`; wording pending sponsor approval). Additive: the results schema stays `0.1.0`, the scan
+pipeline and its outputs are unchanged (the committed demo outputs are byte-identical), and new artifacts carry their
+own assurance schema `0.1.0`. Design: [docs/vibe-code-assurance.md](docs/vibe-code-assurance.md); status:
+[IMPLEMENTATION_AUDIT_v3.2.md](IMPLEMENTATION_AUDIT_v3.2.md).
+
+- New commands: `proof` (VC-P1 author-side proof), `review` (PR_DIFF / PRE_PR_LOCAL layered review), `register`,
+  `transition`, `fix`, `verify` (VC-P5 at the exact fix commit), `keygen`, `approve` (Ed25519-signed), `close`,
+  `accept-risk`, `reject`, `learn`, `fix-packets`, `gate`, `assure`; `blueprint`, `dashboard` and `gate` accept
+  `--from <results.json>`.
+- **Safety-model change (opt-in):** `src/exec/process.ts` is the only module that starts processes: operator-declared
+  commands with `--allow-exec` (argv, no shell, reduced environment, timeout, output cap, digests) and hardened
+  read-only git. The scan pipeline still never executes anything; tests and ESLint enforce the boundary.
+- Six deterministic review lanes, independent verification of findings and external reviewer claims
+  (`--reviewer-findings`), de-duplication, repeat detection and a review-cycle limit with escalation.
+- Risk routing by impacted surface with protected paths, domain owners and an opt-in LOW-risk waiver; approvals bind
+  to the reviewed commit (STALE after a new commit); bots, unsigned names and implementers never count.
+- Closure register with hash-chained transitions and invariant checks on load; signed risk acceptance with expiry;
+  false positives with secondary support for P0/P1; REGRESSED with history; regression corpus.
+- Fix packets, `PRODUCT_CHECK_REVIEW.md`, `PRODUCT_CHECK_BLUEPRINT.md` (Mermaid as-is/to-be),
+  `PRODUCT_CHECK_RELEASE_GATE.md`, `release-gate.json` (GO / CONDITIONAL_GO / NO_GO / UNKNOWN, VC-P0…P7 progress),
+  append-only `review-evidence.jsonl`, and `dashboard/index.html` rendered from those files.
+- Optional versioned adapters: Impact Check 2.0, Spec Check 1.0, Outcome Check 1.0.
+- Ten new JSON Schemas (`assurance-common`, `assurance-policy`, `evidence-record`, `change-review`, `approval`,
+  `verification-run`, `fix-packet`, `closure-register`, `release-gate`, `reviewer-findings`); `validate` checks them.
+- `examples/closure-demo/`: a scripted end-to-end run on a synthetic app.
+
 ## 0.2.0 — 2026-10-28
 
 Commons integration and the first CT-T4 controls. Rubric `pc-rubric-0.2` (51 controls; scoring rules unchanged);

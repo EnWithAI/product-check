@@ -1,0 +1,71 @@
+/* SPDX-License-Identifier: MIT */
+/* SPDX-FileCopyrightText: 2026 EnWithAI Technologies */
+/* Assurance dashboard additions (closure funnel, phase strip, decision hero). Inlined after dashboard.css. */
+.funnel {
+  display: grid;
+  gap: 6px;
+}
+.funnel .step {
+  display: grid;
+  grid-template-columns: minmax(110px, 180px) 1fr 48px;
+  gap: 8px;
+  align-items: center;
+}
+.funnel .bar {
+  height: 18px;
+  border-radius: 4px;
+  background: var(--grid);
+  overflow: hidden;
+}
+.funnel .bar > span {
+  display: block;
+  height: 100%;
+  background: var(--s-customer);
+}
+.funnel .step.done .bar > span {
+  background: var(--good);
+}
+.funnel .step.side .bar > span {
+  background: var(--unknown);
+}
+.phases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+.phases .card h4 {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+}
+.decision {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.insufficient {
+  border: 2px dashed var(--unknown);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+}
+pre.export {
+  max-height: 360px;
+  overflow: auto;
+  white-space: pre;
+}
+button.copy {
+  margin: 4px 0;
+}
+.decision.tone-good {
+  color: var(--good);
+}
+.decision.tone-warning {
+  color: var(--ink);
+  text-decoration: underline wavy var(--warning);
+}
+.decision.tone-critical {
+  color: var(--critical);
+}
+.decision.tone-unknown {
+  color: var(--unknown);
+}

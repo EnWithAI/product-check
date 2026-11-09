@@ -23,9 +23,26 @@ Response headers are filtered to a security-relevant allowlist and cookie values
 Recorded observations (`--observations`) and HAR files (`--har`) give application evidence with no request at all;
 when present they are used instead of the network.
 
+## Opt-in command execution (`proof`, `verify`; CT3 v3.2)
+
+The scan (`run`, `retest`, `scan`, `spec`) still never executes anything. Author-side proof and closure verification
+need executed evidence, so `proof` and `verify` can run commands, under these rules:
+
+- only commands declared by the operator: `required_checks` in the `--policy` file, `--repro-cmd` recorded with a
+  fix, or corpus cases added with `learn`; never a script detected in, or a command read from, the repository;
+- only with `--allow-exec` on that invocation; without it each command is recorded as `NOT_TESTED` with the reason;
+- argv only (no shell), working directory inside the repository, reduced environment (`exec.env_allowlist`), a
+  timeout per command and an output cap; only digests and a redacted 400-character tail are kept;
+- one module (`src/exec/process.ts`) may start processes; tests and ESLint enforce it. It also runs read-only git
+  plumbing (`rev-parse`, `diff`, `show`, `status`, `log`, `merge-base`) with hooks, fsmonitor, external diff and
+  textconv drivers, pagers, system config and prompts disabled.
+
+`--allow-exec` runs the repository's code with your permissions. Use it only for code you would run anyway, ideally
+in a disposable container or CI runner.
+
 ## A contract you did not write cannot trigger requests silently
 
-The CLI never reads a contract from the scanned repository by itself. A contract file that authorizes network
+The CLI never reads a contract or an assurance policy from the scanned repository by itself. A contract file that authorizes network
 actions additionally requires `--allow-network` on the command line.
 
 ## Refusals are recorded

@@ -1,0 +1,499 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/closure-register.schema.json",
+  "title": "Product Check closure register",
+  "description": "Verified-closure state of every finding with hash-chained transitions, fixes, verification runs, signed approvals, risk acceptances and the regression corpus.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "methodology_version",
+    "register_id",
+    "target",
+    "created_at",
+    "updated_at",
+    "baseline",
+    "settings",
+    "entries",
+    "fixes",
+    "verification_runs",
+    "approvals",
+    "risk_acceptances",
+    "regression_corpus",
+    "chain"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "assurance-common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "closure-register"
+    },
+    "methodology_version": {
+      "$ref": "assurance-common.schema.json#/$defs/methodology_version"
+    },
+    "register_id": {
+      "type": "string"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "repository"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "repository": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "results_sha256", "baseline_sha"],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "results_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "baseline_sha": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_cycles"],
+      "properties": {
+        "max_cycles": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "finding_id",
+          "source",
+          "source_finding_id",
+          "rule_or_control",
+          "title",
+          "severity",
+          "pillar",
+          "epistemic",
+          "location",
+          "dedupe_key",
+          "verification",
+          "state",
+          "opened_in",
+          "cycles",
+          "escalated",
+          "fix_ids",
+          "verification_ids",
+          "approval_ids",
+          "acceptance_id",
+          "regressions",
+          "closure",
+          "transitions"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string",
+            "pattern": "^F-\\d{3,}$"
+          },
+          "source": {
+            "enum": ["baseline-scan", "change-review", "incident"]
+          },
+          "source_finding_id": {
+            "type": "string"
+          },
+          "rule_or_control": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "severity": {
+            "$ref": "common.schema.json#/$defs/severity"
+          },
+          "pillar": {
+            "$ref": "common.schema.json#/$defs/pillar"
+          },
+          "epistemic": {
+            "$ref": "common.schema.json#/$defs/epistemic"
+          },
+          "location": {
+            "type": "string"
+          },
+          "dedupe_key": {
+            "type": "string"
+          },
+          "verification": {
+            "$ref": "assurance-common.schema.json#/$defs/verification"
+          },
+          "state": {
+            "$ref": "assurance-common.schema.json#/$defs/closure_state"
+          },
+          "opened_in": {
+            "type": "string"
+          },
+          "cycles": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "escalated": {
+            "type": "boolean"
+          },
+          "fix_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verification_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "approval_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptance_id": {
+            "type": ["string", "null"]
+          },
+          "regressions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["at", "run_id", "previous_state"],
+              "properties": {
+                "at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "run_id": {
+                  "type": "string"
+                },
+                "previous_state": {
+                  "$ref": "assurance-common.schema.json#/$defs/closure_state"
+                }
+              }
+            }
+          },
+          "closure": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["closure_id", "actor", "at", "verification_id", "approval_ids"],
+                "properties": {
+                  "closure_id": {
+                    "type": "string",
+                    "pattern": "^CL-\\d{3,}$"
+                  },
+                  "actor": {
+                    "$ref": "assurance-common.schema.json#/$defs/actor"
+                  },
+                  "at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "verification_id": {
+                    "type": "string"
+                  },
+                  "approval_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1
+                  }
+                }
+              }
+            ]
+          },
+          "transitions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["seq", "from", "to", "at", "actor", "reason", "refs", "prev_digest", "digest"],
+              "properties": {
+                "seq": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "from": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "assurance-common.schema.json#/$defs/closure_state"
+                    }
+                  ]
+                },
+                "to": {
+                  "$ref": "assurance-common.schema.json#/$defs/closure_state"
+                },
+                "at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "actor": {
+                  "$ref": "assurance-common.schema.json#/$defs/actor"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "refs": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["evidence_ids", "verification_id", "approval_ids", "fix_id", "run_id"],
+                  "properties": {
+                    "evidence_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "verification_id": {
+                      "type": ["string", "null"]
+                    },
+                    "approval_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "fix_id": {
+                      "type": ["string", "null"]
+                    },
+                    "run_id": {
+                      "type": ["string", "null"]
+                    }
+                  }
+                },
+                "prev_digest": {
+                  "type": ["string", "null"],
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "digest": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            },
+            "minItems": 1
+          }
+        }
+      }
+    },
+    "fixes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fix_id",
+          "finding_ids",
+          "change_sha",
+          "implemented_by",
+          "status",
+          "reproduction",
+          "recorded_at"
+        ],
+        "properties": {
+          "fix_id": {
+            "type": "string",
+            "pattern": "^FX-\\d{3,}$"
+          },
+          "finding_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "change_sha": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+          },
+          "implemented_by": {
+            "$ref": "assurance-common.schema.json#/$defs/actor"
+          },
+          "status": {
+            "$ref": "assurance-common.schema.json#/$defs/fix_status"
+          },
+          "reproduction": {
+            "type": "array",
+            "items": {
+              "$ref": "assurance-common.schema.json#/$defs/command_spec"
+            }
+          },
+          "recorded_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "verification_runs": {
+      "type": "array",
+      "items": {
+        "$ref": "verification-run.schema.json"
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "$ref": "approval.schema.json"
+      }
+    },
+    "risk_acceptances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "acceptance_id",
+          "finding_id",
+          "owner",
+          "scope",
+          "rationale",
+          "compensating_controls",
+          "review_date",
+          "expires",
+          "closure_condition",
+          "approval_ids",
+          "created_at"
+        ],
+        "properties": {
+          "acceptance_id": {
+            "type": "string",
+            "pattern": "^RA-\\d{3,}$"
+          },
+          "finding_id": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "compensating_controls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "review_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "expires": {
+            "type": "string",
+            "format": "date"
+          },
+          "closure_condition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approval_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "regression_corpus": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "finding_id", "origin", "description", "command", "added_at", "added_by"],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "finding_id": {
+            "type": "string"
+          },
+          "origin": {
+            "enum": ["escaped-incident", "regressed-finding", "verified-fix"]
+          },
+          "description": {
+            "type": "string"
+          },
+          "command": {
+            "$ref": "assurance-common.schema.json#/$defs/command_spec"
+          },
+          "added_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "added_by": {
+            "$ref": "assurance-common.schema.json#/$defs/actor"
+          }
+        }
+      }
+    },
+    "chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["length", "head_digest"],
+      "properties": {
+        "length": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "head_digest": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

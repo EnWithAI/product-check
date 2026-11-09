@@ -13,8 +13,12 @@ user's explicit instructions.
 
 ## Invariants (tests enforce most of these)
 
-- No `child_process`, `vm`, `eval`, `new Function` or dynamic `import()` in `src/`; network only in
+- No `vm`, `eval`, `new Function` or dynamic `import()` in `src/`; network only in
   `src/inspectors/http/fetch.ts`, only after `contract/safety.ts` allows it.
+- `node:child_process` only in `src/exec/process.ts` (CT3 v3.2): operator-declared commands with `--allow-exec`, and
+  hardened read-only git. The scan pipeline (`run`/`retest`/`scan`/`spec`) never imports it.
+- Closure invariants (docs/vibe-code-assurance.md): nothing reaches VERIFIED_FIXED without a PASS verification at
+  the exact fix SHA, nothing reaches CLOSED without signed human approvals; never weaken `checkRegister`.
 - No PASS/PARTIAL/FAIL without evidence; unchecked statuses carry a reason; untested never raises a score.
 - Git-ignored files are never read; evidence excerpts are redacted and short; no request headers or bodies kept.
 - Results are deterministic with `SOURCE_DATE_EPOCH`; IDs are content hashes over relative paths.

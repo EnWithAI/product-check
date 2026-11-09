@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/assurance-common.schema.json",
+  "title": "Product Check assurance shared definitions",
+  "description": "Enumerations and shapes shared by the CT3 v3.2 review and closure artifacts.",
+  "$defs": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "methodology_version": {
+      "const": "CT3 v3.2"
+    },
+    "verification_state": {
+      "enum": [
+        "SUSPECTED",
+        "EVIDENCE_COLLECTED",
+        "REPRODUCED",
+        "CORROBORATED",
+        "CONFIRMED",
+        "DISPROVEN",
+        "NEEDS_HUMAN_TRIAGE"
+      ]
+    },
+    "closure_state": {
+      "enum": [
+        "OPEN",
+        "ACKNOWLEDGED",
+        "IN_PROGRESS",
+        "FIX_PROPOSED",
+        "RETEST_REQUIRED",
+        "VERIFIED_FIXED",
+        "CLOSED",
+        "REJECTED_FALSE_POSITIVE",
+        "ACCEPTED_RISK",
+        "DEFERRED",
+        "REGRESSED"
+      ]
+    },
+    "risk_level": {
+      "enum": ["LOW", "MEDIUM", "HIGH", "UNDETERMINED"]
+    },
+    "gate_status": {
+      "enum": ["PASS", "CONDITIONAL", "BLOCK", "NOT_EVALUATED"]
+    },
+    "release_decision": {
+      "enum": ["GO", "CONDITIONAL_GO", "NO_GO", "UNKNOWN"]
+    },
+    "fix_status": {
+      "enum": ["PROPOSED", "IMPLEMENTED_UNVERIFIED", "VERIFIED", "REGRESSED"]
+    },
+    "lane": {
+      "enum": ["spec-outcome", "correctness", "impact", "trust-security", "experience", "operations"]
+    },
+    "phase": {
+      "enum": ["VC-P0", "VC-P1", "VC-P2", "VC-P3", "VC-P4", "VC-P5", "VC-P6", "VC-P7"]
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": ["human", "agent", "system"]
+        }
+      }
+    },
+    "command_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "argv", "purpose", "timeout_ms", "cwd", "source"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "argv": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "purpose": {
+          "enum": ["build", "typecheck", "lint", "test", "smoke", "reproduction", "regression", "other"]
+        },
+        "timeout_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cwd": {
+          "type": "string"
+        },
+        "source": {
+          "enum": ["policy", "fix", "corpus"]
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment_id", "runner", "lockfile_digest"],
+      "properties": {
+        "environment_id": {
+          "type": "string"
+        },
+        "runner": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["platform", "arch", "node_version", "tool_version"],
+          "properties": {
+            "platform": {
+              "type": "string"
+            },
+            "arch": {
+              "type": "string"
+            },
+            "node_version": {
+              "type": "string"
+            },
+            "tool_version": {
+              "type": "string"
+            }
+          }
+        },
+        "lockfile_digest": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_id",
+        "command_id",
+        "purpose",
+        "argv",
+        "cwd",
+        "status",
+        "exit_code",
+        "signal",
+        "duration_ms",
+        "started_at",
+        "environment_id",
+        "commit_sha",
+        "stdout_digest",
+        "stderr_digest",
+        "output_bytes",
+        "output_truncated",
+        "excerpt",
+        "reason",
+        "evidence_id"
+      ],
+      "properties": {
+        "execution_id": {
+          "type": "string"
+        },
+        "command_id": {
+          "type": "string"
+        },
+        "purpose": {
+          "enum": ["build", "typecheck", "lint", "test", "smoke", "reproduction", "regression", "other"]
+        },
+        "argv": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cwd": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "common.schema.json#/$defs/validation_status"
+        },
+        "exit_code": {
+          "type": ["integer", "null"]
+        },
+        "signal": {
+          "type": ["string", "null"]
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "environment_id": {
+          "type": "string"
+        },
+        "commit_sha": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+        },
+        "stdout_digest": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "stderr_digest": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output_truncated": {
+          "type": "boolean"
+        },
+        "excerpt": {
+          "type": ["string", "null"],
+          "maxLength": 400
+        },
+        "reason": {
+          "type": ["string", "null"]
+        },
+        "evidence_id": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check", "result", "detail"],
+      "properties": {
+        "check": {
+          "type": "string"
+        },
+        "result": {
+          "enum": ["pass", "fail", "not-run"]
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "checks"],
+      "properties": {
+        "state": {
+          "$ref": "assurance-common.schema.json#/$defs/verification_state"
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "assurance-common.schema.json#/$defs/check"
+          }
+        }
+      }
+    },
+    "approval_evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approval_id", "approver_id", "status", "reason"],
+      "properties": {
+        "approval_id": {
+          "type": "string"
+        },
+        "approver_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "VALID",
+            "STALE",
+            "INVALID_SIGNATURE",
+            "UNSIGNED",
+            "UNKNOWN_APPROVER",
+            "NOT_HUMAN",
+            "SELF_APPROVAL",
+            "WRONG_SCOPE",
+            "REJECTED"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

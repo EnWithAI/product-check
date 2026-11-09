@@ -1,0 +1,3645 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "product-check-results",
+  "run": {
+    "run_id": "PCR-20261108T075059Z-79884D",
+    "status": "COMPLETED",
+    "started_at": "2026-11-08T07:50:59.412Z",
+    "finished_at": "2026-11-08T07:50:59.422Z",
+    "duration_ms": 10,
+    "tool": "product-check",
+    "tool_version": "0.2.0",
+    "node_version": "v25.9.0",
+    "methodology": {
+      "name": "CT3",
+      "label": "Customer × Technology × Trust",
+      "relationship": "inspired",
+      "reference_version": "CLEAR CT v3.1 (unpublished; principles only)"
+    },
+    "mode_requested": "AUTO",
+    "mode_effective": "SOURCE",
+    "tier": "CT-T1",
+    "tiers_applied": [
+      "CT-T0",
+      "CT-T1"
+    ],
+    "target_revision": {
+      "repository": {
+        "label": "Vibe Invoices (synthetic demo)",
+        "commit": "2d9a97671bab9d34a753251ca4de14fc51a50f11",
+        "ref": "refs/heads/main",
+        "source": "git metadata read from .git"
+      },
+      "application": null
+    },
+    "phases": [
+      {
+        "phase": "SCAN",
+        "status": "COMPLETED",
+        "notes": [
+          "8 files inventoried",
+          "no application observed"
+        ]
+      },
+      {
+        "phase": "TEST",
+        "status": "COMPLETED",
+        "notes": [
+          "no application checks",
+          "0 test results file(s) imported (0 cases); Product Check executes no repository code"
+        ]
+      },
+      {
+        "phase": "VALIDATE",
+        "status": "COMPLETED",
+        "notes": [
+          "51 controls evaluated against CT-T1",
+          "7 open finding(s)"
+        ]
+      },
+      {
+        "phase": "BLUEPRINT",
+        "status": "COMPLETED",
+        "notes": [
+          "7 remediation(s), 7 work packet(s)"
+        ]
+      },
+      {
+        "phase": "DASHBOARD",
+        "status": "SKIPPED",
+        "notes": [
+          "Rendered on demand from this file (`product-check dashboard`)."
+        ]
+      },
+      {
+        "phase": "REMEDIATE",
+        "status": "ADVISORY",
+        "notes": [
+          "Product Check proposes changes and work packets; it never modifies code."
+        ]
+      },
+      {
+        "phase": "RETEST",
+        "status": "COMPLETED",
+        "notes": [
+          "compared with PCR-20261108T075058Z-D21CC5"
+        ]
+      }
+    ],
+    "errors": [],
+    "network": {
+      "used": false,
+      "requests": 0,
+      "origins": []
+    },
+    "baseline": {
+      "run_id": "PCR-20261108T075058Z-D21CC5",
+      "sha256": "e6bc0eab85ff57134de9ec65ccdeb2d2d6852b4502b58642ab434e123d1ae4ef"
+    },
+    "demo": false
+  },
+  "contract": {
+    "schema_version": "0.1.0",
+    "kind": "scan-contract",
+    "contract_id": "local-scan",
+    "labels": {
+      "demo": false
+    },
+    "target": {
+      "name": "Vibe Invoices (synthetic demo)",
+      "purpose": null,
+      "repository": {
+        "path": "."
+      },
+      "application": null
+    },
+    "mode": "AUTO",
+    "lifecycle_stage": "ALPHA",
+    "tiers": null,
+    "product": {
+      "has_user_accounts": null,
+      "multi_tenant": null,
+      "handles_personal_data": null,
+      "uses_ai": null,
+      "payments": null
+    },
+    "personas": [],
+    "critical_journeys": [],
+    "authorization": {
+      "authorized_actions": [
+        "read-local-source",
+        "import-artifacts"
+      ],
+      "prohibited_actions": [
+        "production-write",
+        "destructive-test",
+        "real-outreach",
+        "payment-flow",
+        "active-security-scan",
+        "credentialed-access",
+        "personal-data-extraction",
+        "execute-repository-code",
+        "paid-external-call"
+      ],
+      "scope": {
+        "origins": []
+      },
+      "attestation": null
+    },
+    "constraints": {
+      "max_requests": 12,
+      "request_timeout_ms": 10000,
+      "max_files": 5000
+    },
+    "imports": {
+      "test_results": [],
+      "npm_audit": null,
+      "har": null,
+      "observations": null,
+      "spec_check": null,
+      "impact_check": null,
+      "outcome_check": null,
+      "architecture_check": null,
+      "openslo": [],
+      "alert_rules": [],
+      "service_graph": null
+    },
+    "control_mappings": [],
+    "risk_acceptances": [],
+    "scoring": {
+      "min_coverage": 0.5,
+      "pillar_threshold": 70
+    },
+    "release": {
+      "approver": null
+    }
+  },
+  "pop_coverage": {
+    "schema_version": "0.1.0",
+    "kind": "pop-coverage",
+    "pops": [
+      {
+        "access": "read-only",
+        "authorization": "not-required",
+        "observed_at": "2026-11-08T07:50:59.412Z",
+        "evidence_ids": [
+          "EV-106B66C52025",
+          "EV-116620522519",
+          "EV-15765D61D149",
+          "EV-25479BF7191E",
+          "EV-290694968EA1",
+          "EV-3BD79726AA70",
+          "EV-3D1AC02B1874",
+          "EV-42549A6A94A7",
+          "EV-74530FCD4DCF",
+          "EV-887BA2AA284F",
+          "EV-B634CDDE815A",
+          "EV-C20D88B2D9D3",
+          "EV-C726A561E2C9",
+          "EV-F1171312398C",
+          "EV-F5D9166846C9"
+        ],
+        "id": "repository",
+        "category": "source-build",
+        "name": "Source repository",
+        "status": "AVAILABLE",
+        "relevant": true,
+        "scope": "local checkout (read-only)",
+        "provenance": "observed",
+        "limitations": []
+      },
+      {
+        "access": "read-only",
+        "authorization": "not-required",
+        "observed_at": "2026-11-08T07:50:59.412Z",
+        "evidence_ids": [
+          "EV-6C16188573A7",
+          "EV-B727E23059D8"
+        ],
+        "id": "dependency-manifests",
+        "category": "source-build",
+        "name": "Dependency manifests",
+        "status": "AVAILABLE",
+        "relevant": true,
+        "scope": "local checkout (read-only)",
+        "provenance": "observed",
+        "limitations": []
+      },
+      {
+        "access": "read-only",
+        "authorization": "not-required",
+        "observed_at": "2026-11-08T07:50:59.412Z",
+        "evidence_ids": [
+          "EV-1E1C9B947247",
+          "EV-50D8D97D3ECF",
+          "EV-A80991901098",
+          "EV-C4173765F82B",
+          "EV-F307AE88A628"
+        ],
+        "id": "automated-tests",
+        "category": "source-build",
+        "name": "Automated test sources",
+        "status": "AVAILABLE",
+        "relevant": true,
+        "scope": "local checkout (read-only)",
+        "provenance": "observed",
+        "limitations": []
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "test-results",
+        "category": "source-build",
+        "name": "Executed test results",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No executed test results were imported (Product Check never runs repository code)."
+        ]
+      },
+      {
+        "access": "read-only",
+        "authorization": "not-required",
+        "observed_at": "2026-11-08T07:50:59.412Z",
+        "evidence_ids": [],
+        "id": "ci-cd",
+        "category": "source-build",
+        "name": "CI/CD configuration",
+        "status": "PARTIAL",
+        "relevant": true,
+        "scope": "local checkout (read-only)",
+        "provenance": "observed",
+        "limitations": [
+          "No CI configuration found."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "iac",
+        "category": "operations",
+        "name": "Hosting / infrastructure configuration",
+        "status": "NOT_APPLICABLE",
+        "relevant": false,
+        "scope": "local checkout (read-only)",
+        "provenance": "none",
+        "limitations": [
+          "No hosting or IaC files in the repository."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "database-schema",
+        "category": "data",
+        "name": "Database schema and migrations",
+        "status": "NOT_APPLICABLE",
+        "relevant": false,
+        "scope": null,
+        "provenance": "inferred",
+        "limitations": [
+          "No database dependency detected."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "deployed-web",
+        "category": "experience",
+        "name": "Deployed web application",
+        "status": "BLOCKED",
+        "relevant": true,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No deployed URL was provided (--url)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "api-definition",
+        "category": "interfaces",
+        "name": "API definition (OpenAPI/GraphQL)",
+        "status": "NOT_APPLICABLE",
+        "relevant": false,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "No API definition files found."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "observability",
+        "category": "operations",
+        "name": "Production telemetry (logs, metrics, traces, alerts)",
+        "status": "NOT_APPLICABLE",
+        "relevant": false,
+        "scope": null,
+        "provenance": "none",
+        "limitations": [
+          "Not required before launch tiers (CT-T4+)."
+        ]
+      },
+      {
+        "access": "none",
+        "authorization": "not-required",
+        "observed_at": null,
+        "evidence_ids": [],
+        "id": "ai-integration",
+        "category": "ai",
+        "name": "AI integration (SDKs, prompts, evals)",
+        "status": "NOT_APPLICABLE",
+        "relevant": false,
+        "scope": null,
+        "provenance": "inferred",
+        "limitations": [
+          "No AI SDK detected."
+        ]
+      },
+      {
+        "access": "read-only",
+        "authorization": "not-required",
+        "observed_at": "2026-11-08T07:50:59.412Z",
+        "evidence_ids": [],
+        "id": "documentation",
+        "category": "governance",
+        "name": "Documentation and specifications",
+        "status": "AVAILABLE",
+        "relevant": true,
+        "scope": "local checkout (read-only)",
+        "provenance": "observed",
+        "limitations": []
+      },
+      {
+        "access": "read-only",
+        "authorization": "not-required",
+        "observed_at": "2026-11-08T07:50:59.412Z",
+        "evidence_ids": [],
+        "id": "governance",
+        "category": "governance",
+        "name": "Privacy and security policies",
+        "status": "PARTIAL",
+        "relevant": true,
+        "scope": null,
+        "provenance": "observed",
+        "limitations": [
+          "Presence only; policy content is not assessed (this is not a legal review)."
+        ]
+      }
+    ],
+    "summary": {
+      "available": 4,
+      "partial": 2,
+      "blocked": 2,
+      "not_applicable": 5,
+      "relevant": 8
+    }
+  },
+  "evidence": [
+    {
+      "id": "EV-106B66C52025",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (8 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "Searched 8 readable, non-ignored text files for no type checking or linting configured (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "c3873c1c51e48723bc7a8cf6e2c484ee83823b29606aedf720ce9f2778497c4e"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-08"
+      ]
+    },
+    {
+      "id": "EV-116620522519",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/api/invoices/route.ts",
+        "line_start": 2,
+        "line_end": 2,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "endpoint GET /api/invoices: Next.js route handler",
+      "excerpt": "export async function GET(req) {",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "0b3727bd4b523ccd14c97bd36516e14ea2dfc55cd64b415d0f3b171f9cd253fd"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-15765D61D149",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": 5,
+        "line_end": 5,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "scripts.test = node --test",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "69f271a679d6d6e3e061ab4558d836a164052988cff93d74b50cac343d062516"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-02"
+      ]
+    },
+    {
+      "id": "EV-1E1C9B947247",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "source-location",
+      "pop": "automated-tests",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "inferred",
+      "provenance": "inferred",
+      "source": {
+        "locator": "test/total.test.mjs",
+        "line_start": 3,
+        "line_end": 3,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "test total: test title",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b54e3ac2cfcdcb415a1093bf586b927334a0796a271d520b9c97856317d6f820"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-25479BF7191E",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (6 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "Searched 6 readable, non-ignored text files for secret-named variables with public prefixes (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "613c6eeac201e9f7cda93cc5701fff4f888757f03d10ecb64b977b9de0aa28a8"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-S-02"
+      ]
+    },
+    {
+      "id": "EV-290694968EA1",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "file-presence",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "test/total.test.mjs",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "test file",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b54e3ac2cfcdcb415a1093bf586b927334a0796a271d520b9c97856317d6f820"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-02"
+      ]
+    },
+    {
+      "id": "EV-3BD79726AA70",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "file-presence",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": ".gitignore",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": ".gitignore ignores .env and .env.local",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b5198aa78d81a057997c653d83e7e079edf723edb3763aab2d3e20b2d47b5756"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-S-03"
+      ]
+    },
+    {
+      "id": "EV-3D1AC02B1874",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/lib/config.ts",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "Stripe secret key pattern (stripe-secret-key) in a file that is tracked in the git index (committed or staged)",
+      "excerpt": "export const STRIPE_SECRET_KEY = \"[REDACTED]\";",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "e399ad8196b26dcb4f09e8d22ebd92f823ed091b1adf0ee06d5015478aef5d41"
+      },
+      "redaction": {
+        "applied": true,
+        "rules": [
+          "stripe-key",
+          "assignment-value"
+        ]
+      },
+      "validation_ids": [
+        "VAL-PC-S-01"
+      ]
+    },
+    {
+      "id": "EV-42549A6A94A7",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (3 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "Searched 3 readable, non-ignored text files for eval/raw HTML/raw SQL patterns (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "a9ba12894b76a5d6e09f4dceeb0e3456e69a41faa7a090433b317c6c3f4634d9"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-S-16"
+      ]
+    },
+    {
+      "id": "EV-44708F0EEEE5",
+      "run_id": "PCR-20261108T075058Z-D21CC5",
+      "kind": "search-scope",
+      "pop": "automated-tests",
+      "collected_at": "2026-11-08T07:50:58.482Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (6 files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "da8f9753c6ecec5849d87809be5f25ae4b42e8f7"
+      },
+      "summary": "Searched for end-to-end test files and Playwright/Cypress configuration; none found.",
+      "excerpt": null,
+      "checksum": null,
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-50D8D97D3ECF",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "source-location",
+      "pop": "automated-tests",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "inferred",
+      "provenance": "inferred",
+      "source": {
+        "locator": "test/secret.test.mjs",
+        "line_start": 3,
+        "line_end": 3,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "test secret moved: test title",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "a8e8957f36278a7dfd84769e0a642e4dad7207ab3c6aaa102ab73820f190c92f"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-58EDF2C051A2",
+      "run_id": "PCR-20261108T075058Z-D21CC5",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:58.482Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (6 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "da8f9753c6ecec5849d87809be5f25ae4b42e8f7"
+      },
+      "summary": "Searched 6 readable, non-ignored text files for runtime version is not declared (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8efef823a50d900cb6ab3c20aa6ec0f255b904a3d91afc5502208483b895e1e5"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-6C16188573A7",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "manifest-field",
+      "pop": "dependency-manifests",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "dependency react 19.0.0",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "69f271a679d6d6e3e061ab4558d836a164052988cff93d74b50cac343d062516"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-74530FCD4DCF",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "file-presence",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "dependency manifest (2 dependencies)",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "69f271a679d6d6e3e061ab4558d836a164052988cff93d74b50cac343d062516"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-01"
+      ]
+    },
+    {
+      "id": "EV-7E754AE09134",
+      "run_id": "PCR-20261108T075058Z-D21CC5",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:58.482Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (6 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "da8f9753c6ecec5849d87809be5f25ae4b42e8f7"
+      },
+      "summary": "Searched 6 readable, non-ignored text files for no type checking or linting configured (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8efef823a50d900cb6ab3c20aa6ec0f255b904a3d91afc5502208483b895e1e5"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-8436D8B2E72B",
+      "run_id": "PCR-20261108T075058Z-D21CC5",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:58.482Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (6 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "da8f9753c6ecec5849d87809be5f25ae4b42e8f7"
+      },
+      "summary": "Searched 6 readable, non-ignored text files for no ci pipeline (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "8efef823a50d900cb6ab3c20aa6ec0f255b904a3d91afc5502208483b895e1e5"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-883A2C49A079",
+      "run_id": "PCR-20261108T075058Z-D21CC5",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:58.482Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/checkout/page.tsx",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "da8f9753c6ecec5849d87809be5f25ae4b42e8f7"
+      },
+      "summary": "Stripe secret key pattern (stripe-secret-key) in a file that is tracked in the git index (committed or staged)",
+      "excerpt": "const STRIPE_SECRET_KEY = \"[REDACTED]\";",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "3278937def186898e87cd825bf758ad0e0b53ef767a4eae72edf7a20d795da10"
+      },
+      "redaction": {
+        "applied": true,
+        "rules": [
+          "stripe-key",
+          "assignment-value"
+        ]
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-887BA2AA284F",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "file-presence",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "dependency manifest",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "69f271a679d6d6e3e061ab4558d836a164052988cff93d74b50cac343d062516"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-09"
+      ]
+    },
+    {
+      "id": "EV-A80991901098",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "search-scope",
+      "pop": "automated-tests",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (8 files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "Searched for end-to-end test files and Playwright/Cypress configuration; none found.",
+      "excerpt": null,
+      "checksum": null,
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-C-08"
+      ]
+    },
+    {
+      "id": "EV-B634CDDE815A",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (8 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "Searched 8 readable, non-ignored text files for runtime version is not declared (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "c3873c1c51e48723bc7a8cf6e2c484ee83823b29606aedf720ce9f2778497c4e"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-07"
+      ]
+    },
+    {
+      "id": "EV-B727E23059D8",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "manifest-field",
+      "pop": "dependency-manifests",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "package.json",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "dependency next 15.0.0",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "69f271a679d6d6e3e061ab4558d836a164052988cff93d74b50cac343d062516"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-C20D88B2D9D3",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "file-presence",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "README.md",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "README without install or run instructions",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "f7612345879448f64ed944804c935639f8fa40231e4e912d4d7ee84ba3b5b5c4"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-06"
+      ]
+    },
+    {
+      "id": "EV-C4173765F82B",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "file-presence",
+      "pop": "automated-tests",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "test/total.test.mjs",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "unit/integration test file",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "b54e3ac2cfcdcb415a1093bf586b927334a0796a271d520b9c97856317d6f820"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-C726A561E2C9",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "search-scope",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "repository (8 text files)",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "Searched 8 readable, non-ignored text files for no ci pipeline (rubric pc-rubric-0.2).",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "c3873c1c51e48723bc7a8cf6e2c484ee83823b29606aedf720ce9f2778497c4e"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-04"
+      ]
+    },
+    {
+      "id": "EV-F1171312398C",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "file-presence",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "test/secret.test.mjs",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "test file",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "a8e8957f36278a7dfd84769e0a642e4dad7207ab3c6aaa102ab73820f190c92f"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": [
+        "VAL-PC-T-02"
+      ]
+    },
+    {
+      "id": "EV-F307AE88A628",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "file-presence",
+      "pop": "automated-tests",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "test/secret.test.mjs",
+        "line_start": null,
+        "line_end": null,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "unit/integration test file",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "a8e8957f36278a7dfd84769e0a642e4dad7207ab3c6aaa102ab73820f190c92f"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    },
+    {
+      "id": "EV-F5D9166846C9",
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "kind": "source-location",
+      "pop": "repository",
+      "collected_at": "2026-11-08T07:50:59.412Z",
+      "strength": "static",
+      "provenance": "observed",
+      "source": {
+        "locator": "app/checkout/page.tsx",
+        "line_start": 1,
+        "line_end": 1,
+        "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11"
+      },
+      "summary": "page /checkout: Next.js app router page",
+      "excerpt": null,
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "065827036eff8555574a9a81993e63291d6edfd9508f0a8553c91e0294bd1336"
+      },
+      "redaction": {
+        "applied": false,
+        "rules": []
+      },
+      "validation_ids": []
+    }
+  ],
+  "validations": [
+    {
+      "id": "VAL-PC-C-01",
+      "control_id": "PC-C-01",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Application is reachable over HTTPS",
+      "expected": "The declared URL answers with a 2xx page over HTTPS (after same-origin redirects).",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Deployed web application: No deployed URL was provided (--url).",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-02",
+      "control_id": "PC-C-02",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Page language is declared",
+      "expected": "The root <html> element declares a lang attribute.",
+      "actual": "Not evaluated.",
+      "status": "NOT_TESTED",
+      "method": "none",
+      "strength": null,
+      "reason": "No <html> document template was found in source.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-03",
+      "control_id": "PC-C-03",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Page is configured for mobile viewports",
+      "expected": "A responsive viewport meta tag is present.",
+      "actual": "Not evaluated.",
+      "status": "NOT_TESTED",
+      "method": "none",
+      "strength": null,
+      "reason": "No document <head> template found in source.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-04",
+      "control_id": "PC-C-04",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Images have text alternatives",
+      "expected": "Every <img>/<Image> element has an alt attribute (empty alt for decorative images).",
+      "actual": "Not evaluated.",
+      "status": "NOT_TESTED",
+      "method": "none",
+      "strength": null,
+      "reason": "No image elements found in source templates.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-05",
+      "control_id": "PC-C-05",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Entry page has a meaningful title",
+      "expected": "The entry page has a non-empty <title> that is not a framework starter default.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Deployed web application: No deployed URL was provided (--url).",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-06",
+      "control_id": "PC-C-06",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Unknown URLs return a real 404 page",
+      "expected": "A request for a non-existent path returns HTTP 404 (not a 200 \"soft 404\").",
+      "actual": "Not evaluated.",
+      "status": "NOT_TESTED",
+      "method": "none",
+      "strength": null,
+      "reason": "No dedicated not-found page in source; the served status code needs a deployed URL.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-07",
+      "control_id": "PC-C-07",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Entry page responds quickly",
+      "expected": "The entry page's server response completes within 2,500 ms (single passive sample).",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Deployed web application: No deployed URL was provided (--url).",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-08",
+      "control_id": "PC-C-08",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "Critical journeys are covered by passing end-to-end tests",
+      "expected": "End-to-end tests exist and their imported results pass.",
+      "actual": "No end-to-end tests for critical journeys.",
+      "status": "FAIL",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-A80991901098"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": [
+        "PCF-4537D66695"
+      ]
+    },
+    {
+      "id": "VAL-PC-C-09",
+      "control_id": "PC-C-09",
+      "pillar": "customer",
+      "tier": "CT-T1",
+      "title": "A new user can complete onboarding unaided",
+      "expected": "Imported test results mapped to this control (control_mappings) show the onboarding journey passing.",
+      "actual": "Not evaluated.",
+      "status": "NOT_TESTED",
+      "method": "none",
+      "strength": null,
+      "reason": "Onboarding needs an executed journey (browser automation is not built into this release). No adapter in this release can verify it directly; map executed tests to PC-C-09 with contract.control_mappings.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-10",
+      "control_id": "PC-C-10",
+      "pillar": "customer",
+      "tier": "CT-T0",
+      "title": "Requirements are specific and testable",
+      "expected": "An imported Spec Check report shows no high-severity requirement findings.",
+      "actual": "Not evaluated.",
+      "status": "NOT_TESTED",
+      "method": "none",
+      "strength": null,
+      "reason": "No Spec Check report was imported (optional; pass --spec-check <report.json>).",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-C-11",
+      "control_id": "PC-C-11",
+      "pillar": "customer",
+      "tier": "CT-T4",
+      "title": "Real-user journey health is observed in production",
+      "expected": "Production telemetry shows critical journeys succeeding for real users.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-01",
+      "control_id": "PC-T-01",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Dependency manifest and lockfile are present",
+      "expected": "A dependency manifest and a matching lockfile exist so builds are reproducible.",
+      "actual": "Manifest package.json has no lockfile next to it.",
+      "status": "FAIL",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-74530FCD4DCF"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": [
+        "PCF-A79BB3B752"
+      ]
+    },
+    {
+      "id": "VAL-PC-T-02",
+      "control_id": "PC-T-02",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Automated tests exist",
+      "expected": "The repository contains automated test files and a test command.",
+      "actual": "2 test file(s) and a test command.",
+      "status": "PASS",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-15765D61D149",
+        "EV-F1171312398C",
+        "EV-290694968EA1"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-03",
+      "control_id": "PC-T-03",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Automated tests pass",
+      "expected": "Imported test results (JUnit XML or Jest/Vitest JSON) show zero failures.",
+      "actual": "Not evaluated.",
+      "status": "NOT_TESTED",
+      "method": "none",
+      "strength": null,
+      "reason": "No test results were imported (Product Check never runs repository code; pass --test-results <junit.xml>).",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-04",
+      "control_id": "PC-T-04",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "A CI pipeline is configured",
+      "expected": "A continuous-integration configuration exists (GitHub Actions, GitLab CI, CircleCI, …).",
+      "actual": "No CI configuration found.",
+      "status": "FAIL",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-C726A561E2C9"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": [
+        "PCF-3E3C906C89"
+      ]
+    },
+    {
+      "id": "VAL-PC-T-05",
+      "control_id": "PC-T-05",
+      "pillar": "technology",
+      "tier": "CT-T1",
+      "title": "CI runs the tests",
+      "expected": "The CI configuration invokes the test command.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "No CI configuration exists (see PC-T-04).",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-06",
+      "control_id": "PC-T-06",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Setup and run instructions are documented",
+      "expected": "A README explains how to install and run the project.",
+      "actual": "README.md lacks install and run instructions.",
+      "status": "PARTIAL",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-C20D88B2D9D3"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": [
+        "PCF-83CA52EEEB"
+      ]
+    },
+    {
+      "id": "VAL-PC-T-07",
+      "control_id": "PC-T-07",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Runtime version is declared",
+      "expected": "The runtime version is pinned (engines field, .nvmrc, .node-version, .tool-versions or .python-version).",
+      "actual": "No runtime version declaration found.",
+      "status": "FAIL",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-B634CDDE815A"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": [
+        "PCF-2BBFB74CD4"
+      ]
+    },
+    {
+      "id": "VAL-PC-T-08",
+      "control_id": "PC-T-08",
+      "pillar": "technology",
+      "tier": "CT-T1",
+      "title": "Static type checking or linting is configured",
+      "expected": "A type checker in strict mode or a linter configuration exists.",
+      "actual": "No strict type checking or linter configuration found.",
+      "status": "FAIL",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-106B66C52025"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": [
+        "PCF-9C547F7002"
+      ]
+    },
+    {
+      "id": "VAL-PC-T-09",
+      "control_id": "PC-T-09",
+      "pillar": "technology",
+      "tier": "CT-T1",
+      "title": "Dependency versions are bounded",
+      "expected": "No dependency uses \"*\", \"latest\", an empty range or an unpinned git/URL source.",
+      "actual": "All npm dependency versions are bounded.",
+      "status": "PASS",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-887BA2AA284F"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-10",
+      "control_id": "PC-T-10",
+      "pillar": "technology",
+      "tier": "CT-T2",
+      "title": "Error monitoring is instrumented",
+      "expected": "An error-tracking or telemetry SDK is a dependency (presence only; runtime operation is not verified).",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-11",
+      "control_id": "PC-T-11",
+      "pillar": "technology",
+      "tier": "CT-T0",
+      "title": "Database schema changes are versioned",
+      "expected": "When a database or ORM is used, schema migrations are kept in the repository.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "No database or ORM dependency was found in the manifests.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-12",
+      "control_id": "PC-T-12",
+      "pillar": "technology",
+      "tier": "CT-T3",
+      "title": "Change impact of the release candidate is reviewed",
+      "expected": "An imported Impact Check report shows no unreviewed high-severity impact findings.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-13",
+      "control_id": "PC-T-13",
+      "pillar": "technology",
+      "tier": "CT-T3",
+      "title": "Rollback path is verified",
+      "expected": "Imported test results mapped to this control show a successful rollback/restore rehearsal.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-14",
+      "control_id": "PC-T-14",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Production monitoring and alerting are live",
+      "expected": "Production telemetry and alert configuration are available to the assessment.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-15",
+      "control_id": "PC-T-15",
+      "pillar": "technology",
+      "tier": "CT-T5",
+      "title": "Delivery is stable after launch",
+      "expected": "An imported Outcome Check report shows a CI first-pass rate of at least 80% and no reverted PRs.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T5 (Stabilization), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-16",
+      "control_id": "PC-T-16",
+      "pillar": "technology",
+      "tier": "CT-T6",
+      "title": "No control regressed since the previous run",
+      "expected": "Compared with the baseline results, no control went from PASS to FAIL or PARTIAL.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T6 (Continuous Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-17",
+      "control_id": "PC-T-17",
+      "pillar": "technology",
+      "tier": "CT-T3",
+      "title": "Architecture model matches the code",
+      "expected": "An imported Architecture Check report shows no verified drift of medium severity or above between the declared architecture model and the code.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T3 (Launch Decision), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-18",
+      "control_id": "PC-T-18",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "SLOs define an objective, a time window and an indicator",
+      "expected": "Imported OpenSLO v1 files define at least one SLO, and every SLO has a service, one time window, an objective target and an indicator.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-19",
+      "control_id": "PC-T-19",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Every SLO is alerted on",
+      "expected": "Every imported SLO has an OpenSLO alert policy or an imported alerting rule that names it.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-T-20",
+      "control_id": "PC-T-20",
+      "pillar": "technology",
+      "tier": "CT-T4",
+      "title": "Declared dependencies are observed at runtime",
+      "expected": "Each declared relationship that Architecture Check could not confirm statically appears as an edge in an imported service graph.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T4 (Launch Watch), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-01",
+      "control_id": "PC-S-01",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "No credentials are committed in source",
+      "expected": "No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.",
+      "actual": "1 credential-like string(s) found in 1 file(s).",
+      "status": "FAIL",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-3D1AC02B1874"
+      ],
+      "reproduction": [],
+      "hard_gate": "G-SECRETS",
+      "weight": 3,
+      "finding_ids": [
+        "PCF-AC2DF9263D"
+      ]
+    },
+    {
+      "id": "VAL-PC-S-02",
+      "control_id": "PC-S-02",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "No server secrets are exposed through public environment prefixes",
+      "expected": "No secret-named variable uses a client-exposed prefix (NEXT_PUBLIC_, VITE_, REACT_APP_, EXPO_PUBLIC_, NUXT_PUBLIC_, GATSBY_, PUBLIC_).",
+      "actual": "No secret-named variables with client-exposed prefixes in 6 files.",
+      "status": "PASS",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-25479BF7191E"
+      ],
+      "reproduction": [],
+      "hard_gate": "G-SECRETS",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-03",
+      "control_id": "PC-S-03",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "Environment files are excluded from version control",
+      "expected": "Local .env files are ignored by .gitignore and not tracked in the git index.",
+      "actual": ".gitignore covers environment files; no local env files.",
+      "status": "PASS",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-3BD79726AA70"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-04",
+      "control_id": "PC-S-04",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "HTTPS is enforced",
+      "expected": "Plain-HTTP requests redirect to HTTPS and responses carry Strict-Transport-Security.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-05",
+      "control_id": "PC-S-05",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "A Content Security Policy is set",
+      "expected": "Responses carry a Content-Security-Policy that does not allow 'unsafe-inline' scripts without nonces/hashes.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-06",
+      "control_id": "PC-S-06",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Clickjacking protection is set",
+      "expected": "CSP frame-ancestors or X-Frame-Options (DENY/SAMEORIGIN) is present.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-07",
+      "control_id": "PC-S-07",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "MIME-type sniffing is disabled",
+      "expected": "X-Content-Type-Options: nosniff is present.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-08",
+      "control_id": "PC-S-08",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Cookies are set with Secure, HttpOnly and SameSite",
+      "expected": "Every cookie observed on passive requests has Secure and SameSite; session-like cookies also have HttpOnly.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-09",
+      "control_id": "PC-S-09",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "No sensitive files are publicly served",
+      "expected": "Well-known sensitive paths (/.env, /.env.local, /.git/HEAD, /.git/config) are not served with their content.",
+      "actual": "Not evaluated.",
+      "status": "BLOCKED",
+      "method": "none",
+      "strength": null,
+      "reason": "Deployed web application: No deployed URL was provided (--url).",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-SECRETS",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-10",
+      "control_id": "PC-S-10",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Server and framework versions are not disclosed",
+      "expected": "No X-Powered-By header and no version numbers in the Server header.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-11",
+      "control_id": "PC-S-11",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "A security contact is published",
+      "expected": "SECURITY.md in the repository or /.well-known/security.txt with a Contact field.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-12",
+      "control_id": "PC-S-12",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "A privacy notice is available",
+      "expected": "The entry page links to a privacy notice, /privacy answers 2xx, or a privacy page exists in source.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-13",
+      "control_id": "PC-S-13",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "Authorization is enforced on privileged paths",
+      "expected": "Imported test results mapped to this control show unauthenticated and under-privileged requests to privileged routes being denied.",
+      "actual": "Not evaluated.",
+      "status": "NOT_TESTED",
+      "method": "none",
+      "strength": null,
+      "reason": "Authorization bypass testing needs credentialed negative tests, which Product Check does not run itself. No adapter in this release can verify it directly; map executed tests to PC-S-13 with contract.control_mappings.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-AUTHZ",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-14",
+      "control_id": "PC-S-14",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Tenant and user data are isolated",
+      "expected": "Imported test results mapped to this control show one tenant/user cannot read or change another's data.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-ISOLATION",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-15",
+      "control_id": "PC-S-15",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "No critical or high known vulnerabilities in dependencies",
+      "expected": "An imported `npm audit --json` report shows zero critical and zero high vulnerabilities.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-16",
+      "control_id": "PC-S-16",
+      "pillar": "trust",
+      "tier": "CT-T1",
+      "title": "No high-risk code patterns",
+      "expected": "No dynamic code evaluation, raw HTML injection of non-literal values, or SQL built by string interpolation.",
+      "actual": "No high-risk code patterns in 3 source files.",
+      "status": "PASS",
+      "method": "static-analysis",
+      "strength": "static",
+      "reason": null,
+      "evidence_ids": [
+        "EV-42549A6A94A7"
+      ],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-S-17",
+      "control_id": "PC-S-17",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "No credentialed wildcard CORS",
+      "expected": "No CORS configuration allows any origin (\"*\") or reflects origins while allowing credentials.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-AI-01",
+      "control_id": "PC-AI-01",
+      "pillar": "trust",
+      "tier": "CT-T0",
+      "title": "AI provider calls run server-side only",
+      "expected": "AI provider SDKs are not imported in client-side code and browser use is not enabled.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "No AI SDK dependency was found and the contract does not declare AI use.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": "G-SECRETS",
+      "weight": 3,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-AI-02",
+      "control_id": "PC-AI-02",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "An AI evaluation suite exists",
+      "expected": "AI behaviour has an evaluation suite (promptfoo config, evals directory or *.eval.* files).",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 1,
+      "finding_ids": []
+    },
+    {
+      "id": "VAL-PC-AI-03",
+      "control_id": "PC-AI-03",
+      "pillar": "trust",
+      "tier": "CT-T2",
+      "title": "Prompt-injection and guardrail behaviour is tested",
+      "expected": "Imported test results mapped to this control show adversarial AI cases passing.",
+      "actual": "Not evaluated.",
+      "status": "NOT_APPLICABLE",
+      "method": "none",
+      "strength": null,
+      "reason": "Belongs to CT-T2 (Pre-Launch Assurance), beyond the selected tier CT-T1.",
+      "evidence_ids": [],
+      "reproduction": [],
+      "hard_gate": null,
+      "weight": 2,
+      "finding_ids": []
+    }
+  ],
+  "findings": [
+    {
+      "id": "PCF-50D5C47465",
+      "control_id": "PC-S-01",
+      "title": "Stripe secret key in app/checkout/page.tsx",
+      "category": "secrets",
+      "pillar": "trust",
+      "severity": "P0",
+      "ux_severity": null,
+      "status": "RESOLVED",
+      "lifecycle": "RESOLVED",
+      "epistemic": "fact",
+      "confidence": "HIGH",
+      "reproducibility": "deterministic",
+      "reproduction": [
+        "Open app/checkout/page.tsx at line 1 (value redacted in this report)."
+      ],
+      "pop": "repository",
+      "location": "app/checkout/page.tsx:1",
+      "expected": "No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.",
+      "actual": "A Stripe secret key appears at app/checkout/page.tsx:1; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).",
+      "impact": {
+        "customer": "Attackers can act as the product against customer data.",
+        "technology": null,
+        "trust": "Anyone with repository access (or a public mirror) holds working credentials."
+      },
+      "root_cause": {
+        "statement": "Credentials were pasted into code or committed configuration instead of the runtime secret store.",
+        "certainty": "inference"
+      },
+      "evidence_ids": [
+        "EV-883A2C49A079",
+        "EV-3D1AC02B1874"
+      ],
+      "validation_id": "VAL-PC-S-01",
+      "work_packet_id": "WP-PC-S-01",
+      "first_seen_run": "PCR-20261108T075058Z-D21CC5",
+      "history": [
+        {
+          "run_id": "PCR-20261108T075058Z-D21CC5",
+          "status": "OPEN",
+          "evidence_ids": [
+            "EV-883A2C49A079"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-AC2DF9263D",
+      "control_id": "PC-S-01",
+      "title": "Stripe secret key in app/lib/config.ts",
+      "category": "secrets",
+      "pillar": "trust",
+      "severity": "P0",
+      "ux_severity": null,
+      "status": "OPEN",
+      "lifecycle": "NEW",
+      "epistemic": "fact",
+      "confidence": "HIGH",
+      "reproducibility": "deterministic",
+      "reproduction": [
+        "Open app/lib/config.ts at line 1 (value redacted in this report)."
+      ],
+      "pop": "repository",
+      "location": "app/lib/config.ts:1",
+      "expected": "No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.",
+      "actual": "A Stripe secret key appears at app/lib/config.ts:1; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).",
+      "impact": {
+        "customer": "Attackers can act as the product against customer data.",
+        "technology": null,
+        "trust": "Anyone with repository access (or a public mirror) holds working credentials."
+      },
+      "root_cause": {
+        "statement": "Credentials were pasted into code or committed configuration instead of the runtime secret store.",
+        "certainty": "inference"
+      },
+      "evidence_ids": [
+        "EV-3D1AC02B1874"
+      ],
+      "validation_id": "VAL-PC-S-01",
+      "work_packet_id": "WP-PC-S-01",
+      "first_seen_run": "PCR-20261108T075059Z-79884D",
+      "history": []
+    },
+    {
+      "id": "PCF-3E3C906C89",
+      "control_id": "PC-T-04",
+      "title": "No CI pipeline",
+      "category": "delivery",
+      "pillar": "technology",
+      "severity": "P2",
+      "ux_severity": null,
+      "status": "OPEN",
+      "lifecycle": "PERSISTING",
+      "epistemic": "fact",
+      "confidence": "HIGH",
+      "reproducibility": "deterministic",
+      "reproduction": [],
+      "pop": "repository",
+      "location": "repository",
+      "expected": "A continuous-integration configuration exists (GitHub Actions, GitLab CI, CircleCI, …).",
+      "actual": "No CI configuration found.",
+      "impact": {
+        "customer": null,
+        "technology": "Nothing checks changes before they ship.",
+        "trust": null
+      },
+      "root_cause": {
+        "statement": "No automated pipeline was set up.",
+        "certainty": "inference"
+      },
+      "evidence_ids": [
+        "EV-C726A561E2C9"
+      ],
+      "validation_id": "VAL-PC-T-04",
+      "work_packet_id": "WP-PC-T-04",
+      "first_seen_run": "PCR-20261108T075058Z-D21CC5",
+      "history": [
+        {
+          "run_id": "PCR-20261108T075058Z-D21CC5",
+          "status": "OPEN",
+          "evidence_ids": [
+            "EV-8436D8B2E72B"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-4537D66695",
+      "control_id": "PC-C-08",
+      "title": "Critical journeys have no end-to-end tests",
+      "category": "journeys",
+      "pillar": "customer",
+      "severity": "P2",
+      "ux_severity": null,
+      "status": "OPEN",
+      "lifecycle": "PERSISTING",
+      "epistemic": "fact",
+      "confidence": "HIGH",
+      "reproducibility": "deterministic",
+      "reproduction": [],
+      "pop": "automated-tests",
+      "location": "repository",
+      "expected": "End-to-end tests exist and their imported results pass.",
+      "actual": "No end-to-end tests found.",
+      "impact": {
+        "customer": "Core journeys can break without anyone noticing before users do.",
+        "technology": "No executable definition of 'the product works'.",
+        "trust": null
+      },
+      "root_cause": {
+        "statement": "Critical user journeys have no executable end-to-end check, or the checks fail.",
+        "certainty": "inference"
+      },
+      "evidence_ids": [
+        "EV-A80991901098"
+      ],
+      "validation_id": "VAL-PC-C-08",
+      "work_packet_id": "WP-PC-C-08",
+      "first_seen_run": "PCR-20261108T075058Z-D21CC5",
+      "history": [
+        {
+          "run_id": "PCR-20261108T075058Z-D21CC5",
+          "status": "OPEN",
+          "evidence_ids": [
+            "EV-44708F0EEEE5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-A79BB3B752",
+      "control_id": "PC-T-01",
+      "title": "No lockfile: builds are not reproducible",
+      "category": "build",
+      "pillar": "technology",
+      "severity": "P2",
+      "ux_severity": null,
+      "status": "OPEN",
+      "lifecycle": "PERSISTING",
+      "epistemic": "fact",
+      "confidence": "HIGH",
+      "reproducibility": "deterministic",
+      "reproduction": [],
+      "pop": "repository",
+      "location": "package.json",
+      "expected": "A dependency manifest and a matching lockfile exist so builds are reproducible.",
+      "actual": "No lockfile next to the root manifest.",
+      "impact": {
+        "customer": null,
+        "technology": "Builds can silently pick up different dependency versions.",
+        "trust": "Unreviewed dependency changes can enter production."
+      },
+      "root_cause": {
+        "statement": "The lockfile was never generated or is not kept with the code.",
+        "certainty": "inference"
+      },
+      "evidence_ids": [
+        "EV-74530FCD4DCF"
+      ],
+      "validation_id": "VAL-PC-T-01",
+      "work_packet_id": "WP-PC-T-01",
+      "first_seen_run": "PCR-20261108T075058Z-D21CC5",
+      "history": [
+        {
+          "run_id": "PCR-20261108T075058Z-D21CC5",
+          "status": "OPEN",
+          "evidence_ids": [
+            "EV-74530FCD4DCF"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-2BBFB74CD4",
+      "control_id": "PC-T-07",
+      "title": "Runtime version is not declared",
+      "category": "build",
+      "pillar": "technology",
+      "severity": "P3",
+      "ux_severity": null,
+      "status": "OPEN",
+      "lifecycle": "PERSISTING",
+      "epistemic": "fact",
+      "confidence": "HIGH",
+      "reproducibility": "deterministic",
+      "reproduction": [],
+      "pop": "repository",
+      "location": "repository",
+      "expected": "The runtime version is pinned (engines field, .nvmrc, .node-version, .tool-versions or .python-version).",
+      "actual": "No runtime version declaration found.",
+      "impact": {
+        "customer": null,
+        "technology": "Local, CI and production may run different runtime versions.",
+        "trust": null
+      },
+      "root_cause": {
+        "statement": "The runtime version is implicit.",
+        "certainty": "inference"
+      },
+      "evidence_ids": [
+        "EV-B634CDDE815A"
+      ],
+      "validation_id": "VAL-PC-T-07",
+      "work_packet_id": "WP-PC-T-07",
+      "first_seen_run": "PCR-20261108T075058Z-D21CC5",
+      "history": [
+        {
+          "run_id": "PCR-20261108T075058Z-D21CC5",
+          "status": "OPEN",
+          "evidence_ids": [
+            "EV-58EDF2C051A2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-83CA52EEEB",
+      "control_id": "PC-T-06",
+      "title": "README lacks setup/run instructions",
+      "category": "operability",
+      "pillar": "technology",
+      "severity": "P3",
+      "ux_severity": null,
+      "status": "OPEN",
+      "lifecycle": "PERSISTING",
+      "epistemic": "fact",
+      "confidence": "MEDIUM",
+      "reproducibility": "deterministic",
+      "reproduction": [],
+      "pop": "repository",
+      "location": "README.md",
+      "expected": "A README explains how to install and run the project.",
+      "actual": "README does not explain how to install and run.",
+      "impact": {
+        "customer": null,
+        "technology": "New contributors (human or agent) cannot reproduce the environment.",
+        "trust": null
+      },
+      "root_cause": {
+        "statement": "Documentation was not written alongside the code.",
+        "certainty": "inference"
+      },
+      "evidence_ids": [
+        "EV-C20D88B2D9D3"
+      ],
+      "validation_id": "VAL-PC-T-06",
+      "work_packet_id": "WP-PC-T-06",
+      "first_seen_run": "PCR-20261108T075058Z-D21CC5",
+      "history": [
+        {
+          "run_id": "PCR-20261108T075058Z-D21CC5",
+          "status": "OPEN",
+          "evidence_ids": [
+            "EV-C20D88B2D9D3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-9C547F7002",
+      "control_id": "PC-T-08",
+      "title": "No type checking or linting configured",
+      "category": "code-health",
+      "pillar": "technology",
+      "severity": "P3",
+      "ux_severity": null,
+      "status": "OPEN",
+      "lifecycle": "PERSISTING",
+      "epistemic": "fact",
+      "confidence": "HIGH",
+      "reproducibility": "deterministic",
+      "reproduction": [],
+      "pop": "repository",
+      "location": "repository",
+      "expected": "A type checker in strict mode or a linter configuration exists.",
+      "actual": "No strict type checking or linter configuration found.",
+      "impact": {
+        "customer": null,
+        "technology": "Classes of defects that tools catch for free reach runtime.",
+        "trust": null
+      },
+      "root_cause": {
+        "statement": "No static analysis is configured.",
+        "certainty": "inference"
+      },
+      "evidence_ids": [
+        "EV-106B66C52025"
+      ],
+      "validation_id": "VAL-PC-T-08",
+      "work_packet_id": "WP-PC-T-08",
+      "first_seen_run": "PCR-20261108T075058Z-D21CC5",
+      "history": [
+        {
+          "run_id": "PCR-20261108T075058Z-D21CC5",
+          "status": "OPEN",
+          "evidence_ids": [
+            "EV-7E754AE09134"
+          ]
+        }
+      ]
+    }
+  ],
+  "scorecard": {
+    "schema_version": "0.1.0",
+    "kind": "scorecard",
+    "rubric_version": "pc-rubric-0.2",
+    "pillars": {
+      "customer": {
+        "score": null,
+        "state": "INSUFFICIENT_EVIDENCE",
+        "coverage": 0.1538,
+        "confidence": "LOW",
+        "cap": {
+          "applied": false,
+          "limit": null,
+          "reason": null
+        },
+        "trend": {
+          "previous_score": null,
+          "delta": null,
+          "previous_run_id": "PCR-20261108T075058Z-D21CC5"
+        },
+        "counts": {
+          "PASS": 0,
+          "PARTIAL": 0,
+          "FAIL": 1,
+          "BLOCKED": 3,
+          "NOT_TESTED": 6,
+          "NOT_APPLICABLE": 1
+        },
+        "applicable_weight": 13,
+        "checked_weight": 2
+      },
+      "technology": {
+        "score": 39,
+        "state": "SCORED",
+        "coverage": 0.75,
+        "confidence": "MEDIUM",
+        "cap": {
+          "applied": false,
+          "limit": null,
+          "reason": null
+        },
+        "trend": {
+          "previous_score": 39,
+          "delta": 0,
+          "previous_run_id": "PCR-20261108T075058Z-D21CC5"
+        },
+        "counts": {
+          "PASS": 2,
+          "PARTIAL": 1,
+          "FAIL": 4,
+          "BLOCKED": 0,
+          "NOT_TESTED": 1,
+          "NOT_APPLICABLE": 12
+        },
+        "applicable_weight": 12,
+        "checked_weight": 9
+      },
+      "trust": {
+        "score": 39,
+        "state": "SCORED",
+        "coverage": 0.6,
+        "confidence": "MEDIUM",
+        "cap": {
+          "applied": true,
+          "limit": 39,
+          "reason": "open P0 finding in this pillar"
+        },
+        "trend": {
+          "previous_score": 39,
+          "delta": 0,
+          "previous_run_id": "PCR-20261108T075058Z-D21CC5"
+        },
+        "counts": {
+          "PASS": 3,
+          "PARTIAL": 0,
+          "FAIL": 1,
+          "BLOCKED": 1,
+          "NOT_TESTED": 1,
+          "NOT_APPLICABLE": 14
+        },
+        "applicable_weight": 15,
+        "checked_weight": 9
+      }
+    },
+    "overall_coverage": 0.5,
+    "gates": [
+      {
+        "gate_id": "G-SECRETS",
+        "title": "No exposed production secrets or client-side privileged keys",
+        "status": "FAIL",
+        "control_ids": [
+          "PC-S-01",
+          "PC-S-02",
+          "PC-S-09",
+          "PC-AI-01"
+        ]
+      },
+      {
+        "gate_id": "G-AUTHZ",
+        "title": "No authentication or authorization bypass on privileged paths",
+        "status": "UNVERIFIED",
+        "control_ids": [
+          "PC-S-13"
+        ]
+      },
+      {
+        "gate_id": "G-ISOLATION",
+        "title": "No cross-tenant or cross-user data exposure",
+        "status": "NOT_APPLICABLE",
+        "control_ids": [
+          "PC-S-14"
+        ]
+      }
+    ],
+    "open_findings": {
+      "P0": 1,
+      "P1": 0,
+      "P2": 3,
+      "P3": 3
+    },
+    "accepted_risks": 0,
+    "blocked_controls": [
+      "PC-C-01",
+      "PC-C-05",
+      "PC-C-07",
+      "PC-S-09"
+    ],
+    "not_tested_controls": [
+      "PC-C-02",
+      "PC-C-03",
+      "PC-C-04",
+      "PC-C-06",
+      "PC-C-09",
+      "PC-C-10",
+      "PC-T-03",
+      "PC-S-13"
+    ],
+    "parameters": {
+      "min_coverage": 0.5,
+      "pillar_threshold": 70
+    }
+  },
+  "blueprint": {
+    "schema_version": "0.1.0",
+    "kind": "blueprint",
+    "as_is": {
+      "components": [
+        {
+          "id": "CMP-framework-next-js",
+          "category": "framework",
+          "name": "Next.js",
+          "certainty": "observed",
+          "evidence_ids": [
+            "EV-B727E23059D8"
+          ]
+        },
+        {
+          "id": "CMP-framework-react",
+          "category": "framework",
+          "name": "React",
+          "certainty": "observed",
+          "evidence_ids": [
+            "EV-6C16188573A7"
+          ]
+        }
+      ],
+      "uncertainties": [
+        "No deployed application was observed: runtime behaviour, headers and real user experience are unknown.",
+        "No executed test results were imported: whether tests pass is unknown.",
+        "Tenancy model not declared (product.multi_tenant): isolation requirements are unknown.",
+        "No authentication library detected; whether the product has user accounts or custom auth was not determined.",
+        "Authenticated, multi-step and data-changing journeys were not exercised (no browser automation or credentialed access in this release)."
+      ],
+      "as_built": {
+        "surface": [
+          {
+            "id": "SRF-FFDF09AF17",
+            "kind": "page",
+            "name": "/checkout",
+            "method": null,
+            "area": "checkout",
+            "detail": "Next.js app router page",
+            "location": {
+              "path": "app/checkout/page.tsx",
+              "line": 1
+            },
+            "certainty": "observed",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-F5D9166846C9"
+            ]
+          },
+          {
+            "id": "SRF-6FCE981774",
+            "kind": "endpoint",
+            "name": "/api/invoices",
+            "method": "GET",
+            "area": "invoices",
+            "detail": "Next.js route handler",
+            "location": {
+              "path": "app/api/invoices/route.ts",
+              "line": 2
+            },
+            "certainty": "observed",
+            "auth_hint": true,
+            "evidence_ids": [
+              "EV-116620522519"
+            ]
+          },
+          {
+            "id": "SRF-A06F74FE89",
+            "kind": "test",
+            "name": "secret moved",
+            "method": null,
+            "area": "test",
+            "detail": "test title",
+            "location": {
+              "path": "test/secret.test.mjs",
+              "line": 3
+            },
+            "certainty": "inferred",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-50D8D97D3ECF"
+            ]
+          },
+          {
+            "id": "SRF-E29C1E9935",
+            "kind": "test",
+            "name": "total",
+            "method": null,
+            "area": "test",
+            "detail": "test title",
+            "location": {
+              "path": "test/total.test.mjs",
+              "line": 3
+            },
+            "certainty": "inferred",
+            "auth_hint": false,
+            "evidence_ids": [
+              "EV-1E1C9B947247"
+            ]
+          }
+        ],
+        "stories": [
+          {
+            "id": "US-1",
+            "area": "checkout",
+            "title": "Checkout",
+            "critical_journey": null,
+            "surface_ids": [
+              "SRF-FFDF09AF17"
+            ],
+            "requirement_ids": [
+              "FR-001"
+            ],
+            "test_behaviours": []
+          },
+          {
+            "id": "US-2",
+            "area": "invoices",
+            "title": "Invoices",
+            "critical_journey": null,
+            "surface_ids": [
+              "SRF-6FCE981774"
+            ],
+            "requirement_ids": [
+              "FR-002"
+            ],
+            "test_behaviours": []
+          }
+        ],
+        "requirements": [
+          {
+            "id": "FR-001",
+            "statement": "The system MUST serve the page `/checkout`.",
+            "certainty": "observed",
+            "surface_ids": [
+              "SRF-FFDF09AF17"
+            ],
+            "evidence_ids": [
+              "EV-F5D9166846C9"
+            ]
+          },
+          {
+            "id": "FR-002",
+            "statement": "The system MUST handle `GET` requests to `/api/invoices`. The handler references an authentication helper, so access is likely limited to signed-in users.",
+            "certainty": "inferred",
+            "surface_ids": [
+              "SRF-6FCE981774"
+            ],
+            "evidence_ids": [
+              "EV-116620522519"
+            ]
+          }
+        ],
+        "non_functional": [
+          {
+            "id": "NFR-001",
+            "statement": "[NEEDS CLARIFICATION: response-time and throughput targets for the main pages and endpoints]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          },
+          {
+            "id": "NFR-002",
+            "statement": "[NEEDS CLARIFICATION: availability target and acceptable downtime]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          },
+          {
+            "id": "NFR-003",
+            "statement": "[NEEDS CLARIFICATION: how long personal and business data is kept, and how it is deleted]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          }
+        ],
+        "success_criteria": [
+          {
+            "id": "SC-001",
+            "statement": "[NEEDS CLARIFICATION: measurable outcomes cannot be derived from source code; state the targets this product must meet]",
+            "certainty": "hypothesis",
+            "surface_ids": [],
+            "evidence_ids": []
+          }
+        ],
+        "edge_cases": [],
+        "clarifications": [
+          "Purpose of the Checkout area: who uses it, and what outcome it must deliver.",
+          "Purpose of the Invoices area: who uses it, and what outcome it must deliver."
+        ],
+        "uncertainties": [
+          "Purpose, users, priorities and business rules are not derivable from code; every story carries a clarification for them.",
+          "Nothing was executed: requirements describe what the code declares, not verified behaviour.",
+          "2 test title(s) could not be matched to a route area and are listed separately."
+        ]
+      }
+    },
+    "to_be": {
+      "changes": [
+        {
+          "id": "TB-PC-C-08",
+          "statement": "Each critical journey has an end-to-end test that gates deployment.",
+          "rationale": "Only executed journeys provide runtime evidence that the product works for users.",
+          "alternatives": [],
+          "finding_ids": [
+            "PCF-4537D66695"
+          ]
+        },
+        {
+          "id": "TB-PC-T-01",
+          "statement": "Lockfile committed; CI installs with a frozen lockfile.",
+          "rationale": "Reproducible builds are a precondition for meaningful testing and rollback.",
+          "alternatives": [],
+          "finding_ids": [
+            "PCF-A79BB3B752"
+          ]
+        },
+        {
+          "id": "TB-PC-T-04",
+          "statement": "Every pull request runs build, lint and tests automatically.",
+          "rationale": "CI is where tests become a gate rather than a suggestion.",
+          "alternatives": [],
+          "finding_ids": [
+            "PCF-3E3C906C89"
+          ]
+        },
+        {
+          "id": "TB-PC-T-06",
+          "statement": "README documents setup, environment and test commands.",
+          "rationale": "Reproducible setup is a precondition for testing and handover.",
+          "alternatives": [],
+          "finding_ids": [
+            "PCF-83CA52EEEB"
+          ]
+        },
+        {
+          "id": "TB-PC-T-07",
+          "statement": "Runtime version declared once and used by CI and hosting.",
+          "rationale": "Runtime drift causes works-on-my-machine failures.",
+          "alternatives": [],
+          "finding_ids": [
+            "PCF-2BBFB74CD4"
+          ]
+        },
+        {
+          "id": "TB-PC-T-08",
+          "statement": "Type check and lint run in CI.",
+          "rationale": "Cheap automated checks catch common defects introduced by fast iteration.",
+          "alternatives": [],
+          "finding_ids": [
+            "PCF-9C547F7002"
+          ]
+        },
+        {
+          "id": "TB-PC-S-01",
+          "statement": "Secrets live only in the hosting provider's secret store and are read server-side at runtime.",
+          "rationale": "A committed secret must be assumed leaked; deleting it from the latest commit does not revoke it.",
+          "alternatives": [
+            "Use a secret manager (cloud KMS / Vault / Doppler) instead of plain environment variables."
+          ],
+          "finding_ids": [
+            "PCF-AC2DF9263D"
+          ]
+        }
+      ]
+    },
+    "remediations": [
+      {
+        "id": "REM-PC-S-01",
+        "control_id": "PC-S-01",
+        "finding_ids": [
+          "PCF-50D5C47465",
+          "PCF-AC2DF9263D"
+        ],
+        "problem": "No credentials are committed in source: 1 finding(s) — A Stripe secret key appears at app/lib/config.ts:1; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).",
+        "why_it_matters": "A committed secret must be assumed leaked; deleting it from the latest commit does not revoke it.",
+        "recommended_change": "Rotate (revoke and reissue) every exposed credential first, then move it to environment variables / the hosting secret store and remove it from the code. Treat the history as compromised.",
+        "benefits": {
+          "customer": "Attackers can act as the product against customer data.",
+          "technology": null,
+          "trust": "Anyone with repository access (or a public mirror) holds working credentials."
+        },
+        "horizon": "NOW",
+        "priority": "P0",
+        "effort": "S",
+        "owner": null,
+        "depends_on": [],
+        "human_review_required": true,
+        "acceptance_criteria": [
+          "Each listed credential has been rotated at its provider (human confirmation).",
+          "No secret pattern matches in repository files.",
+          "Control PC-S-01 evaluates PASS on retest.",
+          "Finding PCF-AC2DF9263D (app/lib/config.ts:1) is no longer observed on retest."
+        ],
+        "regression_test": {
+          "description": "A secret-scanning pre-commit hook or CI step (for example gitleaks) on every pull request.",
+          "candidate": {
+            "language": "yaml (GitHub Actions step)",
+            "code": "# Add to your CI workflow: fails the build when credentials or public-prefixed secrets are committed.\n- name: Secret guard\n  run: |\n    ! git grep -nE '(sk_live_|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|(NEXT_PUBLIC_|VITE_|REACT_APP_|EXPO_PUBLIC_)[A-Z0-9_]*(SECRET|SERVICE_ROLE|PRIVATE))' -- . ':!*.lock' ':!package-lock.json'\n"
+          }
+        },
+        "verification": {
+          "status": "PROPOSED",
+          "method": "Re-run Product Check with `product-check retest --baseline <previous results>` and confirm the control evaluates PASS with new evidence.",
+          "verified_in_run": null,
+          "evidence_ids": []
+        }
+      },
+      {
+        "id": "REM-PC-C-08",
+        "control_id": "PC-C-08",
+        "finding_ids": [
+          "PCF-4537D66695"
+        ],
+        "problem": "Critical journeys are covered by passing end-to-end tests: 1 finding(s) — No end-to-end tests found.",
+        "why_it_matters": "Only executed journeys provide runtime evidence that the product works for users.",
+        "recommended_change": "Write end-to-end tests (for example Playwright) for the declared critical journeys, run them in CI and import their JUnit results.",
+        "benefits": {
+          "customer": "Core journeys can break without anyone noticing before users do.",
+          "technology": "No executable definition of 'the product works'.",
+          "trust": null
+        },
+        "horizon": "NEXT",
+        "priority": "P2",
+        "effort": "M",
+        "owner": null,
+        "depends_on": [],
+        "human_review_required": false,
+        "acceptance_criteria": [
+          "At least one end-to-end suite runs and all its cases pass in imported results.",
+          "Control PC-C-08 evaluates PASS on retest.",
+          "Finding PCF-4537D66695 (repository) is no longer observed on retest."
+        ],
+        "regression_test": {
+          "description": "The end-to-end suite itself, run on every pull request and deployment.",
+          "candidate": null
+        },
+        "verification": {
+          "status": "FAILED_VERIFICATION",
+          "method": "Retest still observes the finding(s).",
+          "verified_in_run": null,
+          "evidence_ids": [
+            "EV-A80991901098"
+          ]
+        }
+      },
+      {
+        "id": "REM-PC-T-01",
+        "control_id": "PC-T-01",
+        "finding_ids": [
+          "PCF-A79BB3B752"
+        ],
+        "problem": "Dependency manifest and lockfile are present: 1 finding(s) — No lockfile next to the root manifest.",
+        "why_it_matters": "Reproducible builds are a precondition for meaningful testing and rollback.",
+        "recommended_change": "Generate and commit the package manager's lockfile; use the frozen install command (npm ci / pnpm install --frozen-lockfile) in CI.",
+        "benefits": {
+          "customer": null,
+          "technology": "Builds can silently pick up different dependency versions.",
+          "trust": "Unreviewed dependency changes can enter production."
+        },
+        "horizon": "NEXT",
+        "priority": "P2",
+        "effort": "S",
+        "owner": null,
+        "depends_on": [],
+        "human_review_required": false,
+        "acceptance_criteria": [
+          "A lockfile exists next to each manifest.",
+          "Control PC-T-01 evaluates PASS on retest.",
+          "Finding PCF-A79BB3B752 (package.json) is no longer observed on retest."
+        ],
+        "regression_test": {
+          "description": "CI fails when the lockfile is out of date (frozen install).",
+          "candidate": null
+        },
+        "verification": {
+          "status": "FAILED_VERIFICATION",
+          "method": "Retest still observes the finding(s).",
+          "verified_in_run": null,
+          "evidence_ids": [
+            "EV-74530FCD4DCF"
+          ]
+        }
+      },
+      {
+        "id": "REM-PC-T-04",
+        "control_id": "PC-T-04",
+        "finding_ids": [
+          "PCF-3E3C906C89"
+        ],
+        "problem": "A CI pipeline is configured: 1 finding(s) — No CI configuration found.",
+        "why_it_matters": "CI is where tests become a gate rather than a suggestion.",
+        "recommended_change": "Add a CI workflow that installs with a frozen lockfile, builds, lints and runs tests on every pull request.",
+        "benefits": {
+          "customer": null,
+          "technology": "Nothing checks changes before they ship.",
+          "trust": null
+        },
+        "horizon": "NEXT",
+        "priority": "P2",
+        "effort": "S",
+        "owner": null,
+        "depends_on": [],
+        "human_review_required": false,
+        "acceptance_criteria": [
+          "A CI configuration file exists.",
+          "Control PC-T-04 evaluates PASS on retest.",
+          "Finding PCF-3E3C906C89 (repository) is no longer observed on retest."
+        ],
+        "regression_test": {
+          "description": "Branch protection requiring CI.",
+          "candidate": null
+        },
+        "verification": {
+          "status": "FAILED_VERIFICATION",
+          "method": "Retest still observes the finding(s).",
+          "verified_in_run": null,
+          "evidence_ids": [
+            "EV-C726A561E2C9"
+          ]
+        }
+      },
+      {
+        "id": "REM-PC-T-06",
+        "control_id": "PC-T-06",
+        "finding_ids": [
+          "PCF-83CA52EEEB"
+        ],
+        "problem": "Setup and run instructions are documented: 1 finding(s) — README does not explain how to install and run.",
+        "why_it_matters": "Reproducible setup is a precondition for testing and handover.",
+        "recommended_change": "Add a README section with prerequisites, install, environment variables (names only) and run/test commands.",
+        "benefits": {
+          "customer": null,
+          "technology": "New contributors (human or agent) cannot reproduce the environment.",
+          "trust": null
+        },
+        "horizon": "LATER",
+        "priority": "P3",
+        "effort": "S",
+        "owner": null,
+        "depends_on": [],
+        "human_review_required": false,
+        "acceptance_criteria": [
+          "README contains install and run instructions.",
+          "Control PC-T-06 evaluates PASS on retest.",
+          "Finding PCF-83CA52EEEB (README.md) is no longer observed on retest."
+        ],
+        "regression_test": {
+          "description": "Review checklist item for setup changes.",
+          "candidate": null
+        },
+        "verification": {
+          "status": "FAILED_VERIFICATION",
+          "method": "Retest still observes the finding(s).",
+          "verified_in_run": null,
+          "evidence_ids": [
+            "EV-C20D88B2D9D3"
+          ]
+        }
+      },
+      {
+        "id": "REM-PC-T-07",
+        "control_id": "PC-T-07",
+        "finding_ids": [
+          "PCF-2BBFB74CD4"
+        ],
+        "problem": "Runtime version is declared: 1 finding(s) — No runtime version declaration found.",
+        "why_it_matters": "Runtime drift causes works-on-my-machine failures.",
+        "recommended_change": "Declare the runtime version (for example \"engines\": {\"node\": \">=22\"} and an .nvmrc).",
+        "benefits": {
+          "customer": null,
+          "technology": "Local, CI and production may run different runtime versions.",
+          "trust": null
+        },
+        "horizon": "LATER",
+        "priority": "P3",
+        "effort": "S",
+        "owner": null,
+        "depends_on": [],
+        "human_review_required": false,
+        "acceptance_criteria": [
+          "A runtime version declaration exists.",
+          "Control PC-T-07 evaluates PASS on retest.",
+          "Finding PCF-2BBFB74CD4 (repository) is no longer observed on retest."
+        ],
+        "regression_test": {
+          "description": "CI uses the declared version file.",
+          "candidate": null
+        },
+        "verification": {
+          "status": "FAILED_VERIFICATION",
+          "method": "Retest still observes the finding(s).",
+          "verified_in_run": null,
+          "evidence_ids": [
+            "EV-B634CDDE815A"
+          ]
+        }
+      },
+      {
+        "id": "REM-PC-T-08",
+        "control_id": "PC-T-08",
+        "finding_ids": [
+          "PCF-9C547F7002"
+        ],
+        "problem": "Static type checking or linting is configured: 1 finding(s) — No strict type checking or linter configuration found.",
+        "why_it_matters": "Cheap automated checks catch common defects introduced by fast iteration.",
+        "recommended_change": "Enable TypeScript strict mode and/or a linter (ESLint, Biome, Ruff) and run it in CI.",
+        "benefits": {
+          "customer": null,
+          "technology": "Classes of defects that tools catch for free reach runtime.",
+          "trust": null
+        },
+        "horizon": "LATER",
+        "priority": "P3",
+        "effort": "S",
+        "owner": null,
+        "depends_on": [],
+        "human_review_required": false,
+        "acceptance_criteria": [
+          "tsconfig has strict: true or a linter configuration exists.",
+          "Control PC-T-08 evaluates PASS on retest.",
+          "Finding PCF-9C547F7002 (repository) is no longer observed on retest."
+        ],
+        "regression_test": {
+          "description": "Lint/typecheck CI step.",
+          "candidate": null
+        },
+        "verification": {
+          "status": "FAILED_VERIFICATION",
+          "method": "Retest still observes the finding(s).",
+          "verified_in_run": null,
+          "evidence_ids": [
+            "EV-106B66C52025"
+          ]
+        }
+      }
+    ],
+    "work_packets": [
+      {
+        "id": "WP-PC-S-01",
+        "remediation_id": "REM-PC-S-01",
+        "title": "Fix PC-S-01: No credentials are committed in source",
+        "objective": "Rotate (revoke and reissue) every exposed credential first, then move it to environment variables / the hosting secret store and remove it from the code. Treat the history as compromised.",
+        "finding_ids": [
+          "PCF-50D5C47465",
+          "PCF-AC2DF9263D"
+        ],
+        "context": {
+          "locations": [
+            "app/lib/config.ts:1"
+          ],
+          "evidence_ids": [
+            "EV-3D1AC02B1874"
+          ]
+        },
+        "constraints": [
+          "Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.",
+          "Keep the change minimal and focused on the listed findings; do not refactor unrelated code.",
+          "Do not disable, skip or delete tests or checks to make them pass.",
+          "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence.",
+          "Security- or data-sensitive change: a human must review and approve before merge."
+        ],
+        "suggested_steps": [
+          "Revoke and reissue each credential at its provider.",
+          "Replace literals with process.env lookups on the server.",
+          "Add the secret file patterns to .gitignore.",
+          "Optionally purge history (git filter-repo) after rotation."
+        ],
+        "acceptance_criteria": [
+          "Each listed credential has been rotated at its provider (human confirmation).",
+          "No secret pattern matches in repository files.",
+          "Control PC-S-01 evaluates PASS on retest.",
+          "Finding PCF-AC2DF9263D (app/lib/config.ts:1) is no longer observed on retest."
+        ],
+        "verification_command": "product-check retest --baseline <this results file> (with the same inputs as this run)",
+        "human_approval_required": true,
+        "status": "PROPOSED"
+      },
+      {
+        "id": "WP-PC-C-08",
+        "remediation_id": "REM-PC-C-08",
+        "title": "Fix PC-C-08: Critical journeys are covered by passing end-to-end tests",
+        "objective": "Write end-to-end tests (for example Playwright) for the declared critical journeys, run them in CI and import their JUnit results.",
+        "finding_ids": [
+          "PCF-4537D66695"
+        ],
+        "context": {
+          "locations": [
+            "repository"
+          ],
+          "evidence_ids": [
+            "EV-A80991901098"
+          ]
+        },
+        "constraints": [
+          "Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.",
+          "Keep the change minimal and focused on the listed findings; do not refactor unrelated code.",
+          "Do not disable, skip or delete tests or checks to make them pass.",
+          "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence."
+        ],
+        "suggested_steps": [
+          "Inspect each location listed in context.",
+          "Write end-to-end tests (for example Playwright) for the declared critical journeys, run them in CI and import their JUnit results.",
+          "Add the regression protection: The end-to-end suite itself, run on every pull request and deployment."
+        ],
+        "acceptance_criteria": [
+          "At least one end-to-end suite runs and all its cases pass in imported results.",
+          "Control PC-C-08 evaluates PASS on retest.",
+          "Finding PCF-4537D66695 (repository) is no longer observed on retest."
+        ],
+        "verification_command": "product-check retest --baseline <this results file> (with the same inputs as this run)",
+        "human_approval_required": false,
+        "status": "FAILED_VERIFICATION"
+      },
+      {
+        "id": "WP-PC-T-01",
+        "remediation_id": "REM-PC-T-01",
+        "title": "Fix PC-T-01: Dependency manifest and lockfile are present",
+        "objective": "Generate and commit the package manager's lockfile; use the frozen install command (npm ci / pnpm install --frozen-lockfile) in CI.",
+        "finding_ids": [
+          "PCF-A79BB3B752"
+        ],
+        "context": {
+          "locations": [
+            "package.json"
+          ],
+          "evidence_ids": [
+            "EV-74530FCD4DCF"
+          ]
+        },
+        "constraints": [
+          "Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.",
+          "Keep the change minimal and focused on the listed findings; do not refactor unrelated code.",
+          "Do not disable, skip or delete tests or checks to make them pass.",
+          "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence."
+        ],
+        "suggested_steps": [
+          "Inspect each location listed in context.",
+          "Generate and commit the package manager's lockfile; use the frozen install command (npm ci / pnpm install --frozen-lockfile) in CI.",
+          "Add the regression protection: CI fails when the lockfile is out of date (frozen install)."
+        ],
+        "acceptance_criteria": [
+          "A lockfile exists next to each manifest.",
+          "Control PC-T-01 evaluates PASS on retest.",
+          "Finding PCF-A79BB3B752 (package.json) is no longer observed on retest."
+        ],
+        "verification_command": "product-check retest --baseline <this results file> (with the same inputs as this run)",
+        "human_approval_required": false,
+        "status": "FAILED_VERIFICATION"
+      },
+      {
+        "id": "WP-PC-T-04",
+        "remediation_id": "REM-PC-T-04",
+        "title": "Fix PC-T-04: A CI pipeline is configured",
+        "objective": "Add a CI workflow that installs with a frozen lockfile, builds, lints and runs tests on every pull request.",
+        "finding_ids": [
+          "PCF-3E3C906C89"
+        ],
+        "context": {
+          "locations": [
+            "repository"
+          ],
+          "evidence_ids": [
+            "EV-C726A561E2C9"
+          ]
+        },
+        "constraints": [
+          "Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.",
+          "Keep the change minimal and focused on the listed findings; do not refactor unrelated code.",
+          "Do not disable, skip or delete tests or checks to make them pass.",
+          "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence."
+        ],
+        "suggested_steps": [
+          "Inspect each location listed in context.",
+          "Add a CI workflow that installs with a frozen lockfile, builds, lints and runs tests on every pull request.",
+          "Add the regression protection: Branch protection requiring CI."
+        ],
+        "acceptance_criteria": [
+          "A CI configuration file exists.",
+          "Control PC-T-04 evaluates PASS on retest.",
+          "Finding PCF-3E3C906C89 (repository) is no longer observed on retest."
+        ],
+        "verification_command": "product-check retest --baseline <this results file> (with the same inputs as this run)",
+        "human_approval_required": false,
+        "status": "FAILED_VERIFICATION"
+      },
+      {
+        "id": "WP-PC-T-06",
+        "remediation_id": "REM-PC-T-06",
+        "title": "Fix PC-T-06: Setup and run instructions are documented",
+        "objective": "Add a README section with prerequisites, install, environment variables (names only) and run/test commands.",
+        "finding_ids": [
+          "PCF-83CA52EEEB"
+        ],
+        "context": {
+          "locations": [
+            "README.md"
+          ],
+          "evidence_ids": [
+            "EV-C20D88B2D9D3"
+          ]
+        },
+        "constraints": [
+          "Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.",
+          "Keep the change minimal and focused on the listed findings; do not refactor unrelated code.",
+          "Do not disable, skip or delete tests or checks to make them pass.",
+          "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence."
+        ],
+        "suggested_steps": [
+          "Inspect each location listed in context.",
+          "Add a README section with prerequisites, install, environment variables (names only) and run/test commands.",
+          "Add the regression protection: Review checklist item for setup changes."
+        ],
+        "acceptance_criteria": [
+          "README contains install and run instructions.",
+          "Control PC-T-06 evaluates PASS on retest.",
+          "Finding PCF-83CA52EEEB (README.md) is no longer observed on retest."
+        ],
+        "verification_command": "product-check retest --baseline <this results file> (with the same inputs as this run)",
+        "human_approval_required": false,
+        "status": "FAILED_VERIFICATION"
+      },
+      {
+        "id": "WP-PC-T-07",
+        "remediation_id": "REM-PC-T-07",
+        "title": "Fix PC-T-07: Runtime version is declared",
+        "objective": "Declare the runtime version (for example \"engines\": {\"node\": \">=22\"} and an .nvmrc).",
+        "finding_ids": [
+          "PCF-2BBFB74CD4"
+        ],
+        "context": {
+          "locations": [
+            "repository"
+          ],
+          "evidence_ids": [
+            "EV-B634CDDE815A"
+          ]
+        },
+        "constraints": [
+          "Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.",
+          "Keep the change minimal and focused on the listed findings; do not refactor unrelated code.",
+          "Do not disable, skip or delete tests or checks to make them pass.",
+          "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence."
+        ],
+        "suggested_steps": [
+          "Inspect each location listed in context.",
+          "Declare the runtime version (for example \"engines\": {\"node\": \">=22\"} and an .nvmrc).",
+          "Add the regression protection: CI uses the declared version file."
+        ],
+        "acceptance_criteria": [
+          "A runtime version declaration exists.",
+          "Control PC-T-07 evaluates PASS on retest.",
+          "Finding PCF-2BBFB74CD4 (repository) is no longer observed on retest."
+        ],
+        "verification_command": "product-check retest --baseline <this results file> (with the same inputs as this run)",
+        "human_approval_required": false,
+        "status": "FAILED_VERIFICATION"
+      },
+      {
+        "id": "WP-PC-T-08",
+        "remediation_id": "REM-PC-T-08",
+        "title": "Fix PC-T-08: Static type checking or linting is configured",
+        "objective": "Enable TypeScript strict mode and/or a linter (ESLint, Biome, Ruff) and run it in CI.",
+        "finding_ids": [
+          "PCF-9C547F7002"
+        ],
+        "context": {
+          "locations": [
+            "repository"
+          ],
+          "evidence_ids": [
+            "EV-106B66C52025"
+          ]
+        },
+        "constraints": [
+          "Do not commit secrets, credentials or real customer data; use environment variables and synthetic data.",
+          "Keep the change minimal and focused on the listed findings; do not refactor unrelated code.",
+          "Do not disable, skip or delete tests or checks to make them pass.",
+          "Do not mark this packet done without a Product Check retest showing the control PASS with new evidence."
+        ],
+        "suggested_steps": [
+          "Inspect each location listed in context.",
+          "Enable TypeScript strict mode and/or a linter (ESLint, Biome, Ruff) and run it in CI.",
+          "Add the regression protection: Lint/typecheck CI step."
+        ],
+        "acceptance_criteria": [
+          "tsconfig has strict: true or a linter configuration exists.",
+          "Control PC-T-08 evaluates PASS on retest.",
+          "Finding PCF-9C547F7002 (repository) is no longer observed on retest."
+        ],
+        "verification_command": "product-check retest --baseline <this results file> (with the same inputs as this run)",
+        "human_approval_required": false,
+        "status": "FAILED_VERIFICATION"
+      }
+    ],
+    "test_architecture": {
+      "layers": [
+        {
+          "layer": "unit and integration",
+          "current": "present",
+          "evidence_ids": [
+            "EV-F307AE88A628",
+            "EV-C4173765F82B"
+          ],
+          "target": "Fast tests for business logic, data access and authorization rules, run on every pull request."
+        },
+        {
+          "layer": "end-to-end journeys",
+          "current": "absent",
+          "evidence_ids": [],
+          "target": "One end-to-end test per critical journey (sign-up to first value first), gating deployment; import results with --test-results."
+        },
+        {
+          "layer": "security regression",
+          "current": "absent",
+          "evidence_ids": [],
+          "target": "Secret scanning, dependency audit and negative authorization tests in CI; Product Check retest on each release."
+        },
+        {
+          "layer": "accessibility",
+          "current": "absent",
+          "evidence_ids": [],
+          "target": "Lint rules plus automated axe checks on key pages."
+        }
+      ]
+    },
+    "traceability": [
+      {
+        "finding_id": "PCF-50D5C47465",
+        "intent": null,
+        "journey_or_requirement": "As-built FR-001; requirement PC-S-01: No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.",
+        "observed_behavior": "A Stripe secret key appears at app/checkout/page.tsx:1; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).",
+        "component": "app/checkout/page.tsx:1",
+        "evidence_ids": [
+          "EV-883A2C49A079",
+          "EV-3D1AC02B1874"
+        ],
+        "root_cause": "Credentials were pasted into code or committed configuration instead of the runtime secret store.",
+        "remediation_id": "REM-PC-S-01",
+        "acceptance_criterion": "Each listed credential has been rotated at its provider (human confirmation).",
+        "regression_test": "A secret-scanning pre-commit hook or CI step (for example gitleaks) on every pull request.",
+        "retest_outcome": "VERIFIED"
+      },
+      {
+        "finding_id": "PCF-AC2DF9263D",
+        "intent": null,
+        "journey_or_requirement": "Requirement PC-S-01: No secret-like credential (API keys, tokens, private keys, service-role JWTs, credentialed URLs) in repository files.",
+        "observed_behavior": "A Stripe secret key appears at app/lib/config.ts:1; the file is tracked in the git index (committed or staged). Validity was not checked (Product Check never uses credentials).",
+        "component": "app/lib/config.ts:1",
+        "evidence_ids": [
+          "EV-3D1AC02B1874"
+        ],
+        "root_cause": "Credentials were pasted into code or committed configuration instead of the runtime secret store.",
+        "remediation_id": "REM-PC-S-01",
+        "acceptance_criterion": "Each listed credential has been rotated at its provider (human confirmation).",
+        "regression_test": "A secret-scanning pre-commit hook or CI step (for example gitleaks) on every pull request.",
+        "retest_outcome": "NOT_RETESTED"
+      },
+      {
+        "finding_id": "PCF-3E3C906C89",
+        "intent": null,
+        "journey_or_requirement": "Requirement PC-T-04: A continuous-integration configuration exists (GitHub Actions, GitLab CI, CircleCI, …).",
+        "observed_behavior": "No CI configuration found.",
+        "component": "repository",
+        "evidence_ids": [
+          "EV-C726A561E2C9"
+        ],
+        "root_cause": "No automated pipeline was set up.",
+        "remediation_id": "REM-PC-T-04",
+        "acceptance_criterion": "A CI configuration file exists.",
+        "regression_test": "Branch protection requiring CI.",
+        "retest_outcome": "STILL_FAILING"
+      },
+      {
+        "finding_id": "PCF-4537D66695",
+        "intent": null,
+        "journey_or_requirement": "Requirement PC-C-08: End-to-end tests exist and their imported results pass.",
+        "observed_behavior": "No end-to-end tests found.",
+        "component": "repository",
+        "evidence_ids": [
+          "EV-A80991901098"
+        ],
+        "root_cause": "Critical user journeys have no executable end-to-end check, or the checks fail.",
+        "remediation_id": "REM-PC-C-08",
+        "acceptance_criterion": "At least one end-to-end suite runs and all its cases pass in imported results.",
+        "regression_test": "The end-to-end suite itself, run on every pull request and deployment.",
+        "retest_outcome": "STILL_FAILING"
+      },
+      {
+        "finding_id": "PCF-A79BB3B752",
+        "intent": null,
+        "journey_or_requirement": "Requirement PC-T-01: A dependency manifest and a matching lockfile exist so builds are reproducible.",
+        "observed_behavior": "No lockfile next to the root manifest.",
+        "component": "package.json",
+        "evidence_ids": [
+          "EV-74530FCD4DCF"
+        ],
+        "root_cause": "The lockfile was never generated or is not kept with the code.",
+        "remediation_id": "REM-PC-T-01",
+        "acceptance_criterion": "A lockfile exists next to each manifest.",
+        "regression_test": "CI fails when the lockfile is out of date (frozen install).",
+        "retest_outcome": "STILL_FAILING"
+      },
+      {
+        "finding_id": "PCF-2BBFB74CD4",
+        "intent": null,
+        "journey_or_requirement": "Requirement PC-T-07: The runtime version is pinned (engines field, .nvmrc, .node-version, .tool-versions or .python-version).",
+        "observed_behavior": "No runtime version declaration found.",
+        "component": "repository",
+        "evidence_ids": [
+          "EV-B634CDDE815A"
+        ],
+        "root_cause": "The runtime version is implicit.",
+        "remediation_id": "REM-PC-T-07",
+        "acceptance_criterion": "A runtime version declaration exists.",
+        "regression_test": "CI uses the declared version file.",
+        "retest_outcome": "STILL_FAILING"
+      },
+      {
+        "finding_id": "PCF-83CA52EEEB",
+        "intent": null,
+        "journey_or_requirement": "Requirement PC-T-06: A README explains how to install and run the project.",
+        "observed_behavior": "README does not explain how to install and run.",
+        "component": "README.md",
+        "evidence_ids": [
+          "EV-C20D88B2D9D3"
+        ],
+        "root_cause": "Documentation was not written alongside the code.",
+        "remediation_id": "REM-PC-T-06",
+        "acceptance_criterion": "README contains install and run instructions.",
+        "regression_test": "Review checklist item for setup changes.",
+        "retest_outcome": "STILL_FAILING"
+      },
+      {
+        "finding_id": "PCF-9C547F7002",
+        "intent": null,
+        "journey_or_requirement": "Requirement PC-T-08: A type checker in strict mode or a linter configuration exists.",
+        "observed_behavior": "No strict type checking or linter configuration found.",
+        "component": "repository",
+        "evidence_ids": [
+          "EV-106B66C52025"
+        ],
+        "root_cause": "No static analysis is configured.",
+        "remediation_id": "REM-PC-T-08",
+        "acceptance_criterion": "tsconfig has strict: true or a linter configuration exists.",
+        "regression_test": "Lint/typecheck CI step.",
+        "retest_outcome": "STILL_FAILING"
+      }
+    ],
+    "human_review": [
+      "REM-PC-S-01 (P0): No credentials are committed in source — security-, data- or release-sensitive; a human must approve the change and confirm any credential rotation."
+    ]
+  },
+  "verdict": {
+    "schema_version": "0.1.0",
+    "kind": "release-verdict",
+    "verdict": "NOT_READY",
+    "tier": "CT-T1",
+    "tier_alias": "NOT READY",
+    "reasons": [
+      "Hard gate failed: G-SECRETS.",
+      "1 open P0 finding(s)."
+    ],
+    "blocking_gates": [
+      "G-SECRETS"
+    ],
+    "blocking_findings": [
+      "PCF-AC2DF9263D"
+    ],
+    "not_verified": [
+      "PC-S-09",
+      "PC-S-13"
+    ],
+    "accepted_risks": [],
+    "rejected_acceptances": [],
+    "bounded_by": "Applies only to repository \"Vibe Invoices (synthetic demo)\" at revision 2d9a97671bab and no deployed application, assessed 2026-11-08T07:50:59.422Z. 12 of 24 applicable controls were checked; 12 were blocked or not tested. A material change invalidates this verdict.",
+    "approval": {
+      "required": false,
+      "approver": null,
+      "status": "UNAPPROVED"
+    },
+    "rationale": "At least one blocking condition was substantiated by evidence."
+  },
+  "comparison": {
+    "baseline_run_id": "PCR-20261108T075058Z-D21CC5",
+    "baseline_sha256": "e6bc0eab85ff57134de9ec65ccdeb2d2d6852b4502b58642ab434e123d1ae4ef",
+    "score_delta": {
+      "customer": null,
+      "technology": 0,
+      "trust": 0
+    },
+    "coverage_delta": {
+      "customer": 0,
+      "technology": 0,
+      "trust": 0
+    },
+    "regressed_controls": [],
+    "improved_controls": [],
+    "findings_new": [
+      "PCF-AC2DF9263D"
+    ],
+    "findings_resolved": [
+      "PCF-50D5C47465"
+    ],
+    "findings_reopened": [],
+    "findings_persisting": [
+      "PCF-2BBFB74CD4",
+      "PCF-3E3C906C89",
+      "PCF-4537D66695",
+      "PCF-83CA52EEEB",
+      "PCF-9C547F7002",
+      "PCF-A79BB3B752"
+    ],
+    "findings_unverified": []
+  },
+  "history": [
+    {
+      "run_id": "PCR-20261108T075058Z-D21CC5",
+      "finished_at": "2026-11-08T07:50:58.492Z",
+      "revision": "da8f9753c6ecec5849d87809be5f25ae4b42e8f7",
+      "verdict": "NOT_READY",
+      "scores": {
+        "customer": null,
+        "technology": 39,
+        "trust": 39
+      },
+      "coverage": {
+        "customer": 0.1538,
+        "technology": 0.75,
+        "trust": 0.6
+      },
+      "open_findings": 7
+    },
+    {
+      "run_id": "PCR-20261108T075059Z-79884D",
+      "finished_at": "2026-11-08T07:50:59.422Z",
+      "revision": "2d9a97671bab9d34a753251ca4de14fc51a50f11",
+      "verdict": "NOT_READY",
+      "scores": {
+        "customer": null,
+        "technology": 39,
+        "trust": 39
+      },
+      "coverage": {
+        "customer": 0.1538,
+        "technology": 0.75,
+        "trust": 0.6
+      },
+      "open_findings": 7
+    }
+  ],
+  "limitations": []
+}

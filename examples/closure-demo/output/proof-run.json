@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "verification-run",
+  "verification_id": "PR-29684B79B8",
+  "purpose": "author-proof",
+  "finding_ids": [],
+  "fix_id": null,
+  "exact_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+  "worktree_clean": true,
+  "environment": {
+    "environment_id": "ENV-CD6F3E6F8C",
+    "runner": {
+      "platform": "darwin",
+      "arch": "arm64",
+      "node_version": "v25.9.0",
+      "tool_version": "0.2.0"
+    },
+    "lockfile_digest": null
+  },
+  "started_at": "2026-11-08T07:51:00.886Z",
+  "finished_at": "2026-11-08T07:51:01.005Z",
+  "checks": [
+    {
+      "check_id": "regression:unit",
+      "kind": "command",
+      "role": "regression",
+      "status": "PASS",
+      "detail": "node --test exited 0 in 117 ms.",
+      "execution_id": "EXE-F254D654BD",
+      "evidence_ids": [
+        "EVR-EBC6B0DCD70A"
+      ]
+    }
+  ],
+  "executions": [
+    {
+      "execution_id": "EXE-F254D654BD",
+      "command_id": "unit",
+      "purpose": "test",
+      "argv": [
+        "node",
+        "--test"
+      ],
+      "cwd": ".",
+      "status": "PASS",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 117,
+      "started_at": "2026-11-08T07:51:00.887Z",
+      "environment_id": "ENV-CD6F3E6F8C",
+      "commit_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+      "stdout_digest": "50c9ea18f7d27466b161f2197f22a112ef8eb564df41c52e16b4025758e8b1e4",
+      "stderr_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_bytes": 179,
+      "output_truncated": false,
+      "excerpt": "✔ no secret key in client code (0.56ms)\n✔ total (0.469125ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 66.869709",
+      "reason": null,
+      "evidence_id": "EVR-EBC6B0DCD70A"
+    }
+  ],
+  "before_evidence_ids": [],
+  "after_evidence_ids": [
+    "EVR-EBC6B0DCD70A"
+  ],
+  "after_results": null,
+  "result": "PASS",
+  "reasons": [
+    "All 1 required check(s) passed at fd2abcf59c99."
+  ],
+  "limitations": [],
+  "actor": {
+    "id": "product-check",
+    "type": "system"
+  }
+}

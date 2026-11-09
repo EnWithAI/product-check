@@ -1,0 +1,452 @@
+{
+  "schema_version": "0.1.0",
+  "kind": "change-review",
+  "methodology_version": "CT3 v3.2",
+  "review_id": "CR-97A3E2D1F6",
+  "mode": "PR_DIFF",
+  "change_ref": "simplify-invoices",
+  "created_at": "2026-11-08T07:51:01.128Z",
+  "target": {
+    "name": "Vibe Invoices (synthetic demo)",
+    "repository": "/private/var/folders/31/8ytnqrts0bz9n8yskz5gjcpw0000gn/T/pc-closure-demo-abDMFP/app"
+  },
+  "base_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+  "head_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+  "author": {
+    "id": "dev@example.invalid",
+    "source": "git",
+    "trusted": true
+  },
+  "diff": {
+    "source": "git",
+    "digest": "357c0181c7323e8a265f1d5ab07cb1eacd5f21e2f672ca1b84e846d388708395",
+    "files": [
+      {
+        "path": "app/api/invoices/route.ts",
+        "previous_path": null,
+        "status": "modified",
+        "additions": 2,
+        "deletions": 4,
+        "surfaces": [
+          "auth",
+          "billing"
+        ],
+        "protected": false
+      }
+    ],
+    "truncated": false
+  },
+  "risk": {
+    "level": "HIGH",
+    "effective_level": "HIGH",
+    "surfaces": [
+      "auth",
+      "billing"
+    ],
+    "reasons": [
+      "High-risk surface(s) touched: auth, billing (app/api/invoices/route.ts)."
+    ],
+    "protected_paths": [],
+    "impact_check": null
+  },
+  "approvals_required": {
+    "humans": 2,
+    "domain_owners": [],
+    "waiver": {
+      "eligible": false,
+      "applied": false,
+      "reason": "Not eligible: risk is HIGH."
+    }
+  },
+  "approvals": [],
+  "lanes": [
+    {
+      "lane": "spec-outcome",
+      "reviewer": "spec-outcome-lane",
+      "status": "NOT_TESTED",
+      "findings": 0,
+      "notes": [
+        "No Spec Check or Outcome Check report supplied (--spec-check, --outcome-check); intent vs outcome not reviewed."
+      ]
+    },
+    {
+      "lane": "correctness",
+      "reviewer": "correctness-lane",
+      "status": "FAIL",
+      "findings": 2,
+      "notes": [
+        "Ran over 1 changed file(s)."
+      ]
+    },
+    {
+      "lane": "impact",
+      "reviewer": "impact-lane",
+      "status": "PARTIAL",
+      "findings": 0,
+      "notes": [
+        "Blast radius from paths only (no Impact Check report): 1 file(s), surfaces auth, billing."
+      ]
+    },
+    {
+      "lane": "trust-security",
+      "reviewer": "trust-security-lane",
+      "status": "FAIL",
+      "findings": 2,
+      "notes": [
+        "Ran over 1 changed file(s)."
+      ]
+    },
+    {
+      "lane": "experience",
+      "reviewer": "experience-lane",
+      "status": "NOT_APPLICABLE",
+      "findings": 0,
+      "notes": [
+        "No files in this lane's scope changed."
+      ]
+    },
+    {
+      "lane": "operations",
+      "reviewer": "operations-lane",
+      "status": "PASS",
+      "findings": 0,
+      "notes": [
+        "Ran over 1 changed file(s)."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "RF-2D880E0C81",
+      "rule_id": "VC-TR-AUTHZ-REMOVED",
+      "lane": "trust-security",
+      "reviewer": {
+        "id": "trust-security-lane",
+        "type": "deterministic",
+        "version": "0.2.0"
+      },
+      "title": "Authentication or authorization check removed",
+      "severity": "P1",
+      "pillars": [
+        "trust"
+      ],
+      "location": {
+        "path": "app/api/invoices/route.ts",
+        "line": null,
+        "runtime": null
+      },
+      "expected": "Every protected route keeps an authentication and authorization check.",
+      "actual": "app/api/invoices/route.ts removes 1 line(s) with an auth check (old line 3: const user = await requireAuth(req);) and adds none.",
+      "steps_or_command": [
+        "git diff 28d05afb57f3...fd2abcf59c99 -- app/api/invoices/route.ts"
+      ],
+      "evidence_ids": [
+        "EVR-3F69C5B23572"
+      ],
+      "confidence": "HIGH",
+      "epistemic": "fact",
+      "impact": "Protected data or actions may become reachable without signing in.",
+      "affected_scope": "app/api (trust)",
+      "baseline_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "head_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+      "uncertainty": null,
+      "verification": {
+        "state": "CONFIRMED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "Diff line(s) recorded as evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "pass",
+            "detail": "Re-read at head: the auth check is absent."
+          },
+          {
+            "check": "second-signal",
+            "result": "pass",
+            "detail": "Also raised by: VC-TR-OBJECT-AUTHZ, VC-CR-NO-TESTS, ai-code-reviewer (ai)."
+          }
+        ]
+      },
+      "dedupe_key": "2b4d726d1f315ffa3ee7",
+      "occurrences": 1,
+      "repeat_of_review": null,
+      "blocking": true
+    },
+    {
+      "id": "RF-562F5DC1EC",
+      "rule_id": "VC-EXT-CLAIM",
+      "lane": "correctness",
+      "reviewer": {
+        "id": "ai-code-reviewer",
+        "type": "ai",
+        "version": "external"
+      },
+      "title": "Possible IDOR: invoice fetched by id without owner check",
+      "severity": "P1",
+      "pillars": [
+        "technology"
+      ],
+      "location": {
+        "path": "app/api/invoices/route.ts",
+        "line": 2,
+        "runtime": null
+      },
+      "expected": "(as stated by the reviewer)",
+      "actual": "findUnique({ where: { id: params.id } }) is not scoped to the user.",
+      "steps_or_command": [
+        "inspect app/api/invoices/route.ts:2"
+      ],
+      "evidence_ids": [
+        "EVR-49CFA9205DEF"
+      ],
+      "confidence": "LOW",
+      "epistemic": "hypothesis",
+      "impact": "As claimed; not machine-checked.",
+      "affected_scope": "app/api",
+      "baseline_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "head_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+      "uncertainty": "External reviewer claim; treated as a proposal, never as a human approval or proven defect.",
+      "verification": {
+        "state": "CORROBORATED",
+        "checks": [
+          {
+            "check": "independent-reread",
+            "result": "pass",
+            "detail": "The cited location exists at head; the claim itself is not machine-checked."
+          },
+          {
+            "check": "second-signal",
+            "result": "pass",
+            "detail": "Deterministic rule(s) agree: VC-TR-AUTHZ-REMOVED, VC-TR-OBJECT-AUTHZ, VC-CR-NO-TESTS."
+          }
+        ]
+      },
+      "dedupe_key": "186bae4c930fa9526322",
+      "occurrences": 1,
+      "repeat_of_review": null,
+      "blocking": true
+    },
+    {
+      "id": "RF-B932E49961",
+      "rule_id": "VC-TR-OBJECT-AUTHZ",
+      "lane": "trust-security",
+      "reviewer": {
+        "id": "trust-security-lane",
+        "type": "deterministic",
+        "version": "0.2.0"
+      },
+      "title": "Object fetched by request ID without an ownership or tenant filter",
+      "severity": "P1",
+      "pillars": [
+        "trust"
+      ],
+      "location": {
+        "path": "app/api/invoices/route.ts",
+        "line": 2,
+        "runtime": null
+      },
+      "expected": "Objects looked up by a client-supplied ID are scoped to the signed-in user or tenant.",
+      "actual": "app/api/invoices/route.ts:2 looks up a record by a request ID; no user/tenant filter appears in the file.",
+      "steps_or_command": [
+        "git diff 28d05afb57f3...fd2abcf59c99 -- app/api/invoices/route.ts"
+      ],
+      "evidence_ids": [
+        "EVR-F99DA1C1C52F"
+      ],
+      "confidence": "MEDIUM",
+      "epistemic": "hypothesis",
+      "impact": "Any signed-in user may read or change other users' records (IDOR / cross-tenant leakage).",
+      "affected_scope": "app/api (trust)",
+      "baseline_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "head_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+      "uncertainty": "Pattern heuristic; needs a second signal or human triage before it can block.",
+      "verification": {
+        "state": "CORROBORATED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "Diff line(s) recorded as evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "pass",
+            "detail": "Re-read app/api/invoices/route.ts at head: the condition holds (line 2)."
+          },
+          {
+            "check": "second-signal",
+            "result": "pass",
+            "detail": "Also raised by: VC-TR-AUTHZ-REMOVED, VC-CR-NO-TESTS, ai-code-reviewer (ai)."
+          }
+        ]
+      },
+      "dedupe_key": "2cf7c0025c6213cae572",
+      "occurrences": 1,
+      "repeat_of_review": null,
+      "blocking": true
+    },
+    {
+      "id": "RF-0D8CBD4E8B",
+      "rule_id": "VC-CR-NO-TESTS",
+      "lane": "correctness",
+      "reviewer": {
+        "id": "correctness-lane",
+        "type": "deterministic",
+        "version": "0.2.0"
+      },
+      "title": "Behavior changed without any test change",
+      "severity": "P3",
+      "pillars": [
+        "technology"
+      ],
+      "location": {
+        "path": "app/api/invoices/route.ts",
+        "line": null,
+        "runtime": null
+      },
+      "expected": "Behavior changes come with a test that would fail without them.",
+      "actual": "1 production file(s) changed (app/api/invoices/route.ts) and no test file changed.",
+      "steps_or_command": [
+        "git diff 28d05afb57f3...fd2abcf59c99 -- app/api/invoices/route.ts"
+      ],
+      "evidence_ids": [
+        "EVR-B7D8A381F294"
+      ],
+      "confidence": "MEDIUM",
+      "epistemic": "inference",
+      "impact": "Regressions in the changed behavior go unnoticed.",
+      "affected_scope": "app/api (technology)",
+      "baseline_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "head_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+      "uncertainty": null,
+      "verification": {
+        "state": "CORROBORATED",
+        "checks": [
+          {
+            "check": "evidence-present",
+            "result": "pass",
+            "detail": "Diff line(s) recorded as evidence."
+          },
+          {
+            "check": "independent-reread",
+            "result": "not-run",
+            "detail": "Change-level inference; no single file to re-read."
+          },
+          {
+            "check": "second-signal",
+            "result": "pass",
+            "detail": "Also raised by: VC-TR-AUTHZ-REMOVED, VC-TR-OBJECT-AUTHZ, ai-code-reviewer (ai)."
+          }
+        ]
+      },
+      "dedupe_key": "44410c1e39219d8d2ad2",
+      "occurrences": 1,
+      "repeat_of_review": null,
+      "blocking": false
+    }
+  ],
+  "disproven": [
+    {
+      "id": "RF-71CCA391A5",
+      "rule_id": "VC-EXT-CLAIM",
+      "lane": "correctness",
+      "reviewer": {
+        "id": "ai-code-reviewer",
+        "type": "ai",
+        "version": "external"
+      },
+      "title": "Race condition when totals are recomputed",
+      "severity": "P0",
+      "pillars": [
+        "technology"
+      ],
+      "location": {
+        "path": "app/api/invoices/route.ts",
+        "line": 40,
+        "runtime": null
+      },
+      "expected": "(as stated by the reviewer)",
+      "actual": "No such code exists at this line.",
+      "steps_or_command": [
+        "inspect app/api/invoices/route.ts:40"
+      ],
+      "evidence_ids": [
+        "EVR-3664E94C5B71"
+      ],
+      "confidence": "LOW",
+      "epistemic": "hypothesis",
+      "impact": "As claimed; not machine-checked.",
+      "affected_scope": "app/api",
+      "baseline_sha": "28d05afb57f323444572a6149292f162f99c1a1f",
+      "head_sha": "fd2abcf59c99048368b63f0337e213fe1606c2e9",
+      "uncertainty": "External reviewer claim; treated as a proposal, never as a human approval or proven defect.",
+      "verification": {
+        "state": "DISPROVEN",
+        "checks": [
+          {
+            "check": "independent-reread",
+            "result": "fail",
+            "detail": "app/api/invoices/route.ts has 4 lines; line 40 does not exist."
+          }
+        ]
+      },
+      "dedupe_key": "74a8bad7a3cc1bb73541",
+      "occurrences": 1,
+      "repeat_of_review": null,
+      "blocking": false
+    }
+  ],
+  "checks": {
+    "proof_run_id": "PR-29684B79B8",
+    "status": "PASS",
+    "detail": "Proof run PR-29684B79B8: PASS (1/1 commands passed)."
+  },
+  "baseline": {
+    "run_id": "PCR-20261108T075100Z-E27953",
+    "verdict": "INCONCLUSIVE",
+    "results_sha256": "3e52884aabb297e29150691b5f503ce23086549f1d6bd3000ad5ed8e3e7dbc0d"
+  },
+  "cycle": {
+    "number": 1,
+    "max": 3,
+    "previous_review_id": null,
+    "repeated_unchanged": [],
+    "new_findings": [
+      "RF-2D880E0C81",
+      "RF-562F5DC1EC",
+      "RF-B932E49961",
+      "RF-0D8CBD4E8B"
+    ],
+    "escalated": false
+  },
+  "gate": {
+    "status": "BLOCK",
+    "reasons": [
+      "3 verified (or fail-closed P0) blocking finding(s)."
+    ],
+    "blocking_finding_ids": [
+      "RF-2D880E0C81",
+      "RF-562F5DC1EC",
+      "RF-B932E49961"
+    ]
+  },
+  "product_vs_change": "The whole product was last assessed as INCONCLUSIVE (run PCR-20261108T075100Z-E27953). This change gate is a separate view; a change PASS never implies product readiness.",
+  "limitations": [
+    "Deterministic lanes match patterns in changed code; they do not execute the application. Executable verification comes from proof and verify runs."
+  ],
+  "evidence_ids": [
+    "EVR-3F69C5B23572",
+    "EVR-49CFA9205DEF",
+    "EVR-F99DA1C1C52F",
+    "EVR-B7D8A381F294"
+  ],
+  "provenance": {
+    "tool": "product-check",
+    "tool_version": "0.2.0",
+    "policy_id": "closure-demo",
+    "policy_digest": "94209e84619495f88e67456bec4fe5e8fda3788455bb644f3dd56ebbc4e9cf3e"
+  }
+}

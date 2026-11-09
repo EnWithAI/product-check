@@ -33,6 +33,16 @@ CLI (src/cli)                       parse flags → contract → safety gate →
  ├─ reporting/spec-markdown.ts       specs/000-as-built/spec.md (Spec Kit layout)
  ├─ dashboard/render.ts (+ /dashboard assets)   self-contained dashboard.html
  ├─ validation/integrity.ts          schema + references + recomputation (used by validate and the dashboard)
+ │
+ ├─ assurance/   (CT3 v3.2 vibe-code review and verified closure; docs/vibe-code-assurance.md)
+ │            cli.ts          proof, review, register, transition, fix, verify, keygen, approve, close, accept-risk,
+ │                            reject, learn, fix-packets, gate, assure (+ blueprint/dashboard --from)
+ │            review.ts       diff → risk.ts → lanes.ts → verification.ts → dedupe/cycles → approvals → change gate
+ │            register.ts     closure state machine, hash-chained transitions, invariant checks
+ │            verify.ts       VC-P5: offline re-assessment (run.ts) + declared commands at the exact fix commit
+ │            proof.ts        VC-P1 runner; approvals.ts Ed25519 approvals; gate.ts release gate + phases
+ │            fix-packets.ts  render-md.ts  dashboard.ts  evidence-log.ts (append-only, chained)  adapters.ts
+ ├─ exec/process.ts                  the ONLY process module: --allow-exec commands and hardened read-only git
  └─ schema/validator.ts              built-in JSON Schema 2020-12 subset validator (cross-checked with Ajv in tests)
 ```
 

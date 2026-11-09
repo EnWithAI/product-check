@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/reviewer-findings.schema.json",
+  "title": "External reviewer findings (input)",
+  "description": "Claims from an external reviewer (for example an AI code reviewer). They are proposals: Product Check verifies each against the code and never treats one as a human approval or a proven defect.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "reviewer", "type", "findings"],
+  "properties": {
+    "kind": {
+      "const": "reviewer-findings"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "enum": ["ai", "human", "imported"]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "line", "title", "severity", "body"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "line": {
+            "type": ["integer", "null"],
+            "minimum": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "severity": {
+            "$ref": "common.schema.json#/$defs/severity"
+          },
+          "body": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -82,11 +82,27 @@ Stable IDs (`PCF-…` findings, `WP-PC-…` packets, `PC-…` controls) let anot
 and a Spec Kit `specs/000-as-built/spec.md`. Spec Check reads the Markdown, and its report comes back in through
 `--spec-check`, which closes the loop from code to spec to PC-C-10.
 
+## Vibe-code review adapters (CT3 v3.2, optional and versioned)
+
+`product-check review` reads the sibling reports through `src/assurance/adapters.ts`; each adapter accepts only the
+listed versions and rejects anything else. Product Check never bundles or runs the siblings' engines, and none of
+them depends on Product Check.
+
+| Report                            | Versions | Used for                                                                                                         |
+| --------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
+| Impact Check (`--impact-check`)   | 2.0      | change-risk input: high-severity impacts (not `unknown`) raise risk to HIGH; affected modules in the impact lane |
+| Spec Check (`--spec-check`)       | 1.0      | spec-outcome lane: high/medium gaps on changed spec files become advisory P2 findings; requirement count         |
+| Outcome Check (`--outcome-check`) | 1.0      | spec-outcome lane: CI first-pass and revert rates as delivery signals, never as a product score                  |
+
+Without any of them the spec-outcome lane is `NOT_TESTED` (with the reason) and the impact lane is `PARTIAL`
+(blast radius from paths only).
+
 ## CrewPE (optional)
 
 CrewPE is EnWithAI's commercial engineering-lifecycle product. It could orchestrate Product Check runs and consume the
-results and work packets in governed workflows. **No such integration exists today**, and Product Check does not
-need CrewPE for anything.
+results, work packets and v3.2 fix packets (`fix-packets/F-*.json`, or the dashboard's agent export) as an optional
+executor. **No such integration exists today**, and Product Check does not need CrewPE for anything. An executor's
+fix is recorded with `fix --actor <id> --actor-type agent`; it cannot approve or close its own work.
 
 ## CI usage
 

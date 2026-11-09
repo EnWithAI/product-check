@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enwithai/product-check/schemas/assurance-policy.schema.json",
+  "title": "Product Check assurance policy",
+  "description": "Operator-owned policy: required checks (argv, no shell), approvers with Ed25519 public keys, risk routing, review convergence, release and execution settings. Never read implicitly from the scanned repository.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "policy_id",
+    "required_checks",
+    "approvers",
+    "risk",
+    "review",
+    "release",
+    "exec"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "assurance-common.schema.json#/$defs/schema_version"
+    },
+    "kind": {
+      "const": "assurance-policy"
+    },
+    "policy_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "required_checks": {
+      "type": "array",
+      "items": {
+        "$ref": "assurance-common.schema.json#/$defs/command_spec"
+      }
+    },
+    "approvers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "roles", "public_key"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": ["human", "bot"]
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "public_key": {
+            "type": "string",
+            "pattern": "BEGIN PUBLIC KEY"
+          }
+        }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protected_paths",
+        "high_risk_paths",
+        "low_risk_paths",
+        "trusted_authors",
+        "allow_low_risk_waiver",
+        "approvals"
+      ],
+      "properties": {
+        "protected_paths": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["pattern", "owners"],
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "minLength": 1
+              },
+              "owners": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "high_risk_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "low_risk_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "trusted_authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allow_low_risk_waiver": {
+          "type": "boolean"
+        },
+        "approvals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["LOW", "MEDIUM", "HIGH"],
+          "properties": {
+            "LOW": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "MEDIUM": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "HIGH": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_cycles", "fail_closed_unverified_p0"],
+      "properties": {
+        "max_cycles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "fail_closed_unverified_p0": {
+          "type": "boolean"
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rollback_plan", "staged_rollout"],
+      "properties": {
+        "rollback_plan": {
+          "type": ["string", "null"]
+        },
+        "staged_rollout": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "exec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["env_allowlist", "max_output_bytes"],
+      "properties": {
+        "env_allowlist": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+          }
+        },
+        "max_output_bytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 268435456
+        }
+      }
+    }
+  }
+}

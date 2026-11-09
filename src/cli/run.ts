@@ -27,6 +27,7 @@ import { relativize } from "../util/paths.js";
 import { CONTROLS } from "../validation/catalog.js";
 import { checkResults } from "../validation/integrity.js";
 import { STAGES, TIER_INFO } from "../validation/tiers.js";
+import { ASSURANCE_COMMANDS, ASSURANCE_HELP, runAssurance } from "../assurance/cli.js";
 import { TOOL_VERSION } from "../version.js";
 
 /** I/O seams so the CLI can run in-process in tests. */
@@ -83,6 +84,8 @@ Output:
   --record-observations <file>   Save live observations for offline replay
   --fail-on <verdicts>      Exit 6 when the verdict is one of these (e.g. NOT_READY,INCONCLUSIVE)
   --no-dashboard  --no-branding  --quiet
+
+${ASSURANCE_HELP}
 
 Exit codes: 0 ok · 1 internal error · 2 usage/config · 3 input · 4 safety refusal · 5 invalid artifact · 6 --fail-on matched
 Local-first: no telemetry, no account, no model calls. Network only to an authorized origin with passive GETs.
@@ -523,6 +526,12 @@ function commandValidate(files: string[], io: CliIO): number {
 
 /** Parses arguments and runs one command. */
 async function main(argv: string[], io: CliIO): Promise<number> {
+  const first = argv[0] ?? "";
+  if (
+    (ASSURANCE_COMMANDS as readonly string[]).includes(first) ||
+    ((first === "dashboard" || first === "blueprint") && argv.includes("--from"))
+  )
+    return runAssurance(first, argv.slice(1), io);
   const { values, positionals } = (() => {
     try {
       return parseArgs({ args: argv, allowPositionals: true, strict: true, options: OPTIONS });
@@ -638,7 +647,7 @@ async function main(argv: string[], io: CliIO): Promise<number> {
     default:
       throw usageError(
         `Unknown command: ${command}`,
-        "Commands: run, retest, scan, spec, init, validate, report, blueprint, dashboard, controls, schema."
+        `Commands: run, retest, scan, spec, init, validate, report, blueprint, dashboard, controls, schema, ${ASSURANCE_COMMANDS.join(", ")}.`
       );
   }
 }

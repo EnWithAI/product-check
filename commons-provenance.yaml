@@ -31,8 +31,8 @@ frameworks:
   clear:
     owner: NetworkGain Consulting
     relationship: inspired
-    spec_version: "CLEAR CT v3.1 (internal, unpublished)"
-    evidence: "Assessment-model design (separate Customer/Technology/Trust pillars, CT-T0..T6 lifecycle tiers, points of presence, evidence statuses, non-averaging, hard gates overriding scores) was inspired by CLEAR CT. No text, catalog or prompt is reproduced. Wording approved for publication 2026-10-12."
+    spec_version: "CLEAR CT v3.1 (internal, unpublished); v3.2 for the unreleased vibe-code review and closure layer"
+    evidence: "Assessment-model design (separate Customer/Technology/Trust pillars, CT-T0..T6 lifecycle tiers, points of presence, evidence statuses, non-averaging, hard gates overriding scores) was inspired by CLEAR CT. No text, catalog or prompt is reproduced. Wording approved for publication 2026-10-12. The v3.2 layer (execution phases VC-P0..P7, finding verification states, closure state machine, release conditions) is likewise inspired; its wording is pending approval (review item V32-1)."
   trace:
     owner: EnWithAI Technologies
     relationship: not-assessed
@@ -40,4 +40,4 @@ frameworks:
     evidence: "Findings carry an intent-to-retest traceability chain; alignment with TRACE cannot be stated until its specification is available."
 upstream: []
 references: REFERENCES.md
-review_items: [HR-5]
+review_items: [HR-5, V32-1] # V32-1: approve public v3.2 wording and the opt-in execution model (progress/DECISIONS.md D-111)
