@@ -6,6 +6,12 @@ versions may break the results schema, which carries its own `schema_version`, a
 
 ## Unreleased
 
+## 0.3.261110 — 2026-11-10
+
+- Version alignment: every EnWithAI Engineering Commons tool now uses `0.3.YYMMDD`, the date of the release
+  (`0.3.261110` = 2026-11-10). It continues from `0.3.0`. No functional change; report and schema versions are
+  unchanged.
+
 ## 0.3.0 — 2026-11-09
 
 Vibe-code review and verified closure, inspired by CLEAR CT v3.2 (relationship `inspired`; wording approved for publication 2026-11-09). Additive: the results schema stays `0.1.0`, the scan
