@@ -21,7 +21,7 @@ Customer, Technology and Trust controls, and gives you:
 
 Everything is written to one versioned JSON file. The report, blueprint and dashboard are renderings of it.
 
-> Status: **early release** (`0.3.0`, pre-1.0, results schema `0.1.0`, rubric `pc-rubric-0.2`). Install with
+> Status: **early release** (`0.3.261110`, pre-1.0, results schema `0.1.0`, rubric `pc-rubric-0.2`). Install with
 > `npm install --global @enwithai/product-check`, or build from source as in the demo below.
 
 ## What it will not pretend

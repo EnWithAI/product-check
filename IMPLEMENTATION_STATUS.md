@@ -1,9 +1,12 @@
 # Implementation status
 
+> **0.3.261110 (2026-11-10):** version alignment across the Engineering Commons (`0.3.YYMMDD`); no functional
+> change from 0.3.0.
+>
 > **0.3.0 (2026-11-09):** CT3 v3.2 vibe-code review and verified closure (EnWithAI/product-check#8). Status of
 > every capability, test evidence and the readiness verdict: [IMPLEMENTATION_AUDIT_v3.2.md](IMPLEMENTATION_AUDIT_v3.2.md).
 
-_Product Check 0.3.0 · results schema 0.1.0 · rubric pc-rubric-0.2 · assurance schema 0.1.0 · 2026-11-09_
+_Product Check 0.3.261110 · results schema 0.1.0 · rubric pc-rubric-0.2 · assurance schema 0.1.0 · 2026-11-10_
 
 **State: released 0.3.0 (2026-11-09)** on GitHub and npm: the CT3 v3.2 layer, approved by the sponsor (D-111, V32-1); see §0 and the v3.2 audit. Earlier: **released 0.2.0 (2026-10-28)** on GitHub and npm; see §0a and §5. Earlier: **released 0.1.0
 (2026-10-12)**, the first version without a pre-release suffix (no functional change from 0.1.0-alpha.0). Earlier: released alpha. 0.1.0-alpha.0 published 2026-10-12: GitHub `EnWithAI/product-check` (CI green on Node
@@ -85,7 +88,7 @@ composite scores, legal or compliance determinations.
 returning `null` means "did not run", so no adapter can appear to have run when it has not. Scoring and verdict are
 pure functions of validations and findings.
 
-**Versions.** Package `0.3.0`; results schema `0.1.0` (`schemas/*.schema.json`, JSON Schema 2020-12);
+**Versions.** Package `0.3.261110` (version-aligned 0.3.YYMMDD; same code as 0.3.0); results schema `0.1.0` (`schemas/*.schema.json`, JSON Schema 2020-12);
 rubric `pc-rubric-0.2` (stored scorecards may carry `pc-rubric-0.1`); methodology recorded separately as `CT3`, relationship `inspired`, reference "CLEAR CT v3.1
 (unpublished; principles only)".
 
